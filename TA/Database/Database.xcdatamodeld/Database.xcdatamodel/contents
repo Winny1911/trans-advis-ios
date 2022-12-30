@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="20G527" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ChatInbox" representedClassName="ChatInbox" syncable="YES">
+        <attribute name="chat_dialog_id" optional="YES" attributeType="String"/>
+        <attribute name="dialog_type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="last_message" optional="YES" attributeType="String"/>
+        <attribute name="last_message_id" optional="YES" attributeType="String"/>
+        <attribute name="last_message_sender_id" optional="YES" attributeType="String"/>
+        <attribute name="last_message_time" optional="YES" attributeType="String"/>
+        <attribute name="last_message_type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="participant_ids" optional="YES" attributeType="String"/>
+        <attribute name="profile_pic" optional="YES" attributeType="String"/>
+        <attribute name="unread_count" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="ChatMessages" representedClassName="ChatMessages" syncable="YES">
+        <attribute name="attachment_url" optional="YES" attributeType="String"/>
+        <attribute name="chat_dialog_id" optional="YES" attributeType="String"/>
+        <attribute name="firebase_message_time" optional="YES" attributeType="String"/>
+        <attribute name="message" optional="YES" attributeType="String"/>
+        <attribute name="message_id" optional="YES" attributeType="String"/>
+        <attribute name="message_read_status" optional="YES" attributeType="String"/>
+        <attribute name="message_time" optional="YES" attributeType="String"/>
+        <attribute name="message_type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="progress" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="receiver_id" optional="YES" attributeType="String"/>
+        <attribute name="sender_id" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="ChatUser" representedClassName="ChatUser" syncable="YES">
+        <attribute name="chat_dialog_ids" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="ChatInbox" positionX="-63" positionY="18" width="128" height="194"/>
+        <element name="ChatMessages" positionX="-54" positionY="90" width="128" height="194"/>
+        <element name="ChatUser" positionX="-63" positionY="-18" width="128" height="44"/>
+    </elements>
+</model>

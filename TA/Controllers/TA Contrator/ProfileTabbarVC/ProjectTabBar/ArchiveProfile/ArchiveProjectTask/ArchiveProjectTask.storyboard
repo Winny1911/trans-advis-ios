@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Bold.ttf">
+            <string>Poppins-Bold</string>
+        </array>
+        <array key="Poppins-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Archive Project TaskVC-->
+        <scene sceneID="EH7-rO-dND">
+            <objects>
+                <viewController storyboardIdentifier="ArchiveProjectTaskVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OO9-bQ-YuP" customClass="ArchiveProjectTaskVC" customModule="TA" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6L7-38-vFp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ukO-tt-3jW">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kbw-yG-QyF">
+                                        <rect key="frame" x="9" y="54" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="Fhf-vw-bJn"/>
+                                            <constraint firstAttribute="width" constant="24" id="vez-FL-iCN"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="ic_back"/>
+                                        <connections>
+                                            <action selector="tapDidBackButtonAction:" destination="OO9-bQ-YuP" eventType="touchUpInside" id="Lfg-BJ-wXZ"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kitchen Redo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6MJ-ZX-12Z">
+                                        <rect key="frame" x="153" y="54.666666666666664" width="108.33333333333331" height="22.666666666666664"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="#FFFFFF"/>
+                                <constraints>
+                                    <constraint firstItem="Kbw-yG-QyF" firstAttribute="leading" secondItem="ukO-tt-3jW" secondAttribute="leading" constant="9" id="9ej-Ny-WV0"/>
+                                    <constraint firstAttribute="bottom" secondItem="Kbw-yG-QyF" secondAttribute="bottom" constant="10" id="Tl2-Vp-BG2"/>
+                                    <constraint firstItem="6MJ-ZX-12Z" firstAttribute="centerY" secondItem="Kbw-yG-QyF" secondAttribute="centerY" id="Uhb-lJ-agJ"/>
+                                    <constraint firstItem="6MJ-ZX-12Z" firstAttribute="centerX" secondItem="ukO-tt-3jW" secondAttribute="centerX" id="WBu-on-A8u"/>
+                                    <constraint firstAttribute="height" constant="88" id="eJL-GQ-ylO"/>
+                                </constraints>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tVB-ad-KNH">
+                                <rect key="frame" x="0.0" y="134" width="414" height="602"/>
+                                <connections>
+                                    <segue destination="JKW-bz-Eo3" kind="embed" id="Nuk-Q3-pTE"/>
+                                </connections>
+                            </containerView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YeL-qO-7b0">
+                                <rect key="frame" x="0.0" y="101" width="414" height="33"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Wkn-Vz-liN">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ivq-TU-hG5">
+                                                <rect key="frame" x="0.0" y="0.0" width="138" height="30"/>
+                                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="13"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Main Project">
+                                                    <color key="titleColor" red="0.60641008620000003" green="0.60641002659999999" blue="0.60641008620000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="tapDidMainProjectButton:" destination="OO9-bQ-YuP" eventType="touchUpInside" id="3Or-VL-xgq"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Md4-Ai-pwr">
+                                                <rect key="frame" x="138" y="0.0" width="138" height="30"/>
+                                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="13"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Tasks">
+                                                    <color key="titleColor" red="0.28160464759999998" green="0.28160464759999998" blue="0.28160464759999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="tapDidTasksButton:" destination="OO9-bQ-YuP" eventType="touchUpInside" id="ECG-HO-zPC"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFF-V4-Nml">
+                                                <rect key="frame" x="276" y="0.0" width="138" height="30"/>
+                                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Orderlist">
+                                                    <color key="titleColor" red="0.60641008620000003" green="0.60641002659999999" blue="0.60641008620000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="tapDidOrderlistButton:" destination="OO9-bQ-YuP" eventType="touchUpInside" id="o74-Y5-jRv"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Bxf-ro-aLg">
+                                        <rect key="frame" x="0.0" y="30" width="414" height="3"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h1E-ev-zai">
+                                                <rect key="frame" x="0.0" y="0.0" width="138" height="3"/>
+                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TQK-WM-Jc5">
+                                                <rect key="frame" x="138" y="0.0" width="138" height="3"/>
+                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g2R-DO-9oj">
+                                                <rect key="frame" x="276" y="0.0" width="138" height="3"/>
+                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="3" id="9k1-ra-WFr"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="I63-LV-Aun"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="pWC-Kp-vOK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ukO-tt-3jW" firstAttribute="top" secondItem="6L7-38-vFp" secondAttribute="top" id="7sR-D3-L47"/>
+                            <constraint firstItem="tVB-ad-KNH" firstAttribute="leading" secondItem="pWC-Kp-vOK" secondAttribute="leading" id="85G-NR-RZS"/>
+                            <constraint firstItem="ukO-tt-3jW" firstAttribute="leading" secondItem="pWC-Kp-vOK" secondAttribute="leading" id="9SE-tC-bLk"/>
+                            <constraint firstItem="tVB-ad-KNH" firstAttribute="top" secondItem="YeL-qO-7b0" secondAttribute="bottom" id="GyF-I0-815"/>
+                            <constraint firstItem="YeL-qO-7b0" firstAttribute="leading" secondItem="pWC-Kp-vOK" secondAttribute="leading" id="Q9d-9e-T2c"/>
+                            <constraint firstItem="pWC-Kp-vOK" firstAttribute="trailing" secondItem="YeL-qO-7b0" secondAttribute="trailing" id="ati-vt-ykM"/>
+                            <constraint firstItem="YeL-qO-7b0" firstAttribute="top" secondItem="ukO-tt-3jW" secondAttribute="bottom" constant="13" id="kgW-gb-PFw"/>
+                            <constraint firstItem="pWC-Kp-vOK" firstAttribute="trailing" secondItem="tVB-ad-KNH" secondAttribute="trailing" id="n31-Ag-oAL"/>
+                            <constraint firstItem="pWC-Kp-vOK" firstAttribute="bottom" secondItem="tVB-ad-KNH" secondAttribute="bottom" id="oeL-57-zwS"/>
+                            <constraint firstItem="pWC-Kp-vOK" firstAttribute="trailing" secondItem="ukO-tt-3jW" secondAttribute="trailing" id="qO7-zX-MdY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mainProjectButton" destination="ivq-TU-hG5" id="5o2-Ef-6xO"/>
+                        <outlet property="mainProjectView" destination="h1E-ev-zai" id="E5o-2z-W2Z"/>
+                        <outlet property="orderlistButton" destination="hFF-V4-Nml" id="OIc-nn-OgH"/>
+                        <outlet property="orderlistView" destination="g2R-DO-9oj" id="oJw-BQ-Qp3"/>
+                        <outlet property="taskView" destination="TQK-WM-Jc5" id="5pk-UE-Phg"/>
+                        <outlet property="tasksButton" destination="Md4-Ai-pwr" id="Y5J-az-dZV"/>
+                        <outlet property="topView" destination="ukO-tt-3jW" id="BtZ-zM-7m0"/>
+                        <outlet property="viewContainer" destination="tVB-ad-KNH" id="IzQ-50-u3C"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pHw-Pn-1Kr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2051" y="53"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="9dk-DW-z3H">
+            <objects>
+                <pageViewController storyboardIdentifier="PageViewControllerLeader" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="JKW-bz-Eo3" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="huH-ag-1eK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2896" y="77"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ic_back" width="24" height="24"/>
+        <namedColor name="#FFFFFF">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
