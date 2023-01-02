@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="376" id="KGk-i7-Jjw" customClass="MyChatImageTableViewCell" customModule="TA" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="417" height="376"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="417" height="376"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9s4-sY-o6a" userLabel="baseView">
+                        <rect key="frame" x="107" y="0.0" width="300" height="340"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PSz-nd-6eh">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="340"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="PSz-nd-6eh" firstAttribute="leading" secondItem="9s4-sY-o6a" secondAttribute="leading" id="I7K-uw-bwa"/>
+                            <constraint firstAttribute="bottom" secondItem="PSz-nd-6eh" secondAttribute="bottom" id="TIK-QL-AuU"/>
+                            <constraint firstAttribute="width" constant="300" id="VBD-cr-gDc"/>
+                            <constraint firstAttribute="trailing" secondItem="PSz-nd-6eh" secondAttribute="trailing" id="hqH-kv-6FO"/>
+                            <constraint firstItem="PSz-nd-6eh" firstAttribute="top" secondItem="9s4-sY-o6a" secondAttribute="top" id="ngi-ez-Vyt"/>
+                            <constraint firstAttribute="height" constant="340" id="ttc-m8-cjf"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQs-bg-Izx" userLabel="labelTime">
+                        <rect key="frame" x="107" y="345" width="300" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="6IJ-JI-lFM"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="13"/>
+                        <color key="textColor" red="0.13333333333333333" green="0.10980392156862745" blue="0.11764705882352941" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="FQs-bg-Izx" secondAttribute="bottom" constant="5" id="2RU-1M-JC7"/>
+                    <constraint firstAttribute="trailing" secondItem="9s4-sY-o6a" secondAttribute="trailing" constant="10" id="KM7-Ft-7ko"/>
+                    <constraint firstItem="FQs-bg-Izx" firstAttribute="top" secondItem="9s4-sY-o6a" secondAttribute="bottom" constant="5" id="P8d-7e-Cme"/>
+                    <constraint firstItem="9s4-sY-o6a" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Pkn-EO-74e"/>
+                    <constraint firstItem="FQs-bg-Izx" firstAttribute="trailing" secondItem="9s4-sY-o6a" secondAttribute="trailing" id="VxB-Hj-UVa"/>
+                    <constraint firstItem="FQs-bg-Izx" firstAttribute="leading" secondItem="9s4-sY-o6a" secondAttribute="leading" id="czR-g8-AiI"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="baseView" destination="9s4-sY-o6a" id="TwT-pI-aWQ"/>
+                <outlet property="imageViewAttachment" destination="PSz-nd-6eh" id="QMX-06-gaD"/>
+                <outlet property="labelTime" destination="FQs-bg-Izx" id="dIh-8P-0bm"/>
+            </connections>
+            <point key="canvasLocation" x="187.68115942028987" y="55.580357142857139"/>
+        </tableViewCell>
+    </objects>
+</document>

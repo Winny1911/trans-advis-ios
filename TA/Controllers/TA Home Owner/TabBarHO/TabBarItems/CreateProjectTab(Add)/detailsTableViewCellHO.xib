@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailsTableViewCellHO" rowHeight="74" id="KGk-i7-Jjw" customClass="detailsTableViewCellHO" customModule="TA" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="336" height="74"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="336" height="74"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QPr-9X-niZ">
+                        <rect key="frame" x="0.0" y="12" width="336" height="50"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qPi-hh-aMO">
+                                <rect key="frame" x="286" y="0.0" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="fbM-bH-MYf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
+                                <color key="tintColor" name="greenColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title=" " image="ic_delete"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qPi-hh-aMO" firstAttribute="height" secondItem="QPr-9X-niZ" secondAttribute="height" id="1nd-lj-z1q"/>
+                            <constraint firstAttribute="trailing" secondItem="qPi-hh-aMO" secondAttribute="trailing" id="T2o-DK-dMH"/>
+                            <constraint firstAttribute="height" constant="50" id="waa-2a-rMK"/>
+                            <constraint firstItem="qPi-hh-aMO" firstAttribute="centerY" secondItem="QPr-9X-niZ" secondAttribute="centerY" id="xPs-Ke-MDV"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Deliverables" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7NU-AW-f35" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="12" width="276" height="50"/>
+                        <color key="tintColor" name="placeholderColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="CMZ-M4-0nP"/>
+                        </constraints>
+                        <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="18"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveColor">
+                                <color key="value" name="AccentColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelPassiveColor">
+                                <color key="value" name="greenColor"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="7NU-AW-f35" firstAttribute="leading" secondItem="QPr-9X-niZ" secondAttribute="leading" id="38p-RY-SEk"/>
+                    <constraint firstItem="qPi-hh-aMO" firstAttribute="leading" secondItem="7NU-AW-f35" secondAttribute="trailing" constant="10" id="7Wu-p6-TYV"/>
+                    <constraint firstItem="7NU-AW-f35" firstAttribute="centerY" secondItem="QPr-9X-niZ" secondAttribute="centerY" id="Jdn-b3-lSe"/>
+                    <constraint firstItem="7NU-AW-f35" firstAttribute="height" secondItem="QPr-9X-niZ" secondAttribute="height" id="NkD-AT-Hyh"/>
+                    <constraint firstAttribute="trailing" secondItem="QPr-9X-niZ" secondAttribute="trailing" id="SGm-EA-leA"/>
+                    <constraint firstItem="QPr-9X-niZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="TiK-Zr-i42"/>
+                    <constraint firstItem="QPr-9X-niZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="TuE-AX-JAQ"/>
+                    <constraint firstAttribute="bottom" secondItem="QPr-9X-niZ" secondAttribute="bottom" constant="12" id="sLs-R5-20G"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="btnDelete" destination="qPi-hh-aMO" id="YgG-Rr-qah"/>
+                <outlet property="deliverablesTextField" destination="7NU-AW-f35" id="ttf-dU-R0w"/>
+                <outlet property="outerVw" destination="QPr-9X-niZ" id="VYK-1s-qfS"/>
+            </connections>
+            <point key="canvasLocation" x="143.47826086956522" y="109.82142857142857"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_delete" width="24" height="24"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="greenColor">
+            <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="placeholderColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

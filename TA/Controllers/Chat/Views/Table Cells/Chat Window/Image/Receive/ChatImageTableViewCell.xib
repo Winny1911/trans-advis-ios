@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="426" id="KGk-i7-Jjw" customClass="ChatImageTableViewCell" customModule="TA" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="445" height="426"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="445" height="426"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="15Z-1D-Mc3" userLabel="viewAttachment">
+                        <rect key="frame" x="10" y="0.0" width="300" height="340"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rxJ-KP-mqs">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="340"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="rxJ-KP-mqs" firstAttribute="leading" secondItem="15Z-1D-Mc3" secondAttribute="leading" id="1Yp-vi-Phd"/>
+                            <constraint firstItem="rxJ-KP-mqs" firstAttribute="top" secondItem="15Z-1D-Mc3" secondAttribute="top" id="7oM-lq-3TZ"/>
+                            <constraint firstAttribute="width" constant="300" id="8Sc-AT-GeB"/>
+                            <constraint firstAttribute="bottom" secondItem="rxJ-KP-mqs" secondAttribute="bottom" id="VK1-M1-e55"/>
+                            <constraint firstAttribute="trailing" secondItem="rxJ-KP-mqs" secondAttribute="trailing" id="gyG-sU-vi7"/>
+                            <constraint firstAttribute="height" constant="340" id="vEp-p2-os8"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RgV-Y9-2wU" userLabel="labelTime">
+                        <rect key="frame" x="10" y="345" width="300" height="76"/>
+                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="13"/>
+                        <color key="textColor" red="0.13333333333333333" green="0.10980392156862745" blue="0.11764705882352941" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="RgV-Y9-2wU" firstAttribute="top" secondItem="15Z-1D-Mc3" secondAttribute="bottom" constant="5" id="Iju-EL-kC5"/>
+                    <constraint firstItem="15Z-1D-Mc3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="TIP-Iq-cna"/>
+                    <constraint firstItem="15Z-1D-Mc3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Vtq-H3-ZKN"/>
+                    <constraint firstItem="RgV-Y9-2wU" firstAttribute="leading" secondItem="15Z-1D-Mc3" secondAttribute="leading" id="Zd7-nM-goh"/>
+                    <constraint firstItem="RgV-Y9-2wU" firstAttribute="trailing" secondItem="15Z-1D-Mc3" secondAttribute="trailing" id="blK-cZ-tiO"/>
+                    <constraint firstAttribute="bottom" secondItem="RgV-Y9-2wU" secondAttribute="bottom" constant="5" id="onF-SJ-se4"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="baseView" destination="15Z-1D-Mc3" id="M9z-RJ-cF9"/>
+                <outlet property="imageViewAttachment" destination="rxJ-KP-mqs" id="JRP-n7-uJC"/>
+                <outlet property="labelTime" destination="RgV-Y9-2wU" id="c1o-nB-UUX"/>
+            </connections>
+            <point key="canvasLocation" x="64.492753623188406" y="180.13392857142856"/>
+        </tableViewCell>
+    </objects>
+</document>

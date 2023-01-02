@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ViewBidLogTblVwCell" rowHeight="84" id="KGk-i7-Jjw" customClass="ViewBidLogTblVwCell" customModule="TA" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="360" height="84"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="360" height="84"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGd-aD-o5V">
+                        <rect key="frame" x="16" y="10" width="328" height="64"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KYf-rQ-UzV">
+                                <rect key="frame" x="10" y="19" width="26" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26" id="18q-pJ-Esx"/>
+                                    <constraint firstAttribute="width" constant="26" id="Yfj-F3-pJy"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title=" " image="ic_tasks_check"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Kitchen Renovation" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMq-6L-Vvf">
+                                <rect key="frame" x="46" y="10" width="277" height="14.5"/>
+                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
+                                <color key="textColor" name="#484848"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kitchen Renovation" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gWp-EL-OFW">
+                                <rect key="frame" x="46" y="25.5" width="277" height="21"/>
+                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="15"/>
+                                <color key="textColor" name="#767676"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ogq-0e-PTS">
+                                <rect key="frame" x="0.0" y="63" width="328" height="1"/>
+                                <color key="backgroundColor" name="#B2B2B2"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="yaS-u4-AjT"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gWp-EL-OFW" firstAttribute="leading" secondItem="CMq-6L-Vvf" secondAttribute="leading" id="16h-03-90H"/>
+                            <constraint firstAttribute="bottom" secondItem="gWp-EL-OFW" secondAttribute="bottom" constant="17.5" id="1WN-R6-umu"/>
+                            <constraint firstAttribute="trailing" secondItem="CMq-6L-Vvf" secondAttribute="trailing" constant="5" id="2MB-yP-7iD"/>
+                            <constraint firstItem="gWp-EL-OFW" firstAttribute="top" secondItem="CMq-6L-Vvf" secondAttribute="bottom" constant="1" id="COq-Je-yHH"/>
+                            <constraint firstItem="KYf-rQ-UzV" firstAttribute="centerY" secondItem="bGd-aD-o5V" secondAttribute="centerY" id="EvV-e7-Dyt"/>
+                            <constraint firstItem="CMq-6L-Vvf" firstAttribute="top" secondItem="bGd-aD-o5V" secondAttribute="top" constant="10" id="IyJ-zS-zBL"/>
+                            <constraint firstItem="CMq-6L-Vvf" firstAttribute="leading" secondItem="KYf-rQ-UzV" secondAttribute="trailing" constant="10" id="XbD-XY-bwM"/>
+                            <constraint firstItem="gWp-EL-OFW" firstAttribute="trailing" secondItem="CMq-6L-Vvf" secondAttribute="trailing" id="cDl-DO-1dS"/>
+                            <constraint firstItem="Ogq-0e-PTS" firstAttribute="centerX" secondItem="bGd-aD-o5V" secondAttribute="centerX" id="dkJ-PP-9oi"/>
+                            <constraint firstAttribute="bottom" secondItem="Ogq-0e-PTS" secondAttribute="bottom" id="fK2-0g-TSd"/>
+                            <constraint firstItem="Ogq-0e-PTS" firstAttribute="width" secondItem="bGd-aD-o5V" secondAttribute="width" id="m1X-Pw-smU"/>
+                            <constraint firstItem="KYf-rQ-UzV" firstAttribute="leading" secondItem="bGd-aD-o5V" secondAttribute="leading" constant="10" id="zDy-Vy-TGn"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="12"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" name="#FFFFFF"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="bGd-aD-o5V" secondAttribute="bottom" constant="10" id="2ud-wi-rhR"/>
+                    <constraint firstItem="bGd-aD-o5V" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="M7S-nC-s2I"/>
+                    <constraint firstItem="bGd-aD-o5V" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="esW-tv-2Wy"/>
+                    <constraint firstAttribute="trailing" secondItem="bGd-aD-o5V" secondAttribute="trailing" constant="16" id="mBY-3s-iVc"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="btnCheck" destination="KYf-rQ-UzV" id="dFv-N7-YAZ"/>
+                <outlet property="innerVw" destination="bGd-aD-o5V" id="FZd-JW-iXG"/>
+                <outlet property="lblTime" destination="gWp-EL-OFW" id="gpi-7U-5tk"/>
+                <outlet property="lblTitle" destination="CMq-6L-Vvf" id="f5o-ye-Kxu"/>
+            </connections>
+            <point key="canvasLocation" x="105.79710144927537" y="62.946428571428569"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_tasks_check" width="25" height="25"/>
+        <namedColor name="#484848">
+            <color red="0.28200000524520874" green="0.28200000524520874" blue="0.28200000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="#767676">
+            <color red="0.46274509803921571" green="0.46274509803921571" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="#B2B2B2">
+            <color red="0.69803921568627447" green="0.69803921568627447" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="#FFFFFF">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XiO-BN-Gbx">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab BarHOVC-->
+        <scene sceneID="Xmp-uh-5t5">
+            <objects>
+                <tabBarController storyboardIdentifier="TabBarHOVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XiO-BN-Gbx" customClass="TabBarHOVC" customModule="TA" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fsZ-eA-hFp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" name="#484848"/>
+                        <color key="selectedImageTintColor" name="#4EC72A"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="b8G-WQ-RgD" kind="relationship" relationship="viewControllers" id="egE-tk-7zI"/>
+                        <segue destination="sVt-15-ddz" kind="relationship" relationship="viewControllers" id="Ekw-MA-ewB"/>
+                        <segue destination="J9a-Yi-nCs" kind="relationship" relationship="viewControllers" id="eMM-F9-F5P"/>
+                        <segue destination="igG-0U-07Q" kind="relationship" relationship="viewControllers" id="Qfc-OU-O9b"/>
+                        <segue destination="fd7-im-Fwl" kind="relationship" relationship="viewControllers" id="J7b-T9-yiW"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SnG-zE-EEF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="164" y="-359"/>
+        </scene>
+        <!--ProfileHOVC-->
+        <scene sceneID="zwJ-th-Lx7">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="ProfileHOVC" storyboardName="ProfileHO" referencedIdentifier="ProfileHOVC" id="fd7-im-Fwl" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" selectedImage="ic_HO_projects" id="rC9-QJ-dhh"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rRl-Tn-aPv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="796" y="-214"/>
+        </scene>
+        <!--ProjectHO-->
+        <scene sceneID="c4R-sc-cQI">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="ProjectHO" storyboardName="ProjectHO" referencedIdentifier="ProjectHO" id="b8G-WQ-RgD" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" selectedImage="ic_HO_projects" id="Crk-xo-EOL"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NXF-BP-SRg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="757" y="-517"/>
+        </scene>
+        <!--ContractorHO-->
+        <scene sceneID="Apq-VU-SjR">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="ContractorHONavigation" storyboardName="ContractorHO" id="sVt-15-ddz" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="wf3-h5-6bI"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LHy-TL-g55" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="796" y="-454"/>
+        </scene>
+        <!--MessageHOVC-->
+        <scene sceneID="BzC-3g-LqD">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="MessageHOVC" storyboardName="MessageHO" referencedIdentifier="MessageHOVC" id="igG-0U-07Q" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="aId-uo-hWS"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z9j-Qz-HQe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="796" y="-321"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="Oce-tV-ybS">
+            <objects>
+                <viewController storyboardIdentifier="TabCreateProjectVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="J9a-Yi-nCs" customClass="TabCreateProjectVC" customModule="TA" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YJC-u9-eFI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Iz5-y6-eXi"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="Sen-KF-rH9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qXH-8s-9Xc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1193" y="-360"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ic_HO_projects" width="32" height="32"/>
+        <namedColor name="#484848">
+            <color red="0.28200000524520874" green="0.28200000524520874" blue="0.28200000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="#4EC72A">
+            <color red="0.3059999942779541" green="0.77999997138977051" blue="0.16500000655651093" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

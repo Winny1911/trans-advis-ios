@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="TaskTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskTableViewCell" rowHeight="75" id="KGk-i7-Jjw" customClass="TaskTableViewCell" customModule="TA" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="315" height="75"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="315" height="75"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZWv-bQ-f0z">
+                        <rect key="frame" x="0.0" y="0.0" width="315" height="75"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_tasks_check" translatesAutoresizingMaskIntoConstraints="NO" id="UrG-qy-iGp">
+                                <rect key="frame" x="24" y="22" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="6k1-ZS-bWD"/>
+                                    <constraint firstAttribute="width" constant="25" id="YlT-bU-jlJ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Install dishwasher" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5A-oZ-bbV">
+                                <rect key="frame" x="64" y="22" width="146" height="25"/>
+                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AW3-OY-su9">
+                                <rect key="frame" x="267" y="22.5" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="ZWB-af-Qxm"/>
+                                    <constraint firstAttribute="height" constant="24" id="vII-Uj-B1s"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="ic_delete"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02 Aug, 2021" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZO-VT-UJW">
+                                <rect key="frame" x="64" y="49" width="74" height="16"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.40358749288596857" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.40324684799901694" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="UrG-qy-iGp" firstAttribute="top" secondItem="ZWv-bQ-f0z" secondAttribute="top" constant="22" id="0u0-RJ-55Y"/>
+                            <constraint firstItem="fZO-VT-UJW" firstAttribute="leading" secondItem="p5A-oZ-bbV" secondAttribute="leading" id="5Om-MU-ec3"/>
+                            <constraint firstItem="UrG-qy-iGp" firstAttribute="leading" secondItem="ZWv-bQ-f0z" secondAttribute="leading" constant="24" id="JZA-YW-Xk0"/>
+                            <constraint firstAttribute="trailing" secondItem="AW3-OY-su9" secondAttribute="trailing" constant="24" id="ODY-uz-9XP"/>
+                            <constraint firstItem="p5A-oZ-bbV" firstAttribute="centerY" secondItem="UrG-qy-iGp" secondAttribute="centerY" id="Otw-ro-7iL"/>
+                            <constraint firstAttribute="bottom" secondItem="fZO-VT-UJW" secondAttribute="bottom" constant="10" id="egH-vt-0km"/>
+                            <constraint firstItem="AW3-OY-su9" firstAttribute="centerY" secondItem="UrG-qy-iGp" secondAttribute="centerY" id="lLM-64-nkc"/>
+                            <constraint firstItem="p5A-oZ-bbV" firstAttribute="top" secondItem="UrG-qy-iGp" secondAttribute="top" id="nHv-vX-ndK"/>
+                            <constraint firstItem="p5A-oZ-bbV" firstAttribute="leading" secondItem="UrG-qy-iGp" secondAttribute="trailing" constant="15" id="pvH-pc-bkV"/>
+                            <constraint firstItem="fZO-VT-UJW" firstAttribute="top" secondItem="p5A-oZ-bbV" secondAttribute="bottom" constant="2" id="ztZ-ID-u9U"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="ZWv-bQ-f0z" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="2TU-7t-k8P"/>
+                    <constraint firstItem="ZWv-bQ-f0z" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="8pp-ZU-sKJ"/>
+                    <constraint firstItem="ZWv-bQ-f0z" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="FlS-Oc-P1l"/>
+                    <constraint firstAttribute="trailing" secondItem="ZWv-bQ-f0z" secondAttribute="trailing" id="Qdo-rZ-AJr"/>
+                    <constraint firstAttribute="bottom" secondItem="ZWv-bQ-f0z" secondAttribute="bottom" id="rzR-FB-y3f"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="dateLbl" destination="fZO-VT-UJW" id="T9a-Va-EEP"/>
+                <outlet property="deleteButton" destination="AW3-OY-su9" id="qbB-Kx-efy"/>
+                <outlet property="tastTitleLbl" destination="p5A-oZ-bbV" id="eFY-gD-kbg"/>
+            </connections>
+            <point key="canvasLocation" x="128.2608695652174" y="94.084821428571431"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_delete" width="24" height="24"/>
+        <image name="ic_tasks_check" width="25" height="25"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

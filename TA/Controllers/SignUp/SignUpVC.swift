@@ -1,0 +1,200 @@
+//
+//  SignUpVC.swift
+//  TA
+//
+//  Created by Dev on 06/12/21.
+//
+
+import UIKit
+import SafariServices
+
+class SignUpVC: BaseViewController {
+
+    @IBOutlet weak var passwordView: UIView!
+    @IBOutlet weak var btnLogin: UIButton!
+    @IBOutlet weak var termsLabel: UILabel!
+    @IBOutlet weak var btnAcceptTerms: UIButton!
+    @IBOutlet weak var btnSignUp: UIButton!
+    @IBOutlet weak var btnShowHide: UIButton!
+    @IBOutlet weak var btnContractor: UIButton!
+    @IBOutlet weak var btnHomeOwner: UIButton!
+    @IBOutlet weak var emailTextField: FloatingLabelInput!
+    @IBOutlet weak var passwordTextField: FloatingLabelInput!
+    
+    var userType = String()
+    let viewModel: SignUpVM = SignUpVM()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        passwordTextField.delegate = self
+        btnContractor.setRoundCorners(radius: 4.0)
+        btnHomeOwner.setRoundCorners(radius: 4.0)
+        
+        emailTextField.setLeftPadding(14)
+        passwordTextField.setLeftPadding(14)
+        
+        passwordView.setRoundCorners(radius: 4.0)
+        btnLogin.titleLabel?.font = UIFont(name: PoppinsFont.semiBold, size: 12.0)
+        btnContractor.titleLabel?.font = UIFont(name: PoppinsFont.medium, size: 14.0)
+        btnHomeOwner.titleLabel?.font = UIFont(name: PoppinsFont.medium, size: 14.0)
+        btnShowHide.titleLabel?.font = UIFont(name: PoppinsFont.medium, size: 14.0)
+        btnAcceptTerms.titleLabel?.font = UIFont(name: PoppinsFont.medium, size: 14.0)
+        btnSignUp.titleLabel?.font = UIFont(name: PoppinsFont.semiBold, size: 16.0)
+        
+        setlblPrivacyNtermsLabel()
+    }
+    
+    // MARK: - Customize Privacy Label
+    private func setlblPrivacyNtermsLabel() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tappedOnlblPrivacyNtermsLabel))
+        self.termsLabel.addGestureRecognizer(tapGesture)
+        termsLabel.isUserInteractionEnabled = true
+        
+        let primaryFont = UIFont(name: PoppinsFont.medium, size: 14) ?? UIFont.systemFont(ofSize: 14)
+        let primaryColor = UIColor.appFloatText 
+        let secondaryFont = UIFont(name: PoppinsFont.medium, size: 14) ?? UIFont.systemFont(ofSize: 14)
+        let secondaryColor = UIColor.appColorBlue
+        
+        let attributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.font: primaryFont,
+            NSAttributedString.Key.foregroundColor: primaryColor]
+
+        let attributes1: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.font: secondaryFont,
+            NSAttributedString.Key.foregroundColor: secondaryColor]
+
+        let agree = NSAttributedString(string: "I agree with ", attributes: attributes)
+        let terms = NSAttributedString(string: "Terms & Conditions", attributes: attributes1)
+        let and = NSAttributedString(string: " and ", attributes: attributes)
+        let policy = NSAttributedString(string: "Privacy Policy.", attributes: attributes1)
+        
+        let string = NSMutableAttributedString(attributedString: agree)
+        string.append(terms)
+        string.append(and)
+        string.append(policy)
+        
+        self.termsLabel.attributedText = string
+    }
+    
+    @objc private func tappedOnlblPrivacyNtermsLabel(_ tapGesture: UITapGestureRecognizer) {
+        let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: self.termsLabel.text ?? "")
+        let termsRange: NSRange = attributedString.mutableString.range(of: "Terms & Conditions", options: .caseInsensitive)
+        let policyRange: NSRange = attributedString.mutableString.range(of: "Privacy Policy.", options: .caseInsensitive)
+        
+        if tapGesture.didTapAttributedTextInLabel(label: self.termsLabel, inRange: termsRange) {
+            let destinationVC = Storyboard.profileHO.instantiateViewController(withIdentifier: "TermsAndConditionVC") as? TermsAndConditionVC
+            self.navigationController?.pushViewController(destinationVC!, animated: true)
+        } else if tapGesture.didTapAttributedTextInLabel(label: self.termsLabel, inRange: policyRange) {
+            let destinationVC = Storyboard.profileHO.instantiateViewController(withIdentifier: "PrivacyPolicyVC") as? PrivacyPolicyVC
+            self.navigationController?.pushViewController(destinationVC!, animated: true)
+        }
+    }
+    
+    //MARK: Handle Onwer Contractor
+    func handleOnwerContractor(selectedBtn:UIButton, unselectedBtn:UIButton) {
+        
+        selectedBtn.backgroundColor = UIColor.appBtnColorOrange
+        unselectedBtn.backgroundColor = UIColor.clear
+        
+        selectedBtn.borderColor = UIColor.clear
+        unselectedBtn.borderColor = UIColor.appBtnColorGrey
+        unselectedBtn.border = 1.0
+        
+        selectedBtn.tintColor = UIColor.appBtnColorWhite
+        unselectedBtn.tintColor = UIColor.appBtnColorGrey
+    }
+    
+    //MARK: ACTION LOGIN
+    @IBAction func loginButtonTap(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    //MARK: ACTION HOME OWNER
+    @IBAction func actionHomeOwner(_ sender: Any) {
+        userType = UserType.homeOwner
+        handleOnwerContractor(selectedBtn: btnHomeOwner, unselectedBtn: btnContractor)
+    }
+    
+    //MARK: ACTION CONTRACTOR
+    @IBAction func actionContractor(_ sender: Any) {
+        userType = UserType.contractor
+        handleOnwerContractor(selectedBtn: btnContractor, unselectedBtn: btnHomeOwner)
+    }
+    
+    //MARK: ACTION SHOW PASSWORD
+    @IBAction func toggleSecureTextButtonDidTap(_ sender: UIButton) {
+        if sender.titleLabel?.text == "Show " {
+            sender.setTitle("Hide ", for: .normal)
+            passwordTextField.isSecureTextEntry = false
+        }else {
+            passwordTextField.isSecureTextEntry = true
+            sender.setTitle("Show ", for: .normal)
+        }
+    }
+        
+    //MARK: ACTION ACCEPT TERMS
+    @IBAction func actionAcceptTerms(_ sender: UIButton) {
+        if sender.currentImage?.pngData() == UIImage(named: "ic_check_box")?.pngData() {
+            sender.setImage(UIImage(named: "checkBoxSelected"), for: .normal)
+        }else {
+            sender.setImage(UIImage(named: "ic_check_box"), for: .normal)
+        }
+    }
+    
+    
+    //MARK: ACTION SIGNUP
+    @IBAction func signUpButtonTap(_ sender: Any) {
+        
+        let email = emailTextField.text?.trimmed ?? ""
+        let password = passwordTextField.text?.trimmed ?? ""
+        var termsAccepted = false
+        if btnAcceptTerms.currentImage?.pngData() == UIImage(named: "ic_check_box")?.pngData() {
+            termsAccepted = false
+        } else {
+            termsAccepted = true
+        }
+        let signupModel  = SignupModel(userType: self.userType, email: email, password: password, termsAccepted: termsAccepted)
+        viewModel.model = signupModel
+            viewModel.validateSignUpModel {[weak self] (success, error) in
+                guard let strongSelf = self else { return }
+                if error == nil {
+                    if let params = success {
+                        print("params: ", params)
+                        viewModel.signUpUserApiCall(params) { (model) in
+                            UserDefaults.standard.save(customObject: model?.data, inKey:TA_Storage.TA_Storage_Constants.kPersonalDetailsData)
+                            TA_Storage.shared.apiAccessToken = "Bearer \(model?.data?.accessToken! ?? "")"
+                            TA_Storage.shared.userId = model?.data?.id ?? -1
+                            fireBaseUserTable().updateOwnProfileOnFirebase()
+
+                            
+                            let destinationViewController = Storyboard.signUp.instantiateViewController(withIdentifier: "VerifyVC") as? VerifyVC
+                            destinationViewController!.completionHandlerGoToCreateProfile = { [weak self] in
+                                guard let strongSelf = self else { return }
+                                let vc = Storyboard.createAccountTAC.instantiateViewController(withIdentifier: "CreateAccountTAC") as? CreateAccountTAC
+                                strongSelf.navigationController?.pushViewController(vc!, animated: true)
+                            }
+                            destinationViewController!.modalPresentationStyle = .overCurrentContext
+                            self?.present(destinationViewController!, animated: true)
+                        }
+                    }
+                } else {
+                    if let errorMsg = strongSelf.viewModel.error {
+                        showMessage(with: errorMsg)
+                    }
+                }
+            }
+    }
+    
+}
+
+extension SignUpVC: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if self.btnShowHide.titleLabel?.text == "Show " {
+            self.passwordTextField.isSecureTextEntry = true
+        } else {
+            self.passwordTextField.isSecureTextEntry = false
+        }
+    }
+}
+
