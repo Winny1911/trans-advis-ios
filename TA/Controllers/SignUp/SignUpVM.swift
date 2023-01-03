@@ -14,25 +14,25 @@ class SignUpVM: NSObject {
     func validateSignUpModel(completion: (_ success:[String: Any]?, _ error: String?) -> Void) {
         error = nil
         
-        if model.userType.isEmpty {
+        if model.userType!.isEmpty {
             error = ValidationError.selectUserType
             completion(nil, error)
             return
-        } else if model.email.isEmpty {
+        } else if model.email!.isEmpty {
             error = ValidationError.emptyEmail
             completion(nil, error)
             return
-        } else if !model.email.isValidEmailAddress {
+        } else if !model.email!.isValidEmailAddress {
             error = ValidationError.invalidEmail
             completion(nil, error)
             return
-        } else if model.password.isEmpty {
+        } else if model.password!.isEmpty {
             error = ValidationError.emptyPassword
             completion(nil, error)
-        } else if model.password.contains(find: " ") {
+        } else if model.password!.contains(find: " ") {
             error = ValidationError.validPasswordSpace
             completion(nil, error)
-        } else if !model.password.isValidPassword {
+        } else if !model.password!.isValidPassword {
             error = ValidationError.invalidPasswordChar
             completion(nil, error)
         } else if model.termsAccepted == false {

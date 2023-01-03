@@ -79,7 +79,7 @@
                                             <constraint firstAttribute="height" constant="25" id="MD3-56-LAO"/>
                                         </constraints>
                                     </stackView>
-                                    <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O75-eu-XS0">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O75-eu-XS0">
                                         <rect key="frame" x="24" y="224" width="366" height="56"/>
                                         <color key="backgroundColor" name="greenColor"/>
                                         <constraints>
@@ -131,6 +131,7 @@
                     <connections>
                         <outlet property="btnNext" destination="O75-eu-XS0" id="PwY-Dn-X55"/>
                         <outlet property="btnResend" destination="6qU-yF-GJk" id="5c9-kX-zuW"/>
+                        <outlet property="labelLink" destination="RMg-iu-Vk3" id="ixj-AV-dBg"/>
                         <outlet property="verifyView" destination="0py-5q-cpH" id="igW-gP-zdu"/>
                     </connections>
                 </viewController>
@@ -623,7 +624,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="signUpButtonTap:" destination="sMT-Bz-PGv" eventType="touchUpInside" id="CKA-Eb-Y3i"/>
+                                                            <action selector="signUpButtonTap:" destination="sMT-Bz-PGv" eventType="touchUpInside" id="Tr6-Dq-Uqy"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0D-dR-1DU">

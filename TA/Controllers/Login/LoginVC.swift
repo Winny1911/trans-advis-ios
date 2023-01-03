@@ -109,60 +109,60 @@ class LoginVC: BaseViewController {
                         ChatHistoryModel.fetchChatHistory()
                         
                         if model?.data?.userType == UserType.homeOwner {
-                            if model?.data?.emailVerified == 1 {
-                                if model?.data?.firstName != "" && model?.data?.firstName != nil {
+//                            if model?.data?.emailVerified == 1 {
+//                                if model?.data?.firstName != "" && model?.data?.firstName != nil {
                                     TA_Storage.shared.iskProfileCreated = true
                                     
                                     self!.changeRootController(storyboadrId: "TabBarHO", bundle: nil, controllerId: "TabBarHOVC")
-                                }  else {
-                                    self!.moveToCreateProfile()
-                                }
+//                                }  else {
+//                                    self!.moveToCreateProfile()
+//                                }
                                 
-                            } else {
-                                guard let destinationViewController = Storyboard.signUp.instantiateViewController(withIdentifier: "VerifyVC") as? VerifyVC else{
-                                    print("Error: Controller not found!!!")
-                                    return
-                                }
-                                destinationViewController.completionHandlerGoToCreateProfile = { [weak self] in
-                                    
-                                    if model?.data?.firstName != "" && model?.data?.firstName != nil {
-                                        TA_Storage.shared.iskProfileCreated = true
-                                        
-                                        self?.changeRootController(storyboadrId: "TabBarHO", bundle: nil, controllerId: "TabBarHOVC")
-                                    }  else {
-                                        self?.moveToCreateProfile()
-                                    }
-                                }
-                                destinationViewController.isFromLogin = true
-                                destinationViewController.modalPresentationStyle = .overCurrentContext
-                                self?.present(destinationViewController, animated: true)
-                            }
+//                            } else {
+//                                guard let destinationViewController = Storyboard.signUp.instantiateViewController(withIdentifier: "VerifyVC") as? VerifyVC else{
+//                                    print("Error: Controller not found!!!")
+//                                    return
+//                                }
+//                                destinationViewController.completionHandlerGoToCreateProfile = { [weak self] in
+//
+//                                    if model?.data?.firstName != "" && model?.data?.firstName != nil {
+//                                        TA_Storage.shared.iskProfileCreated = true
+//
+//                                        self?.changeRootController(storyboadrId: "TabBarHO", bundle: nil, controllerId: "TabBarHOVC")
+//                                    }  else {
+//                                        self?.moveToCreateProfile()
+//                                    }
+//                                }
+//                                destinationViewController.isFromLogin = true
+//                                destinationViewController.modalPresentationStyle = .overCurrentContext
+//                                self?.present(destinationViewController, animated: true)
+//                            }
                         } else {
-                            if model?.data?.emailVerified == 0 {
-                                guard let destinationViewController = Storyboard.signUp.instantiateViewController(withIdentifier: "VerifyVC") as? VerifyVC else{
-                                    print("Error: Controller not found!!!")
-                                    return
-                                }
-                                destinationViewController.completionHandlerGoToCreateProfile = { [weak self] in
-                                    
-                                    if model?.data?.firstName == "" || model?.data?.firstName == nil {
-                                        self?.moveToCreateProfile()
-                                    } else if model?.data?.profileStatus == 1 {
-                                        self?.changeRootController(storyboadrId: "ContratorTabBar", bundle: nil, controllerId: "ContratorTabBarVC")
-                                    } else {
-                                        self?.moveToawaiting()
-                                    }
-                                }
-                                destinationViewController.isFromLogin = true
-                                destinationViewController.modalPresentationStyle = .overCurrentContext
-                                self?.present(destinationViewController, animated: true)
-                            } else if model?.data?.firstName == "" || model?.data?.firstName == nil {
-                                self?.moveToCreateProfile()
-                            } else if model?.data?.profileStatus == 1 {
-                                self?.changeRootController(storyboadrId: "ContratorTabBar", bundle: nil, controllerId: "ContratorTabBarVC")
-                            } else {
-                                self?.moveToawaiting()
-                            }
+//                            if model?.data?.emailVerified == 0 {
+//                                guard let destinationViewController = Storyboard.signUp.instantiateViewController(withIdentifier: "VerifyVC") as? VerifyVC else{
+//                                    print("Error: Controller not found!!!")
+//                                    return
+//                                }
+//                                destinationViewController.completionHandlerGoToCreateProfile = { [weak self] in
+//
+//                                    if model?.data?.firstName == "" || model?.data?.firstName == nil {
+//                                        self?.moveToCreateProfile()
+//                                    } else if model?.data?.profileStatus == 1 {
+//                                        self?.changeRootController(storyboadrId: "ContratorTabBar", bundle: nil, controllerId: "ContratorTabBarVC")
+//                                    } else {
+//                                        self?.moveToawaiting()
+//                                    }
+//                                }
+//                                destinationViewController.isFromLogin = true
+//                                destinationViewController.modalPresentationStyle = .overCurrentContext
+//                                self?.present(destinationViewController, animated: true)
+//                            } else if model?.data?.firstName == "" || model?.data?.firstName == nil {
+//                                self?.moveToCreateProfile()
+//                            } else if model?.data?.profileStatus == 1 {
+//                                self?.changeRootController(storyboadrId: "ContratorTabBar", bundle: nil, controllerId: "ContratorTabBarVC")
+//                            } else {
+//                                self?.moveToawaiting()
+//                            }
                         }
                     }
                 }

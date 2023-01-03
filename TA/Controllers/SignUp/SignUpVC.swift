@@ -78,7 +78,7 @@ class SignUpVC: BaseViewController {
         searchAddressTextField.delegate = self
         phoneNumberTextField.delegate = self
         
-        self.searchAddressTextField.text = "Enter address"
+        self.searchAddressTextField.text = "Enter a address"
         searchAddressTextField.resetFloatingLable()
         btnContractor.setRoundCorners(radius: 4.0)
         btnHomeOwner.setRoundCorners(radius: 4.0)
@@ -94,7 +94,10 @@ class SignUpVC: BaseViewController {
         btnSignUp.titleLabel?.font = UIFont(name: PoppinsFont.semiBold, size: 16.0)
         companyNameView.isHidden = true
         setlblPrivacyNtermsLabel()
+        
     }
+    
+    
     
     // MARK: - Customize Privacy Label
     private func setlblPrivacyNtermsLabel() {
@@ -205,93 +208,70 @@ class SignUpVC: BaseViewController {
     //MARK: ACTION SIGNUP
     @IBAction func signUpButtonTap(_ sender: Any) {
 
-//        let email = emailTextField.text?.trimmed ?? ""
-//        let password = passwordTextField.text?.trimmed ?? ""
-//
-//        let firstName = firstNameTextField.trimmed
-//        let lastName = lastNameTextField.trimmed
-//        let fullName = fullNameTextField.trimmed
-//        let phoneNumber = phoneNumberTextField.trimmed
-//        let emailVerified = emailVerifiedTextField.trimmed
-//        let country = countryTextField.trimmed
-//        let state = stateTextField.trimmed
-//        let city = cityTextField.trimmed
-//        let addressLine1 = addressLine1TextField.trimmed
-//        let addressLine2 = addressLine2TextField.trimmed
-//        let zipCode = zipCodeTextField.trimmed
-//        var termsAccepted = false
-//        if btnAcceptTerms.currentImage?.pngData() == UIImage(named: "ic_check_box")?.pngData() {
-//            termsAccepted = false
-//        } else {
-//            termsAccepted = true
-//        }
-//        let signupModel = SignupModel(userType: self.userType,
-//                                      email: email,
-//                                      password: password,
-//                                      termsAccepted: termsAccepted,
-//                                      id: id,
-//                                      firstName: firstName,
-//                                      lastName: lastName,
-//                                      fullName: fullName,
-//                                      profilePic: self.profilePic,
-//                                      phoneNumber: phoneNumber,
-//                                      otp: self.otp,
-//                                      accessToken: self.accessToken,
-//                                      resetPasswordToken: self.resetPasswordToken,
-//                                      licenceNumber: self.licenceNumber,
-//                                      skillSet: self.skillSet,
-//                                      emailVerified: emailVerified,
-//                                      country: country,
-//                                      state: state,
-//                                      city: city,
-//                                      addressLine1: addressLine1,
-//                                      addressLine2: addressLine2,
-//                                      latitude: self.latitude,
-//                                      longitude: self.longitude,
-//                                      zipCode: zipCode,
-//                                      forgotPasswordGeneratedAt: self.forgotPasswordGeneratedAt,
-//                                      profileStatus: self.profileStatus,
-//                                      isBlocked: self.isBlocked,
-//                                      isDeleted: self.isDeleted,
-//                                      createdAt: self.createdAt,
-//                                      updatedAt: self.updatedAt,
-//                                      aboutBio: self.aboutBio,
-//                                      venderDeepLink: self.venderDeepLink,
-//                                      contractorDeepLink: self.contractorDeepLink,
-//                                      emailVerificationToken: self.emailVerificationToken,
-//                                      deviceToken: self.deviceToken,
-//                                      deviceType: self.deviceType,
-//                                      expiredAt: self.expiredAt,
-//                                      rating: self.rating)
-//        viewModel.model = signupModel
-//            viewModel.validateSignUpModel {[weak self] (success, error) in
-//                guard let strongSelf = self else { return }
-//                if error == nil {
-//                    if let params = success {
-//                        print("params: ", params)
-//                        viewModel.signUpUserApiCall(params) { (model) in
-//                            UserDefaults.standard.save(customObject: model?.data, inKey:TA_Storage.TA_Storage_Constants.kPersonalDetailsData)
-//                            TA_Storage.shared.apiAccessToken = "Bearer \(model?.data?.accessToken! ?? "")"
-//                            TA_Storage.shared.userId = model?.data?.id ?? -1
-//                            fireBaseUserTable().updateOwnProfileOnFirebase()
-//
-//
-//                            let destinationViewController = Storyboard.signUp.instantiateViewController(withIdentifier: "VerifyVC") as? VerifyVC
-//                            destinationViewController!.completionHandlerGoToCreateProfile = { [weak self] in
-//                                guard let strongSelf = self else { return }
-//                                let vc = Storyboard.createAccountTAC.instantiateViewController(withIdentifier: "CreateAccountTAC") as? CreateAccountTAC
-//                                strongSelf.navigationController?.pushViewController(vc!, animated: true)
-//                            }
-//                            destinationViewController!.modalPresentationStyle = .overCurrentContext
-//                            self?.present(destinationViewController!, animated: true)
-//                        }
-//                    }
-//                } else {
-//                    if let errorMsg = strongSelf.viewModel.error {
-//                        showMessage(with: errorMsg)
-//                    }
-//                }
-//            }
+        let email = emailTextField.text?.trimmed ?? ""
+        let password = passwordTextField.text?.trimmed ?? ""
+
+        let firstName = firstNameTextField.text?.trimmed ?? ""
+        let lastName = lastNameTextField.text?.trimmed ?? ""
+        //let fullName = fullNameTextField.trimmed
+        let phoneNumber = phoneNumberTextField.text?.trimmed ?? ""
+        //let emailVerified = emailVerifiedTextField.text?.trimmed
+        //let country = addressLine1TextField.trimmed
+        let state = stateTextField.text?.trimmed ?? ""
+        let city = cityTextField.text?.trimmed ?? ""
+        let addressLine1 = addressLine1TextField.text?.trimmed ?? ""
+        //let addressLine2 = addressLine2TextField.trimmed
+        let zipCode = zipCodeTextField.text?.trimmed ?? ""
+        var termsAccepted = false
+        if btnAcceptTerms.currentImage?.pngData() == UIImage(named: "ic_check_box")?.pngData() {
+            termsAccepted = false
+        } else {
+            termsAccepted = true
+        }
+        let signupModel = SignupModel(userType: self.userType,
+                                      email: email,
+                                      password: password,
+                                      termsAccepted: termsAccepted,
+                                      firstName: firstName,
+                                      lastName: lastName,
+                                      fullName: fullName,
+                                      phoneNumber: phoneNumber,
+                                      state: state,
+                                      city: city,
+                                      addressLine1: addressLine1,
+                                      latitude: self.latitude,
+                                      longitude: self.longitude,
+                                      zipCode: zipCode)
+        viewModel.model = signupModel
+            viewModel.validateSignUpModel {[weak self] (success, error) in
+                guard let strongSelf = self else { return }
+                if error == nil {
+                    if let params = success {
+                        print("params: ", params)
+                        viewModel.signUpUserApiCall(params) { (model) in
+                            UserDefaults.standard.save(customObject: model?.data, inKey:TA_Storage.TA_Storage_Constants.kPersonalDetailsData)
+                            TA_Storage.shared.apiAccessToken = "Bearer \(model?.data?.accessToken! ?? "")"
+                            TA_Storage.shared.userId = model?.data?.id ?? -1
+                            fireBaseUserTable().updateOwnProfileOnFirebase()
+
+
+                            let destinationViewController = Storyboard.signUp.instantiateViewController(withIdentifier: "VerifyVC") as? VerifyVC
+                            destinationViewController!.completionHandlerGoToCreateProfile = { [weak self] in
+                                guard let strongSelf = self else { return }
+                                let vc = Storyboard.createAccountTAC.instantiateViewController(withIdentifier: "CreateAccountTAC") as? CreateAccountTAC
+                                strongSelf.navigationController?.pushViewController(vc!, animated: true)
+                            }
+                            destinationViewController!.modalPresentationStyle = .overCurrentContext
+                            destinationViewController?.viewModel = self!.viewModel
+                            self?.present(destinationViewController!, animated: true)
+                        }
+                    }
+                } else {
+                    if let errorMsg = strongSelf.viewModel.error {
+                        showMessage(with: errorMsg)
+                    }
+                }
+            }
     }
     
     @IBAction func actionFindLocation(_ sender: Any) {
