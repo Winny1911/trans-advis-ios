@@ -7,6 +7,8 @@
 
 import UIKit
 import SafariServices
+import GooglePlaces
+import Alamofire
 
 class SignUpVC: BaseViewController {
 
@@ -18,30 +20,36 @@ class SignUpVC: BaseViewController {
     @IBOutlet weak var btnShowHide: UIButton!
     @IBOutlet weak var btnContractor: UIButton!
     @IBOutlet weak var btnHomeOwner: UIButton!
+    @IBOutlet weak var companyNameView: UIView!
     @IBOutlet weak var emailTextField: FloatingLabelInput!
     @IBOutlet weak var passwordTextField: FloatingLabelInput!
-    @IBOutlet weak var companyNameView: UIView!
+    @IBOutlet weak var firstNameTextField: FloatingLabelInput!
+    @IBOutlet weak var lastNameTextField: FloatingLabelInput!
+    @IBOutlet weak var phoneNumberTextField: FloatingLabelInput!
+    @IBOutlet weak var companyNameTextField: FloatingLabelInput!
+    @IBOutlet weak var zipCodeTextField: FloatingLabelInput!
+    @IBOutlet weak var searchAddressTextField: FloatingLabelInput!
+    @IBOutlet weak var addressLine1TextField: FloatingLabelInput!
+    @IBOutlet weak var cityTextField: FloatingLabelInput!
+    @IBOutlet weak var stateTextField: FloatingLabelInput!
+    @IBOutlet weak var zipcodeTextField: FloatingLabelInput!
     
-//    var firstNameTextField: String = ""
-//    var lastNameTextField: String = ""
-//    var fullNameTextField: String = ""
-//    var phoneNumberTextField: String = ""
-//    var emailVerifiedTextField: String = ""
+    var fullName: String = ""
+
+//   var emailVerifiedTextField: String = ""
 //    var countryTextField: String = ""
 //    var stateTextField: String = ""
 //    var cityTextField: String = ""
 //    var addressLine1TextField: String = ""
 //    var addressLine2TextField: String = ""
-//    var zipCodeTextField: String = ""
-//
 //    var profilePic: String = ""
 //    var otp: String = ""
 //    var accessToken: String = ""
 //    var resetPasswordToken: String = ""
 //    var licenceNumber: String = ""
 //    var skillSet: String = ""
-//    var latitude: String = "0"
-//    var longitude: String = "0"
+    var latitude: String = "0"
+    var longitude: String = "0"
 //    var forgotPasswordGeneratedAt: String = ""
 //    var profileStatus: String = ""
 //    var isBlocked: String = ""
@@ -60,18 +68,23 @@ class SignUpVC: BaseViewController {
 //
 //    var id: Int = 0
     var userType = String()
+    var isUpdateLocation = true
     let viewModel: SignUpVM = SignUpVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         passwordTextField.delegate = self
+        searchAddressTextField.delegate = self
+        phoneNumberTextField.delegate = self
+        
+        self.searchAddressTextField.text = "Enter address"
+        searchAddressTextField.resetFloatingLable()
         btnContractor.setRoundCorners(radius: 4.0)
         btnHomeOwner.setRoundCorners(radius: 4.0)
-
         emailTextField.setLeftPadding(14)
         passwordTextField.setLeftPadding(14)
-
+        searchAddressTextField.isUserInteractionEnabled = false
         passwordView.setRoundCorners(radius: 4.0)
         btnLogin.titleLabel?.font = UIFont(name: PoppinsFont.semiBold, size: 12.0)
         btnContractor.titleLabel?.font = UIFont(name: PoppinsFont.medium, size: 14.0)
@@ -143,6 +156,11 @@ class SignUpVC: BaseViewController {
         unselectedBtn.tintColor = UIColor.appBtnColorGrey
        
         self.companyNameView.isHidden = selectedBtn == btnHomeOwner
+    
+        if !companyNameView.isHidden{
+            self.companyNameTextField.text = ""
+            self.companyNameTextField.resetFloatingLable()
+        }
 
     }
 
@@ -276,15 +294,46 @@ class SignUpVC: BaseViewController {
 //            }
     }
     
+    @IBAction func actionFindLocation(_ sender: Any) {
+        
+        let destinationViewController = (Storyboard.createAccountTAC.instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController)
+        destinationViewController?.btnTapAction3 = {
+            () in
+            
+            self.addressLine1TextField.text = destinationViewController?.addressLine1
+            self.addressLine1TextField.resetFloatingLable()
+            self.cityTextField.text = destinationViewController?.city ?? ""
+            self.cityTextField.resetFloatingLable()
+            self.stateTextField.text = destinationViewController?.state ?? ""
+            self.stateTextField.resetFloatingLable()
+            self.zipcodeTextField.text = destinationViewController?.zipcode
+            self.zipcodeTextField.resetFloatingLable()
+            self.longitude = ""
+            self.latitude = ""
+            self.longitude = "\(destinationViewController?.lng ?? Double(0.0))"
+            self.latitude = "\(destinationViewController?.lat ?? Double(0.0))"
+        }
+        self.navigationController?.present(destinationViewController!, animated: false)
+    }
+    
 }
 
 extension SignUpVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if self.btnShowHide.titleLabel?.text == "Show " {
-            self.passwordTextField.isSecureTextEntry = true
-        } else {
-            self.passwordTextField.isSecureTextEntry = false
+            self.passwordTextField.isSecureTextEntry = self.btnShowHide.titleLabel?.text == "Show "
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == phoneNumberTextField {
+            if string.count > 0 {
+                self.phoneNumberTextField.resetFloatingLable()
+            }
+            guard let text = textField.text else { return false }
+            let newString = (text as NSString).replacingCharacters(in: range, with: string)
+            textField.text = textField.format(with: "(XXX) XXX-XXXX", phone: newString)
+            return false
         }
+        return true
     }
 }
 

@@ -142,12 +142,12 @@
         <scene sceneID="wRR-cz-bEb">
             <objects>
                 <viewController storyboardIdentifier="SignUpVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sMT-Bz-PGv" customClass="SignUpVC" customModule="TA" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="eak-4O-u6c">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="eak-4O-u6c">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v0O-bp-NNt">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="715"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jad-xG-Dik">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1300"/>
@@ -249,108 +249,157 @@
                                                 <rect key="frame" x="0.0" y="280" width="414" height="490"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pcd-Ja-d7J" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
-                                                        <rect key="frame" x="22" y="432" width="370" height="50"/>
+                                                        <rect key="frame" x="22" y="437" width="370" height="50"/>
                                                         <color key="tintColor" name="placeholderColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="e5Y-S8-ET4"/>
+                                                            <constraint firstAttribute="height" constant="50" id="EzT-Ct-1oq"/>
                                                         </constraints>
                                                         <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ax9-s2-Jae" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
-                                                        <rect key="frame" x="22" y="360" width="370" height="50"/>
+                                                        <rect key="frame" x="22" y="365" width="370" height="50"/>
                                                         <color key="tintColor" name="placeholderColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="dYf-Ep-n4J"/>
+                                                            <constraint firstAttribute="height" constant="50" id="M7V-iK-osV"/>
                                                         </constraints>
                                                         <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Zip Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="085-gH-O8Y" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
-                                                        <rect key="frame" x="22" y="288" width="370" height="50"/>
+                                                        <rect key="frame" x="22" y="293" width="370" height="50"/>
                                                         <color key="tintColor" name="placeholderColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="l5l-8b-2ch"/>
+                                                            <constraint firstAttribute="height" constant="50" id="VHI-DT-nRS"/>
                                                         </constraints>
                                                         <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="State" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M93-Uv-SeF" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
-                                                        <rect key="frame" x="22" y="216" width="370" height="50"/>
+                                                        <rect key="frame" x="22" y="221" width="370" height="50"/>
                                                         <color key="tintColor" name="placeholderColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="fTu-8N-eKF"/>
+                                                            <constraint firstAttribute="height" constant="50" id="pxT-gV-shf"/>
                                                         </constraints>
                                                         <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xal-Ii-HFg" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
-                                                        <rect key="frame" x="22" y="144" width="370" height="50"/>
+                                                        <rect key="frame" x="22" y="149" width="370" height="50"/>
                                                         <color key="tintColor" name="placeholderColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="cFt-Gg-u8J"/>
+                                                            <constraint firstAttribute="height" constant="50" id="GxO-nr-euZ"/>
                                                         </constraints>
                                                         <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Street" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="10n-LB-Txy" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
-                                                        <rect key="frame" x="22" y="72" width="370" height="50"/>
+                                                        <rect key="frame" x="22" y="77" width="370" height="50"/>
                                                         <color key="tintColor" name="placeholderColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="TYM-m3-abM"/>
+                                                            <constraint firstAttribute="height" constant="50" id="gh8-p2-p6g"/>
                                                         </constraints>
                                                         <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter an Location" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i5B-b8-fcb" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
-                                                        <rect key="frame" x="22" y="0.0" width="370" height="50"/>
-                                                        <color key="tintColor" name="placeholderColor"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JAP-wQ-Wxd">
+                                                        <rect key="frame" x="22" y="5" width="370" height="50"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R9e-PP-jSe">
+                                                                <rect key="frame" x="0.0" y="0.0" width="370" height="50"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="50" id="iF2-Jv-O1z"/>
+                                                                </constraints>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain" title=" "/>
+                                                                <connections>
+                                                                    <action selector="actionFindLocation:" destination="sMT-Bz-PGv" eventType="touchUpInside" id="xbG-vn-I6b"/>
+                                                                </connections>
+                                                            </button>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NqE-dL-3qu" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="370" height="50"/>
+                                                                <color key="tintColor" name="placeholderColor"/>
+                                                                <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="18"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                        <color key="value" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveColor">
+                                                                        <color key="value" name="AccentColor"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelPassiveColor">
+                                                                        <color key="value" name="greenColor"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </textField>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="Seh-lt-3dC"/>
+                                                            <constraint firstAttribute="bottom" secondItem="NqE-dL-3qu" secondAttribute="bottom" id="F77-7M-Jkk"/>
+                                                            <constraint firstItem="NqE-dL-3qu" firstAttribute="top" secondItem="JAP-wQ-Wxd" secondAttribute="top" id="KVt-qs-AP2"/>
+                                                            <constraint firstItem="NqE-dL-3qu" firstAttribute="leading" secondItem="JAP-wQ-Wxd" secondAttribute="leading" id="QoG-Yi-7xV"/>
+                                                            <constraint firstAttribute="bottom" secondItem="R9e-PP-jSe" secondAttribute="bottom" id="e7U-4A-SIr"/>
+                                                            <constraint firstItem="R9e-PP-jSe" firstAttribute="leading" secondItem="JAP-wQ-Wxd" secondAttribute="leading" id="g9W-pS-qQS"/>
+                                                            <constraint firstItem="R9e-PP-jSe" firstAttribute="top" secondItem="JAP-wQ-Wxd" secondAttribute="top" id="jLp-Nx-nxC"/>
+                                                            <constraint firstAttribute="height" constant="50" id="ogF-2z-7Vz"/>
+                                                            <constraint firstAttribute="trailing" secondItem="NqE-dL-3qu" secondAttribute="trailing" id="s79-dB-i97"/>
+                                                            <constraint firstAttribute="trailing" secondItem="R9e-PP-jSe" secondAttribute="trailing" id="tmT-hN-j4v"/>
                                                         </constraints>
-                                                        <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                                                    </textField>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstItem="10n-LB-Txy" firstAttribute="leading" secondItem="Xal-Ii-HFg" secondAttribute="leading" id="BC2-hl-5EN"/>
-                                                    <constraint firstItem="Xal-Ii-HFg" firstAttribute="leading" secondItem="M93-Uv-SeF" secondAttribute="leading" id="Bag-4p-HXn"/>
-                                                    <constraint firstItem="085-gH-O8Y" firstAttribute="trailing" secondItem="ax9-s2-Jae" secondAttribute="trailing" id="DK4-ss-Qqu"/>
-                                                    <constraint firstItem="ax9-s2-Jae" firstAttribute="leading" secondItem="pcd-Ja-d7J" secondAttribute="leading" id="Ed3-zO-BQ2"/>
-                                                    <constraint firstItem="085-gH-O8Y" firstAttribute="top" secondItem="M93-Uv-SeF" secondAttribute="bottom" constant="22" id="N9q-8X-Sfr"/>
-                                                    <constraint firstItem="ax9-s2-Jae" firstAttribute="top" secondItem="085-gH-O8Y" secondAttribute="bottom" constant="22" id="NpR-Jh-X2l"/>
-                                                    <constraint firstItem="i5B-b8-fcb" firstAttribute="leading" secondItem="10n-LB-Txy" secondAttribute="leading" id="RlD-1A-mKk"/>
-                                                    <constraint firstItem="M93-Uv-SeF" firstAttribute="trailing" secondItem="085-gH-O8Y" secondAttribute="trailing" id="TYa-Ms-ojb"/>
-                                                    <constraint firstItem="M93-Uv-SeF" firstAttribute="leading" secondItem="085-gH-O8Y" secondAttribute="leading" id="U5d-zv-RDi"/>
-                                                    <constraint firstItem="pcd-Ja-d7J" firstAttribute="top" secondItem="ax9-s2-Jae" secondAttribute="bottom" constant="22" id="Up9-d0-yDp"/>
-                                                    <constraint firstItem="085-gH-O8Y" firstAttribute="leading" secondItem="ax9-s2-Jae" secondAttribute="leading" id="WLy-CB-sef"/>
-                                                    <constraint firstItem="Xal-Ii-HFg" firstAttribute="trailing" secondItem="M93-Uv-SeF" secondAttribute="trailing" id="WbO-Gb-72g"/>
-                                                    <constraint firstItem="ax9-s2-Jae" firstAttribute="trailing" secondItem="pcd-Ja-d7J" secondAttribute="trailing" id="WsC-KN-xEo"/>
-                                                    <constraint firstItem="Xal-Ii-HFg" firstAttribute="top" secondItem="10n-LB-Txy" secondAttribute="bottom" constant="22" id="bFF-Df-iwo"/>
-                                                    <constraint firstItem="i5B-b8-fcb" firstAttribute="trailing" secondItem="10n-LB-Txy" secondAttribute="trailing" id="bf3-dN-k4f"/>
-                                                    <constraint firstAttribute="trailing" secondItem="i5B-b8-fcb" secondAttribute="trailing" constant="22" id="gfp-NP-7oC"/>
-                                                    <constraint firstItem="i5B-b8-fcb" firstAttribute="leading" secondItem="Tnt-ey-IB2" secondAttribute="leading" constant="22" id="hgd-Bd-zK6"/>
-                                                    <constraint firstItem="i5B-b8-fcb" firstAttribute="centerX" secondItem="Tnt-ey-IB2" secondAttribute="centerX" id="jc5-9b-fJG"/>
-                                                    <constraint firstItem="M93-Uv-SeF" firstAttribute="top" secondItem="Xal-Ii-HFg" secondAttribute="bottom" constant="22" id="ktl-CF-kwb"/>
-                                                    <constraint firstItem="10n-LB-Txy" firstAttribute="top" secondItem="i5B-b8-fcb" secondAttribute="bottom" constant="22" id="nb0-sY-0Ec"/>
+                                                    <constraint firstItem="JAP-wQ-Wxd" firstAttribute="leading" secondItem="Tnt-ey-IB2" secondAttribute="leading" constant="22" id="24M-BK-ktZ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="085-gH-O8Y" secondAttribute="trailing" constant="22" id="4hx-Ju-hqX"/>
+                                                    <constraint firstItem="M93-Uv-SeF" firstAttribute="leading" secondItem="Tnt-ey-IB2" secondAttribute="leading" constant="22" id="52p-lB-cX3"/>
+                                                    <constraint firstItem="10n-LB-Txy" firstAttribute="leading" secondItem="JAP-wQ-Wxd" secondAttribute="leading" id="5bd-zA-UOB"/>
+                                                    <constraint firstItem="JAP-wQ-Wxd" firstAttribute="top" secondItem="Tnt-ey-IB2" secondAttribute="top" constant="5" id="66r-az-CDQ"/>
+                                                    <constraint firstItem="pcd-Ja-d7J" firstAttribute="leading" secondItem="JAP-wQ-Wxd" secondAttribute="leading" id="6mf-SW-mp0"/>
+                                                    <constraint firstItem="ax9-s2-Jae" firstAttribute="top" secondItem="085-gH-O8Y" secondAttribute="bottom" constant="22" id="8IR-2j-AIp"/>
+                                                    <constraint firstItem="10n-LB-Txy" firstAttribute="top" secondItem="JAP-wQ-Wxd" secondAttribute="bottom" constant="22" id="8vC-V9-Ctr"/>
+                                                    <constraint firstAttribute="trailing" secondItem="10n-LB-Txy" secondAttribute="trailing" constant="22" id="AIt-K4-aiI"/>
+                                                    <constraint firstItem="085-gH-O8Y" firstAttribute="leading" secondItem="Tnt-ey-IB2" secondAttribute="leading" constant="22" id="EDV-9c-CW7"/>
+                                                    <constraint firstItem="ax9-s2-Jae" firstAttribute="trailing" secondItem="JAP-wQ-Wxd" secondAttribute="trailing" id="Fp0-lQ-0h6"/>
+                                                    <constraint firstItem="Xal-Ii-HFg" firstAttribute="leading" secondItem="JAP-wQ-Wxd" secondAttribute="leading" id="H5Z-1U-HqD"/>
+                                                    <constraint firstItem="pcd-Ja-d7J" firstAttribute="leading" secondItem="Tnt-ey-IB2" secondAttribute="leading" constant="22" id="Hap-SD-9pE"/>
+                                                    <constraint firstItem="085-gH-O8Y" firstAttribute="top" secondItem="M93-Uv-SeF" secondAttribute="bottom" constant="22" id="Hhs-eH-EGz"/>
+                                                    <constraint firstItem="ax9-s2-Jae" firstAttribute="leading" secondItem="JAP-wQ-Wxd" secondAttribute="leading" id="JYM-eJ-NP9"/>
+                                                    <constraint firstItem="10n-LB-Txy" firstAttribute="leading" secondItem="Tnt-ey-IB2" secondAttribute="leading" constant="22" id="KFI-Ph-vJa"/>
+                                                    <constraint firstItem="10n-LB-Txy" firstAttribute="trailing" secondItem="JAP-wQ-Wxd" secondAttribute="trailing" id="Krt-NY-Tvz"/>
+                                                    <constraint firstAttribute="bottom" secondItem="pcd-Ja-d7J" secondAttribute="bottom" constant="3" id="LZI-5a-0Mj"/>
+                                                    <constraint firstItem="085-gH-O8Y" firstAttribute="leading" secondItem="JAP-wQ-Wxd" secondAttribute="leading" id="PMf-Ux-ygn"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ax9-s2-Jae" secondAttribute="trailing" constant="22" id="VUv-ym-qof"/>
+                                                    <constraint firstItem="ax9-s2-Jae" firstAttribute="leading" secondItem="Tnt-ey-IB2" secondAttribute="leading" constant="22" id="VrZ-yo-OLG"/>
+                                                    <constraint firstItem="pcd-Ja-d7J" firstAttribute="trailing" secondItem="JAP-wQ-Wxd" secondAttribute="trailing" id="dfr-yC-Oy3"/>
+                                                    <constraint firstItem="Xal-Ii-HFg" firstAttribute="leading" secondItem="Tnt-ey-IB2" secondAttribute="leading" constant="22" id="gsg-mO-kNO"/>
+                                                    <constraint firstItem="JAP-wQ-Wxd" firstAttribute="leading" secondItem="Tnt-ey-IB2" secondAttribute="leading" constant="22" id="hvZ-kB-IbT"/>
+                                                    <constraint firstItem="M93-Uv-SeF" firstAttribute="top" secondItem="Xal-Ii-HFg" secondAttribute="bottom" constant="22" id="iLj-11-HHq"/>
+                                                    <constraint firstItem="M93-Uv-SeF" firstAttribute="leading" secondItem="JAP-wQ-Wxd" secondAttribute="leading" id="iM1-EW-QPk"/>
+                                                    <constraint firstItem="pcd-Ja-d7J" firstAttribute="top" secondItem="ax9-s2-Jae" secondAttribute="bottom" constant="22" id="j9m-Ki-ONd"/>
+                                                    <constraint firstItem="M93-Uv-SeF" firstAttribute="trailing" secondItem="JAP-wQ-Wxd" secondAttribute="trailing" id="jE0-lE-CKP"/>
+                                                    <constraint firstAttribute="trailing" secondItem="M93-Uv-SeF" secondAttribute="trailing" constant="22" id="mOh-I4-tr2"/>
+                                                    <constraint firstItem="Xal-Ii-HFg" firstAttribute="trailing" secondItem="JAP-wQ-Wxd" secondAttribute="trailing" id="mTA-jd-mEI"/>
                                                     <constraint firstAttribute="height" constant="490" id="nzQ-8l-YMx"/>
-                                                    <constraint firstItem="10n-LB-Txy" firstAttribute="trailing" secondItem="Xal-Ii-HFg" secondAttribute="trailing" id="pbD-Gw-2ls"/>
-                                                    <constraint firstItem="i5B-b8-fcb" firstAttribute="top" secondItem="Tnt-ey-IB2" secondAttribute="top" id="tjo-4f-6ds"/>
+                                                    <constraint firstAttribute="trailing" secondItem="pcd-Ja-d7J" secondAttribute="trailing" constant="22" id="sVD-5k-jMw"/>
+                                                    <constraint firstItem="085-gH-O8Y" firstAttribute="trailing" secondItem="JAP-wQ-Wxd" secondAttribute="trailing" id="uFY-0Q-rUK"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Xal-Ii-HFg" secondAttribute="trailing" constant="22" id="wtY-LA-Ixf"/>
+                                                    <constraint firstItem="Xal-Ii-HFg" firstAttribute="top" secondItem="10n-LB-Txy" secondAttribute="bottom" constant="22" id="xvw-Ak-g76"/>
+                                                    <constraint firstAttribute="trailing" secondItem="JAP-wQ-Wxd" secondAttribute="trailing" constant="22" id="y0E-81-rNe"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VBq-vl-fjN">
                                                 <rect key="frame" x="0.0" y="770" width="414" height="80"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Company Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tW1-4t-jBi" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
-                                                        <rect key="frame" x="22" y="14" width="370" height="50"/>
+                                                        <rect key="frame" x="22" y="20" width="370" height="50"/>
                                                         <color key="tintColor" name="placeholderColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="xZs-a6-tPW"/>
@@ -362,7 +411,7 @@
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstItem="tW1-4t-jBi" firstAttribute="top" secondItem="VBq-vl-fjN" secondAttribute="top" constant="14" id="22n-Vd-iOL"/>
+                                                    <constraint firstItem="tW1-4t-jBi" firstAttribute="top" secondItem="VBq-vl-fjN" secondAttribute="top" constant="20" id="22n-Vd-iOL"/>
                                                     <constraint firstItem="tW1-4t-jBi" firstAttribute="leading" secondItem="VBq-vl-fjN" secondAttribute="leading" constant="22" id="4Yw-TX-ZVU"/>
                                                     <constraint firstAttribute="height" constant="80" id="UlZ-KK-I1V"/>
                                                     <constraint firstAttribute="trailing" secondItem="tW1-4t-jBi" secondAttribute="trailing" constant="22" id="bqn-KV-iOA"/>
@@ -372,7 +421,7 @@
                                                 <rect key="frame" x="0.0" y="850" width="414" height="230"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MfE-bt-rKi" userLabel="Password View">
-                                                        <rect key="frame" x="22" y="154" width="370" height="50"/>
+                                                        <rect key="frame" x="22" y="159" width="370" height="50"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AIw-G7-LjR">
                                                                 <rect key="frame" x="298" y="0.0" width="70" height="50"/>
@@ -407,7 +456,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uvX-Rk-V8S" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
-                                                        <rect key="frame" x="22" y="153" width="297" height="48"/>
+                                                        <rect key="frame" x="22" y="158" width="297" height="43"/>
                                                         <color key="tintColor" name="placeholderColor"/>
                                                         <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="18"/>
@@ -425,7 +474,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JnJ-0D-ebc" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
-                                                        <rect key="frame" x="22" y="10" width="370" height="50"/>
+                                                        <rect key="frame" x="22" y="15" width="370" height="50"/>
                                                         <color key="tintColor" name="placeholderColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="g7a-Qj-nPn"/>
@@ -435,7 +484,7 @@
                                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wdN-aE-tIL" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
-                                                        <rect key="frame" x="22" y="82" width="370" height="50"/>
+                                                        <rect key="frame" x="22" y="87" width="370" height="50"/>
                                                         <color key="tintColor" name="placeholderColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="Yux-6l-4fy"/>
@@ -449,7 +498,7 @@
                                                 <constraints>
                                                     <constraint firstItem="uvX-Rk-V8S" firstAttribute="leading" secondItem="MfE-bt-rKi" secondAttribute="leading" id="5ZO-Zt-t4c"/>
                                                     <constraint firstItem="uvX-Rk-V8S" firstAttribute="leading" secondItem="wdN-aE-tIL" secondAttribute="leading" id="BTx-YY-S4O"/>
-                                                    <constraint firstItem="JnJ-0D-ebc" firstAttribute="top" secondItem="Gk8-PQ-L0U" secondAttribute="top" constant="10" id="IjU-gB-vn1"/>
+                                                    <constraint firstItem="JnJ-0D-ebc" firstAttribute="top" secondItem="Gk8-PQ-L0U" secondAttribute="top" constant="15" id="IjU-gB-vn1"/>
                                                     <constraint firstAttribute="trailing" secondItem="JnJ-0D-ebc" secondAttribute="trailing" constant="22" id="QID-Wm-mgh"/>
                                                     <constraint firstItem="wdN-aE-tIL" firstAttribute="top" secondItem="JnJ-0D-ebc" secondAttribute="bottom" constant="22" id="RDA-f0-elI"/>
                                                     <constraint firstItem="JnJ-0D-ebc" firstAttribute="leading" secondItem="wdN-aE-tIL" secondAttribute="leading" id="SZZ-aU-EHv"/>
@@ -609,11 +658,13 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <viewLayoutGuide key="safeArea" id="p1M-Pi-ObR"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="jad-xG-Dik" secondAttribute="trailing" id="0fs-EI-PJy"/>
                                     <constraint firstItem="jad-xG-Dik" firstAttribute="leading" secondItem="v0O-bp-NNt" secondAttribute="leading" id="18t-q4-dKp"/>
                                     <constraint firstItem="jad-xG-Dik" firstAttribute="top" secondItem="v0O-bp-NNt" secondAttribute="top" id="8gX-dH-Qoh"/>
-                                    <constraint firstItem="jad-xG-Dik" firstAttribute="height" secondItem="v0O-bp-NNt" secondAttribute="height" priority="250" id="PNM-2e-BUR"/>
+                                    <constraint firstItem="jad-xG-Dik" firstAttribute="height" secondItem="p1M-Pi-ObR" secondAttribute="height" priority="250" id="PNM-2e-BUR"/>
+                                    <constraint firstAttribute="height" constant="715" id="cms-e4-AvQ"/>
                                     <constraint firstAttribute="bottom" secondItem="jad-xG-Dik" secondAttribute="bottom" constant="456" id="qNU-gM-e1C"/>
                                     <constraint firstItem="jad-xG-Dik" firstAttribute="width" secondItem="v0O-bp-NNt" secondAttribute="width" id="zYV-2V-GjN"/>
                                 </constraints>
@@ -622,29 +673,39 @@
                         <viewLayoutGuide key="safeArea" id="AeQ-Ut-POp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="v0O-bp-NNt" firstAttribute="top" secondItem="eak-4O-u6c" secondAttribute="top" id="1GO-Uy-6ak"/>
+                            <constraint firstItem="v0O-bp-NNt" firstAttribute="top" secondItem="AeQ-Ut-POp" secondAttribute="top" constant="20" id="BSu-Oo-tZc"/>
                             <constraint firstItem="v0O-bp-NNt" firstAttribute="leading" secondItem="AeQ-Ut-POp" secondAttribute="leading" id="Q4A-q4-UBv"/>
                             <constraint firstItem="AeQ-Ut-POp" firstAttribute="trailing" secondItem="v0O-bp-NNt" secondAttribute="trailing" id="Yp6-sa-G5d"/>
                             <constraint firstAttribute="bottom" secondItem="v0O-bp-NNt" secondAttribute="bottom" id="vI4-fZ-PI8"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addressLine1TextField" destination="10n-LB-Txy" id="I2v-3N-Cm2"/>
                         <outlet property="btnAcceptTerms" destination="cBQ-Os-9P7" id="Zka-Jf-M5A"/>
                         <outlet property="btnContractor" destination="46V-Po-oUj" id="REM-yc-hFj"/>
                         <outlet property="btnHomeOwner" destination="YWx-hx-lUc" id="sad-x7-hdk"/>
                         <outlet property="btnLogin" destination="f0D-dR-1DU" id="ZqV-kY-XeR"/>
                         <outlet property="btnShowHide" destination="AIw-G7-LjR" id="51q-cI-7CW"/>
                         <outlet property="btnSignUp" destination="Hdw-Wi-YgU" id="yDW-2j-rFS"/>
+                        <outlet property="cityTextField" destination="Xal-Ii-HFg" id="faX-Vn-8sZ"/>
+                        <outlet property="companyNameTextField" destination="tW1-4t-jBi" id="DXZ-7i-2KH"/>
                         <outlet property="companyNameView" destination="VBq-vl-fjN" id="B0r-vg-9k6"/>
                         <outlet property="emailTextField" destination="wdN-aE-tIL" id="drh-Cz-Ygu"/>
+                        <outlet property="firstNameTextField" destination="ax9-s2-Jae" id="n4j-u7-rQK"/>
+                        <outlet property="lastNameTextField" destination="pcd-Ja-d7J" id="UWJ-gm-tKB"/>
                         <outlet property="passwordTextField" destination="uvX-Rk-V8S" id="bD1-D7-gty"/>
                         <outlet property="passwordView" destination="MfE-bt-rKi" id="RU4-wd-o7b"/>
+                        <outlet property="phoneNumberTextField" destination="JnJ-0D-ebc" id="rxs-mm-QfC"/>
+                        <outlet property="searchAddressTextField" destination="NqE-dL-3qu" id="0Ua-yN-E53"/>
+                        <outlet property="stateTextField" destination="M93-Uv-SeF" id="gEU-Fd-2wL"/>
                         <outlet property="termsLabel" destination="6Pd-X1-O9t" id="CD1-hh-co3"/>
+                        <outlet property="zipCodeTextField" destination="085-gH-O8Y" id="cTI-ms-zt9"/>
+                        <outlet property="zipcodeTextField" destination="085-gH-O8Y" id="QYX-bN-19o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AGJ-y1-SDs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="851" y="87"/>
+            <point key="canvasLocation" x="1131.8840579710145" y="86.413043478260875"/>
         </scene>
     </scenes>
     <resources>

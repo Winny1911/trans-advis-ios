@@ -34,12 +34,16 @@ class SearchViewController: BaseViewController, UISearchBarDelegate  {
         searchController?.searchResultsUpdater = resultsViewController
         searchController?.searchBar.delegate = self
         searchController?.navigationController?.navigationBar.isHidden = true
+        searchController?.navigationItem.title = "Enter address"
         
         let subView = UIView(frame: CGRect(x: 0, y: 55, width: self.view.frame.size.width - 20, height: 45.0))
         subView.addSubview((searchController?.searchBar)!)
         view.addSubview(subView)
         definesPresentationContext = true
-        searchController?.searchBar.becomeFirstResponder()
+        DispatchQueue.main.async {
+            self.searchController?.searchBar.becomeFirstResponder()
+        }
+        
     }
     
     
@@ -138,7 +142,7 @@ extension SearchViewController: GMSAutocompleteResultsViewControllerDelegate {
     }
     
     func getAddressFromLatLong(latitude: Double, longitude : Double) {
-        let url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=\(latitude),\(longitude)&key=AIzaSyA7TOKIXqW2q4yrJlWwmj1-chcx6x0vv10"
+        let url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=\(latitude),\(longitude)&key=AIzaSyC40COvhcLuscjwn4QsEbbteT4Vtno_LDo"
         
         AF.request(url).validate().responseJSON { response in
             switch response.result {
