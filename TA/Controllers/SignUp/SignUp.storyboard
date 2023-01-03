@@ -473,7 +473,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JnJ-0D-ebc" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JnJ-0D-ebc" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="22" y="15" width="370" height="50"/>
                                                         <color key="tintColor" name="placeholderColor"/>
                                                         <constraints>
