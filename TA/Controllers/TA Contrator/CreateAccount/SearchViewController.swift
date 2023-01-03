@@ -27,22 +27,21 @@ class SearchViewController: BaseViewController, UISearchBarDelegate  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .white
         resultsViewController = GMSAutocompleteResultsViewController()
         resultsViewController?.delegate = self
         
         searchController = UISearchController(searchResultsController: resultsViewController)
         searchController?.searchResultsUpdater = resultsViewController
         searchController?.searchBar.delegate = self
+        searchController?.searchBar.placeholder = "Enter Address"
         searchController?.navigationController?.navigationBar.isHidden = true
-        searchController?.navigationItem.title = "Enter address"
+        searchController?.searchBar.searchTextField.becomeFirstResponder()
         
-        let subView = UIView(frame: CGRect(x: 0, y: 55, width: self.view.frame.size.width - 20, height: 45.0))
+        let subView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width - 20, height: 45.0))
         subView.addSubview((searchController?.searchBar)!)
         view.addSubview(subView)
         definesPresentationContext = true
-        DispatchQueue.main.async {
-            self.searchController?.searchBar.becomeFirstResponder()
-        }
         
     }
     

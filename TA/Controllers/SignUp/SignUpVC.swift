@@ -313,7 +313,7 @@ class SignUpVC: BaseViewController {
             self.longitude = "\(destinationViewController?.lng ?? Double(0.0))"
             self.latitude = "\(destinationViewController?.lat ?? Double(0.0))"
         }
-        self.navigationController?.present(destinationViewController!, animated: false)
+        self.navigationController?.present(destinationViewController!, animated: true)
     }
     
 }
