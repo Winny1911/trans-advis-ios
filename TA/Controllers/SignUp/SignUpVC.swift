@@ -216,16 +216,19 @@ class SignUpVC: BaseViewController {
                             TA_Storage.shared.userId = model?.data?.id ?? -1
                             fireBaseUserTable().updateOwnProfileOnFirebase()
 
-
-                            let destinationViewController = Storyboard.signUp.instantiateViewController(withIdentifier: "VerifyVC") as? VerifyVC
-//                            destinationViewController!.completionHandlerGoToCreateProfile = { [weak self] in
-//                                guard let strongSelf = self else { return }
-//                                let vc = Storyboard.createAccountTAC.instantiateViewController(withIdentifier: "CreateAccountTAC") as? CreateAccountTAC
-//                                strongSelf.navigationController?.pushViewController(vc!, animated: true)
-//                            }
-                            destinationViewController!.modalPresentationStyle = .overCurrentContext
-                            destinationViewController?.viewModel = self!.viewModel
-                            self?.present(destinationViewController!, animated: true)
+                            if model?.data?.userType == UserType.homeOwner {
+                                let destinationViewController = Storyboard.signUp.instantiateViewController(withIdentifier: "VerifyVC") as? VerifyVC
+                                //                            destinationViewController!.completionHandlerGoToCreateProfile = { [weak self] in
+                                //                                guard let strongSelf = self else { return }
+                                //                                let vc = Storyboard.createAccountTAC.instantiateViewController(withIdentifier: "CreateAccountTAC") as? CreateAccountTAC
+                                //                                strongSelf.navigationController?.pushViewController(vc!, animated: true)
+                                //                            }
+                                destinationViewController!.modalPresentationStyle = .overCurrentContext
+                                destinationViewController?.viewModel = self!.viewModel
+                                self?.present(destinationViewController!, animated: true)
+                            } else {
+                                self?.changeRootController(storyboadrId: "CreateAccountTAC", bundle: nil, controllerId: "UploadLicenceVC")
+                            }
                         }
                     }
                 } else {

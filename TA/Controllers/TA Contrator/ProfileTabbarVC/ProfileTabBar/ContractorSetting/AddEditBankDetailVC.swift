@@ -13,6 +13,7 @@ class AddEditBankDetailVC: BaseViewController, UITextFieldDelegate {
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var accountNumberTextField: FloatingLabelInput!
     @IBOutlet weak var accountHolderNameTextField: FloatingLabelInput!
+    @IBOutlet weak var bankNameTextField: FloatingLabelInput!
     @IBOutlet weak var branchTextField: FloatingLabelInput!
     @IBOutlet weak var txtFldSSN: FloatingLabelInput!
     @IBOutlet weak var addBankAccountLabel: UILabel!
@@ -131,7 +132,8 @@ class AddEditBankDetailVC: BaseViewController, UITextFieldDelegate {
         let accountName = accountHolderNameTextField.text?.trimmed ?? ""
         let routing = branchTextField.text?.trimmed ?? ""
         let ssn = txtFldSSN.text?.trimmed ?? ""
-        let createAccountBankModel =  CreateAccountBankModel(accountNumber: accountNumber, accountName: accountName, routing: routing, ssn: ssn)
+        let bankName = bankNameTextField.text?.trimmed ?? ""
+        let createAccountBankModel =  CreateAccountBankModel(accountNumber: accountNumber, routing: routing, ssn: ssn, bankName: bankName)
         viewModel.modelBankAccount = createAccountBankModel
         viewModel.validateBankAccountModel {[weak self] (success, error) in
             guard let strongSelf = self else { return }
@@ -139,13 +141,13 @@ class AddEditBankDetailVC: BaseViewController, UITextFieldDelegate {
                 if let model = success {
                     print("model: ", model)
                     if let bankId = UserDefaults.standard.value(forKey: "BankId") as? Int {
-                        let params = ["accountNo": model.accountNumber, "accountHolderName": model.accountName, "routingNumber": model.routing, "ssn": model.ssn, "id": bankId] as [String : Any]
+                        let params = ["accountNo": model.accountNumber,"bankName": bankName, "routingNumber": model.routing, "ssn": model.ssn, "id": bankId] as [String : Any]
                         viewModel.updateBankAccountApi(params) { (model) in
 //                            self?.goToAwaiting()
                             self?.navigationController!.popViewController(animated: true)
                         }
                     } else {
-                        let params = ["accountNo": model.accountNumber, "accountHolderName": model.accountName, "routingNumber": model.routing, "ssn": model.ssn]
+                        let params = ["accountNo": model.accountNumber,"bankName": bankName, "routingNumber": model.routing, "ssn": model.ssn]
                         viewModel.addBankAccountApi(params) { (model) in
                             UserDefaults.standard.removeObject(forKey: "BankId")
                             UserDefaults.standard.set(model?.data?.SaveData?.id, forKey: "BankId")

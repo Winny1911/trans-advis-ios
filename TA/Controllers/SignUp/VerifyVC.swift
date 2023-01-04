@@ -86,9 +86,12 @@ class VerifyVC: BaseViewController {
                                     self.changeRootController(storyboadrId: "TabBarHO", bundle: nil, controllerId: "TabBarHOVC")
                                 }
                             }
-                        } else {
-                            self.changeRootController(storyboadrId: "CreateAccountTAC", bundle: nil, controllerId: "UploadLicenceVC")
-                        }
+                        } //else {
+//                            let destinationViewController = Storyboard.signUp.instantiateViewController(withIdentifier: "UploadLicenceVC") as? UploadLicenceVC
+//                            destinationViewController?.viewModelSignup = self.viewModel
+//                            self.present(destinationViewController!, animated: true)
+//                            self.changeRootController(storyboadrId: "CreateAccountTAC", bundle: nil, controllerId: "UploadLicenceVC")
+                        //}
                     }
                 }
                 else {

@@ -159,7 +159,7 @@ class LoginVC: BaseViewController {
 //                            } else if model?.data?.firstName == "" || model?.data?.firstName == nil {
 //                                self?.moveToCreateProfile()
 //                            } else if model?.data?.profileStatus == 1 {
-//                                self?.changeRootController(storyboadrId: "ContratorTabBar", bundle: nil, controllerId: "ContratorTabBarVC")
+                                    self?.changeRootController(storyboadrId: "ContratorTabBar", bundle: nil, controllerId: "ContratorTabBarVC")
 //                            } else {
 //                                self?.moveToawaiting()
 //                            }

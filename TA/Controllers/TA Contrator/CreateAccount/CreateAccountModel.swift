@@ -74,18 +74,20 @@ class CreateAccountLocationModel {
 
 class CreateAccountBankModel {
     var accountNumber: String = ""
-    var accountName: String = ""
+    //var accountName: String = ""
     var routing: String = ""
     var ssn: String = ""
+    var bankName: String = ""
     
     init() {
     }
     
-    init(accountNumber: String,accountName: String,routing: String,ssn: String) {
+    init(accountNumber: String,routing: String,ssn: String, bankName: String) {
         self.accountNumber = accountNumber
-        self.accountName = accountName
+        //self.accountName = accountName
         self.routing = routing
         self.ssn = ssn
+        self.bankName = bankName
     }
 }
 
