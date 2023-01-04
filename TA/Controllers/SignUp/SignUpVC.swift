@@ -35,38 +35,8 @@ class SignUpVC: BaseViewController {
     @IBOutlet weak var zipcodeTextField: FloatingLabelInput!
     
     var fullName: String = ""
-
-//   var emailVerifiedTextField: String = ""
-//    var countryTextField: String = ""
-//    var stateTextField: String = ""
-//    var cityTextField: String = ""
-//    var addressLine1TextField: String = ""
-//    var addressLine2TextField: String = ""
-//    var profilePic: String = ""
-//    var otp: String = ""
-//    var accessToken: String = ""
-//    var resetPasswordToken: String = ""
-//    var licenceNumber: String = ""
-//    var skillSet: String = ""
     var latitude: String = "0"
     var longitude: String = "0"
-//    var forgotPasswordGeneratedAt: String = ""
-//    var profileStatus: String = ""
-//    var isBlocked: String = ""
-//    var isDeleted: String = ""
-//    var createdAt: String = ""
-//    var updatedAt: String = ""
-//    var aboutBio: String = ""
-//    var venderDeepLink: String = ""
-//    var contractorDeepLink: String = ""
-//    var emailVerificationToken: String = ""
-//    var deviceToken: String = ""
-//    var deviceType: String = ""
-//    var expiredAt: String = ""
-//    var rating: String = ""
-//
-//
-//    var id: Int = 0
     var userType = String()
     var isUpdateLocation = true
     let viewModel: SignUpVM = SignUpVM()
@@ -78,7 +48,7 @@ class SignUpVC: BaseViewController {
         searchAddressTextField.delegate = self
         phoneNumberTextField.delegate = self
         
-        self.searchAddressTextField.text = "Enter a address"
+        self.searchAddressTextField.text = "Enter a Address"
         searchAddressTextField.resetFloatingLable()
         btnContractor.setRoundCorners(radius: 4.0)
         btnHomeOwner.setRoundCorners(radius: 4.0)
@@ -210,38 +180,29 @@ class SignUpVC: BaseViewController {
 
         let email = emailTextField.text?.trimmed ?? ""
         let password = passwordTextField.text?.trimmed ?? ""
-
         let firstName = firstNameTextField.text?.trimmed ?? ""
         let lastName = lastNameTextField.text?.trimmed ?? ""
-        //let fullName = fullNameTextField.trimmed
         let phoneNumber = phoneNumberTextField.text?.trimmed ?? ""
-        //let emailVerified = emailVerifiedTextField.text?.trimmed
-        //let country = addressLine1TextField.trimmed
+        let emailVerified = 1
         let state = stateTextField.text?.trimmed ?? ""
         let city = cityTextField.text?.trimmed ?? ""
         let addressLine1 = addressLine1TextField.text?.trimmed ?? ""
-        //let addressLine2 = addressLine2TextField.trimmed
         let zipCode = zipCodeTextField.text?.trimmed ?? ""
         var termsAccepted = false
+        
         if btnAcceptTerms.currentImage?.pngData() == UIImage(named: "ic_check_box")?.pngData() {
             termsAccepted = false
         } else {
             termsAccepted = true
         }
-        let signupModel = SignupModel(userType: self.userType,
-                                      email: email,
-                                      password: password,
-                                      termsAccepted: termsAccepted,
-                                      firstName: firstName,
-                                      lastName: lastName,
-                                      fullName: fullName,
-                                      phoneNumber: phoneNumber,
-                                      state: state,
-                                      city: city,
-                                      addressLine1: addressLine1,
-                                      latitude: self.latitude,
-                                      longitude: self.longitude,
-                                      zipCode: zipCode)
+        var devToken = ""
+        if let deviceToken = UserDefaults.standard.value(forKey: "DeviceToken") as? String {
+            devToken = deviceToken
+        } else {
+            devToken = "01234567890"
+        }
+        
+        let signupModel = SignupModel(email: email, password: password, userType: self.userType, termsAccepted: termsAccepted, firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, emailVerified: emailVerified, state: state, city: city, addressLine1: addressLine1, latitude: latitude, longitude: longitude, zipCode: zipCode, deviceToken: devToken, deviceType: "IOS")
         viewModel.model = signupModel
             viewModel.validateSignUpModel {[weak self] (success, error) in
                 guard let strongSelf = self else { return }
@@ -256,11 +217,11 @@ class SignUpVC: BaseViewController {
 
 
                             let destinationViewController = Storyboard.signUp.instantiateViewController(withIdentifier: "VerifyVC") as? VerifyVC
-                            destinationViewController!.completionHandlerGoToCreateProfile = { [weak self] in
-                                guard let strongSelf = self else { return }
-                                let vc = Storyboard.createAccountTAC.instantiateViewController(withIdentifier: "CreateAccountTAC") as? CreateAccountTAC
-                                strongSelf.navigationController?.pushViewController(vc!, animated: true)
-                            }
+//                            destinationViewController!.completionHandlerGoToCreateProfile = { [weak self] in
+//                                guard let strongSelf = self else { return }
+//                                let vc = Storyboard.createAccountTAC.instantiateViewController(withIdentifier: "CreateAccountTAC") as? CreateAccountTAC
+//                                strongSelf.navigationController?.pushViewController(vc!, animated: true)
+//                            }
                             destinationViewController!.modalPresentationStyle = .overCurrentContext
                             destinationViewController?.viewModel = self!.viewModel
                             self?.present(destinationViewController!, animated: true)
@@ -310,7 +271,7 @@ extension SignUpVC: UITextFieldDelegate {
             }
             guard let text = textField.text else { return false }
             let newString = (text as NSString).replacingCharacters(in: range, with: string)
-            textField.text = textField.format(with: "(XXX) XXX-XXXX", phone: newString)
+            textField.text = textField.format(with: "(XXX)-XXX-XXXX", phone: newString)
             return false
         }
         return true

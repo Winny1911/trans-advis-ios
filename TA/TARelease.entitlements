@@ -6,7 +6,7 @@
 	<string>development</string>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>applinks:p2-testweb.ta123test.com</string>
+		<string>applinks:http://186.237.229.127:3000</string>
 	</array>
 	<key>com.apple.developer.icloud-container-identifiers</key>
 	<array>

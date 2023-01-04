@@ -14,25 +14,25 @@ class SignUpVM: NSObject {
     func validateSignUpModel(completion: (_ success:[String: Any]?, _ error: String?) -> Void) {
         error = nil
         
-        if model.userType!.isEmpty {
+        if model.userType.isEmpty {
             error = ValidationError.selectUserType
             completion(nil, error)
             return
-        } else if model.email!.isEmpty {
+        } else if model.email.isEmpty {
             error = ValidationError.emptyEmail
             completion(nil, error)
             return
-        } else if !model.email!.isValidEmailAddress {
+        } else if !model.email.isValidEmailAddress {
             error = ValidationError.invalidEmail
             completion(nil, error)
             return
-        } else if model.password!.isEmpty {
+        } else if model.password.isEmpty {
             error = ValidationError.emptyPassword
             completion(nil, error)
-        } else if model.password!.contains(find: " ") {
+        } else if model.password.contains(find: " ") {
             error = ValidationError.validPasswordSpace
             completion(nil, error)
-        } else if !model.password!.isValidPassword {
+        } else if !model.password.isValidPassword {
             error = ValidationError.invalidPasswordChar
             completion(nil, error)
         } else if model.termsAccepted == false {
@@ -45,7 +45,21 @@ class SignUpVM: NSObject {
             } else {
                 devToken = "01234567890"
             }
-            let param = ["email": model.email, "password": model.password, "userType": model.userType, "deviceType": "IOS", "deviceToken": devToken, "deviceIdentifier": devToken]
+            let param = ["email": model.email,
+                         "password": model.password,
+                         "userType": model.userType,
+                         "deviceType": "IOS",
+                         "deviceToken": devToken,
+                         "deviceIdentifier": devToken,
+                         "firstName": model.firstName,
+                         "lastName": model.lastName,
+                         "phoneNumber": model.phoneNumber,
+                         "state": model.state,
+                         "city": model.city,
+                         "addressLine1": model.addressLine1,
+                         "latitude": model.latitude,
+                         "longitude": model.longitude,
+                         "zipCode": model.zipCode] as [String : Any]
             completion(param, nil)
             
         }
@@ -57,7 +71,7 @@ extension SignUpVM {
         Progress.instance.show()
         ApiManager<SignupResponseModel>.makeApiCall(APIUrl.UserApis.register, params: params, headers: nil, method: .post) { (response, resultModel) in
             Progress.instance.hide()
-            if resultModel?.statusCode == 200{
+            if resultModel?.statusCode == 200 || resultModel?.statusCode == 201 {
                 result(resultModel)
             }
             else{
