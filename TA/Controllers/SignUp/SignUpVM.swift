@@ -59,7 +59,8 @@ class SignUpVM: NSObject {
                          "addressLine1": model.addressLine1,
                          "latitude": model.latitude,
                          "longitude": model.longitude,
-                         "zipCode": model.zipCode] as [String : Any]
+                         "zipCode": model.zipCode,
+                         "companyName": model.companyName] as [String : Any]
             completion(param, nil)
             
         }

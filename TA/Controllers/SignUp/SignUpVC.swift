@@ -189,6 +189,7 @@ class SignUpVC: BaseViewController {
         let addressLine1 = addressLine1TextField.text?.trimmed ?? ""
         let zipCode = zipCodeTextField.text?.trimmed ?? ""
         var termsAccepted = false
+        var companyName = companyNameTextField.text?.trimmed ?? ""
         
         if btnAcceptTerms.currentImage?.pngData() == UIImage(named: "ic_check_box")?.pngData() {
             termsAccepted = false
@@ -202,7 +203,7 @@ class SignUpVC: BaseViewController {
             devToken = "01234567890"
         }
         
-        let signupModel = SignupModel(email: email, password: password, userType: self.userType, termsAccepted: termsAccepted, firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, emailVerified: emailVerified, state: state, city: city, addressLine1: addressLine1, latitude: latitude, longitude: longitude, zipCode: zipCode, deviceToken: devToken, deviceType: "IOS")
+        let signupModel = SignupModel(email: email, password: password, userType: self.userType, termsAccepted: termsAccepted, firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, emailVerified: emailVerified, state: state, city: city, addressLine1: addressLine1, latitude: latitude, longitude: longitude, zipCode: zipCode, deviceToken: devToken, deviceType: "IOS", companyName: companyName)
         viewModel.model = signupModel
             viewModel.validateSignUpModel {[weak self] (success, error) in
                 guard let strongSelf = self else { return }

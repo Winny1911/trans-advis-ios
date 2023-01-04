@@ -25,6 +25,7 @@ class SignupModel {
     var zipCode: String = ""
     var deviceToken: String = ""
     var deviceType: String = ""
+    var companyName: String = ""
     
     init() {
     }
@@ -44,7 +45,8 @@ class SignupModel {
          longitude: String,
          zipCode: String,
          deviceToken: String,
-         deviceType: String)
+         deviceType: String,
+         companyName: String)
     {
         self.email = email
         self.password = password
@@ -61,6 +63,7 @@ class SignupModel {
         self.longitude = longitude
         self.zipCode = zipCode
         self.deviceType = deviceType
+        self.companyName = companyName
     }
     
 }

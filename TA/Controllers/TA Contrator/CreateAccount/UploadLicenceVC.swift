@@ -262,14 +262,14 @@ class UploadLicenceVC: BaseViewController {
                     name.set(doclName, forKey: "licenceName")
                     //-----
                     print("model: ", model)
-                    let vc = Storyboard.createAccountTAC.instantiateViewController(withIdentifier: "SetLocationVC") as? SetLocationVC
+                    let vc = Storyboard.createAccountTAC.instantiateViewController(withIdentifier: "AddBankAccountVC") as? AddBankAccountVC
                     vc!.createAccountModel = self!.createAccountModel
                     vc!.createAccountLicenseModel = model
                     
-                    vc!.userImageNotChangedStringFromEdit = self!.userImageNotChangedStringFromEdit
-                    vc!.isUserImageChangedFromEdit = self!.isUserImageChangedFromEdit
-                    vc!.isDocumentChangedFromEdit = self!.isDocumentChangedFromEdit
-                    vc!.isFromEdit = self!.isFromEdit
+                    //vc!.userImageNotChangedStringFromEdit = self!.userImageNotChangedStringFromEdit
+                    //vc!.isUserImageChangedFromEdit = self!.isUserImageChangedFromEdit
+                    //vc!.isDocumentChangedFromEdit = self!.isDocumentChangedFromEdit
+                    //vc!.isFromEdit = self!.isFromEdit
                     
                     self?.navigationController?.pushViewController(vc!, animated: true)
                 }
