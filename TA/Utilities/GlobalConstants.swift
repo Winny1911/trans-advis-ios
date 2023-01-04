@@ -112,5 +112,7 @@ extension ValidationError {
     static let characterCount                   = "Bio should be atleast 10 characters."
     static let emptyDiscription                 = "Please add Description"
     static let emptyBankName                    = "Please enter Bank Name"
+    static let emptyCompanyName                 = "Please enter Company Name"
+    
     
 }

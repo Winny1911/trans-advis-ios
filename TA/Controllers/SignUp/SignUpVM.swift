@@ -13,11 +13,16 @@ class SignUpVM: NSObject {
     
     func validateSignUpModel(completion: (_ success:[String: Any]?, _ error: String?) -> Void) {
         error = nil
-        
         if model.userType.isEmpty {
             error = ValidationError.selectUserType
             completion(nil, error)
             return
+        } else if model.userType == UserType.contractor {
+            if model.companyName.isEmpty {
+                error = ValidationError.emptyCompanyName
+                completion(nil, error)
+                return
+            }
         } else if model.email.isEmpty {
             error = ValidationError.emptyEmail
             completion(nil, error)
@@ -40,6 +45,7 @@ class SignUpVM: NSObject {
             completion(nil, error)
         } else if !model.firstName.isValidFirstName {
             error = ValidationError.invalidFirstName
+            completion(nil, error)
         } else if model.firstName.isEmpty {
             error = ValidationError.emptyFirstName
             completion(nil, error)
@@ -54,6 +60,30 @@ class SignUpVM: NSObject {
             return
         } else if !model.lastName.isValidLastName {
             error = ValidationError.invalidLastName
+            completion(nil, error)
+            return
+        } else if !model.addressLine1.isEmpty {
+            error = ValidationError.emptyStreet
+            completion(nil, error)
+            return
+        } else if !model.city.isEmpty {
+            error = ValidationError.emptyCity
+            completion(nil, error)
+            return
+        } else if !model.state.isEmpty {
+            error = ValidationError.emptyState
+            completion(nil, error)
+            return
+        } else if !model.zipCode.isEmpty {
+            error = ValidationError.emptyZipcode
+            completion(nil, error)
+            return
+        } else if !model.phoneNumber.isEmpty {
+            error = ValidationError.emptyPhoneNumber
+            completion(nil, error)
+            return
+        } else if !model.phoneNumber.isValidPhoneNumber {
+            error = ValidationError.invalidPhoneNumber
             completion(nil, error)
             return
         } else {
