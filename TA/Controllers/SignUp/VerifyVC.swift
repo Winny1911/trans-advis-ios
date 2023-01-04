@@ -86,8 +86,8 @@ class VerifyVC: BaseViewController {
                                     self.changeRootController(storyboadrId: "TabBarHO", bundle: nil, controllerId: "TabBarHOVC")
                                 }
                             }
-                        } else if model?.data?.profileStatus == 1 {
-                            self.changeRootController(storyboadrId: "ContratorTabBar", bundle: nil, controllerId: "ContratorTabBarVC")
+                        } else {
+                            self.changeRootController(storyboadrId: "CreateAccountTAC", bundle: nil, controllerId: "UploadLicenceVC")
                         }
                     }
                 }
