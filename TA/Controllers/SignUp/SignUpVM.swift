@@ -62,23 +62,23 @@ class SignUpVM: NSObject {
             error = ValidationError.invalidLastName
             completion(nil, error)
             return
-        } else if !model.addressLine1.isEmpty {
+        } else if model.addressLine1.isEmpty {
             error = ValidationError.emptyStreet
             completion(nil, error)
             return
-        } else if !model.city.isEmpty {
+        } else if model.city.isEmpty {
             error = ValidationError.emptyCity
             completion(nil, error)
             return
-        } else if !model.state.isEmpty {
+        } else if model.state.isEmpty {
             error = ValidationError.emptyState
             completion(nil, error)
             return
-        } else if !model.zipCode.isEmpty {
+        } else if model.zipCode.isEmpty {
             error = ValidationError.emptyZipcode
             completion(nil, error)
             return
-        } else if !model.phoneNumber.isEmpty {
+        } else if model.phoneNumber.isEmpty {
             error = ValidationError.emptyPhoneNumber
             completion(nil, error)
             return
@@ -101,7 +101,7 @@ class SignUpVM: NSObject {
                          "deviceIdentifier": devToken,
                          "firstName": model.firstName,
                          "lastName": model.lastName,
-                         "phoneNumber": self.replaceSpecialCharFromPhoneNumber(phoneNumber: model.phoneNumber),
+                         "phoneNumber": model.phoneNumber,
                          "state": model.state,
                          "city": model.city,
                          "addressLine1": model.addressLine1,
@@ -116,14 +116,6 @@ class SignUpVM: NSObject {
 }
 
 extension SignUpVM {
-    func replaceSpecialCharFromPhoneNumber(phoneNumber:String) -> String {
-        let phoneString = phoneNumber
-        let phoneString2 = phoneString.replacingOccurrences(of: "-", with: "")
-        let phoneString3 = phoneString2.replacingOccurrences(of: "(", with: "")
-        let phoneString4 = phoneString3.replacingOccurrences(of: ")", with: "")
-        let phoneString5 = phoneString4.replacingOccurrences(of: " ", with: "")
-        return phoneString5
-    }
     func signUpUserApiCall(_ params :[String:Any],_ result:@escaping(SignupResponseModel?) -> Void){
         Progress.instance.show()
         ApiManager<SignupResponseModel>.makeApiCall(APIUrl.UserApis.register, params: params, headers: nil, method: .post) { (response, resultModel) in

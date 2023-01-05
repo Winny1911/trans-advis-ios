@@ -182,14 +182,14 @@ class SignUpVC: BaseViewController {
         let password = passwordTextField.text?.trimmed ?? ""
         let firstName = firstNameTextField.text?.trimmed ?? ""
         let lastName = lastNameTextField.text?.trimmed ?? ""
-        let phoneNumber = phoneNumberTextField.text?.trimmed ?? ""
+        let phoneNumber = replaceSpecialCharFromPhoneNumber(phoneNumber: phoneNumberTextField.text?.trimmed ?? "")
         let emailVerified = 1
         let state = stateTextField.text?.trimmed ?? ""
         let city = cityTextField.text?.trimmed ?? ""
         let addressLine1 = addressLine1TextField.text?.trimmed ?? ""
         let zipCode = zipCodeTextField.text?.trimmed ?? ""
         var termsAccepted = false
-        var companyName = companyNameTextField.text?.trimmed ?? ""
+        let companyName = companyNameTextField.text?.trimmed ?? ""
         
         if btnAcceptTerms.currentImage?.pngData() == UIImage(named: "ic_check_box")?.pngData() {
             termsAccepted = false
@@ -261,6 +261,17 @@ class SignUpVC: BaseViewController {
         self.navigationController?.present(destinationViewController!, animated: true)
     }
     
+}
+
+extension SignUpVC {
+    func replaceSpecialCharFromPhoneNumber(phoneNumber:String) -> String {
+        let phoneString = phoneNumber
+        let phoneString2 = phoneString.replacingOccurrences(of: "-", with: "")
+        let phoneString3 = phoneString2.replacingOccurrences(of: "(", with: "")
+        let phoneString4 = phoneString3.replacingOccurrences(of: ")", with: "")
+        let phoneString5 = phoneString4.replacingOccurrences(of: " ", with: "")
+        return phoneString5
+    }
 }
 
 extension SignUpVC: UITextFieldDelegate {
