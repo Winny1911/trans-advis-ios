@@ -32,9 +32,11 @@ class AddBankAccountVC: BaseViewController, UITextFieldDelegate {
         let email = TA_Storage.shared.rememberLoginEmail
         btnSkip.titleLabel?.font = UIFont(name: PoppinsFont.semiBold, size: 12.0)
         btnSubmit.titleLabel?.font = UIFont(name: PoppinsFont.semiBold, size: 16.0)
-        accountNumberTextField.setLeftPadding(14)
-        txtFldSSN.setLeftPadding(14)
-        routingTextField.setLeftPadding(14)
+        txtFldSSN.setLeftPadding(9)
+        bankNameTextField.setLeftPadding(15)
+        routingTextField.setLeftPadding(9)
+        accountNumberTextField.setLeftPadding(20)
+        
         //accountHolderNameTextField.setLeftPadding(14)
         
         if let bankId = UserDefaults.standard.value(forKey: "BankId") as? Int {

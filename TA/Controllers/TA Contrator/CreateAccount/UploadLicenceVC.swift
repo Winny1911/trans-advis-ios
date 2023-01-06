@@ -60,7 +60,7 @@ class UploadLicenceVC: BaseViewController {
         imageSelectedView.isHidden = true
         previousButton.layer.borderColor = (UIColor( red: 78/255, green: 199/255, blue:41/255, alpha: 1.0 )).cgColor
         previousButton.layer.borderWidth = 1.5
-        licenceNumberTextField.setLeftPadding(14)
+        licenceNumberTextField.setLeftPadding(20)
         
         if self.isFromEdit == true {
             if let obj = UserDefaults.standard.retrieve(object: UserProfileDataDetail.self, fromKey: TA_Storage.TA_Storage_Constants.kPersonalDetailsData) {

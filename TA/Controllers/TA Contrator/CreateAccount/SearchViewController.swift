@@ -34,16 +34,21 @@ class SearchViewController: BaseViewController, UISearchBarDelegate  {
         searchController = UISearchController(searchResultsController: resultsViewController)
         searchController?.searchResultsUpdater = resultsViewController
         searchController?.searchBar.delegate = self
-        searchController?.searchBar.placeholder = "Enter Address"
+        searchController?.searchBar.placeholder = "Enter s Address"
         searchController?.navigationController?.navigationBar.isHidden = true
         
         
         let subView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width - 20, height: 45.0))
         subView.addSubview((searchController?.searchBar)!)
         view.addSubview(subView)
-        searchController?.searchBar.becomeFirstResponder()
+        searchController?.searchBar.searchTextField.becomeFirstResponder()
         definesPresentationContext = true
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        searchController?.searchBar.searchTextField.becomeFirstResponder()
     }
     
     

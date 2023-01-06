@@ -63,6 +63,10 @@ class SignUpVC: BaseViewController {
         btnAcceptTerms.titleLabel?.font = UIFont(name: PoppinsFont.medium, size: 14.0)
         btnSignUp.titleLabel?.font = UIFont(name: PoppinsFont.semiBold, size: 16.0)
         companyNameView.isHidden = true
+        firstNameTextField.setLeftPadding(50)
+        lastNameTextField.setLeftPadding(50)
+        companyNameTextField.setLeftPadding(50)
+        
         setlblPrivacyNtermsLabel()
         
     }
