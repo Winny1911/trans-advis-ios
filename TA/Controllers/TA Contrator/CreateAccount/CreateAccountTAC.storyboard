@@ -440,7 +440,7 @@
                                             <constraint firstAttribute="width" constant="44" id="a02-fG-0c7"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please upload a digital copy of the licence" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lnl-lT-nxS">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please upload a digital copy of the license" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lnl-lT-nxS">
                                         <rect key="frame" x="11" y="79" width="344" height="21.666666666666671"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                         <color key="textColor" red="0.98061341049999995" green="0.5763967633" blue="0.39566504959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -558,8 +558,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="siY-A4-FuF">
                                 <rect key="frame" x="24" y="662" width="366" height="56"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JYp-0L-Q4X">
-                                        <rect key="frame" x="0.0" y="0.0" width="175.66666666666666" height="56"/>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JYp-0L-Q4X">
+                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="56"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="EWW-ni-S9l"/>
                                         </constraints>
@@ -577,7 +577,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mtb-bm-LBG">
-                                        <rect key="frame" x="190.66666666666663" y="0.0" width="175.33333333333337" height="56"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="366" height="56"/>
                                         <color key="backgroundColor" red="0.30729794500000002" green="0.77796691659999995" blue="0.1622525454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="dwk-rZ-xxE"/>
@@ -1252,13 +1252,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dJF-7G-ikz">
-                                <rect key="frame" x="16" y="143" width="382" height="450"/>
+                                <rect key="frame" x="16" y="120.33333333333334" width="382" height="495.33333333333326"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_close2" translatesAutoresizingMaskIntoConstraints="NO" id="Cp4-zm-wWD">
-                                        <rect key="frame" x="342" y="16" width="24" height="24"/>
+                                        <rect key="frame" x="342" y="16.000000000000014" width="24" height="24"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGx-eV-6US">
-                                        <rect key="frame" x="342" y="16" width="24" height="24"/>
+                                        <rect key="frame" x="342" y="16.000000000000014" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="DBN-mq-0fM"/>
                                             <constraint firstAttribute="width" constant="24" id="cXz-QF-Gxb"/>
@@ -1271,29 +1271,29 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awaiting approval" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nRa-gN-NJl">
-                                        <rect key="frame" x="105" y="66" width="172" height="25.333333333333329"/>
+                                        <rect key="frame" x="105" y="66.000000000000014" width="172" height="25.333333333333329"/>
                                         <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="18"/>
                                         <color key="textColor" red="0.28160464759999998" green="0.28160464759999998" blue="0.28160464759999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKd-g6-Vuk">
-                                        <rect key="frame" x="23.666666666666657" y="119.6666666666667" width="335" height="179.33333333333337"/>
-                                        <string key="text">Your account has been created! 
-It will be activated once our team at TA has reviewed your profile. You will be notified upon approval.
-
-In case of any queries, please contact us at</string>
+                                        <rect key="frame" x="23.666666666666629" y="120.00000000000001" width="335" height="224.33333333333337"/>
+                                        <mutableString key="text">Your account has been created!
+It will be activated once our team at TA123 has reviewed your account. You will be notified upon approval.
+Please verify your email. We've sent an email to vanessa.pina.rodrigues@gmail.com to verity your email address and activate your account.
+For any inquiries please contact us at</mutableString>
                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                         <color key="textColor" red="0.28160464759999998" green="0.28160464759999998" blue="0.28160464759999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="help@ta123.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WeL-Ko-bMu">
-                                        <rect key="frame" x="123.66666666666666" y="319" width="134.99999999999997" height="22.666666666666686"/>
+                                        <rect key="frame" x="123.66666666666666" y="364.33333333333337" width="134.99999999999997" height="22.666666666666686"/>
                                         <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
                                         <color key="textColor" red="0.98061341049999995" green="0.5763967633" blue="0.39566504959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="02d-W8-ZeR">
-                                        <rect key="frame" x="24" y="369" width="334" height="56"/>
+                                        <rect key="frame" x="24" y="414.33333333333331" width="334" height="56"/>
                                         <color key="backgroundColor" red="0.3072931767" green="0.78146249059999995" blue="0.16113835570000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="ApD-1H-aX6"/>
@@ -1353,6 +1353,7 @@ In case of any queries, please contact us at</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bodyMessageApproval" destination="pKd-g6-Vuk" id="ouN-rB-4Ol"/>
                         <outlet property="btnEditDetails" destination="02d-W8-ZeR" id="dTA-h8-pHo"/>
                     </connections>
                 </viewController>

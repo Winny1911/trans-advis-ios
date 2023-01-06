@@ -29,7 +29,7 @@ class AddBankAccountVC: BaseViewController, UITextFieldDelegate {
         //self.accountHolderNameTextField.delegate = self
         self.routingTextField.delegate = self
         self.txtFldSSN.delegate = self
-        
+        let email = TA_Storage.shared.rememberLoginEmail
         btnSkip.titleLabel?.font = UIFont(name: PoppinsFont.semiBold, size: 12.0)
         btnSubmit.titleLabel?.font = UIFont(name: PoppinsFont.semiBold, size: 16.0)
         accountNumberTextField.setLeftPadding(14)

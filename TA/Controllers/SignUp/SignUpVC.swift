@@ -215,7 +215,8 @@ class SignUpVC: BaseViewController {
                             TA_Storage.shared.apiAccessToken = "Bearer \(model?.data?.accessToken! ?? "")"
                             TA_Storage.shared.userId = model?.data?.id ?? -1
                             fireBaseUserTable().updateOwnProfileOnFirebase()
-
+                            TA_Storage.shared.rememberLoginEmail = model?.data?.email ?? ""
+                            UserDefaults.standard.set(nil, forKey: "BankId")
                             if model?.data?.userType == UserType.homeOwner {
                                 let destinationViewController = Storyboard.signUp.instantiateViewController(withIdentifier: "VerifyVC") as? VerifyVC
                                 //                            destinationViewController!.completionHandlerGoToCreateProfile = { [weak self] in
