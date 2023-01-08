@@ -1372,7 +1372,7 @@ Please verify your email. We've sent an email to</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="HE6-C9-ttG" firstAttribute="top" secondItem="kfD-Rk-3f9" secondAttribute="bottom" id="1PZ-FN-JPE"/>
                                     <constraint firstItem="pKd-g6-Vuk" firstAttribute="leading" secondItem="dJF-7G-ikz" secondAttribute="leading" constant="20" id="3cP-7j-rzK"/>
@@ -1452,9 +1452,6 @@ Please verify your email. We've sent an email to</string>
         <namedColor name="placeholderColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
