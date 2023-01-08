@@ -12,7 +12,7 @@ import MobileCoreServices
 import UniformTypeIdentifiers
 import WebKit
 
-class UploadLicenceVC: BaseViewController {
+class UploadLicenceVC: BaseViewController, UITextFieldDelegate {
 
     @IBOutlet weak var attachmentTableView: UITableView!
     @IBOutlet weak var lblName: UILabel!
@@ -47,7 +47,7 @@ class UploadLicenceVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        licenceNumberTextField.maxLength = 20
         attachmentTableView.delegate = self
         attachmentTableView.dataSource = self
         attachmentTableView.register(UINib.init(nibName: "AttachmentListTableViewCell", bundle: nil), forCellReuseIdentifier: "AttachmentListTableViewCell")
@@ -738,19 +738,5 @@ extension UploadLicenceVC: UIDocumentPickerDelegate {
 
      func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         controller.dismiss(animated: true, completion: nil)
-    }
-}
-
-extension UploadLicenceVC: UITextFieldDelegate{
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == licenceNumberTextField{
-            let currentText = licenceNumberTextField.text ?? ""
-            guard let stringRange = Range(range, in: currentText) else {
-                return false
-            }
-            let updateText = currentText.replacingCharacters(in: stringRange, with: string)
-            return updateText.count <= 20
-        }
-        return true
     }
 }

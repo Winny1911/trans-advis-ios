@@ -49,17 +49,17 @@ extension ValidationError {
     static let notMatchPassword                     = "New Password and Confirm  Password do not match"
     static let samePassword                     = " Old Password and New Password should not same"
     static let validPasswordSpace               = "Blank spaces are not allowed"
-    static let invalidPasswordChar              = "Password should be a minimum of 8 characters and a maximum of 20 character."
+    static let invalidPasswordChar              = "Password should be a minimum of 8 characters and a maximum of 16 character."
     static let invalidPassword                  = "Password must contain 8 alphanumeric Characters"
     static let acceptTerms                      = "Please accept the terms and conditions"
     
     static let emptyProfileImage                = "Please select profile image"
     static let emptyFirstName                   = "Please enter First Name"
     static let emptyLastName                    = "Please enter Last Name"
-    static let invalidFirstName                 = "First name should be minimum of 3 and maximum of 40 characters"
-    static let invalidLastName                  = "Last name should be minimum of 3 and maximum of 40 characters"
+    static let invalidFirstName                 = "First name should be minimum of 3 and maximum of 50 characters"
+    static let invalidLastName                  = "Last name should be minimum of 3 and maximum of 50 characters"
     static let emptyPhoneNumber                 = "Please enter Phone Number "
-    static let invalidPhoneNumber               = "Phone Number should be of 10 digits"
+    static let invalidPhoneNumber               = "Phone Number should be minimum of 8 and maximum of 13 characters"
     static let emptySkillSet                    = "Please select atleast 1 skill"
     
     static let emptyLicenseNumber               = "Please enter License Number"
@@ -113,6 +113,6 @@ extension ValidationError {
     static let emptyDiscription                 = "Please add Description"
     static let emptyBankName                    = "Please enter Bank Name"
     static let emptyCompanyName                 = "Please enter Company Name"
-    
-    
+    static let invalidCompanyName               = "Company name should be minimum of 3 and maximum of 50 characters"
+    static let invalidBankName                  = "Bank name should be of 15 digits"
 }

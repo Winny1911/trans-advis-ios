@@ -235,7 +235,7 @@ class CreateAccountTACVM: NSObject {
             error = ValidationError.emptyAccountNumber
             completion(nil, error)
             return
-        } else if !modelBankAccount.accountNumber.isValidAccountNumberr {
+        } else if !modelBankAccount.accountNumber.isValidAccountNumber {
             error = ValidationError.invalidAccountNumber
             completion(nil, error)
         } else if modelBankAccount.routing.isEmpty {
@@ -253,9 +253,13 @@ class CreateAccountTACVM: NSObject {
                 completion(modelBankAccount, nil)
             }
         } else if modelBankAccount.bankName.isEmpty {
-                error = ValidationError.emptyBankName
-                completion(nil, error)
-                return
+            error = ValidationError.emptyBankName
+            completion(nil, error)
+            return
+        } else if !modelBankAccount.bankName.isValidBankName {
+            error = ValidationError.invalidBankName
+            completion(nil, error)
+            return
         } else {
             completion(modelBankAccount, nil)
         }

@@ -17,13 +17,12 @@ class SignUpVM: NSObject {
             error = ValidationError.selectUserType
             completion(nil, error)
             return
-        } //else if model.userType == UserType.contractor {
-//            if model.companyName.isEmpty {
-//                error = ValidationError.emptyCompanyName
-//                completion(nil, error)
-//                return
-//            }
-         else if model.email.isEmpty {
+        }
+        else if !model.email.isValidCompanyName && model.userType == UserType.contractor {
+            error = ValidationError.invalidCompanyName
+            completion(nil, error)
+            return
+        } else if model.email.isEmpty {
             error = ValidationError.emptyEmail
             completion(nil, error)
             return

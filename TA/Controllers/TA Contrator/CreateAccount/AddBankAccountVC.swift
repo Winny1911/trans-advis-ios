@@ -33,9 +33,14 @@ class AddBankAccountVC: BaseViewController, UITextFieldDelegate {
         btnSkip.titleLabel?.font = UIFont(name: PoppinsFont.semiBold, size: 12.0)
         btnSubmit.titleLabel?.font = UIFont(name: PoppinsFont.semiBold, size: 16.0)
         txtFldSSN.setLeftPadding(9)
-        bankNameTextField.setLeftPadding(15)
-        routingTextField.setLeftPadding(9)
-        accountNumberTextField.setLeftPadding(20)
+        bankNameTextField.setLeftPadding(14)
+        routingTextField.setLeftPadding(14)
+        accountNumberTextField.setLeftPadding(14)
+        
+        routingTextField.maxLength = 9
+        bankNameTextField.maxLength = 15
+        accountNumberTextField.maxLength = 20
+        txtFldSSN.maxLength = 10
         
         //accountHolderNameTextField.setLeftPadding(14)
         
@@ -44,54 +49,15 @@ class AddBankAccountVC: BaseViewController, UITextFieldDelegate {
                 self.txtFldSSN.text = response?.data?.listing?.ssn
                 self.accountNumberTextField.text = response?.data?.listing?.accountNo
                 self.routingTextField.text = response?.data?.listing?.routingNumber
-//                self.accountHolderNameTextField.text = response?.data?.listing?.accountHolderName
+                //                self.accountHolderNameTextField.text = response?.data?.listing?.accountHolderName
                 
                 self.txtFldSSN.resetFloatingLable()
                 self.accountNumberTextField.resetFloatingLable()
                 self.routingTextField.resetFloatingLable()
-//                self.accountHolderNameTextField.resetFloatingLable()
+                //                self.accountHolderNameTextField.resetFloatingLable()
                 self.addBankAccountLabel.text = "Edit Bank Account"
             }
         }
-    }
-    
-    // MARK: TextField delegate method
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
-        if textField == accountNumberTextField {
-            let currentText = accountNumberTextField.text ?? ""
-            guard let stringRange = Range(range, in: currentText) else {
-                return false
-            }
-            let updateText = currentText.replacingCharacters(in: stringRange, with: string)
-            return updateText.count < 20
-        }
-//        if textField == accountHolderNameTextField {
-//            let currentText = accountHolderNameTextField.text ?? ""
-//            guard let stringRange = Range(range, in: currentText) else {
-//                return false
-//            }
-//            let updateText = currentText.replacingCharacters(in: stringRange, with: string)
-//            return updateText.count < 30
-//        }
-        
-        if textField == routingTextField {
-            let currentText = routingTextField.text ?? ""
-            guard let stringRange = Range(range, in: currentText) else {
-                return false
-            }
-            let updateText = currentText.replacingCharacters(in: stringRange, with: string)
-            return updateText.count < 10
-        }
-        
-        if textField == txtFldSSN {
-            let currentText = txtFldSSN.text ?? ""
-            guard let stringRange = Range(range, in: currentText) else {
-                return false
-            }
-            let updateText = currentText.replacingCharacters(in: stringRange, with: string)
-            return updateText.count < 10
-        }
-        return true
     }
     
     func goToAwaiting() {

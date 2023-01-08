@@ -52,8 +52,7 @@ class SignUpVC: BaseViewController {
         searchAddressTextField.resetFloatingLable()
         btnContractor.setRoundCorners(radius: 4.0)
         btnHomeOwner.setRoundCorners(radius: 4.0)
-        emailTextField.setLeftPadding(14)
-        passwordTextField.setLeftPadding(14)
+        
         searchAddressTextField.isUserInteractionEnabled = false
         passwordView.setRoundCorners(radius: 4.0)
         btnLogin.titleLabel?.font = UIFont(name: PoppinsFont.semiBold, size: 12.0)
@@ -63,9 +62,30 @@ class SignUpVC: BaseViewController {
         btnAcceptTerms.titleLabel?.font = UIFont(name: PoppinsFont.medium, size: 14.0)
         btnSignUp.titleLabel?.font = UIFont(name: PoppinsFont.semiBold, size: 16.0)
         companyNameView.isHidden = true
-        firstNameTextField.setLeftPadding(50)
-        lastNameTextField.setLeftPadding(50)
-        companyNameTextField.setLeftPadding(50)
+        
+        
+        firstNameTextField.setLeftPadding(14)
+        lastNameTextField.setLeftPadding(14)
+        companyNameTextField.setLeftPadding(14)
+        searchAddressTextField.setLeftPadding(14)
+        addressLine1TextField.setLeftPadding(14)
+        cityTextField.setLeftPadding(14)
+        emailTextField.setLeftPadding(14)
+        passwordTextField.setLeftPadding(14)
+        stateTextField.setLeftPadding(14)
+        zipCodeTextField.setLeftPadding(14)
+        phoneNumberTextField.setLeftPadding(14)
+        
+        //addressLine1TextField.maxLength = 150
+        //cityTextField.maxLength = 150
+        //stateTextField.maxLength = 150
+        zipCodeTextField.maxLength = 10
+        phoneNumberTextField.maxLength = 13
+        companyNameTextField.maxLength = 50
+        firstNameTextField.maxLength = 50
+        lastNameTextField.maxLength = 50
+        passwordTextField.maxLength = 16
+        emailTextField.maxLength = 100
         
         setlblPrivacyNtermsLabel()
         
