@@ -161,51 +161,51 @@ class UploadLicenceVC: BaseViewController, UITextFieldDelegate {
         viewModel.modelLicense = createAccountLicenseModel
         if imageArray.count == 0 || imageArray == nil {
             showMessage(with: "Please upload a digital copy of the licence", theme: .error)
-        } else {
-            self.naviagteToNextScreen(licenseSelectedImage: imageArray, licenseSelectedName: imageNameArray)
         }
-        
-//        viewModel.validateLicenseModel {[weak self] (success, error) in
-//            guard let strongSelf = self else { return }
-//            if error == nil {
-//                if self!.isLicenseImageSelected == true {
-//                    if self!.selectedType == "Image" {
-//                        if self?.isFromEdit == true {
-//                            if self?.isDocumentChangedFromEdit == true {
-////                                self!.imageSendAPI()
-//                            } else {
-////                                self!.naviagteToNextScreen(licenseSelectedImage: imageArray, licenseSelectedName: imageNameArray)
-//                            }
-//                        } else {
-////                            self!.imageSendAPI()
-//                        }
-//                    } else {
-//                        if self?.isFromEdit == true {
-//                            if self?.isDocumentChangedFromEdit == true {
-////                                self!.docSendAPI()
-//                            } else {
-////                                self!.naviagteToNextScreen(licenseSelectedImage: [""], licenseSelectedName: [""])
-//                            }
-//                        } else {
-////                            self!.docSendAPI()
-//                        }
-//                    }
-//                } else {
-////                    self!.naviagteToNextScreen(licenseSelectedImage: [""], licenseSelectedName: [""])
-//                }
-////                UserDefaults.standard.set("\(self?.lblName.text ?? "")", forKey: "licenseImageName")
-////                UserDefaults.standard.set("\(self?.licenceNumberTextField.text ?? "")", forKey: "licenseNumberss")
-////
-////                guard let data = userImageView.image?.jpegData(compressionQuality: 0.5) else { return }
-////                let encoded = try! PropertyListEncoder().encode(data)
-////                UserDefaults.standard.set(encoded, forKey: "licenseImage")
-//            }
-//            else {
-//                if let errorMsg = strongSelf.viewModel.error {
-//                    showMessage(with: errorMsg)
-//                }
-//            }
-//        }
+        viewModel.validateLicenseModel {[weak self] (success, error) in
+            guard let strongSelf = self else { return }
+            if error == nil {
+                if self!.isLicenseImageSelected == true {
+                    if self!.selectedType == "Image" {
+                        if self?.isFromEdit == true {
+                            if self?.isDocumentChangedFromEdit == true {
+                                self!.imageSendAPI()
+                            } else {
+                                self!.naviagteToNextScreen(licenseSelectedImage: imageArray, licenseSelectedName: imageNameArray)
+                            }
+                        } else {
+                            self!.docSendAPI()
+                            self!.naviagteToNextScreen(licenseSelectedImage: imageArray, licenseSelectedName: imageNameArray)
+                        }
+                    } else {
+                        if self?.isFromEdit == true {
+                            if self?.isDocumentChangedFromEdit == true {
+                                self!.docSendAPI()
+                            } else {
+                                let error = ValidationError.licenseDoc
+                                showMessage(with: error)
+                            }
+                        } else {
+                            self!.docSendAPI()
+                        }
+                    }
+                } else {
+                    let error = ValidationError.licenseDoc
+                    showMessage(with: error)
+                }
+                UserDefaults.standard.set("\(self?.lblName.text ?? "")", forKey: "licenseImageName")
+                UserDefaults.standard.set("\(self?.licenceNumberTextField.text ?? "")", forKey: "licenseNumberss")
+
+                guard let data = userImageView.image?.jpegData(compressionQuality: 0.5) else { return }
+                let encoded = try! PropertyListEncoder().encode(data)
+                UserDefaults.standard.set(encoded, forKey: "licenseImage")
+            }
+            else {
+                if let errorMsg = strongSelf.viewModel.error {
+                    showMessage(with: errorMsg)
+                }
+            }
+        }
         
     }
     
@@ -242,8 +242,6 @@ class UploadLicenceVC: BaseViewController, UITextFieldDelegate {
         SDImageCache.shared.clearMemory()
         SDImageCache.shared.clearDisk()
         self.attachmentTableView.reloadData()
-//        self.naviagteToNextScreen(licenseSelectedImage: imageArray, licenseSelectedName: imageNameArray)
-//        self.naviagteToNextScreen(licenseSelectedImage: dataDict["name"] as! String, licenseSelectedName: randomName)
     }
     
     func naviagteToNextScreen(licenseSelectedImage: [String], licenseSelectedName: [String]) {

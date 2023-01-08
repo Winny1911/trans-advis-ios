@@ -48,6 +48,7 @@ struct APIUrl {
         static let contractorProjectStatus            = baseUrl              + "contractor/projectStatus"
 
         static let createProfile                      = baseUrl              + "user/createProfile"
+        static let createLicense                      = host                 + "user/createLicenses"
         static let updateProfile                      = baseUrl              + "user/updateProfile"
         static let user                               = baseUrl              + "user"
         static let addBankAccount                     = baseUrl              + "contractor/bank/addBankAccount"
@@ -70,6 +71,7 @@ struct APIUrl {
         static let updateProjectImagesFiles           = baseUrl              + "homeowner/updateProjectImagesFiles"
 
         static let projectCategoriesList              = host                 + "/admin/content-management/projectCategories/list"
+        
         static let createProject                      = baseUrl              + "homeowner/createProject"
         static let contractorCarts                    = baseUrl              + "contractor/carts"
         static let contractorUpdateCartStatus         = baseUrl              + "contractor/updateCartStatus"

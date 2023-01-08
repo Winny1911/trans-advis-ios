@@ -38,6 +38,7 @@ extension ValidationError {
     static let invalidEmail                     = "Please enter valid Email"
     static let selectUserType                   = "Please select any Role"
     
+    
     static let emptyPassword                    = "Please enter Password"
     
     static let emptyOldPassword                    = "Please enter Old Password"
