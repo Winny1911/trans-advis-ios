@@ -59,7 +59,7 @@ struct APIUrl {
         static let updateBankAccount                  = baseUrl              + "contractor/bank/update"
         
         static let forgotPassword                     = baseUrl              + "user/forgotPassword"
-        static let contractor                         = baseUrl              + "homeowner/contractors"
+        static let contractor                         = baseUrl              + "homeowner/contractorslist"
         
         static let taskcontractor                         = baseUrl              + "contractor/contractors"
 

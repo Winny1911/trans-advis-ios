@@ -78,10 +78,7 @@ class ContractorHOVC: BaseViewController {
             self.btnNotification.isHidden = false
             self.lblSideContractor.isHidden = false
         }
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        
         self.getAllInboxMessagesForRedDot()
         self.inboxMessagesss = fireBaseChatInbox().getAllInboxMessages()
         self.txtFldSearch.resignFirstResponder()
@@ -96,6 +93,23 @@ class ContractorHOVC: BaseViewController {
             //GetContractorApiHit()
         }
     }
+//
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        self.getAllInboxMessagesForRedDot()
+//        self.inboxMessagesss = fireBaseChatInbox().getAllInboxMessages()
+//        self.txtFldSearch.resignFirstResponder()
+//        self.view.endEditing(true)
+//        txtFldSearch.text = ""
+//        if self.isFrom == "NewProjectDetails" {
+//            GetContractorNewApiHit()
+//        } else if self.isFrom == "InviteContractorsToBid" {
+//            fetchFilterContractorForBids()
+//        } else {
+//            fetchFilterInvitations()
+//            //GetContractorApiHit()
+//        }
+//    }
     
     override func viewDidDisappear(_ animated: Bool) {
         self.txtFldSearch.resignFirstResponder()
