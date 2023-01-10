@@ -60,7 +60,8 @@ class UploadLicenceVC: BaseViewController, UITextFieldDelegate {
         imageSelectedView.isHidden = true
         previousButton.layer.borderColor = (UIColor( red: 78/255, green: 199/255, blue:41/255, alpha: 1.0 )).cgColor
         previousButton.layer.borderWidth = 1.5
-        licenceNumberTextField.setLeftPadding(20)
+        licenceNumberTextField.setLeftPadding(14)
+        licenceNumberTextField.maxLength = 20
         
         if self.isFromEdit == true {
             if let obj = UserDefaults.standard.retrieve(object: UserProfileDataDetail.self, fromKey: TA_Storage.TA_Storage_Constants.kPersonalDetailsData) {
@@ -330,14 +331,16 @@ extension UploadLicenceVC: UITableViewDelegate, UITableViewDataSource {
             }
             cell.attachmentLabel.text = doclName[indexPath.row]
         } else {
-            let a = self.fullViewImge[indexPath.row]
-            let last4 = String(a.suffix(4))
-            if last4 == ".png" || last4 == ".jpg" || last4 == "jpeg" {
-                cell.attachmentImageView.sd_setImage(with: URL(string: fullViewImge[indexPath.row]), placeholderImage: UIImage(named: "doc"), completed: nil)
-            } else {
-                cell.attachmentImageView.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "doc"), completed: nil)
+            if self.fullViewImge[indexPath.row] != nil {
+                let a = self.fullViewImge[indexPath.row]
+                let last4 = String(a.suffix(4))
+                if last4 == ".png" || last4 == ".jpg" || last4 == "jpeg" {
+                    cell.attachmentImageView.sd_setImage(with: URL(string: fullViewImge[indexPath.row]), placeholderImage: UIImage(named: "doc"), completed: nil)
+                } else {
+                    cell.attachmentImageView.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "doc"), completed: nil)
+                }
+                //            cell.attachmentImageView.image = fullViewImge[indexPath.row]
             }
-//            cell.attachmentImageView.image = fullViewImge[indexPath.row]
             cell.attachmentLabel.text = doclName[indexPath.row]
         }
         cell.deleteAttachment = {

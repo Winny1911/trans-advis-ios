@@ -996,7 +996,7 @@
                                 <rect key="frame" x="24" y="64" width="68" height="25"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 4/4" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qO3-Aq-UZQ">
-                                        <rect key="frame" x="8" y="4" width="46" height="17"/>
+                                        <rect key="frame" x="8.0000000000000036" y="4" width="52.333333333333343" height="17"/>
                                         <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -1029,7 +1029,7 @@
                                 </userDefinedRuntimeAttributes>
                             </progressView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWc-jC-0az">
-                                <rect key="frame" x="388" y="82.666666666666671" width="25" height="2"/>
+                                <rect key="frame" x="388" y="84" width="25" height="2"/>
                                 <color key="backgroundColor" red="0.98039215690000003" green="0.57647058819999997" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="4QZ-Pd-oTf"/>
@@ -1040,7 +1040,7 @@
                                 <color key="highlightedColor" red="0.98039215690000003" green="0.57647058819999997" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9RW-Xr-eGK">
-                                <rect key="frame" x="378" y="61.666666666666657" width="36" height="30"/>
+                                <rect key="frame" x="378" y="60" width="36" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="36" id="Liy-3Q-Ejj"/>
                                 </constraints>
@@ -1059,7 +1059,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8AP-T4-5LK">
-                                <rect key="frame" x="24" y="161.66666666666666" width="382" height="56"/>
+                                <rect key="frame" x="24" y="161.66666666666666" width="382" height="67.333333333333343"/>
                                 <string key="text">Add a bank account to set up a payment method for your account
 </string>
                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
@@ -1067,7 +1067,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bank Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gjn-cA-6wY" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
-                                <rect key="frame" x="24" y="250.66666666666663" width="382" height="50"/>
+                                <rect key="frame" x="24" y="262" width="382" height="50"/>
                                 <color key="tintColor" name="placeholderColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="TNx-jt-C24"/>
@@ -1088,7 +1088,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Account Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yio-Dg-Rjv" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
-                                <rect key="frame" x="24" y="333.66666666666669" width="382" height="50"/>
+                                <rect key="frame" x="24" y="345" width="382" height="50"/>
                                 <color key="tintColor" name="placeholderColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="0Ys-Oi-Ni0"/>
@@ -1109,7 +1109,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Routing Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7at-Ok-HML" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
-                                <rect key="frame" x="24" y="416.66666666666669" width="382" height="50"/>
+                                <rect key="frame" x="24" y="428" width="382" height="50"/>
                                 <color key="tintColor" name="placeholderColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="va4-PD-tDl"/>
@@ -1272,7 +1272,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="02d-W8-ZeR">
-                                        <rect key="frame" x="20" y="370.66666666666663" width="358" height="56"/>
+                                        <rect key="frame" x="20" y="366.33333333333337" width="358" height="56"/>
                                         <color key="backgroundColor" red="0.3072931767" green="0.78146249059999995" blue="0.16113835570000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="pff-Nr-cJO"/>
@@ -1291,7 +1291,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HE6-C9-ttG">
-                                        <rect key="frame" x="20" y="247.33333333333331" width="358" height="70"/>
+                                        <rect key="frame" x="20" y="243" width="358" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="sQp-QN-56M"/>
                                         </constraints>
@@ -1302,7 +1302,7 @@ For any inquiries please contact us at</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kfD-Rk-3f9">
-                                        <rect key="frame" x="100.66666666666669" y="212.33333333333331" width="197" height="35"/>
+                                        <rect key="frame" x="100.66666666666669" y="208" width="197" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="geC-ql-boA"/>
                                         </constraints>
@@ -1315,7 +1315,7 @@ For any inquiries please contact us at</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Gq-Lh-Var">
-                                        <rect key="frame" x="160.33333333333334" y="426.66666666666663" width="77.333333333333343" height="35"/>
+                                        <rect key="frame" x="160.33333333333334" y="422.33333333333337" width="77.333333333333343" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="rQh-Iq-m20"/>
                                         </constraints>
@@ -1326,7 +1326,7 @@ For any inquiries please contact us at</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FVB-b9-CZN">
-                                        <rect key="frame" x="123.66666666666666" y="317.33333333333337" width="150.99999999999997" height="35"/>
+                                        <rect key="frame" x="123.66666666666666" y="313" width="150.99999999999997" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="yb9-oz-GoQ"/>
                                         </constraints>
@@ -1339,7 +1339,7 @@ For any inquiries please contact us at</string>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKd-g6-Vuk">
-                                        <rect key="frame" x="20" y="92.333333333333314" width="358" height="120"/>
+                                        <rect key="frame" x="20" y="88" width="358" height="120"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="120" id="Ihy-kT-TDv"/>
                                         </constraints>
@@ -1351,7 +1351,7 @@ Please verify your email. We've sent an email to</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awaiting approval" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nRa-gN-NJl">
-                                        <rect key="frame" x="99" y="57.000000000000007" width="200" height="25.333333333333336"/>
+                                        <rect key="frame" x="99" y="57" width="200" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="07q-fM-ews"/>
                                         </constraints>
