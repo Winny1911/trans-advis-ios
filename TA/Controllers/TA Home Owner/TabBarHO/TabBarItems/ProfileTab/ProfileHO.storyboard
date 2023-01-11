@@ -282,22 +282,64 @@
                                     <constraint firstAttribute="height" constant="1" id="prL-lV-LIX"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="OVG-dO-FqO">
-                                <rect key="frame" x="24" y="430.66666666666669" width="366" height="25"/>
+                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="OVG-dO-FqO">
+                                <rect key="frame" x="24" y="430.66666666666663" width="366" height="300.66666666666663"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dvu-Hp-VaJ">
                                         <rect key="frame" x="0.0" y="0.0" width="366" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="0NI-HA-b6p"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="15"/>
                                         <color key="textColor" name="#000000"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4I-xD-thU">
-                                        <rect key="frame" x="0.0" y="25" width="366" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="22" width="366" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Be-2i-B54">
+                                        <rect key="frame" x="0.0" y="23" width="366" height="25"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="j9B-VD-CG7"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All Reviews" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3vg-q9-4Ib">
+                                        <rect key="frame" x="0.0" y="49" width="366" height="19.666666666666671"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="19.670000000000002" id="Q1s-6T-Lss"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No reviews yet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fE4-2p-ToT">
+                                        <rect key="frame" x="0.0" y="69.666666666666629" width="366" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Xea-Te-R4c"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <size key="shadowOffset" width="0.0" height="30"/>
+                                    </label>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="hVO-6v-N5v">
+                                        <rect key="frame" x="0.0" y="100.66666666666669" width="366" height="200"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="Svy-nH-vAe"/>
+                                        </constraints>
+                                    </tableView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="0Be-2i-B54" firstAttribute="top" secondItem="A4I-xD-thU" secondAttribute="bottom" constant="4" id="GHK-hJ-KCt"/>
+                                    <constraint firstItem="dvu-Hp-VaJ" firstAttribute="leading" secondItem="OVG-dO-FqO" secondAttribute="leading" id="Pfm-Gc-35V"/>
+                                    <constraint firstAttribute="trailing" secondItem="dvu-Hp-VaJ" secondAttribute="trailing" id="gpa-wh-2w0"/>
+                                    <constraint firstItem="dvu-Hp-VaJ" firstAttribute="top" secondItem="OVG-dO-FqO" secondAttribute="top" id="kh8-Cb-muY"/>
+                                </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qqO-bI-7Wb">
                                 <rect key="frame" x="24" y="363" width="42" height="28.666666666666686"/>
@@ -325,14 +367,16 @@
                         <viewLayoutGuide key="safeArea" id="PYF-T5-yet"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="OVG-dO-FqO" firstAttribute="trailing" secondItem="UaV-in-ibf" secondAttribute="trailing" id="4ff-DM-aSO"/>
                             <constraint firstItem="qqO-bI-7Wb" firstAttribute="top" secondItem="7jq-M5-gUj" secondAttribute="bottom" constant="4" id="8A2-g0-k7L"/>
+                            <constraint firstItem="PYF-T5-yet" firstAttribute="bottom" secondItem="OVG-dO-FqO" secondAttribute="bottom" constant="4.6699999999999999" id="8vy-GA-dHb"/>
                             <constraint firstItem="Ydl-VB-Ey5" firstAttribute="leading" secondItem="PYF-T5-yet" secondAttribute="leading" id="BPS-WU-0X3"/>
                             <constraint firstItem="PYF-T5-yet" firstAttribute="trailing" secondItem="nWs-TW-EHP" secondAttribute="trailing" id="CJO-fq-8BI"/>
                             <constraint firstItem="qqO-bI-7Wb" firstAttribute="leading" secondItem="7jq-M5-gUj" secondAttribute="leading" id="IrP-9Y-IEa"/>
-                            <constraint firstItem="PYF-T5-yet" firstAttribute="trailing" secondItem="OVG-dO-FqO" secondAttribute="trailing" constant="24" id="NKC-lC-HJb"/>
                             <constraint firstItem="J6K-gM-QXt" firstAttribute="leading" secondItem="7jq-M5-gUj" secondAttribute="trailing" constant="10" id="Nne-kP-X4T"/>
                             <constraint firstItem="UaV-in-ibf" firstAttribute="top" secondItem="iH9-aF-Etx" secondAttribute="bottom" constant="22" id="Rbz-zX-inN"/>
                             <constraint firstItem="cmi-QC-Ht5" firstAttribute="leading" secondItem="iH9-aF-Etx" secondAttribute="leading" id="TpL-Fp-n1J"/>
+                            <constraint firstItem="OVG-dO-FqO" firstAttribute="leading" secondItem="qqO-bI-7Wb" secondAttribute="leading" id="VUm-wb-LQz"/>
                             <constraint firstItem="cmi-QC-Ht5" firstAttribute="top" secondItem="UaV-in-ibf" secondAttribute="bottom" constant="8" id="WZX-xp-P3j"/>
                             <constraint firstItem="7jq-M5-gUj" firstAttribute="leading" secondItem="iH9-aF-Etx" secondAttribute="leading" id="XK1-RR-gya"/>
                             <constraint firstItem="UaV-in-ibf" firstAttribute="leading" secondItem="iH9-aF-Etx" secondAttribute="leading" id="XY1-eq-IAC"/>
@@ -340,8 +384,6 @@
                             <constraint firstItem="PYF-T5-yet" firstAttribute="trailing" secondItem="il0-7d-vr5" secondAttribute="trailing" id="aN3-u3-9iH"/>
                             <constraint firstItem="iH9-aF-Etx" firstAttribute="leading" secondItem="PYF-T5-yet" secondAttribute="leading" constant="24" id="auQ-gM-iA6"/>
                             <constraint firstItem="iH9-aF-Etx" firstAttribute="top" secondItem="Ydl-VB-Ey5" secondAttribute="bottom" constant="22" id="dYq-ae-C2y"/>
-                            <constraint firstItem="OVG-dO-FqO" firstAttribute="leading" secondItem="iH9-aF-Etx" secondAttribute="leading" id="fZl-NK-4uu"/>
-                            <constraint firstItem="OVG-dO-FqO" firstAttribute="top" secondItem="nWs-TW-EHP" secondAttribute="bottom" constant="16" id="frC-Bi-Ghm"/>
                             <constraint firstItem="il0-7d-vr5" firstAttribute="top" secondItem="cmi-QC-Ht5" secondAttribute="bottom" constant="22" id="gjo-Oj-18U"/>
                             <constraint firstItem="PYF-T5-yet" firstAttribute="trailing" secondItem="Ydl-VB-Ey5" secondAttribute="trailing" id="khj-jy-btt"/>
                             <constraint firstItem="PYF-T5-yet" firstAttribute="trailing" secondItem="UaV-in-ibf" secondAttribute="trailing" constant="24" id="kiU-AO-rAs"/>
@@ -350,6 +392,7 @@
                             <constraint firstItem="il0-7d-vr5" firstAttribute="leading" secondItem="PYF-T5-yet" secondAttribute="leading" id="ouR-Fq-aVE"/>
                             <constraint firstItem="nWs-TW-EHP" firstAttribute="top" secondItem="qqO-bI-7Wb" secondAttribute="bottom" constant="22" id="pCE-Ba-uJD"/>
                             <constraint firstItem="nWs-TW-EHP" firstAttribute="leading" secondItem="PYF-T5-yet" secondAttribute="leading" id="w7B-s2-fcq"/>
+                            <constraint firstItem="OVG-dO-FqO" firstAttribute="top" secondItem="nWs-TW-EHP" secondAttribute="bottom" constant="16" id="wbm-Ok-Hdg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7vi-bE-caY"/>
@@ -359,10 +402,12 @@
                         <outlet property="emojiView3" destination="kzm-uX-aG6" id="HAv-bX-ci9"/>
                         <outlet property="emojiView4" destination="Bsg-vB-XD6" id="lw9-aO-bJS"/>
                         <outlet property="emojiView5" destination="WPJ-Pf-K6i" id="8Mv-mX-G62"/>
+                        <outlet property="lblNoReviews" destination="fE4-2p-ToT" id="Vkb-N8-8s0"/>
                         <outlet property="profileAddress" destination="A4I-xD-thU" id="bxG-CA-8gG"/>
                         <outlet property="profileEmail" destination="lBJ-QT-MXt" id="6Bu-z6-J4L"/>
                         <outlet property="profileImage" destination="iH9-aF-Etx" id="nb2-CO-H2h"/>
                         <outlet property="profileName" destination="UaV-in-ibf" id="ldU-WU-7wn"/>
+                        <outlet property="tableView" destination="hVO-6v-N5v" id="R8E-To-5kD"/>
                         <outlet property="topview" destination="Ydl-VB-Ey5" id="WkB-6i-MsM"/>
                         <outlet property="varifyEmailBtn" destination="A7q-vx-5l8" id="xJ0-k7-cmc"/>
                         <outlet property="varifyEmailStackView" destination="qqO-bI-7Wb" id="cbe-CJ-7sh"/>
