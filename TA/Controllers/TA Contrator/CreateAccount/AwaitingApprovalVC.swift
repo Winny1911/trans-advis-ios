@@ -84,10 +84,10 @@ class AwaitingApprovalVC: BaseViewController {
     @IBAction func crossButtonAction(_ sender: UIButton) {
         if self.isFrom == "Login" {
             self.dismiss(animated: true, completion: nil)
-            } else {
-                self.dismiss(animated: true, completion: nil)
-                self.completionHandlerGoToLogin?()
-            }
+        } else {
+            self.dismiss(animated: true, completion: nil)
+            self.completionHandlerGoToLogin?()
+        }
     }
     
     @IBAction func actionEditDetails(_ sender: Any) {
@@ -102,8 +102,12 @@ class AwaitingApprovalVC: BaseViewController {
         //sendToEmail(emailTo: "help@ta123.com")
     }
     @IBAction func doLogout(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-        self.completionHandlerGoToLogin?()
+        if self.isFrom == "Login" {
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            self.dismiss(animated: true, completion: nil)
+            self.completionHandlerGoToLogin?()
+        }
     }
     
     fileprivate func openGmailSupportAction(withFrom: String?, withSubject: String?) -> UIAlertAction? {

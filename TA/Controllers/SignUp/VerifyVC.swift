@@ -26,11 +26,11 @@ class VerifyVC: BaseViewController {
         self.verifyView.roundCorners(corners: [.topLeft, .topRight], radius: 18.0)
         btnResend.titleLabel?.font = UIFont(name: PoppinsFont.medium, size: 18.0)
         
-//        self.viewModel.checkEmailVerify { [weak self] in
-//            self?.dismiss(animated: true, completion: {
-//                self?.completionHandlerGoToCreateProfile?()
-//            })
-//        }
+        //        self.viewModel.checkEmailVerify { [weak self] in
+        //            self?.dismiss(animated: true, completion: {
+        //                self?.completionHandlerGoToCreateProfile?()
+        //            })
+        //        }
     }
     
     @IBAction func actionResend(_ sender: Any) {
@@ -79,25 +79,17 @@ class VerifyVC: BaseViewController {
                         ChatHistoryModel.fetchChatHistory()
                         
                         if model?.data?.userType == UserType.homeOwner {
-                            if model?.data?.emailVerified == 1 {
-                                if model?.data?.firstName != "" && model?.data?.firstName != nil {
-                                    TA_Storage.shared.iskProfileCreated = true
-                                    
-                                    self.changeRootController(storyboadrId: "TabBarHO", bundle: nil, controllerId: "TabBarHOVC")
-                                }
+                            
+                            if model?.data?.firstName != "" && model?.data?.firstName != nil {
+                                TA_Storage.shared.iskProfileCreated = true
+                                
+                                self.changeRootController(storyboadrId: "TabBarHO", bundle: nil, controllerId: "TabBarHOVC")
                             }
-                        } //else {
-//                            let destinationViewController = Storyboard.signUp.instantiateViewController(withIdentifier: "UploadLicenceVC") as? UploadLicenceVC
-//                            destinationViewController?.viewModelSignup = self.viewModel
-//                            self.present(destinationViewController!, animated: true)
-//                            self.changeRootController(storyboadrId: "CreateAccountTAC", bundle: nil, controllerId: "UploadLicenceVC")
-                        //}
+                            
+                        } else {
+                            self.changeRootController(storyboadrId: "CreateAccountTAC", bundle: nil, controllerId: "UploadLicenceVC")
+                        }
                     }
-                }
-                else {
-//                    if let errorMsg = strongSelf.viewModelLogin.error {
-//                        showMessage(with: errorMsg)
-//                    }
                 }
             }
         }

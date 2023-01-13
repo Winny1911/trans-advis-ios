@@ -207,7 +207,7 @@ class SignUpVC: BaseViewController {
         let firstName = firstNameTextField.text?.trimmed ?? ""
         let lastName = lastNameTextField.text?.trimmed ?? ""
         let phoneNumber = replaceSpecialCharFromPhoneNumber(phoneNumber: phoneNumberTextField.text?.trimmed ?? "")
-        let emailVerified = 1
+        let emailVerified = 0
         let state = stateTextField.text?.trimmed ?? ""
         let city = cityTextField.text?.trimmed ?? ""
         let addressLine1 = addressLine1TextField.text?.trimmed ?? ""
@@ -241,7 +241,7 @@ class SignUpVC: BaseViewController {
                             fireBaseUserTable().updateOwnProfileOnFirebase()
                             TA_Storage.shared.rememberLoginEmail = model?.data?.email ?? ""
                             UserDefaults.standard.set(nil, forKey: "BankId")
-                            if model?.data?.userType == UserType.homeOwner {
+                            //if model?.data?.userType == UserType.homeOwner {
                                 let destinationViewController = Storyboard.signUp.instantiateViewController(withIdentifier: "VerifyVC") as? VerifyVC
                                 //                            destinationViewController!.completionHandlerGoToCreateProfile = { [weak self] in
                                 //                                guard let strongSelf = self else { return }
@@ -251,9 +251,10 @@ class SignUpVC: BaseViewController {
                                 destinationViewController!.modalPresentationStyle = .overCurrentContext
                                 destinationViewController?.viewModel = self!.viewModel
                                 self?.present(destinationViewController!, animated: true)
-                            } else {
-                                self?.changeRootController(storyboadrId: "CreateAccountTAC", bundle: nil, controllerId: "UploadLicenceVC")
-                            }
+//                            } else {
+//                                let destinationViewController = Storyboard.signUp.instantiateViewController(withIdentifier: "VerifyVC") as? VerifyVC
+//                                //self?.changeRootController(storyboadrId: "CreateAccountTAC", bundle: nil, controllerId: "UploadLicenceVC")
+//                            }
                         }
                     }
                 } else {

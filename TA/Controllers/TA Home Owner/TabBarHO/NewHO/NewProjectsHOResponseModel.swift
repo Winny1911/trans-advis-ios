@@ -34,7 +34,7 @@ struct NewProjectsDetail : Codable {
     var country : String?
     var createdAt : String?
     var description : String?
-    var homeowner_rating : String?
+    var homeowner_rating : HomeownerRatingDetails?
     var id : Int?
     var price : Int?
     var projectCategoriesId : Int?
