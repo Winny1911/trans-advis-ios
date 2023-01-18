@@ -22,7 +22,9 @@ class AddEditBankDetailVC: BaseViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.accountHolderNameTextField.delegate = self
+        if self.accountHolderNameTextField != nil {
+            self.accountHolderNameTextField.delegate = self
+        }
         self.branchTextField.delegate = self
         self.txtFldSSN.delegate = self
         

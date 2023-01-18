@@ -17,11 +17,12 @@ class SubTaskVC: BaseViewController {
    // @IBOutlet weak var addProjectFileButton: UIButton!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var sentMessageButton: UIButton!
+    @IBOutlet weak var lblTaskCompleted: UILabel!
+    @IBOutlet weak var pvProgressTaskClompleted: UIProgressView!
     var item = ["item 1","item 2","item 3","item 4"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //bottomView.isHidden = true
         
         bottomView.layer.masksToBounds = false
         bottomView.layer.shadowColor = UIColor.lightGray.cgColor
@@ -40,13 +41,11 @@ class SubTaskVC: BaseViewController {
         oredrMaterialButton.layer.borderWidth = 1.5
         transactionsButton.layer.borderColor = (UIColor( red: 78/255, green: 199/255, blue:41/255, alpha: 1.0 )).cgColor
         transactionsButton.layer.borderWidth = 1.5
-       // addProjectFileButton.layer.borderColor = (UIColor( red: 250/255, green: 147/255, blue:101/255, alpha: 1.0 )).cgColor
-       // addProjectFileButton.layer.borderWidth = 0.5
         
         self.projectFileCollectionView.register(UINib(nibName: "ProjectFileCollecrtionView", bundle: nil), forCellWithReuseIdentifier: "ProjectFileCollecrtionView")
         
         blackView.isHidden = true
-
+        self.setProgressBarWhitTasksClompleted()
     }
     
     @IBAction func orderMaterialBtnAction(_ sender: Any) {
@@ -87,5 +86,15 @@ extension SubTaskVC: UICollectionViewDataSource{
             return cell
         }
         return UICollectionViewCell()
+    }
+}
+
+extension SubTaskVC {
+    func setProgressBarWhitTasksClompleted() {
+        let _ = item.map { task in
+            self.lblTaskCompleted.text = task
+        }
+        
+        pvProgressTaskClompleted.progress = Float( item.count/100)
     }
 }

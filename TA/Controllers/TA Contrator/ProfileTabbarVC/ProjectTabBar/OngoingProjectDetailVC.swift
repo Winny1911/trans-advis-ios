@@ -62,6 +62,9 @@ class OngoingProjectDetailVC: BaseViewController {
     @IBOutlet weak var btnMainProject: UIButton!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var lblTasksCompleted: UILabel!
+    @IBOutlet weak var pvTasksProgressCompleted: UIProgressView!
+    
     var subtaskComptedId = 0
     var subTaskOrderListId = 0
     var subTaskOrderId = 0
@@ -415,9 +418,10 @@ class OngoingProjectDetailVC: BaseViewController {
                 blurVwBtn.isHidden = false
                 lblStaticProjectProgress.isHidden = false
                 lineProjectFIles.isHidden = false
-                topConstraintFiles.constant = 18
+                //topConstraintFiles.constant = 18
                 
                 lblPercentage.text = "\(Int(Double(model?.data?.allProjects?.progress ?? "0") ?? Double(0.0)))%"
+               
                 if let progress = model?.data?.allProjects?.progress {
                     self.floatProgress = (Double(progress)! / Double(100.0))
                     if self.floatProgress >= 1.0 {
@@ -426,6 +430,8 @@ class OngoingProjectDetailVC: BaseViewController {
                         blurVwBtn.isHidden = false
                     }
                     progressVw.setProgressWithAnimation(duration: 1.0, value: Float(floatProgress))
+                    
+                    self.pvTasksProgressCompleted.progress = Float(floatProgress)
                 } else {
                     progressVw.setProgressWithAnimation(duration: 1.0, value: 0.0)
                 }
@@ -495,7 +501,7 @@ class OngoingProjectDetailVC: BaseViewController {
             ongoingProjectDetail = model?.data?.allProjects ?? OngoingProjectsDetail()
             subTaskOrderId = ongoingProjectDetail.projectId ?? 0
             collVwFiles.reloadData()
-            //fetchOngoingProjectTaskssDetails()
+            fetchOngoingProjectTaskssDetails()
         }
     }
     
@@ -504,6 +510,12 @@ class OngoingProjectDetailVC: BaseViewController {
             self.arrSubTaskList.removeAll()
             self.lblNoRecords.isHidden = true
             self.arrSubTaskList = model?.data?.getTasks ?? [SubTaskListReponseModelDetail]()
+            lblTasksCompleted.text = ""
+            for detail in self.arrSubTaskList {
+                if detail.status == 1 {
+                    lblTasksCompleted.text = lblTasksCompleted.text?.appending("\(detail.task!)  " ?? "")
+                }
+            }
             if self.arrSubTaskList.count <= 0 {
                 blurVwBtn.isHidden = true
             } else {

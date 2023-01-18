@@ -36,23 +36,25 @@ class AgreementVC: BaseViewController {
         navigationController?.navigationBar.isHidden = true
         bgView.addCustomShadow()
         saveBtn.setRoundCorners(radius: 6.0)
+        saveBtn.isEnabled = true
         nextBtn.setRoundCorners(radius: 6.0)
         
         setIndicator()
                 
         if self.isFrom == "InvitedTaskCO" {
+            linkStr = "\(APIUrl.UserApis.agreementTaskDocument)projectId=\(projectId)&userId=\(userId)&bidId=\(bidId)"
             self.saveAreementSubtaskApiCall()
 //            self.saveAreementApiCall()
-//            linkStr = "\(APIUrl.UserApis.agreementTaskDocument)projectId=\(projectId)&userId=\(userId)&bidId=\(bidId)"
+            
         } else {
             self.saveAreementApiCall()
-//            linkStr = "\(APIUrl.UserApis.agreementDocument)projectId=\(projectId)&userId=\(userId)&bidId=\(bidId)"
+            linkStr = "\(APIUrl.UserApis.agreementDocument)projectId=\(projectId)&userId=\(userId)&bidId=\(bidId)"
         }
         
-//        let link = URL(string:linkStr)!
-//        let request = URLRequest(url: link)
-//        webViewCookieStore = webVww.configuration.websiteDataStore.httpCookieStore
-//        webVww.load(request)
+        let link = URL(string:linkStr)!
+        let request = URLRequest(url: link)
+        webViewCookieStore = webVww.configuration.websiteDataStore.httpCookieStore
+        webVww.load(request)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,10 +84,12 @@ class AgreementVC: BaseViewController {
         viewBidsVM.saveAgreementApiCall(param) { model in
             self.linkStr = model?.data?.app?.downloadURL ?? ""
 
-            let link = URL(string:self.linkStr)!
-            let request = URLRequest(url: link)
-            self.webViewCookieStore = self.webVww.configuration.websiteDataStore.httpCookieStore
-            self.webVww.load(request)
+            if let link = URL(string:self.linkStr) {
+                let request = URLRequest(url: link)
+                self.webViewCookieStore = self.webVww.configuration.websiteDataStore.httpCookieStore
+                self.webVww.load(request)
+            }
+            
         }
     }
 
@@ -210,7 +214,7 @@ extension AgreementVC :WKUIDelegate, WKNavigationDelegate{
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true
         activityIndicator.style = .medium
-
+        saveBtn.isHidden = true
         view.addSubview(activityIndicator)
     }
     
