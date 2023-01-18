@@ -62,7 +62,9 @@ class OngoingProjectDetailVC: BaseViewController {
     @IBOutlet weak var btnMainProject: UIButton!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var topView: UIView!
-    @IBOutlet weak var lblTasksCompleted: UILabel!
+
+    @IBOutlet weak var lblTasksCompleted: UITextView!
+    
     @IBOutlet weak var pvTasksProgressCompleted: UIProgressView!
     
     var subtaskComptedId = 0
@@ -114,6 +116,8 @@ class OngoingProjectDetailVC: BaseViewController {
         topView.layer.shadowRadius = 5.0
         topView.layer.shadowOpacity = 0.5
         topView.layer.shadowOffset = CGSize.zero
+        
+        pvTasksProgressCompleted.transform = pvTasksProgressCompleted.transform.scaledBy(x: 1, y: 3)
         
 //        selectedType = "Main"
         self.handleSelection(selectedBtn: btnMainProject, unselectedButton1: btnTasks, unselectedButton2: btnOrderlist, selectedView: bottomvwMainProject, unselectedView1: bottomVwTasks, unselectedView2: bottomVwOrderlist)
@@ -513,7 +517,7 @@ class OngoingProjectDetailVC: BaseViewController {
             lblTasksCompleted.text = ""
             for detail in self.arrSubTaskList {
                 if detail.status == 1 {
-                    lblTasksCompleted.text = lblTasksCompleted.text?.appending("\(detail.task!)  " ?? "")
+                    lblTasksCompleted.text = lblTasksCompleted.text?.appending("\(detail.task!)\n" ?? "")
                 }
             }
             if self.arrSubTaskList.count <= 0 {
