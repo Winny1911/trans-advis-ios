@@ -1164,11 +1164,6 @@
                             <constraint firstItem="zhu-og-eQ6" firstAttribute="trailing" secondItem="SBi-NQ-xo3" secondAttribute="trailing" id="rzE-ne-AZO"/>
                             <constraint firstItem="MIP-Jb-TFn" firstAttribute="top" secondItem="0wf-rw-4sm" secondAttribute="top" id="w8Y-9r-3V2"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="TSJ-rI-Y0Z"/>
-                            </mask>
-                        </variation>
                     </view>
                     <size key="freeformSize" width="414" height="1200"/>
                     <connections>
