@@ -57,7 +57,7 @@ struct OngoingProjectsDetail : Codable {
     var project_details : OngoingProjecDetails?
 }
 struct HomeownerRatingDetails : Codable {
-    var HomeOwnerRatingImages : [HomeOwnerRatingImagesDetails]?
+    var HomeOwnerRatingImages : [HomeOwnerRatingImages]?
     var createdAt : String?
     var feedback1 : String?
     var feedback2 : String?
@@ -73,8 +73,18 @@ struct HomeownerRatingDetails : Codable {
     var userId : Int?
 }
 
-struct HomeOwnerRatingImagesDetails : Codable {
-    
+struct HomeOwnerRatingImages : Codable {
+    var createdAt : String?
+    var file : String?
+    var id : Int?
+    var isBlocked : Int?
+    var isDeleted : Int?
+    var projectId : Int?
+    var ratingId : Int?
+    var title : String?
+    var type : String?
+    var updatedAt : String?
+    var userId : Int?
 }
 
 struct OngoingProjecDetails : Codable {

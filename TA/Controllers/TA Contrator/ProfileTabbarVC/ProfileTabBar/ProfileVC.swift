@@ -380,6 +380,9 @@ extension ProfileVC: UITableViewDelegate,UITableViewDataSource{
 
             var rating = reviewData?[indexPath.row].rating
             var ratingValue = Double(rating ?? 0)
+        
+        cell.viewModelCO = getReviewCOVM
+        cell.isContractor = true
             print("rating--\(ratingValue)")
 //            let ratingValue = Double(rating)
         cell.emojiVw1.isHidden = false
@@ -425,8 +428,15 @@ extension ProfileVC: UITableViewDelegate,UITableViewDataSource{
 //                cell.emojiVw5.isHidden = true
 //            }
 
-        if reviewData?[indexPath.row].ratingImages?.count != 0{
-            cell.collectionView.reloadData()
+        if reviewData?[indexPath.row].ratingImages?.count != 0 {
+            if reviewData?[indexPath.row].ratingImages != nil {
+                cell.index = indexPath.row
+                cell.collectionView.reloadData()
+            } else {
+                cell.profileImages.image = UIImage(named: "emptyImage")
+            }
+        } else {
+            cell.profileImages.image = UIImage(named: "emptyImage")
         }
 
         return cell

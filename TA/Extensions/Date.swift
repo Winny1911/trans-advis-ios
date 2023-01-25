@@ -34,6 +34,7 @@ class DateHelper {
         let date = dateFormatter.date(from: dateString)
         dateFormatter.timeZone = TimeZone.current
         dateFormatter.dateFormat = desFormat
+        guard date != nil else { return "" }
         return dateFormatter.string(from: date!)
     }
     

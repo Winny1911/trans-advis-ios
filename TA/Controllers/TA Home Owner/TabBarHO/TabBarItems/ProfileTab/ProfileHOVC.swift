@@ -39,6 +39,7 @@ class ProfileHOVC: BaseViewController {
     // MARK: Review
     var reviewDataReload: (() -> ())?
     var getReviewCOVM: GetReviewCOVM = GetReviewCOVM()
+    var getReviewVM: GetReviewVM = GetReviewVM()
     var reviewData: [ReviewData]?
     
     
@@ -100,7 +101,8 @@ class ProfileHOVC: BaseViewController {
     func getReviewGetAPI(){
         if let obj = UserDefaults.standard.retrieve(object: UserProfileDataDetail.self, fromKey: TA_Storage.TA_Storage_Constants.kPersonalDetailsData)
         {
-            getReviewCOVM.getReviewApiCall(obj.id ?? 0) { model in
+            getReviewVM.getReviewApiCall(obj.id ?? 0) { model in
+            //getReviewCOVM.getReviewApiCall(obj.id ?? 0) { model in
                 self.reviewData = model?.data?.reviews
                 if self.reviewData?.count ?? 0 <= 0 {
                     self.tableView.isHidden = true
@@ -182,6 +184,7 @@ extension ProfileHOVC : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AllReviewTableViewCell", for: indexPath) as!AllReviewTableViewCell
         cell.descriptionLbl.text = reviewData?[indexPath.row].overAllFeedback
+        cell.viewModel = getReviewVM
         
         var firstName = reviewData?[indexPath.row].userDetail?.firstName ?? ""
         var lastName = reviewData?[indexPath.row].userDetail?.lastName ?? ""
@@ -216,9 +219,19 @@ extension ProfileHOVC : UITableViewDelegate,UITableViewDataSource{
         else if ratingValue ?? Double(0.0) <= Double(1.9) && ratingValue ?? Double(0.0) >= Double(1.0){
             cell.emojiVw1.isHidden = true
         }
-        if reviewData?[indexPath.row].ratingImages?.count != 0{
-            cell.collectionView.reloadData()
+        
+        if reviewData?[indexPath.row].ratingImage != nil {
+            if (reviewData?[indexPath.row].ratingImage!.count)! > 0 {
+                cell.index = indexPath.row
+                cell.collectionView.isHidden = false
+                cell.collectionView.reloadData()
+            } else {
+                cell.collectionView.isHidden = true
+            }
+        } else {
+            cell.collectionView.isHidden = true
         }
+        
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

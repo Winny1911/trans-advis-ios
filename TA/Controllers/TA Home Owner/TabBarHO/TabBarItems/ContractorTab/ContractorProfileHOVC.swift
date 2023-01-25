@@ -362,6 +362,7 @@ extension ContractorProfileHOVC: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AllReviewTableViewCell", for: indexPath) as!AllReviewTableViewCell
         cell.conID = contractorID
+        cell.isContractor = true
         cell.GetApiHit()
         cell.descriptionLbl.text = reviewViewModel.reviewData[indexPath.row].overAllFeedback
         cell.nameLbl.text = reviewViewModel.reviewData[indexPath.row].userDetail?.firstName
@@ -370,8 +371,8 @@ extension ContractorProfileHOVC: UITableViewDelegate,UITableViewDataSource{
             
             cell.profileImages.sd_setImage(with: URL(string: imgStr), placeholderImage: UIImage(named: "Ic_profile"), completed: nil)
             
-            var rating = reviewViewModel.reviewData[indexPath.row].rating
-            var ratingValue = Double(rating ?? 0)
+            let rating = reviewViewModel.reviewData[indexPath.row].rating
+            let ratingValue = Double(rating ?? 0)
             print("rating--\(ratingValue)")
             
 //            let ratingValue = Double(rating)
@@ -420,7 +421,7 @@ extension ContractorProfileHOVC: UITableViewDelegate,UITableViewDataSource{
         }
         //}
         
-        if reviewViewModel.reviewData[indexPath.row].ratingImages?.count != 0{
+        if reviewViewModel.reviewData[indexPath.row].ratingImage?.count != 0{
            
             cell.collectionView.reloadData()
            
@@ -429,7 +430,7 @@ extension ContractorProfileHOVC: UITableViewDelegate,UITableViewDataSource{
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-         if reviewViewModel.reviewData[indexPath.row].ratingImages?.count != 0{
+         if reviewViewModel.reviewData[indexPath.row].ratingImage?.count != 0{
         return 320
          }
         return 200
