@@ -30,6 +30,7 @@ class ProjectCompletedVC: BaseViewController {
     private var userImage: String?
     var dataPass = [String]()
     var fullViewImge = [String]()
+    var arrList = [[String:String]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +53,8 @@ class ProjectCompletedVC: BaseViewController {
         projectCompletedViewModel.addImageeApi(keyToUploadData: "file", fileNames: "\(fileName)", dataToUpload: imageData, param: [:]) { response in
             print(response!)
             let dataDict = response!["data"] as! NSDictionary
+            self.arrList.append(["name":"\(String(describing:dataDict["name"]!))" ,
+                                 "image":"\(String(describing: dataDict["name"]!))"])
             let randomName = "\(self.randomString())"
             let dict = ["name": randomName, "image":dataDict["name"] as! String]
             self.arrOfFilesToBeSent.append(dict)
@@ -92,12 +95,10 @@ class ProjectCompletedVC: BaseViewController {
         } else {
             let params = ["projectId": "\(self.projectIdComplete )","ProjectFiles": self.arrOfFilesToBeSent.toJSONString() ] as [String : Any]
             projectCompletedViewModel.uploadFiles(params: params) { response in
-//                self.updateStatusOngoingProject()
                 let destinationViewController = Storyboard.feedback.instantiateViewController(withIdentifier: "FeedBackScreenCOVC") as? FeedBackScreenCOVC
-                
-//                destinationViewController?.id  = userDetail?.id ?? 0
                 destinationViewController?.projectIdComplete = self.projectIdComplete
                 destinationViewController?.dataPass = self.dataPass
+                destinationViewController?.arrOfImages = self.arrList
                 destinationViewController?.completionHandlerGoToOnPastListing = { [weak self] in
                     self?.navigationController?.popViewController(animated: true)
                     self?.completionHandlerGoToOnPastListing?()
@@ -500,6 +501,8 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
                 let image    = UIImage(contentsOfFile: imageURL.path)
                 self.arrOfImages.append(image!)
                 self.arrOfNamesImages.append(fileName)
+                let nameFromFile = fileName.split(separator: ".")
+                
                 self.imageSendAPI(imageData: image!.jpegData(compressionQuality: 0.8)!, fileName: fileName)
             }
         }
@@ -529,7 +532,9 @@ extension ProjectCompletedVC: UIDocumentPickerDelegate {
         print("import result : \(myURL)")
         self.docURL = myURL
         self.arrOfImages.append(UIImage(named: "doc")!)
-        self.arrOfNamesImages.append("\(randomString()).doc")
+        let randomName = randomString()
+        self.arrOfNamesImages.append("\(randomName).doc")
+        
         self.docSendAPI(localFileURL: myURL, fileName: "\(randomString()).pdf")
     }
 

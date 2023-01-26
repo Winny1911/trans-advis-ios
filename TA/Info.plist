@@ -5,7 +5,7 @@
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Need microphone access for uploading audio</string>
 	<key>BaseURL</key>
-	<string>http://186.237.229.127:3002</string>
+	<string>http://191.252.93.219:3002</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>googlegmail</string>

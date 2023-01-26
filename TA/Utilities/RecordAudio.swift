@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import AVFAudio
 
+
 class RecordAudio: UIView , AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     
     var recordButton : UIButton!
@@ -17,6 +18,9 @@ class RecordAudio: UIView , AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
     var audioPlayer:AVAudioPlayer!
+    //var observableURL: Observable<String>
+    //var urlAudio: String
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,6 +37,7 @@ class RecordAudio: UIView , AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     }
     
     func setupView() {
+        
         recordingSession = AVAudioSession.sharedInstance()
         
         do {
@@ -41,6 +46,7 @@ class RecordAudio: UIView , AVAudioRecorderDelegate, AVAudioPlayerDelegate {
             recordingSession.requestRecordPermission() { [unowned self] allowed in
                 DispatchQueue.main.async {
                     if allowed {
+                        self.setupObserver()
                         self.loadRecordingUI()
                     } else {
                         // failed to record
@@ -52,12 +58,17 @@ class RecordAudio: UIView , AVAudioRecorderDelegate, AVAudioPlayerDelegate {
         }
     }
     
+    func setupObserver() {
+        //self.urlAudio = observableURL
+    }
+    
     func loadRecordingUI() {
         recordButton = UIButton.init(frame: CGRect(x: 10, y: 10, width: 300, height: 100))
         recordButton.isEnabled = true
         recordButton.setTitle("Recording...    Stop Recording", for: .normal)
         recordButton.addTarget(self, action: #selector(finishRecording), for: .touchUpInside)
         self.addSubview(recordButton)
+        recordButton.isHidden = false
         startRecording()
     }
     
@@ -91,6 +102,7 @@ class RecordAudio: UIView , AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     }
     
     @objc func finishRecording(success: Bool = false) {
+        recordButton.isHidden = true
         audioRecorder.stop()
         audioRecorder = nil
         
@@ -100,6 +112,7 @@ class RecordAudio: UIView , AVAudioRecorderDelegate, AVAudioPlayerDelegate {
 //            recordButton.setTitle("Tap to Record", for: .normal)
 //            // recording failed :(
 //        }
+        
         playAudioFromURL()
         recordButton.isEnabled = true
     }

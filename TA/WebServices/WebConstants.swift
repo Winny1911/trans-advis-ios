@@ -29,7 +29,7 @@ struct GenericErrorMessages {
 
 struct APIUrl {
     // local: https://p2-api.ta123test.com
-    // live: http://186.237.229.127:3002
+    // live: http://191.252.93.219:3002
     static let host                   = Bundle.main.object(forInfoDictionaryKey: "BaseURL") as! String
     static let baseUrlWithOutHttp       = Bundle.main.object(forInfoDictionaryKey: "BASE_URL_WITHOUT_HTTP") as! String
         

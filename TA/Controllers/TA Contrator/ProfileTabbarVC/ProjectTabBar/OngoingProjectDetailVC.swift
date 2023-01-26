@@ -361,20 +361,22 @@ class OngoingProjectDetailVC: BaseViewController {
                 let amount = Double(realAmount)
                 let formattedString = formatter.string(for: amount)
                 lblContractAmt.text =  "$ \(formattedString ?? "")"
-                
-                if let str = model?.data?.allProjects?.project_details?.bids?[0].bids_documents?[0].title ?? "" as? String {
-                    if (str.contains(".png")) || (str.contains(".jpeg")) || (str.contains(".jpg")) {
-                        lblContract.text = "\(model?.data?.allProjects?.project_details?.bids?[0].bids_documents?[0].title ?? "").png"
+                if !(model?.data?.allProjects?.project_details?.bids?[0].bids_documents?.isEmpty ?? false) {
+                    if let str = model?.data?.allProjects?.project_details?.bids?[0].bids_documents?[0].title ?? "" as? String {
+                        if (str.contains(".png")) || (str.contains(".jpeg")) || (str.contains(".jpg")) {
+                            lblContract.text = "\(model?.data?.allProjects?.project_details?.bids?[0].bids_documents?[0].title ?? "").png"
+                        } else {
+                            lblContract.text = "\(model?.data?.allProjects?.project_details?.bids?[0].bids_documents?[0].title ?? "").doc"
+                        }
                     } else {
                         lblContract.text = "\(model?.data?.allProjects?.project_details?.bids?[0].bids_documents?[0].title ?? "").doc"
                     }
-                } else {
-                    lblContract.text = "\(model?.data?.allProjects?.project_details?.bids?[0].bids_documents?[0].title ?? "").doc"
+                    downloadFileName = "\(model?.data?.allProjects?.project_details?.bids?[0].bids_documents?[0].title ?? "")"
+                    downloadFileUrl = "\(model?.data?.allProjects?.project_details?.bids?[0].bids_documents?[0].file ?? "")"
+                    lblStartDate.text = DateHelper.convertDateString(dateString: model?.data?.allProjects?.project_details?.bids?[0].proposedStartDate ?? "2024-04-08T00:00:00.000Z", fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: "dd MMM yyyy")
+                    lblEndDate.text = DateHelper.convertDateString(dateString: model?.data?.allProjects?.project_details?.bids?[0].proposedEndDate ?? "2024-04-08T00:00:00.000Z", fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: "dd MMM yyyy")
                 }
-                downloadFileName = "\(model?.data?.allProjects?.project_details?.bids?[0].bids_documents?[0].title ?? "")"
-                downloadFileUrl = "\(model?.data?.allProjects?.project_details?.bids?[0].bids_documents?[0].file ?? "")"
-                lblStartDate.text = DateHelper.convertDateString(dateString: model?.data?.allProjects?.project_details?.bids?[0].proposedStartDate ?? "2024-04-08T00:00:00.000Z", fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: "dd MMM yyyy")
-                lblEndDate.text = DateHelper.convertDateString(dateString: model?.data?.allProjects?.project_details?.bids?[0].proposedEndDate ?? "2024-04-08T00:00:00.000Z", fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: "dd MMM yyyy")
+                
             }
             if model?.data?.allProjects?.project_details?.status == 2 {
                 self.btnMarkCompleted.setTitle("Mark Completed", for: .normal)

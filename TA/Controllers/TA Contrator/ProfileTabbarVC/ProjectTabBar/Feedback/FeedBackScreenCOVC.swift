@@ -37,6 +37,8 @@ class FeedBackScreenCOVC: BaseViewController,UITextViewDelegate {
     var rating = 0
     var profileImage = ""
     var projectIdComplete = 0
+    var arrOfImages = [[String:String]]()
+    var feedBackHOVM: FeedBackHOVM = FeedBackHOVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -129,38 +131,23 @@ class FeedBackScreenCOVC: BaseViewController,UITextViewDelegate {
         rating = 5
     }
     
-    
     @IBAction func SubmitBtnAction(_ sender: UIButton) {
-//        let firstName = dataPass[0]
-//        let lastName = dataPass[1]
         let homeId = dataPass[2]
-//        let image = dataPass[3]
         let projectId = dataPass[4]
-//        if image == ""{
-//            profileImage = "hjj"
-//        }
-//        else{
-//            profileImage = image
-//        }
-//        var arr = [Any]()
-//        var ratingImg = [String:Any]()
-//        ratingImg = [
-//            "name" : firstName + lastName,
-//            "image" :  profileImage
-//        ] as [String : Any]
-//        arr.append(ratingImg)
-//
+        
+        print(" aqui esta as imagens ---> \(arrOfImages)")
+        
         var param = NSDictionary()
         param = [
             "overAllFeedback": messageTextView.text ?? "",
-            "ratingImages": [],
+            "ratingImages": arrOfImages,
             "rating": "\(rating)",
             "homeownerId": "\(homeId)",
             "projectId": "\(projectId)"
         ] as [String : Any] as NSDictionary
       
-        var prms = NSDictionary()
-        prms = ["apicontractorrating" : param]
+//        var prms = NSDictionary()
+//        prms = ["apicontractorrating" : param]
         feedbackCOViewModel.postFeedbackCOApiCall(param as! [String : Any]) { model in
             self.updateStatusOngoingProject()
         }
