@@ -37,6 +37,7 @@ struct ReviewData: Codable {
     let feedback1, feedback2, feedback3, overAllFeedback: String?
     let isDeleted, isBlocked: Int?
     let createdAt, updatedAt: String?
+    let ratingImage: [RatingImage]?
     let ratingImages: [RatingImage]?
     let userDetail: UserDetails?
 
@@ -46,6 +47,7 @@ struct ReviewData: Codable {
         case contractorID = "contractorId"
         case userID = "userId"
         case rating, feedback1, feedback2, feedback3, overAllFeedback, isDeleted, isBlocked, createdAt, updatedAt
+        case ratingImage = "HomeOwnerRatingImages"
         case ratingImages = "rating_images"
         case userDetail = "user_detail"
     }

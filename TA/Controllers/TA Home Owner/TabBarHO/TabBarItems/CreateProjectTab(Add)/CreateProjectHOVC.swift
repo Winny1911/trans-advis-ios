@@ -391,7 +391,8 @@ class CreateProjectHOVC: BaseViewController {
         let typeSkillStr = self.selectedSkill
         let price2 = txtFldBudget.text?.trimmed ?? ""
         let price3 = price2.replacingOccurrences(of: "$ ", with: "")
-        let price = price3.replacingOccurrences(of: ",", with: "")
+        let price4 = price3.replacingOccurrences(of: ",", with: "")
+        let price = price4.replacingOccurrences(of: ".", with: "")
         let street = streetTextField.text?.trimmed ?? ""
         let city = cityTextField.text?.trimmed ?? ""
         let state = stateTextField.text?.trimmed ?? ""

@@ -235,13 +235,9 @@ class CreateAccountTACVM: NSObject {
             error = ValidationError.emptyAccountNumber
             completion(nil, error)
             return
-        } else if !modelBankAccount.accountNumber.isValidAccountNumberr {
+        } else if !modelBankAccount.accountNumber.isValidAccountNumber {
             error = ValidationError.invalidAccountNumber
             completion(nil, error)
-        } else if modelBankAccount.accountName.isEmpty {
-            error = ValidationError.emptyAccountName
-            completion(nil, error)
-            return
         } else if modelBankAccount.routing.isEmpty {
             error = ValidationError.emptyRouting
             completion(nil, error)
@@ -256,6 +252,14 @@ class CreateAccountTACVM: NSObject {
             } else {
                 completion(modelBankAccount, nil)
             }
+        } else if modelBankAccount.bankName.isEmpty {
+            error = ValidationError.emptyBankName
+            completion(nil, error)
+            return
+        } else if !modelBankAccount.bankName.isValidBankName {
+            error = ValidationError.invalidBankName
+            completion(nil, error)
+            return
         } else {
             completion(modelBankAccount, nil)
         }
@@ -277,7 +281,7 @@ class CreateAccountTACVM: NSObject {
     func addLicenseApi(localFileUrl:URL,  keyToUploadData:String, fileNames:String, _ result:@escaping([String : Any]?) -> Void){
         Progress.instance.show()
         let headers: [String: String] = ["authorization": TA_Storage.shared.apiAccessToken]
-           ApiManager<SignupResponseModel>.multipartRequest(APIUrl.UserApis.fileUpload, localFileUrl: localFileUrl, keyToUploadData:keyToUploadData, fileNames: fileNames, headers: headers) { (response) in
+           ApiManager<SignupResponseModel>.multipartRequest(APIUrl.UserApis.createLicense, localFileUrl: localFileUrl, keyToUploadData:keyToUploadData, fileNames: fileNames, headers: headers) { (response) in
                  Progress.instance.hide()
                  print(response!)
                  if response?["statusCode"] as! Int == 200{

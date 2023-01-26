@@ -24,8 +24,9 @@ class ChatWindowViewController: CameraBaseViewController {
     @IBOutlet weak var textView: GrowingTextView!
     @IBOutlet weak var bottomViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
-    lazy var viewModel = ChatWindowViewModel()
     
+    lazy var viewModel = ChatWindowViewModel()
+    var urlRecordAudio = ""
     
     // MARK: - View Life cycle
     override func viewWillAppear(_ animated: Bool) {
@@ -92,6 +93,19 @@ class ChatWindowViewController: CameraBaseViewController {
         self.getAllChatMessages()
         self.registerTableViewCells()
         self.setHeaderData()
+        self.setObserverUrlAttachment()
+    }
+    func setObserverUrlAttachment() {
+        
+    }
+    func buildViewRecordAudio() {
+        let viewRecordAudio = UIView(frame: CGRect(x: self.bottomView.layer.position.x-150.0, y: self.bottomView.layer.position.y-100.0, width: self.bottomView.frame.width-50, height: 100))
+        viewRecordAudio.backgroundColor = .lightGray
+        viewRecordAudio.roundCorners(corners: .allCorners, radius: 50)
+        
+        self.view.addSubview(viewRecordAudio)
+        let recordAudioView = RecordAudio.init(frame: CGRect(x: 0, y: 0, width: 128, height: 100))
+        viewRecordAudio.addSubview(recordAudioView)
     }
     
     func registerTableViewCells() {
@@ -140,15 +154,19 @@ class ChatWindowViewController: CameraBaseViewController {
             let actionChooseDocument : UIAlertAction = UIAlertAction.init(title: "Choose Document", style: .default) { (action:UIAlertAction) in
                 self.chooseDocument()
             }
+//            let actionRecordAudio : UIAlertAction = UIAlertAction.init(title: "Record Audio", style: .default) { (action:UIAlertAction) in
+//                self.buildViewRecordAudio()
+//            }
             let actionCancel = UIAlertAction.init(title: "Cancel", style: .cancel, handler: { (action:UIAlertAction) in })
             
             let titleColor = UIColor(red: 43.0/255, green: 48.0/255, blue: 57.0/255, alpha: 1.0)
             actionChoosePhoto.setValue(titleColor, forKey: "titleTextColor")
             actionChooseDocument.setValue(titleColor, forKey: "titleTextColor")
+//            actionRecordAudio.setValue(titleColor, forKey: "titleTextColor")
             actionCancel.setValue(UIColor.black, forKey: "titleTextColor")
-            
             actionSheetController.addAction(actionChoosePhoto)
             actionSheetController.addAction(actionChooseDocument)
+//            actionSheetController.addAction(actionRecordAudio)
             actionSheetController.addAction(actionCancel)
             self.present(actionSheetController, animated: true, completion: nil)
         }
@@ -176,7 +194,7 @@ class ChatWindowViewController: CameraBaseViewController {
                                                                     firebase_message_time: firebase_message_time,
                                                                     chat_dialog_id: chat_dialogue_id,
                                                                     sender_id: sender_id,
-                                                                    attachment_url: "",
+                                                                    attachment_url: urlRecordAudio,
                                                                     receiver_id: receiver_id,
                                                                     other_user_profile_pic: other_user_profile_pic,
                                                                     other_user_name: other_user_name,

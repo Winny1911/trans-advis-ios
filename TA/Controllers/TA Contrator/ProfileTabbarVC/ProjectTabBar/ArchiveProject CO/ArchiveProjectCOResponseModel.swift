@@ -126,7 +126,7 @@ struct ArchiveRRating: Codable {
     let createdAt, updatedAt: String?
     let ratingImages: [ArchiveRatingImage]?
     let homeownerID: Int?
-//    let homeOwnerRatingImages: [JSONAny]?
+    let homeOwnerRatingImages: [JSONAny]?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -136,7 +136,7 @@ struct ArchiveRRating: Codable {
         case rating, feedback1, feedback2, feedback3, overAllFeedback, isDeleted, isBlocked, createdAt, updatedAt
         case ratingImages = "rating_images"
         case homeownerID = "homeownerId"
-//        case homeOwnerRatingImages = "HomeOwnerRatingImages"
+        case homeOwnerRatingImages = "HomeOwnerRatingImages"
     }
 }
 

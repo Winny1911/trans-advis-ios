@@ -62,6 +62,11 @@ class OngoingProjectDetailVC: BaseViewController {
     @IBOutlet weak var btnMainProject: UIButton!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var topView: UIView!
+
+    @IBOutlet weak var skillsCollectionView: UICollectionView!
+    
+    @IBOutlet weak var pvTasksProgressCompleted: UIProgressView!
+    
     var subtaskComptedId = 0
     var subTaskOrderListId = 0
     var subTaskOrderId = 0
@@ -88,6 +93,7 @@ class OngoingProjectDetailVC: BaseViewController {
     var idOfSubTask = 0
     var mainprojectID = 0
     var diverableData = [String]()
+    var selectedSkills = [String]()
     
     
     override func viewDidLoad() {
@@ -111,6 +117,13 @@ class OngoingProjectDetailVC: BaseViewController {
         topView.layer.shadowRadius = 5.0
         topView.layer.shadowOpacity = 0.5
         topView.layer.shadowOffset = CGSize.zero
+        
+        pvTasksProgressCompleted.transform = pvTasksProgressCompleted.transform.scaledBy(x: 1, y: 3)
+        
+        skillsCollectionView.delegate = self
+        skillsCollectionView.dataSource = self
+        
+        registerCollectionViewCell()
         
 //        selectedType = "Main"
         self.handleSelection(selectedBtn: btnMainProject, unselectedButton1: btnTasks, unselectedButton2: btnOrderlist, selectedView: bottomvwMainProject, unselectedView1: bottomVwTasks, unselectedView2: bottomVwOrderlist)
@@ -174,6 +187,10 @@ class OngoingProjectDetailVC: BaseViewController {
         let user_img = self.ongoingProjectDetail.project_details?.user_data?.profilePic ?? ""
        
         openChatWindow(user_id: user_id, user_image: user_img, user_name: user_name)
+    }
+    
+    func registerCollectionViewCell() {
+        self.skillsCollectionView.register(UINib(nibName: "SkillCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SkillCollectionViewCell")
     }
     
     func openChatWindow(user_id: String?, user_image: String?, user_name: String?) {
@@ -344,20 +361,22 @@ class OngoingProjectDetailVC: BaseViewController {
                 let amount = Double(realAmount)
                 let formattedString = formatter.string(for: amount)
                 lblContractAmt.text =  "$ \(formattedString ?? "")"
-                
-                if let str = model?.data?.allProjects?.project_details?.bids?[0].bids_documents?[0].title ?? "" as? String {
-                    if (str.contains(".png")) || (str.contains(".jpeg")) || (str.contains(".jpg")) {
-                        lblContract.text = "\(model?.data?.allProjects?.project_details?.bids?[0].bids_documents?[0].title ?? "").png"
+                if !(model?.data?.allProjects?.project_details?.bids?[0].bids_documents?.isEmpty ?? false) {
+                    if let str = model?.data?.allProjects?.project_details?.bids?[0].bids_documents?[0].title ?? "" as? String {
+                        if (str.contains(".png")) || (str.contains(".jpeg")) || (str.contains(".jpg")) {
+                            lblContract.text = "\(model?.data?.allProjects?.project_details?.bids?[0].bids_documents?[0].title ?? "").png"
+                        } else {
+                            lblContract.text = "\(model?.data?.allProjects?.project_details?.bids?[0].bids_documents?[0].title ?? "").doc"
+                        }
                     } else {
                         lblContract.text = "\(model?.data?.allProjects?.project_details?.bids?[0].bids_documents?[0].title ?? "").doc"
                     }
-                } else {
-                    lblContract.text = "\(model?.data?.allProjects?.project_details?.bids?[0].bids_documents?[0].title ?? "").doc"
+                    downloadFileName = "\(model?.data?.allProjects?.project_details?.bids?[0].bids_documents?[0].title ?? "")"
+                    downloadFileUrl = "\(model?.data?.allProjects?.project_details?.bids?[0].bids_documents?[0].file ?? "")"
+                    lblStartDate.text = DateHelper.convertDateString(dateString: model?.data?.allProjects?.project_details?.bids?[0].proposedStartDate ?? "2024-04-08T00:00:00.000Z", fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: "dd MMM yyyy")
+                    lblEndDate.text = DateHelper.convertDateString(dateString: model?.data?.allProjects?.project_details?.bids?[0].proposedEndDate ?? "2024-04-08T00:00:00.000Z", fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: "dd MMM yyyy")
                 }
-                downloadFileName = "\(model?.data?.allProjects?.project_details?.bids?[0].bids_documents?[0].title ?? "")"
-                downloadFileUrl = "\(model?.data?.allProjects?.project_details?.bids?[0].bids_documents?[0].file ?? "")"
-                lblStartDate.text = DateHelper.convertDateString(dateString: model?.data?.allProjects?.project_details?.bids?[0].proposedStartDate ?? "2024-04-08T00:00:00.000Z", fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: "dd MMM yyyy")
-                lblEndDate.text = DateHelper.convertDateString(dateString: model?.data?.allProjects?.project_details?.bids?[0].proposedEndDate ?? "2024-04-08T00:00:00.000Z", fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: "dd MMM yyyy")
+                
             }
             if model?.data?.allProjects?.project_details?.status == 2 {
                 self.btnMarkCompleted.setTitle("Mark Completed", for: .normal)
@@ -415,9 +434,10 @@ class OngoingProjectDetailVC: BaseViewController {
                 blurVwBtn.isHidden = false
                 lblStaticProjectProgress.isHidden = false
                 lineProjectFIles.isHidden = false
-                topConstraintFiles.constant = 18
+                //topConstraintFiles.constant = 18
                 
                 lblPercentage.text = "\(Int(Double(model?.data?.allProjects?.progress ?? "0") ?? Double(0.0)))%"
+               
                 if let progress = model?.data?.allProjects?.progress {
                     self.floatProgress = (Double(progress)! / Double(100.0))
                     if self.floatProgress >= 1.0 {
@@ -426,6 +446,8 @@ class OngoingProjectDetailVC: BaseViewController {
                         blurVwBtn.isHidden = false
                     }
                     progressVw.setProgressWithAnimation(duration: 1.0, value: Float(floatProgress))
+                    
+                    self.pvTasksProgressCompleted.progress = Float(floatProgress)
                 } else {
                     progressVw.setProgressWithAnimation(duration: 1.0, value: 0.0)
                 }
@@ -495,7 +517,7 @@ class OngoingProjectDetailVC: BaseViewController {
             ongoingProjectDetail = model?.data?.allProjects ?? OngoingProjectsDetail()
             subTaskOrderId = ongoingProjectDetail.projectId ?? 0
             collVwFiles.reloadData()
-            //fetchOngoingProjectTaskssDetails()
+            fetchOngoingProjectTaskssDetails()
         }
     }
     
@@ -504,6 +526,14 @@ class OngoingProjectDetailVC: BaseViewController {
             self.arrSubTaskList.removeAll()
             self.lblNoRecords.isHidden = true
             self.arrSubTaskList = model?.data?.getTasks ?? [SubTaskListReponseModelDetail]()
+            selectedSkills.removeAll()
+            for detail in self.arrSubTaskList {
+                if detail.status == 1 {
+                    selectedSkills.append("\(detail.task!)" ?? "")
+                }
+            }
+            skillsCollectionView.reloadData()
+            
             if self.arrSubTaskList.count <= 0 {
                 blurVwBtn.isHidden = true
             } else {
@@ -738,7 +768,17 @@ class OngoingProjectDetailVC: BaseViewController {
     }
 }
 
-extension OngoingProjectDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
+extension OngoingProjectDetailVC: UICollectionViewDelegate,
+                                  UICollectionViewDataSource{
+ 
+    func getWidthTasks(title:String) -> CGFloat{
+        let font = UIFont(name: PoppinsFont.medium, size: 14)
+        let fontAttributes = [NSAttributedString.Key.font: font]
+        let myText = title
+        let size = (myText as NSString).size(withAttributes: fontAttributes as [NSAttributedString.Key : Any])
+        return size.width + 25
+    }
+    
     func getWidth(title:String) -> CGFloat{
         let font = UIFont(name: PoppinsFont.medium, size: 14)
         let fontAttributes = [NSAttributedString.Key.font: font]
@@ -748,7 +788,9 @@ extension OngoingProjectDetailVC: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if isFrom == "SubTask" {
+        if collectionView == skillsCollectionView{
+            return selectedSkills.count
+        } else if isFrom == "SubTask" {
             if self.ongoingProjectDetail.project_details?.project_files?.count == 0 || self.ongoingProjectDetail.project_details?.project_files == nil {
                 self.attachedFilesLabel.text = "Attached Files"
             } else {
@@ -771,32 +813,10 @@ extension OngoingProjectDetailVC: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        if isFrom == "SubTask" {
-            if self.ongoingProjectDetail.project_details?.project_files?.count ?? 0 > 0 {
-                if self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].type == "png" || self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].type == "jpg" || self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].type == "jpeg" {
-                    if let imgStr = self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].file {
-                        let destinationViewController = Storyboard.invitation.instantiateViewController(withIdentifier: "ShowImageVC") as? ShowImageVC
-                        destinationViewController!.isImage = false
-                        destinationViewController?.imsgeStrURL = imgStr
-                        destinationViewController?.img = UIImage()
-                        self.navigationController?.pushViewController(destinationViewController!, animated: true)
-                    }
-                } else {
-                    if let imgStr = self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].file {
-                        if let url = URL(string: imgStr) {
-                            UIApplication.shared.open(url)
-                        }
-                    }
-//                    let destinationViewController = Storyboard.invitation.instantiateViewController(withIdentifier: "ShowImageVC") as? ShowImageVC
-//                    destinationViewController!.isImage = true
-//                    destinationViewController?.imsgeStrURL = ""
-//                    destinationViewController?.img = UIImage(named: "doc") ?? UIImage()
-//                    self.navigationController?.pushViewController(destinationViewController!, animated: true)
-                }
-            }
+        if collectionView == skillsCollectionView{
+            
         } else {
-            if indexPath.row < (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0) {
+            if isFrom == "SubTask" {
                 if self.ongoingProjectDetail.project_details?.project_files?.count ?? 0 > 0 {
                     if self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].type == "png" || self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].type == "jpg" || self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].type == "jpeg" {
                         if let imgStr = self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].file {
@@ -812,34 +832,59 @@ extension OngoingProjectDetailVC: UICollectionViewDelegate, UICollectionViewData
                                 UIApplication.shared.open(url)
                             }
                         }
-//                        let destinationViewController = Storyboard.invitation.instantiateViewController(withIdentifier: "ShowImageVC") as? ShowImageVC
-//                        destinationViewController!.isImage = true
-//                        destinationViewController?.imsgeStrURL = ""
-//                        destinationViewController?.img = UIImage(named: "doc") ?? UIImage()
-//                        self.navigationController?.pushViewController(destinationViewController!, animated: true)
+                        //                    let destinationViewController = Storyboard.invitation.instantiateViewController(withIdentifier: "ShowImageVC") as? ShowImageVC
+                        //                    destinationViewController!.isImage = true
+                        //                    destinationViewController?.imsgeStrURL = ""
+                        //                    destinationViewController?.img = UIImage(named: "doc") ?? UIImage()
+                        //                    self.navigationController?.pushViewController(destinationViewController!, animated: true)
                     }
                 }
-            } else if self.ongoingProjectDetail.project_details?.bids?.count ?? 0 > 0 {
-                if self.ongoingProjectDetail.project_details?.bids?[0].bids_documents?.count ?? 0 > 0 {
-                    if self.ongoingProjectDetail.project_details?.bids?[0].bids_documents?[indexPath.row - (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0)].type == "png" || self.ongoingProjectDetail.project_details?.bids?[0].bids_documents?[indexPath.row - (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0)].type == "jpg" || self.ongoingProjectDetail.project_details?.bids?[0].bids_documents?[indexPath.row - (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0)].type == "jpeg" {
-                        if let imgStr = self.ongoingProjectDetail.project_details?.bids?[0].bids_documents?[indexPath.row - (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0)].file {
-                            let destinationViewController = Storyboard.invitation.instantiateViewController(withIdentifier: "ShowImageVC") as? ShowImageVC
-                            destinationViewController!.isImage = false
-                            destinationViewController?.imsgeStrURL = imgStr
-                            destinationViewController?.img = UIImage()
-                            self.navigationController?.pushViewController(destinationViewController!, animated: true)
-                        }
-                    } else {
-                        if let imgStr = self.ongoingProjectDetail.project_details?.bids?[0].bids_documents?[indexPath.row - (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0)].file {
-                            if let url = URL(string: imgStr) {
-                                UIApplication.shared.open(url)
+            } else {
+                if indexPath.row < (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0) {
+                    if self.ongoingProjectDetail.project_details?.project_files?.count ?? 0 > 0 {
+                        if self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].type == "png" || self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].type == "jpg" || self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].type == "jpeg" {
+                            if let imgStr = self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].file {
+                                let destinationViewController = Storyboard.invitation.instantiateViewController(withIdentifier: "ShowImageVC") as? ShowImageVC
+                                destinationViewController!.isImage = false
+                                destinationViewController?.imsgeStrURL = imgStr
+                                destinationViewController?.img = UIImage()
+                                self.navigationController?.pushViewController(destinationViewController!, animated: true)
                             }
+                        } else {
+                            if let imgStr = self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].file {
+                                if let url = URL(string: imgStr) {
+                                    UIApplication.shared.open(url)
+                                }
+                            }
+                            //                        let destinationViewController = Storyboard.invitation.instantiateViewController(withIdentifier: "ShowImageVC") as? ShowImageVC
+                            //                        destinationViewController!.isImage = true
+                            //                        destinationViewController?.imsgeStrURL = ""
+                            //                        destinationViewController?.img = UIImage(named: "doc") ?? UIImage()
+                            //                        self.navigationController?.pushViewController(destinationViewController!, animated: true)
                         }
-//                        let destinationViewController = Storyboard.invitation.instantiateViewController(withIdentifier: "ShowImageVC") as? ShowImageVC
-//                        destinationViewController!.isImage = true
-//                        destinationViewController?.imsgeStrURL = ""
-//                        destinationViewController?.img = UIImage(named: "doc") ?? UIImage()
-//                        self.navigationController?.pushViewController(destinationViewController!, animated: true)
+                    }
+                } else if self.ongoingProjectDetail.project_details?.bids?.count ?? 0 > 0 {
+                    if self.ongoingProjectDetail.project_details?.bids?[0].bids_documents?.count ?? 0 > 0 {
+                        if self.ongoingProjectDetail.project_details?.bids?[0].bids_documents?[indexPath.row - (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0)].type == "png" || self.ongoingProjectDetail.project_details?.bids?[0].bids_documents?[indexPath.row - (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0)].type == "jpg" || self.ongoingProjectDetail.project_details?.bids?[0].bids_documents?[indexPath.row - (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0)].type == "jpeg" {
+                            if let imgStr = self.ongoingProjectDetail.project_details?.bids?[0].bids_documents?[indexPath.row - (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0)].file {
+                                let destinationViewController = Storyboard.invitation.instantiateViewController(withIdentifier: "ShowImageVC") as? ShowImageVC
+                                destinationViewController!.isImage = false
+                                destinationViewController?.imsgeStrURL = imgStr
+                                destinationViewController?.img = UIImage()
+                                self.navigationController?.pushViewController(destinationViewController!, animated: true)
+                            }
+                        } else {
+                            if let imgStr = self.ongoingProjectDetail.project_details?.bids?[0].bids_documents?[indexPath.row - (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0)].file {
+                                if let url = URL(string: imgStr) {
+                                    UIApplication.shared.open(url)
+                                }
+                            }
+                            //                        let destinationViewController = Storyboard.invitation.instantiateViewController(withIdentifier: "ShowImageVC") as? ShowImageVC
+                            //                        destinationViewController!.isImage = true
+                            //                        destinationViewController?.imsgeStrURL = ""
+                            //                        destinationViewController?.img = UIImage(named: "doc") ?? UIImage()
+                            //                        self.navigationController?.pushViewController(destinationViewController!, animated: true)
+                        }
                     }
                 }
             }
@@ -847,92 +892,100 @@ extension OngoingProjectDetailVC: UICollectionViewDelegate, UICollectionViewData
     }
     
     
+    
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProjectFileCollecrtionView", for: indexPath) as? ProjectFileCollecrtionView
-        SDImageCache.shared.clearMemory()
-        SDImageCache.shared.clearDisk()
-        if isFrom == "SubTask" {
-            cell!.projectImageView.image = nil
-            if indexPath.row < (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0) {
-                cell!.projectTitleLabel.text = self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].title ?? ""
-                if self.ongoingProjectDetail.project_details?.project_files?.count ?? 0 > 0 {
-                    if self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].type == "png" || self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].type == "jpg" || self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].type == "jpeg" {
-                        if var imgStr = self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].file {
-                            imgStr = imgStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-                            cell!.projectImageView.sd_setImage(with: URL(string: imgStr), placeholderImage: UIImage(named: "doc"), completed:nil)
-                        }
-                    } else {
-                        if var imgStr = self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].file {
-                            imgStr = imgStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-                            cell!.projectImageView.sd_setImage(with: URL(string: imgStr), placeholderImage: UIImage(named: "doc"), completed:nil)
-                        }
-//                        cell!.projectImageView.image = UIImage(named: "doc")
-                    }
-                }
-            }
+        if collectionView == skillsCollectionView{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SkillCollectionViewCell", for: indexPath) as? SkillCollectionViewCell
+            cell!.skillLabel.text = selectedSkills[indexPath.row] ?? ""
+            return cell!
         } else {
-            cell!.projectImageView.image = nil
-            if indexPath.row < (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0) {
-                cell!.projectTitleLabel.text = self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].title ?? ""
-                if self.ongoingProjectDetail.project_details?.project_files?.count ?? 0 > 0 {
-                    if self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].type == "png" || self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].type == "jpg" || self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].type == "jpeg" {
-                        if var imgStr = self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].file {
-                            imgStr = imgStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-                            cell!.projectImageView.sd_setImage(with: URL(string: imgStr), placeholderImage: UIImage(named: "doc"), completed:nil)
-                        }
-                    } else {
-                        if var imgStr = self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].file {
-                            imgStr = imgStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-                            cell!.projectImageView.sd_setImage(with: URL(string: imgStr), placeholderImage: UIImage(named: "doc"), completed:nil)
-                        }
-//                        cell!.projectImageView.image = UIImage(named: "doc")
-                    }
-                }
-            } else {
-                if self.ongoingProjectDetail.project_details?.bids?.count ?? 0 > 0 {
-                    var a = (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0)
-                    var count = (self.ongoingProjectDetail.project_details?.bids?[0].bids_documents?.count ?? 0) - a
-                    cell!.projectTitleLabel.text = self.ongoingProjectDetail.project_details?.bids?[0].bids_documents?[indexPath.row - (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0)].title ?? ""
-                    if self.ongoingProjectDetail.project_details?.bids?[0].bids_documents?.count ?? 0 > 0 {
-                        if self.ongoingProjectDetail.project_details?.bids?[0].bids_documents?[indexPath.row - (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0)].type == "png" || self.ongoingProjectDetail.project_details?.bids?[0].bids_documents?[indexPath.row - (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0)].type == "jpg" || self.ongoingProjectDetail.project_details?.bids?[0].bids_documents?[indexPath.row - (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0)].type == "jpeg" {
-                            if var imgStr = self.ongoingProjectDetail.project_details?.bids?[0].bids_documents?[indexPath.row - (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0)].file {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProjectFileCollecrtionView", for: indexPath) as? ProjectFileCollecrtionView
+            SDImageCache.shared.clearMemory()
+            SDImageCache.shared.clearDisk()
+            if isFrom == "SubTask" {
+                cell!.projectImageView.image = nil
+                if indexPath.row < (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0) {
+                    cell!.projectTitleLabel.text = self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].title ?? ""
+                    if self.ongoingProjectDetail.project_details?.project_files?.count ?? 0 > 0 {
+                        if self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].type == "png" || self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].type == "jpg" || self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].type == "jpeg" {
+                            if var imgStr = self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].file {
                                 imgStr = imgStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
                                 cell!.projectImageView.sd_setImage(with: URL(string: imgStr), placeholderImage: UIImage(named: "doc"), completed:nil)
                             }
                         } else {
-                            if var imgStr = self.ongoingProjectDetail.project_details?.bids?[0].bids_documents?[indexPath.row - (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0)].file {
+                            if var imgStr = self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].file {
                                 imgStr = imgStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
                                 cell!.projectImageView.sd_setImage(with: URL(string: imgStr), placeholderImage: UIImage(named: "doc"), completed:nil)
                             }
-//                            cell!.projectImageView.image = UIImage(named: "doc")
+                            //                        cell!.projectImageView.image = UIImage(named: "doc")
+                        }
+                    }
+                }
+            } else {
+                cell!.projectImageView.image = nil
+                if indexPath.row < (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0) {
+                    cell!.projectTitleLabel.text = self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].title ?? ""
+                    if self.ongoingProjectDetail.project_details?.project_files?.count ?? 0 > 0 {
+                        if self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].type == "png" || self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].type == "jpg" || self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].type == "jpeg" {
+                            if var imgStr = self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].file {
+                                imgStr = imgStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                                cell!.projectImageView.sd_setImage(with: URL(string: imgStr), placeholderImage: UIImage(named: "doc"), completed:nil)
+                            }
+                        } else {
+                            if var imgStr = self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].file {
+                                imgStr = imgStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                                cell!.projectImageView.sd_setImage(with: URL(string: imgStr), placeholderImage: UIImage(named: "doc"), completed:nil)
+                            }
+                            //                        cell!.projectImageView.image = UIImage(named: "doc")
+                        }
+                    }
+                } else {
+                    if self.ongoingProjectDetail.project_details?.bids?.count ?? 0 > 0 {
+                        var a = (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0)
+                        var count = (self.ongoingProjectDetail.project_details?.bids?[0].bids_documents?.count ?? 0) - a
+                        cell!.projectTitleLabel.text = self.ongoingProjectDetail.project_details?.bids?[0].bids_documents?[indexPath.row - (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0)].title ?? ""
+                        if self.ongoingProjectDetail.project_details?.bids?[0].bids_documents?.count ?? 0 > 0 {
+                            if self.ongoingProjectDetail.project_details?.bids?[0].bids_documents?[indexPath.row - (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0)].type == "png" || self.ongoingProjectDetail.project_details?.bids?[0].bids_documents?[indexPath.row - (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0)].type == "jpg" || self.ongoingProjectDetail.project_details?.bids?[0].bids_documents?[indexPath.row - (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0)].type == "jpeg" {
+                                if var imgStr = self.ongoingProjectDetail.project_details?.bids?[0].bids_documents?[indexPath.row - (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0)].file {
+                                    imgStr = imgStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                                    cell!.projectImageView.sd_setImage(with: URL(string: imgStr), placeholderImage: UIImage(named: "doc"), completed:nil)
+                                }
+                            } else {
+                                if var imgStr = self.ongoingProjectDetail.project_details?.bids?[0].bids_documents?[indexPath.row - (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0)].file {
+                                    imgStr = imgStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                                    cell!.projectImageView.sd_setImage(with: URL(string: imgStr), placeholderImage: UIImage(named: "doc"), completed:nil)
+                                }
+                                //                            cell!.projectImageView.image = UIImage(named: "doc")
+                            }
                         }
                     }
                 }
             }
+            return cell ?? UICollectionViewCell()
         }
-        
-        
-        
-        return cell!
     }
 }
 
 extension OngoingProjectDetailVC: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if isFrom == "SubTask" {
-            if indexPath.row < (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0) {
-                return CGSize(width: getWidth(title: self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].title ?? ""), height:70)
-            }
+        if collectionView == skillsCollectionView{
+            let cgSizeTasks = CGSize(width: getWidthTasks(title: selectedSkills[indexPath.row]), height: 30)
+            print(cgSizeTasks)
+            return cgSizeTasks
         } else {
-            if indexPath.row < (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0) {
-                return CGSize(width: getWidth(title: self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].title ?? ""), height:70)
-            } else {
-                if self.ongoingProjectDetail.project_details?.bids?.count ?? 0 > 0 {
-                    if self.ongoingProjectDetail.project_details?.bids?[0].bids_documents?.count ?? 0 > 0 {
-                        return CGSize(width: getWidth(title: self.ongoingProjectDetail.project_details?.bids?[0].bids_documents?[indexPath.row - (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0)].title ?? ""), height:70)
-                    }
+            if isFrom == "SubTask" {
+                if indexPath.row < (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0) {
+                    return CGSize(width: getWidth(title: self.ongoingProjectDetail.project_details?.project_files?[indexPath.row].title ?? ""), height:70)
                 }
             }
+//            } else {
+//                if self.ongoingProjectDetail.project_details?.bids?.count ?? 0 > 0 {
+//                    if self.ongoingProjectDetail.project_details?.bids?[0].bids_documents?.count ?? 0 > 0 {
+//                        return CGSize(width: getWidth(title: self.ongoingProjectDetail.project_details?.bids?[0].bids_documents?[indexPath.row - (self.ongoingProjectDetail.project_details?.project_files?.count ?? 0)].title ?? ""), height:70)
+//                    }
+//                }
+//            }
         }
         return CGSize(width: 150.0, height: 70.0)
     }

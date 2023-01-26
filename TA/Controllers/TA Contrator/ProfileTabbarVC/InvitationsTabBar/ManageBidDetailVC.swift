@@ -219,6 +219,7 @@ class ManageBidDetailVC: BaseViewController {
                 self.btnViewBidLog.setTitle("Save Agreement", for: .normal)
                 self.btnRecallBid.setTitle("Next", for: .normal)
                 
+                
                 self.lblAcceptedStartEndDate.text = "\(DateHelper.convertDateString(dateString: model?.data?.proposedStartDate ?? "", fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: "dd MMM"))-\(DateHelper.convertDateString(dateString: model?.data?.proposedEndDate ?? "", fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: "dd MMM"))"
                 
 //                self.lblAcceptedBidAmount.text = "$ \(model?.data?.bidAmount ?? "0.0")"
@@ -311,8 +312,11 @@ class ManageBidDetailVC: BaseViewController {
     
     func getAgreement() {
         let params = ["bidId": self.manageBidId, "projectId":self.projectId]
+        
         manageBidDetailViewModel.getAgreementGeneratetApi(params) { model in
-            self.downloadAgreementFromUrl(strUrl: model?.data?.app?.downloadUrl ?? "", fileName: model?.data?.app?.filename ?? "")
+            if model?.data?.app?.downloadUrl != nil {
+                self.downloadAgreementFromUrl(strUrl: model?.data?.app?.downloadUrl ?? "", fileName: model?.data?.app?.filename ?? "")
+            }
         }
     }
     

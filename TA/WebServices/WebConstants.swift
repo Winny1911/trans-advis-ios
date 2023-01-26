@@ -21,6 +21,7 @@ struct APIConstants {
 //https://p2-api.ta123test.com
 //https://p2-api.ta123test.com:443
 //https://p2-testapi.ta123test.com/documentation#!/admins/adminadminslogin_post_10
+//http://186.237.229.127:3002
 struct GenericErrorMessages {
     static let internalServerError      = "Something went wrong. Try again."
     static let noInternet               = "No internet connection."
@@ -28,7 +29,7 @@ struct GenericErrorMessages {
 
 struct APIUrl {
     // local: https://p2-api.ta123test.com
-    // live: https://api.ta123.com
+    // live: http://191.252.93.219:3002
     static let host                   = Bundle.main.object(forInfoDictionaryKey: "BaseURL") as! String
     static let baseUrlWithOutHttp       = Bundle.main.object(forInfoDictionaryKey: "BASE_URL_WITHOUT_HTTP") as! String
         
@@ -47,6 +48,7 @@ struct APIUrl {
         static let contractorProjectStatus            = baseUrl              + "contractor/projectStatus"
 
         static let createProfile                      = baseUrl              + "user/createProfile"
+        static let createLicense                      = host                 + "user/createLicenses"
         static let updateProfile                      = baseUrl              + "user/updateProfile"
         static let user                               = baseUrl              + "user"
         static let addBankAccount                     = baseUrl              + "contractor/bank/addBankAccount"
@@ -57,7 +59,7 @@ struct APIUrl {
         static let updateBankAccount                  = baseUrl              + "contractor/bank/update"
         
         static let forgotPassword                     = baseUrl              + "user/forgotPassword"
-        static let contractor                         = baseUrl              + "homeowner/contractors"
+        static let contractor                         = baseUrl              + "homeowner/contractorslist"
         
         static let taskcontractor                         = baseUrl              + "contractor/contractors"
 
@@ -69,6 +71,7 @@ struct APIUrl {
         static let updateProjectImagesFiles           = baseUrl              + "homeowner/updateProjectImagesFiles"
 
         static let projectCategoriesList              = host                 + "/admin/content-management/projectCategories/list"
+        
         static let createProject                      = baseUrl              + "homeowner/createProject"
         static let contractorCarts                    = baseUrl              + "contractor/carts"
         static let contractorUpdateCartStatus         = baseUrl              + "contractor/updateCartStatus"

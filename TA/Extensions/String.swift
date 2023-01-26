@@ -46,7 +46,11 @@ extension String {
     }
     
     var isValidFirstName: Bool {
-        return !isEmpty && self.count >= 3 && self.count <= 40
+        return !isEmpty && self.count >= 3 && self.count <= 50
+    }
+    
+    var isValidCompanyName: Bool {
+        return !isEmpty && self.count >= 3 && self.count <= 50
     }
     
     var isValidProjectTitle: Bool {
@@ -58,11 +62,11 @@ extension String {
     }
     
     var isValidLastName: Bool {
-        return !isEmpty && self.count >= 3 && self.count <= 40
+        return !isEmpty && self.count >= 3 && self.count <= 50
     }
     
     var isValidPhoneNumber: Bool {
-        return !isEmpty && self.count == 10
+        return !isEmpty && self.count >= 8 && self.count <= 13
     }
     
     var isValidLicence: Bool{
@@ -92,6 +96,10 @@ extension String {
         return  !isEmpty && self.count >= 3 && self.count <= 30
     }
     
+    var isValidBankName: Bool {
+        return  !isEmpty && self.count <= 15
+    }
+    
     var isValidNameCharactersOnly: Bool {
         return !isEmpty && range(of: ".*[^A-Za-z].*", options: .regularExpression) == nil
     }
@@ -107,13 +115,9 @@ extension String {
     var isValidPassword: Bool {
         return !isEmpty && self.count >= 8 && self.count <= 20
     }
-    
-    var isValidAccountNumberr: Bool {
-        return !isEmpty && self.count >= 10 && self.count <= 20
-    }
-    
+
     var isValidRouting: Bool {
-        return !isEmpty && self.count == 9
+        return !isEmpty && self.count <= 9
     }
     var isValidSSN: Bool {
         return !isEmpty && self.count == 9
@@ -144,7 +148,7 @@ extension String {
     }
     
     var isValidAccountNumber: Bool {
-        return !isEmpty && self.count >= 16
+        return !isEmpty && self.count >= 10 && self.count <= 20
     }
     
     func isValidUrl() -> Bool {

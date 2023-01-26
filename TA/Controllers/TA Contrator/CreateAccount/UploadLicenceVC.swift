@@ -12,7 +12,7 @@ import MobileCoreServices
 import UniformTypeIdentifiers
 import WebKit
 
-class UploadLicenceVC: BaseViewController {
+class UploadLicenceVC: BaseViewController, UITextFieldDelegate {
 
     @IBOutlet weak var attachmentTableView: UITableView!
     @IBOutlet weak var lblName: UILabel!
@@ -47,7 +47,7 @@ class UploadLicenceVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        licenceNumberTextField.maxLength = 20
         attachmentTableView.delegate = self
         attachmentTableView.dataSource = self
         attachmentTableView.register(UINib.init(nibName: "AttachmentListTableViewCell", bundle: nil), forCellReuseIdentifier: "AttachmentListTableViewCell")
@@ -61,6 +61,7 @@ class UploadLicenceVC: BaseViewController {
         previousButton.layer.borderColor = (UIColor( red: 78/255, green: 199/255, blue:41/255, alpha: 1.0 )).cgColor
         previousButton.layer.borderWidth = 1.5
         licenceNumberTextField.setLeftPadding(14)
+        licenceNumberTextField.maxLength = 20
         
         if self.isFromEdit == true {
             if let obj = UserDefaults.standard.retrieve(object: UserProfileDataDetail.self, fromKey: TA_Storage.TA_Storage_Constants.kPersonalDetailsData) {
@@ -161,51 +162,51 @@ class UploadLicenceVC: BaseViewController {
         viewModel.modelLicense = createAccountLicenseModel
         if imageArray.count == 0 || imageArray == nil {
             showMessage(with: "Please upload a digital copy of the licence", theme: .error)
-        } else {
-            self.naviagteToNextScreen(licenseSelectedImage: imageArray, licenseSelectedName: imageNameArray)
         }
-        
-//        viewModel.validateLicenseModel {[weak self] (success, error) in
-//            guard let strongSelf = self else { return }
-//            if error == nil {
-//                if self!.isLicenseImageSelected == true {
-//                    if self!.selectedType == "Image" {
-//                        if self?.isFromEdit == true {
-//                            if self?.isDocumentChangedFromEdit == true {
-////                                self!.imageSendAPI()
-//                            } else {
-////                                self!.naviagteToNextScreen(licenseSelectedImage: imageArray, licenseSelectedName: imageNameArray)
-//                            }
-//                        } else {
-////                            self!.imageSendAPI()
-//                        }
-//                    } else {
-//                        if self?.isFromEdit == true {
-//                            if self?.isDocumentChangedFromEdit == true {
-////                                self!.docSendAPI()
-//                            } else {
-////                                self!.naviagteToNextScreen(licenseSelectedImage: [""], licenseSelectedName: [""])
-//                            }
-//                        } else {
-////                            self!.docSendAPI()
-//                        }
-//                    }
-//                } else {
-////                    self!.naviagteToNextScreen(licenseSelectedImage: [""], licenseSelectedName: [""])
-//                }
-////                UserDefaults.standard.set("\(self?.lblName.text ?? "")", forKey: "licenseImageName")
-////                UserDefaults.standard.set("\(self?.licenceNumberTextField.text ?? "")", forKey: "licenseNumberss")
-////
-////                guard let data = userImageView.image?.jpegData(compressionQuality: 0.5) else { return }
-////                let encoded = try! PropertyListEncoder().encode(data)
-////                UserDefaults.standard.set(encoded, forKey: "licenseImage")
-//            }
-//            else {
-//                if let errorMsg = strongSelf.viewModel.error {
-//                    showMessage(with: errorMsg)
-//                }
-//            }
-//        }
+        viewModel.validateLicenseModel {[weak self] (success, error) in
+            guard let strongSelf = self else { return }
+            if error == nil {
+                if self!.isLicenseImageSelected == true {
+                    if self!.selectedType == "Image" {
+                        if self?.isFromEdit == true {
+                            if self?.isDocumentChangedFromEdit == true {
+                                self!.imageSendAPI()
+                            } else {
+                                self!.naviagteToNextScreen(licenseSelectedImage: imageArray, licenseSelectedName: imageNameArray)
+                            }
+                        } else {
+                            self!.docSendAPI()
+                            self!.naviagteToNextScreen(licenseSelectedImage: imageArray, licenseSelectedName: imageNameArray)
+                        }
+                    } else {
+                        if self?.isFromEdit == true {
+                            if self?.isDocumentChangedFromEdit == true {
+                                self!.docSendAPI()
+                            } else {
+                                let error = ValidationError.licenseDoc
+                                showMessage(with: error)
+                            }
+                        } else {
+                            self!.docSendAPI()
+                        }
+                    }
+                } else {
+                    let error = ValidationError.licenseDoc
+                    showMessage(with: error)
+                }
+                UserDefaults.standard.set("\(self?.lblName.text ?? "")", forKey: "licenseImageName")
+                UserDefaults.standard.set("\(self?.licenceNumberTextField.text ?? "")", forKey: "licenseNumberss")
+
+                guard let data = userImageView.image?.jpegData(compressionQuality: 0.5) else { return }
+                let encoded = try! PropertyListEncoder().encode(data)
+                UserDefaults.standard.set(encoded, forKey: "licenseImage")
+            }
+            else {
+                if let errorMsg = strongSelf.viewModel.error {
+                    showMessage(with: errorMsg)
+                }
+            }
+        }
         
     }
     
@@ -242,8 +243,6 @@ class UploadLicenceVC: BaseViewController {
         SDImageCache.shared.clearMemory()
         SDImageCache.shared.clearDisk()
         self.attachmentTableView.reloadData()
-//        self.naviagteToNextScreen(licenseSelectedImage: imageArray, licenseSelectedName: imageNameArray)
-//        self.naviagteToNextScreen(licenseSelectedImage: dataDict["name"] as! String, licenseSelectedName: randomName)
     }
     
     func naviagteToNextScreen(licenseSelectedImage: [String], licenseSelectedName: [String]) {
@@ -262,14 +261,14 @@ class UploadLicenceVC: BaseViewController {
                     name.set(doclName, forKey: "licenceName")
                     //-----
                     print("model: ", model)
-                    let vc = Storyboard.createAccountTAC.instantiateViewController(withIdentifier: "SetLocationVC") as? SetLocationVC
+                    let vc = Storyboard.createAccountTAC.instantiateViewController(withIdentifier: "AddBankAccountVC") as? AddBankAccountVC
                     vc!.createAccountModel = self!.createAccountModel
                     vc!.createAccountLicenseModel = model
                     
-                    vc!.userImageNotChangedStringFromEdit = self!.userImageNotChangedStringFromEdit
-                    vc!.isUserImageChangedFromEdit = self!.isUserImageChangedFromEdit
-                    vc!.isDocumentChangedFromEdit = self!.isDocumentChangedFromEdit
-                    vc!.isFromEdit = self!.isFromEdit
+                    //vc!.userImageNotChangedStringFromEdit = self!.userImageNotChangedStringFromEdit
+                    //vc!.isUserImageChangedFromEdit = self!.isUserImageChangedFromEdit
+                    //vc!.isDocumentChangedFromEdit = self!.isDocumentChangedFromEdit
+                    //vc!.isFromEdit = self!.isFromEdit
                     
                     self?.navigationController?.pushViewController(vc!, animated: true)
                 }
@@ -332,14 +331,16 @@ extension UploadLicenceVC: UITableViewDelegate, UITableViewDataSource {
             }
             cell.attachmentLabel.text = doclName[indexPath.row]
         } else {
-            let a = self.fullViewImge[indexPath.row]
-            let last4 = String(a.suffix(4))
-            if last4 == ".png" || last4 == ".jpg" || last4 == "jpeg" {
-                cell.attachmentImageView.sd_setImage(with: URL(string: fullViewImge[indexPath.row]), placeholderImage: UIImage(named: "doc"), completed: nil)
-            } else {
-                cell.attachmentImageView.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "doc"), completed: nil)
+            if self.fullViewImge[indexPath.row] != nil {
+                let a = self.fullViewImge[indexPath.row]
+                let last4 = String(a.suffix(4))
+                if last4 == ".png" || last4 == ".jpg" || last4 == "jpeg" {
+                    cell.attachmentImageView.sd_setImage(with: URL(string: fullViewImge[indexPath.row]), placeholderImage: UIImage(named: "doc"), completed: nil)
+                } else {
+                    cell.attachmentImageView.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "doc"), completed: nil)
+                }
+                //            cell.attachmentImageView.image = fullViewImge[indexPath.row]
             }
-//            cell.attachmentImageView.image = fullViewImge[indexPath.row]
             cell.attachmentLabel.text = doclName[indexPath.row]
         }
         cell.deleteAttachment = {
@@ -738,19 +739,5 @@ extension UploadLicenceVC: UIDocumentPickerDelegate {
 
      func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         controller.dismiss(animated: true, completion: nil)
-    }
-}
-
-extension UploadLicenceVC: UITextFieldDelegate{
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == licenceNumberTextField{
-            let currentText = licenceNumberTextField.text ?? ""
-            guard let stringRange = Range(range, in: currentText) else {
-                return false
-            }
-            let updateText = currentText.replacingCharacters(in: stringRange, with: string)
-            return updateText.count <= 20
-        }
-        return true
     }
 }

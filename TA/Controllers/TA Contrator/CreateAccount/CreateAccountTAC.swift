@@ -71,7 +71,7 @@ class CreateAccountTAC: BaseViewController {
                 self.fetchUserProfileData(userId: obj.id ?? 0)
                 self.firstName.text = obj.firstName
                 self.lastName.text = obj.lastName
-                self.txtFldPhoneNumber.text = self.txtFldPhoneNumber.format(with: "(XXX) XXX-XXXX", phone: obj.phoneNumber!)
+                self.txtFldPhoneNumber.text = self.txtFldPhoneNumber.format(with: "(XXX)-XXX-XXXX", phone: obj.phoneNumber!)
                 
                 self.firstName.resetFloatingLable()
                 self.lastName.resetFloatingLable()
