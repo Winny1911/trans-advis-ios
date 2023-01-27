@@ -11,7 +11,8 @@ extension Date {
   var stringValue: String {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd HH"
-    dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+    //dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+    dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
     return dateFormatter.string(from: self)
   }
   
@@ -29,7 +30,9 @@ extension Date {
 class DateHelper {
     class func convertDateString(dateString : String!, fromFormat sourceFormat : String!, toFormat desFormat : String!) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        //dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
         dateFormatter.dateFormat = sourceFormat
         let date = dateFormatter.date(from: dateString)
         dateFormatter.timeZone = TimeZone.current
@@ -44,6 +47,8 @@ class DateHelper {
 //        dateFormt.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
 //        dateFormt.locale = .current
         dateFormt.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        dateFormt.locale = Locale(identifier: "en_US_POSIX")
+        dateFormt.timeZone = TimeZone(secondsFromGMT: 0)
         dateFormt.timeZone = NSTimeZone(name: "UTC") as TimeZone?
         dateFormt.locale = .current
         let previousDate = Date().addingTimeInterval(-55000) //dateFormt.date(from: fromDate)
