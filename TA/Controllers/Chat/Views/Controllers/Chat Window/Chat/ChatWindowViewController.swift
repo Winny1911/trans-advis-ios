@@ -24,9 +24,20 @@ class ChatWindowViewController: CameraBaseViewController {
     @IBOutlet weak var textView: GrowingTextView!
     @IBOutlet weak var bottomViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var playAudioButton: UIButton!
+    @IBOutlet weak var recordAudioButton: UIButton!
+    @IBOutlet weak var stopRecordAudioButton: UIButton!
+    @IBOutlet weak var imageAudioRecording: UIImageView!
+    @IBOutlet weak var viewRecordAudio: UIView!
+    @IBOutlet weak var sendButtonView: UIView!
+    @IBOutlet weak var attachmentView: UIView!
     
     lazy var viewModel = ChatWindowViewModel()
     var urlRecordAudio = ""
+    var recordingSession: AVAudioSession!
+    var audioRecorder: AVAudioRecorder!
+    var audioPlayer:AVAudioPlayer!
+    var isAudioMessage: Bool!
     
     // MARK: - View Life cycle
     override func viewWillAppear(_ animated: Bool) {
@@ -93,19 +104,15 @@ class ChatWindowViewController: CameraBaseViewController {
         self.getAllChatMessages()
         self.registerTableViewCells()
         self.setHeaderData()
-        self.setObserverUrlAttachment()
-    }
-    func setObserverUrlAttachment() {
         
     }
+
     func buildViewRecordAudio() {
-        let viewRecordAudio = UIView(frame: CGRect(x: self.bottomView.layer.position.x-150.0, y: self.bottomView.layer.position.y-100.0, width: self.bottomView.frame.width-50, height: 100))
-        viewRecordAudio.backgroundColor = .lightGray
-        viewRecordAudio.roundCorners(corners: .allCorners, radius: 50)
-        
-        self.view.addSubview(viewRecordAudio)
-        let recordAudioView = RecordAudio.init(frame: CGRect(x: 0, y: 0, width: 128, height: 100))
-        viewRecordAudio.addSubview(recordAudioView)
+        sendButtonView.isHidden = true
+        attachmentView.isHidden = true
+        viewRecordAudio.isHidden = false
+        textView.isEditable = false
+        scrollToTheBottom(animated: true)
     }
     
     func registerTableViewCells() {
@@ -132,7 +139,113 @@ class ChatWindowViewController: CameraBaseViewController {
         }
     }
     
+    func playAudioFromURL() {
+        let url = getFileURL()
+        downloadFileFromURL(url: url)
+    }
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    func getFileURL() -> URL {
+        let path = getDocumentsDirectory().appendingPathComponent("recording.m4a")
+        return path as URL
+    }
+    
+    func downloadFileFromURL(url: URL){
+        var downloadTask:URLSessionDownloadTask
+        downloadTask = URLSession.shared.downloadTask(with: url) { (url, response, error) in
+            self.play(url: url!)
+        }
+        downloadTask.resume()
+    }
+    
+    func play(url:URL) {
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: url as URL)
+            audioPlayer.prepareToPlay()
+            audioPlayer.volume = 5.0
+            //preparePlayer()
+            audioPlayer.play()
+            //send url to server
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        } catch {
+            print("AVAudioPlayer init failed")
+        }
+        
+    }
+    
+    func recordAudio() {
+        recordingSession = AVAudioSession.sharedInstance()
+        
+        do {
+            try recordingSession.setCategory(.playAndRecord, mode: .default)
+            try recordingSession.setActive(true)
+            recordingSession.requestRecordPermission() { [unowned self] allowed in
+                DispatchQueue.main.async {
+                    if allowed {
+                        self.loadRecordingUI()
+                        self.imageAudioRecording.isHidden = false
+                    } else {
+                        // failed to record
+                    }
+                }
+            }
+        } catch {
+            // failed to record
+        }
+    }
+    
+    func loadRecordingUI() {
+        recordAudioButton.isHidden = true
+        stopRecordAudioButton.isHidden = false
+        startRecording()
+    }
+    
+    func startRecording() {
+        let audioFilename = getFileURL()
+        
+        let settings = [
+            AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
+            AVSampleRateKey: 12000,
+            AVNumberOfChannelsKey: 1,
+            AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
+        ]
+        
+        do {
+            audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
+            audioRecorder.delegate = self
+            audioRecorder.record()
+        } catch {
+            finishRecording()
+        }
+    }
+    
+    func finishRecording() {
+        isAudioMessage = true
+        recordAudioButton.isHidden = false
+        stopRecordAudioButton.isHidden = true
+        audioRecorder.stop()
+        audioRecorder = nil
+        sendButtonView.isHidden = false
+    }
+    
     // MARK: - Button Actions
+    @IBAction func recordRecordButton(_ sender: Any) {
+        recordAudio()
+    }
+    
+    @IBAction func stopRecordButton(_ sender: Any) {
+        finishRecording()
+    }
+    
+    @IBAction func playButtonAudio(_ sender: Any) {
+        playAudioFromURL()
+    }
+    
     @IBAction func backButtonAction(_ sender: Any) {
         self.view.endEditing(true)
         self.navigationController?.popViewController(animated: true)
@@ -154,19 +267,19 @@ class ChatWindowViewController: CameraBaseViewController {
             let actionChooseDocument : UIAlertAction = UIAlertAction.init(title: "Choose Document", style: .default) { (action:UIAlertAction) in
                 self.chooseDocument()
             }
-//            let actionRecordAudio : UIAlertAction = UIAlertAction.init(title: "Record Audio", style: .default) { (action:UIAlertAction) in
-//                self.buildViewRecordAudio()
-//            }
+            let actionRecordAudio : UIAlertAction = UIAlertAction.init(title: "Record Audio", style: .default) { (action:UIAlertAction) in
+                self.buildViewRecordAudio()
+            }
             let actionCancel = UIAlertAction.init(title: "Cancel", style: .cancel, handler: { (action:UIAlertAction) in })
             
             let titleColor = UIColor(red: 43.0/255, green: 48.0/255, blue: 57.0/255, alpha: 1.0)
             actionChoosePhoto.setValue(titleColor, forKey: "titleTextColor")
             actionChooseDocument.setValue(titleColor, forKey: "titleTextColor")
-//            actionRecordAudio.setValue(titleColor, forKey: "titleTextColor")
+            actionRecordAudio.setValue(titleColor, forKey: "titleTextColor")
             actionCancel.setValue(UIColor.black, forKey: "titleTextColor")
             actionSheetController.addAction(actionChoosePhoto)
             actionSheetController.addAction(actionChooseDocument)
-//            actionSheetController.addAction(actionRecordAudio)
+            actionSheetController.addAction(actionRecordAudio)
             actionSheetController.addAction(actionCancel)
             self.present(actionSheetController, animated: true, completion: nil)
         }
@@ -194,14 +307,46 @@ class ChatWindowViewController: CameraBaseViewController {
                                                                     firebase_message_time: firebase_message_time,
                                                                     chat_dialog_id: chat_dialogue_id,
                                                                     sender_id: sender_id,
-                                                                    attachment_url: urlRecordAudio,
+                                                                    attachment_url: "",
                                                                     receiver_id: receiver_id,
                                                                     other_user_profile_pic: other_user_profile_pic,
                                                                     other_user_name: other_user_name,
                                                                     dialog_type: 1,
                                                                     thumbnail: "")
             self.textView.text = nil
+        } else if isAudioMessage {
+            let firstUrl = getFileURL()
+            let file_name = firstUrl.lastPathComponent
+            let document_path = UIFunction.saveDocumentToTempDirectory(url: firstUrl, specificFileName: file_name) ?? ""
+            self.shareDocument(document_name: file_name, document_path:document_path)
+            isAudioMessage = false
+            viewRecordAudio.isHidden = true
+            imageAudioRecording.isHidden = true
+            textView.isEditable = true
+            sendButtonView.isHidden = false
+            attachmentView.isHidden = false
         }
+    }
+}
+// MARK: Record Audio and Play Audio Delegates
+extension ChatWindowViewController : AVAudioRecorderDelegate, AVAudioPlayerDelegate {
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+        if !flag {
+            finishRecording()
+        }
+    }
+    
+    func audioRecorderEncodeErrorDidOccur(_ recorder: AVAudioRecorder, error: Error?) {
+        print("Error while recording audio \(error!.localizedDescription)")
+    }
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        recordAudioButton.isEnabled = true
+        playAudioFromURL()
+    }
+    
+    func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
+        print("Error while playing audio \(error!.localizedDescription)")
     }
 }
 
@@ -464,4 +609,5 @@ extension ChatWindowViewController : FirebaseChatDelegate {
             self.tableView?.scrollToRow(at: indexPath, at: .bottom, animated: animated)
         }
     }
+    
 }

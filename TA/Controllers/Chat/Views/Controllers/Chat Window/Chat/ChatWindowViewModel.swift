@@ -33,4 +33,18 @@ class ChatWindowViewModel: NSObject {
         }
         return false
     }
+    
+    func addAudioRecordApi(keyToUploadData:String,fileName:String, dataToUpload:Data, param:[String:Any], _ result:@escaping([String : Any]?) -> Void){
+        Progress.instance.show()
+        let headers: [String: String] = ["authorization": TA_Storage.shared.apiAccessToken]
+        ApiManager<SignupResponseModel>.multipartRequestSinglePost(APIUrl.UserApis.fileUpload, params: param, dataToUpload: dataToUpload, keyToUploadData: keyToUploadData, fileNames: fileName, headers: headers) { (response) in
+            Progress.instance.hide()
+            print(response!)
+            if response?["statusCode"] as! Int == 200{
+                result(response)
+            }else{
+                showMessage(with: response?["message"] as? String ?? "")
+            }
+        }
+    }
 }

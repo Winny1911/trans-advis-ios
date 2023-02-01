@@ -35,13 +35,13 @@ extension FirebaseChatMessages {
         
         if message_type == FirebaseMessageType.Text {
             
-            self.sendMessageToFirebaseChatTable(message_id: message_id, message: message, message_type: FirebaseMessageType.Text, message_time: message_time, firebase_message_time: firebase_message_time, chat_dialog_id: chat_dialog_id, sender_id: user_id, attachment_url: "", receiver_id: receiver_id)
+            self.sendMessageToFirebaseChatTable(message_id: message_id, message: message, message_type: FirebaseMessageType.Text, message_time: message_time, firebase_message_time: firebase_message_time, chat_dialog_id: chat_dialog_id, sender_id: user_id, attachment_url: attachment_url, receiver_id: receiver_id)
          
             self.updateLastMessageInInboxTable(other_user_id: receiver_id, last_message: message, last_message_time: message_time, sender_id: user_id, other_user_profile_pic: other_user_profile_pic, other_user_name: other_user_name, last_message_id: message_id, last_message_type: FirebaseMessageType.Text, dialog_type: dialog_type)
             
             self.updateChatDialogueIdInUserTable(chat_dialogue_id: chat_dialog_id, other_user_id: receiver_id)
             
-            self.sendMessageToFirebaseNotificationTable(message_id: message_id, message: message, message_type: FirebaseMessageType.Text, message_time: message_time, firebase_message_time: firebase_message_time, chat_dialog_id: chat_dialog_id, sender_id: user_id, attachment_url: "", receiver_id: receiver_id)
+            self.sendMessageToFirebaseNotificationTable(message_id: message_id, message: message, message_type: FirebaseMessageType.Text, message_time: message_time, firebase_message_time: firebase_message_time, chat_dialog_id: chat_dialog_id, sender_id: user_id, attachment_url: attachment_url, receiver_id: receiver_id)
             
         } else if message_type == FirebaseMessageType.Image {
             
