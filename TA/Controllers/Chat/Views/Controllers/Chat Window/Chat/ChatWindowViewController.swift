@@ -27,10 +27,13 @@ class ChatWindowViewController: CameraBaseViewController {
     @IBOutlet weak var playAudioButton: UIButton!
     @IBOutlet weak var recordAudioButton: UIButton!
     @IBOutlet weak var stopRecordAudioButton: UIButton!
-    @IBOutlet weak var imageAudioRecording: UIImageView!
     @IBOutlet weak var viewRecordAudio: UIView!
     @IBOutlet weak var sendButtonView: UIView!
     @IBOutlet weak var attachmentView: UIView!
+    @IBOutlet weak var btnSendRecordAudio: UIButton!
+    @IBOutlet weak var viewAudioRecorderLive: UIView!
+    @IBOutlet weak var sendMicRecorderButton: UIButton!
+    @IBOutlet weak var sendMessageButton: UIButton!
     
     lazy var viewModel = ChatWindowViewModel()
     var urlRecordAudio = ""
@@ -104,15 +107,17 @@ class ChatWindowViewController: CameraBaseViewController {
         self.getAllChatMessages()
         self.registerTableViewCells()
         self.setHeaderData()
-        
+        self.isAudioMessage = false
     }
 
     func buildViewRecordAudio() {
+        playAudioButton.setImage(UIImage(named: "play.circle"), for: .normal)
         sendButtonView.isHidden = true
         attachmentView.isHidden = true
         viewRecordAudio.isHidden = false
         textView.isEditable = false
         scrollToTheBottom(animated: true)
+        viewAudioRecorderLive.isHidden = true
     }
     
     func registerTableViewCells() {
@@ -179,6 +184,9 @@ class ChatWindowViewController: CameraBaseViewController {
     }
     
     func recordAudio() {
+        playAudioButton.isHidden = true
+        viewAudioRecorderLive.isHidden = false
+//        viewAudioRecorderLive = AudioVisualizerView()
         recordingSession = AVAudioSession.sharedInstance()
         
         do {
@@ -188,7 +196,6 @@ class ChatWindowViewController: CameraBaseViewController {
                 DispatchQueue.main.async {
                     if allowed {
                         self.loadRecordingUI()
-                        self.imageAudioRecording.isHidden = false
                     } else {
                         // failed to record
                     }
@@ -206,6 +213,7 @@ class ChatWindowViewController: CameraBaseViewController {
     }
     
     func startRecording() {
+        btnSendRecordAudio.isHidden = true
         let audioFilename = getFileURL()
         
         let settings = [
@@ -225,6 +233,9 @@ class ChatWindowViewController: CameraBaseViewController {
     }
     
     func finishRecording() {
+        viewAudioRecorderLive.isHidden = true
+        btnSendRecordAudio.isHidden = false
+        playAudioButton.isHidden = false
         isAudioMessage = true
         recordAudioButton.isHidden = false
         stopRecordAudioButton.isHidden = true
@@ -234,6 +245,23 @@ class ChatWindowViewController: CameraBaseViewController {
     }
     
     // MARK: - Button Actions
+    
+    @IBAction func sendAudioButton(_ sender: Any) {
+        buildViewRecordAudio()
+    }
+    
+    @IBAction func closeButtonViewRecorder(_ sender: Any) {
+        if !stopRecordAudioButton.isHidden {
+            finishRecording()
+        }
+        btnSendRecordAudio.isHidden = true
+        isAudioMessage = false
+        viewRecordAudio.isHidden = true
+        textView.isEditable = true
+        sendButtonView.isHidden = false
+        attachmentView.isHidden = false
+    }
+    
     @IBAction func recordRecordButton(_ sender: Any) {
         recordAudio()
     }
@@ -242,8 +270,18 @@ class ChatWindowViewController: CameraBaseViewController {
         finishRecording()
     }
     
-    @IBAction func playButtonAudio(_ sender: Any) {
-        playAudioFromURL()
+    @IBAction func playButtonAudio(_ sender: UIButton) {
+        if (sender.titleLabel?.text == "Play"){
+            viewAudioRecorderLive.isHidden = false
+            sender.setTitle("Stop", for: .normal)
+            sender.setImage(UIImage(named: "stop.circle.fill"), for: .normal)
+            playAudioFromURL()
+        } else {
+            viewAudioRecorderLive.isHidden = true
+            audioPlayer.stop()
+            sender.setTitle("Play", for: .normal)
+            sender.setImage(UIImage(named: "play.circle"), for: .normal)
+        }
     }
     
     @IBAction func backButtonAction(_ sender: Any) {
@@ -267,19 +305,19 @@ class ChatWindowViewController: CameraBaseViewController {
             let actionChooseDocument : UIAlertAction = UIAlertAction.init(title: "Choose Document", style: .default) { (action:UIAlertAction) in
                 self.chooseDocument()
             }
-            let actionRecordAudio : UIAlertAction = UIAlertAction.init(title: "Record Audio", style: .default) { (action:UIAlertAction) in
-                self.buildViewRecordAudio()
-            }
+//            let actionRecordAudio : UIAlertAction = UIAlertAction.init(title: "Record Audio", style: .default) { (action:UIAlertAction) in
+//                self.buildViewRecordAudio()
+//            }
             let actionCancel = UIAlertAction.init(title: "Cancel", style: .cancel, handler: { (action:UIAlertAction) in })
             
             let titleColor = UIColor(red: 43.0/255, green: 48.0/255, blue: 57.0/255, alpha: 1.0)
             actionChoosePhoto.setValue(titleColor, forKey: "titleTextColor")
             actionChooseDocument.setValue(titleColor, forKey: "titleTextColor")
-            actionRecordAudio.setValue(titleColor, forKey: "titleTextColor")
+//            actionRecordAudio.setValue(titleColor, forKey: "titleTextColor")
             actionCancel.setValue(UIColor.black, forKey: "titleTextColor")
             actionSheetController.addAction(actionChoosePhoto)
             actionSheetController.addAction(actionChooseDocument)
-            actionSheetController.addAction(actionRecordAudio)
+//            actionSheetController.addAction(actionRecordAudio)
             actionSheetController.addAction(actionCancel)
             self.present(actionSheetController, animated: true, completion: nil)
         }
@@ -321,7 +359,6 @@ class ChatWindowViewController: CameraBaseViewController {
             self.shareDocument(document_name: file_name, document_path:document_path)
             isAudioMessage = false
             viewRecordAudio.isHidden = true
-            imageAudioRecording.isHidden = true
             textView.isEditable = true
             sendButtonView.isHidden = false
             attachmentView.isHidden = false
@@ -508,14 +545,22 @@ extension ChatWindowViewController : UITextViewDelegate {
    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+        sendMessageButton.isHidden = false
+        sendMicRecorderButton.isHidden = true
     }
         
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-     
+        sendMessageButton.isHidden = false
+        sendMicRecorderButton.isHidden = true
         let maxLength = 2000
         let currentString: NSString = textView.text! as NSString
         let newString = currentString.replacingCharacters(in: range, with: text).trim()
         return newString.count <= maxLength
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        sendMessageButton.isHidden = true
+        sendMicRecorderButton.isHidden = false
     }
 }
 
