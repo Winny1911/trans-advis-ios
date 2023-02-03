@@ -528,7 +528,7 @@ extension ChatWindowViewController {
             UIView.animate(withDuration: duration ?? 0, delay: 0, options: .curveEaseOut, animations: {
                 
                 let yAxisFromBottom = (self.viewModel.keyboardHeight - self.view.safeAreaInsets.bottom) + 10.0
-                //self.bottomViewBottomConstraint.constant = yAxisFromBottom
+                self.bottomViewBottomConstraint.constant = yAxisFromBottom
                 self.view.layoutIfNeeded()
                 
             }, completion: nil)
@@ -547,7 +547,7 @@ extension ChatWindowViewController {
         
         DispatchQueue.main.async {
             UIView.animate(withDuration: duration ?? 0, delay: 0, options: .curveEaseOut, animations: {
-                //self.bottomViewBottomConstraint.constant = 0
+                self.bottomViewBottomConstraint.constant = 0
                 self.view.layoutIfNeeded()
             }, completion: nil)
             self.scrollToTheBottom(animated: false)

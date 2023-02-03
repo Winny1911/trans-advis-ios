@@ -30,10 +30,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcf-1X-CPA" userLabel="headerView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="91.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bav-GE-n4F" userLabel="notificationButton">
-                                        <rect key="frame" x="360" y="53.5" width="30" height="30"/>
+                                        <rect key="frame" x="360" y="56" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Bav-GE-n4F" secondAttribute="height" id="5MG-Sp-7KY"/>
                                             <constraint firstAttribute="width" constant="30" id="XRk-v3-KFj"/>
@@ -46,13 +46,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Messages" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8EE-nX-ary" userLabel="titleLabel">
-                                        <rect key="frame" x="20" y="57" width="330" height="23.5"/>
+                                        <rect key="frame" x="20" y="57" width="330" height="28"/>
                                         <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="20"/>
                                         <color key="textColor" name="#4F515D"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ABP-Jw-vXk" userLabel="divider">
-                                        <rect key="frame" x="0.0" y="90.5" width="414" height="1"/>
+                                        <rect key="frame" x="0.0" y="95" width="414" height="1"/>
                                         <color key="backgroundColor" name="#F6F6F7"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="sk4-9b-WfN"/>
@@ -73,7 +73,7 @@
                                 </constraints>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mMy-9M-2f4" userLabel="searchView">
-                                <rect key="frame" x="15" y="106.5" width="384" height="46"/>
+                                <rect key="frame" x="15" y="111" width="384" height="46"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_search" translatesAutoresizingMaskIntoConstraints="NO" id="Kgg-SJ-ARb">
                                         <rect key="frame" x="5" y="8" width="30" height="30"/>
@@ -106,7 +106,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Xs-1p-G2Q" userLabel="tableView">
-                                <rect key="frame" x="0.0" y="157.5" width="414" height="738.5"/>
+                                <rect key="frame" x="0.0" y="162" width="414" height="734"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Y6W-OH-hqX" id="Kh3-Hk-Gh8"/>
@@ -329,7 +329,7 @@
                                 <rect key="frame" x="10" y="109" width="394" height="693"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="693" id="R6o-zC-OT1"/>
+                                    <constraint firstAttribute="height" constant="693" id="wSc-Qw-hnm"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="o6T-ZM-Y2l" id="B4W-dJ-DTs"/>
@@ -431,21 +431,22 @@
                         <viewLayoutGuide key="safeArea" id="4tY-lG-F3k"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="HYf-NW-zV1" firstAttribute="top" secondItem="y1C-65-pac" secondAttribute="bottom" id="2Qk-TV-XIv"/>
                             <constraint firstItem="y1C-65-pac" firstAttribute="centerX" secondItem="NMP-fi-sVs" secondAttribute="centerX" id="44g-xh-a6A"/>
-                            <constraint firstItem="UIh-p7-NF6" firstAttribute="top" secondItem="HYf-NW-zV1" secondAttribute="bottom" constant="5" id="GtD-8f-LMk"/>
-                            <constraint firstItem="HYf-NW-zV1" firstAttribute="leading" secondItem="4tY-lG-F3k" secondAttribute="leading" constant="10" id="KNk-jV-ERB"/>
+                            <constraint firstItem="HYf-NW-zV1" firstAttribute="top" secondItem="y1C-65-pac" secondAttribute="bottom" id="9RT-Pe-x4P"/>
+                            <constraint firstItem="UIh-p7-NF6" firstAttribute="top" secondItem="HYf-NW-zV1" secondAttribute="bottom" constant="5" id="GPa-wi-WIc"/>
+                            <constraint firstItem="HYf-NW-zV1" firstAttribute="centerX" secondItem="UIh-p7-NF6" secondAttribute="centerX" id="KB2-la-xxA"/>
                             <constraint firstItem="UIh-p7-NF6" firstAttribute="leading" secondItem="4tY-lG-F3k" secondAttribute="leading" id="O4O-mD-ogD"/>
-                            <constraint firstItem="HYf-NW-zV1" firstAttribute="centerX" secondItem="UIh-p7-NF6" secondAttribute="centerX" id="QLV-17-gHK"/>
-                            <constraint firstItem="HYf-NW-zV1" firstAttribute="top" secondItem="NMP-fi-sVs" secondAttribute="top" constant="109" id="QdW-YB-CUx"/>
                             <constraint firstItem="y1C-65-pac" firstAttribute="leading" secondItem="UIh-p7-NF6" secondAttribute="leading" id="WA3-0l-c6W"/>
+                            <constraint firstItem="HYf-NW-zV1" firstAttribute="leading" secondItem="4tY-lG-F3k" secondAttribute="leading" constant="10" id="mcn-n2-dXA"/>
                             <constraint firstItem="y1C-65-pac" firstAttribute="top" secondItem="NMP-fi-sVs" secondAttribute="topMargin" constant="-48" id="msI-E3-kRt"/>
                             <constraint firstItem="y1C-65-pac" firstAttribute="trailing" secondItem="UIh-p7-NF6" secondAttribute="trailing" id="olp-au-j3z"/>
+                            <constraint firstAttribute="bottom" secondItem="UIh-p7-NF6" secondAttribute="bottom" constant="14" id="var-Ad-jCR"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="attachmentView" destination="U2o-3B-daz" id="67W-t3-afk"/>
                         <outlet property="bottomView" destination="UIh-p7-NF6" id="iTg-o5-bSv"/>
+                        <outlet property="bottomViewBottomConstraint" destination="var-Ad-jCR" id="dvg-x0-aJU"/>
                         <outlet property="lblTimeRecord" destination="1Ba-ft-Jcc" id="Gbd-cd-mq9"/>
                         <outlet property="playAudioButton" destination="j5h-Qb-zfg" id="sbA-oK-sYQ"/>
                         <outlet property="recordAudioButton" destination="zfZ-OL-QHl" id="TDO-tf-w71"/>
