@@ -94,6 +94,7 @@ class ChatWindowViewController: CameraBaseViewController {
     }
     
     override func viewDidLayoutSubviews() {
+        userImageView.frame.size.width = 100.0
         userImageView.layer.cornerRadius = userImageView.frame.size.height/2.0
         if viewModel.isMessagesLoadedForFirstTime == false {
             self.scrollToTheBottom(animated: false)
@@ -237,7 +238,8 @@ class ChatWindowViewController: CameraBaseViewController {
     }
     
     func startRecording() {
-//        playAudioButton.isHidden = true
+        playAudioButton.isHidden = true
+        stopRecordAudioButton.isHidden = false
         viewAudioRecorderLive.isHidden = false
         timerCounting = true
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCounter), userInfo: nil, repeats: true)
@@ -255,16 +257,16 @@ class ChatWindowViewController: CameraBaseViewController {
             audioRecorder.delegate = self
             audioRecorder.record()
         } catch {
+            isAudioMessage = false
             finishRecording()
         }
     }
     
     func finishRecording() {
         viewAudioRecorderLive.isHidden = true
-//        playAudioButton.isHidden = false
-        isAudioMessage = true
+        //playAudioButton.isHidden = false
         recordAudioButton.isHidden = false
-        stopRecordAudioButton.isHidden = true
+        stopRecordAudioButton.isHidden = false
         audioRecorder.stop()
         audioRecorder = nil
         sendButtonView.isHidden = false
@@ -278,6 +280,12 @@ class ChatWindowViewController: CameraBaseViewController {
             textView.isEditable = true
             sendButtonView.isHidden = false
             attachmentView.isHidden = false
+        } else {
+            timerCounting = false
+            count = 0
+            timer.invalidate()
+            lblTimeRecord.text = self.makeTimeString(hours: 0, minutes: 0, seconds: 0)
+            isAudioMessage = true
         }
     }
     
@@ -288,7 +296,7 @@ class ChatWindowViewController: CameraBaseViewController {
     }
     
     @IBAction func closeButtonViewRecorder(_ sender: Any) {
-        if !stopRecordAudioButton.isHidden {
+        if stopRecordAudioButton.isHidden {
             finishRecording()
         }
         isAudioMessage = false
@@ -296,6 +304,8 @@ class ChatWindowViewController: CameraBaseViewController {
         textView.isEditable = true
         sendButtonView.isHidden = false
         attachmentView.isHidden = false
+        finishRecording()
+        
     }
     
     @IBAction func recordRecordButton(_ sender: Any) {
@@ -307,6 +317,7 @@ class ChatWindowViewController: CameraBaseViewController {
         count = 0
         timer.invalidate()
         lblTimeRecord.text = self.makeTimeString(hours: 0, minutes: 0, seconds: 0)
+        isAudioMessage = true
         finishRecording()
     }
     
