@@ -128,6 +128,8 @@
 		3CECEF27276C91BC00804B30 /* ProjectListingHOModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CECEF26276C91BB00804B30 /* ProjectListingHOModel.swift */; };
 		6225657A29825C8100BA3BB0 /* RecordAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6225657929825C8000BA3BB0 /* RecordAudio.swift */; };
 		6278A0B6296A3E370052EFDF /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6278A0B5296A3E370052EFDF /* TextField.swift */; };
+		62A60F77298AA1310008017F /* ViewRecordButtons.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62A60F76298AA1310008017F /* ViewRecordButtons.xib */; };
+		62C0881C298B7C6A006975F6 /* AudioVisualizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C0881B298B7C6A006975F6 /* AudioVisualizerView.swift */; };
 		65A5544527A7F948008D1BB8 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		65A5544627A7F948008D1BB8 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		65A5544827A7F97B008D1BB8 /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -605,6 +607,8 @@
 		56E733CA42381FFD60AAB7CA /* Pods-TA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TA.debug.xcconfig"; path = "Target Support Files/Pods-TA/Pods-TA.debug.xcconfig"; sourceTree = "<group>"; };
 		6225657929825C8000BA3BB0 /* RecordAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordAudio.swift; sourceTree = "<group>"; };
 		6278A0B5296A3E370052EFDF /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		62A60F76298AA1310008017F /* ViewRecordButtons.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewRecordButtons.xib; sourceTree = "<group>"; };
+		62C0881B298B7C6A006975F6 /* AudioVisualizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioVisualizerView.swift; sourceTree = "<group>"; };
 		67B51A1DCE3AB7ECF49DCEAA /* Pods-TA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TA.release.xcconfig"; path = "Target Support Files/Pods-TA/Pods-TA.release.xcconfig"; sourceTree = "<group>"; };
 		943F8E3C27BE46F000E484E2 /* VenderProfilesCOVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenderProfilesCOVC.swift; sourceTree = "<group>"; };
 		94475A3227B22917005EBB36 /* PastProjectOrderListCOResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastProjectOrderListCOResponseModel.swift; sourceTree = "<group>"; };
@@ -1800,6 +1804,7 @@
 			isa = PBXGroup;
 			children = (
 				C96FCA0027E5A23800E8D006 /* MessageHO.storyboard */,
+				62A60F76298AA1310008017F /* ViewRecordButtons.xib */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -2071,6 +2076,7 @@
 				D4AE6CFD27661D2B00DBA410 /* UIFunction.swift */,
 				6278A0B5296A3E370052EFDF /* TextField.swift */,
 				6225657929825C8000BA3BB0 /* RecordAudio.swift */,
+				62C0881B298B7C6A006975F6 /* AudioVisualizerView.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -2479,6 +2485,7 @@
 				99DDBA3E2761A89B00ACB72F /* Poppins-LightItalic.ttf in Resources */,
 				3C5EA9772768B3200007DBE5 /* PastSubOrderList.storyboard in Resources */,
 				C96FCA0427E5A23800E8D006 /* MessageHO.storyboard in Resources */,
+				62A60F77298AA1310008017F /* ViewRecordButtons.xib in Resources */,
 				D71EAD95277AF35000B378E6 /* MainProjectHO.storyboard in Resources */,
 				9946A15027AA4A3700AA784B /* SubTaskOrderList.storyboard in Resources */,
 				3C5EAC2F276B6052007631F1 /* Profile.storyboard in Resources */,
@@ -2829,6 +2836,7 @@
 				C9FD87BE280330CA006E5974 /* ChatWindowViewModel.swift in Sources */,
 				3C67FDCE27881F520020F6B9 /* OngoingProjectResponseModel.swift in Sources */,
 				D4709EB42770ECE3006EF7DE /* NewProjectsHOResponseModel.swift in Sources */,
+				62C0881C298B7C6A006975F6 /* AudioVisualizerView.swift in Sources */,
 				99DDBA582761ABEF00ACB72F /* AddBankAccountVC.swift in Sources */,
 				94575DDA27952C130071D698 /* UserBankDetailsResponseModel.swift in Sources */,
 				3C614CFE276763EE00E3B9CB /* OrderListTableviewCell.swift in Sources */,
@@ -3134,7 +3142,7 @@
 				CODE_SIGN_ENTITLEMENTS = TA/TA.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = 9Q982ULHZR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TA/Info.plist;
@@ -3158,7 +3166,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.9.1;
+				MARKETING_VERSION = 1.9.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.applify.TA.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3177,7 +3185,7 @@
 				CODE_SIGN_ENTITLEMENTS = TA/TA.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = 9Q982ULHZR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TA/Info.plist;
@@ -3201,7 +3209,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.9.1;
+				MARKETING_VERSION = 1.9.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.applify.TA.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

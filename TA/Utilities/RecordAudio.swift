@@ -196,6 +196,7 @@ class RecordAudio: UIView , AVAudioRecorderDelegate, AVAudioPlayerDelegate {
         }
         downloadTask.resume()
     }
+    
     func play(url:URL) {
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: url as URL)

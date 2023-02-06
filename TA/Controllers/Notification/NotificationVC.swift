@@ -83,6 +83,8 @@ extension NotificationVC : UITableViewDelegate,UITableViewDataSource{
         
         let notificationDate = self.notificationListing[indexPath.row].createdAt
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
         let newDate =  dateFormatter.date(from: notificationDate ?? "")
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let updatedDate = dateFormatter.string(from: newDate!)
