@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -1239,6 +1239,14 @@
                                     <constraint firstItem="ra3-A0-c1V" firstAttribute="leading" secondItem="2Mo-YF-Z5Q" secondAttribute="leading" constant="24" id="ugR-9Y-qOv"/>
                                 </constraints>
                             </view>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ug4-mx-a74">
+                                <rect key="frame" x="0.0" y="88" width="414" height="648"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z2W-eT-Vya">
                                 <rect key="frame" x="0.0" y="-36.666666666666686" width="414" height="809.33333333333348"/>
                                 <subviews>
@@ -1304,12 +1312,15 @@
                         <constraints>
                             <constraint firstItem="2Mo-YF-Z5Q" firstAttribute="top" secondItem="Dol-HU-dTz" secondAttribute="bottom" constant="1" id="0Dr-Pl-QJj"/>
                             <constraint firstItem="Z2W-eT-Vya" firstAttribute="centerX" secondItem="0lR-DA-4G3" secondAttribute="centerX" id="9Tr-nd-ebn"/>
+                            <constraint firstItem="Ug4-mx-a74" firstAttribute="bottom" secondItem="0lR-DA-4G3" secondAttribute="bottom" id="EhY-cU-V5U"/>
                             <constraint firstItem="Dol-HU-dTz" firstAttribute="leading" secondItem="0lR-DA-4G3" secondAttribute="leading" id="FOU-k2-liZ"/>
                             <constraint firstItem="MyL-3p-gG4" firstAttribute="centerY" secondItem="0lR-DA-4G3" secondAttribute="centerY" id="GBZ-oU-znM"/>
                             <constraint firstItem="MyL-3p-gG4" firstAttribute="trailing" secondItem="0lR-DA-4G3" secondAttribute="trailing" constant="-16" id="GxV-ge-u4y"/>
+                            <constraint firstItem="Ug4-mx-a74" firstAttribute="top" secondItem="phG-6o-Pbz" secondAttribute="bottom" id="L6T-qZ-y0s"/>
                             <constraint firstItem="2Mo-YF-Z5Q" firstAttribute="leading" secondItem="0lR-DA-4G3" secondAttribute="leading" id="MGf-hs-lrY"/>
                             <constraint firstItem="phG-6o-Pbz" firstAttribute="leading" secondItem="0lR-DA-4G3" secondAttribute="leading" id="U6o-u5-VEW"/>
                             <constraint firstItem="Z2W-eT-Vya" firstAttribute="height" secondItem="INt-om-3Xq" secondAttribute="height" multiplier="1.09964" id="Vjx-35-NfR"/>
+                            <constraint firstItem="Ug4-mx-a74" firstAttribute="trailing" secondItem="0lR-DA-4G3" secondAttribute="trailing" id="Xit-nt-ST0"/>
                             <constraint firstItem="Z2W-eT-Vya" firstAttribute="centerY" secondItem="0lR-DA-4G3" secondAttribute="centerY" id="aG2-9v-ycx"/>
                             <constraint firstItem="phG-6o-Pbz" firstAttribute="trailing" secondItem="0lR-DA-4G3" secondAttribute="trailing" id="alf-ZN-MAL"/>
                             <constraint firstItem="Z2W-eT-Vya" firstAttribute="width" secondItem="INt-om-3Xq" secondAttribute="width" id="hJ6-wt-gTd"/>
@@ -1318,8 +1329,17 @@
                             <constraint firstItem="0lR-DA-4G3" firstAttribute="bottom" secondItem="2Mo-YF-Z5Q" secondAttribute="bottom" id="l4g-7Y-gII"/>
                             <constraint firstItem="0lR-DA-4G3" firstAttribute="trailing" secondItem="Dol-HU-dTz" secondAttribute="trailing" id="rKa-x0-6ek"/>
                             <constraint firstItem="0lR-DA-4G3" firstAttribute="leading" secondItem="MyL-3p-gG4" secondAttribute="leading" constant="-16" id="tUQ-dM-Rwa"/>
+                            <constraint firstItem="Ug4-mx-a74" firstAttribute="leading" secondItem="0lR-DA-4G3" secondAttribute="leading" id="xLN-ga-Yqy"/>
                             <constraint firstItem="0lR-DA-4G3" firstAttribute="trailing" secondItem="2Mo-YF-Z5Q" secondAttribute="trailing" id="zii-tJ-4Ea"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Dol-HU-dTz"/>
+                                <exclude reference="2Mo-YF-Z5Q"/>
+                                <exclude reference="Z2W-eT-Vya"/>
+                                <exclude reference="MyL-3p-gG4"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="blackView" destination="Z2W-eT-Vya" id="vfn-aU-Rvs"/>
@@ -1340,6 +1360,7 @@
                         <outlet property="txtVwDetail" destination="g2l-68-y6b" id="sHZ-Hk-cTR"/>
                         <outlet property="viewInfo" destination="mg5-1M-nOA" id="cet-wV-DPN"/>
                         <outlet property="vwBidetail" destination="Tfc-wV-OYB" id="boW-7Z-lym"/>
+                        <outlet property="webviewForm" destination="Ug4-mx-a74" id="GHM-vi-xdi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QM3-ZY-hXr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

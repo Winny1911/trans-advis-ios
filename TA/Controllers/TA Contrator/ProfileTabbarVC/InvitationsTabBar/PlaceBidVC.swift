@@ -11,6 +11,8 @@ import Photos
 import SDWebImage
 import MobileCoreServices
 import UniformTypeIdentifiers
+import WebKit
+import PDFKit
 
 class PlaceBidVC: BaseViewController {
 
@@ -36,6 +38,8 @@ class PlaceBidVC: BaseViewController {
     @IBOutlet weak var btnSucces: UIButton!
     @IBOutlet weak var successFulView: UIView!
     @IBOutlet weak var blackView: UIView!
+    
+    @IBOutlet weak var webviewForm: WKWebView!
     
     var projectTitle = String()
     var projectDesc = String()
@@ -65,11 +69,11 @@ class PlaceBidVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.arrOfFilesFetchedFromServer.removeAll()
-        self.arrOfFilesManually.removeAll()
-        viewInfo.isHidden = true
-        lblInfo.isHidden = true
-        viewInfo.addCustomShadow()
+        //self.arrOfFilesFetchedFromServer.removeAll()
+        //self.arrOfFilesManually.removeAll()
+        //viewInfo.isHidden = true
+        //lblInfo.isHidden = true
+        //viewInfo.addCustomShadow()
         self.lblTitle.text = self.projectTitle
 //        self.lblDesc.text = self.projectDesc
 //        self.projectImageWidth.constant = 0.0
@@ -79,39 +83,73 @@ class PlaceBidVC: BaseViewController {
 //        } else {
 //            projectImageWidth.constant = 0.0
 //        }
-        addCustomButtonOnTextField()
-        btnSucces.isHidden = true
-        successFulView.setRoundCorners(radius: 14.0)
-        successFulView.isHidden = true
-        blackView.isHidden = true
+//        addCustomButtonOnTextField()
+//        btnSucces.isHidden = true
+//        successFulView.setRoundCorners(radius: 14.0)
+//        successFulView.isHidden = true
+//        blackView.isHidden = true
+//
+//        self.collVwFiles.register(UINib(nibName: "PlaceBidCollVwCell", bundle: nil), forCellWithReuseIdentifier: "PlaceBidCollVwCell")
+//
+//        self.collVwFiles.delegate = self
+//        self.collVwFiles.dataSource = self
+//
+//        self.txtFldBidAmount.delegate = self
+//        self.txtFldamountReceivable.delegate = self
+//        self.txtEndDate.delegate = self
+//        self.txtStartDate.delegate = self
+//        self.txtVwDetail.setLeftPadding(14.0)
+//        self.setFloatingTextVw()
+//
+//        self.btnAddFiles.setRoundCorners(radius: 8.0)
+//        txtFldBidAmount.setLeftPadding(14)
+//        txtFldamountReceivable.setLeftPadding(14)
+//        txtStartDate.setLeftPadding(14)
+//        txtEndDate.setLeftPadding(14)
+//
+//        vwBidetail.addCustomShadow()
+//        bottomVw.addCustomShadow()
+//
+//        self.showStartDatePicker()
+//        self.showEndDatePicker()
+//        if self.bidId != 0 {
+//            self.btnSubmit.setTitle("Update Bid", for: .normal)
+//            self.lblTopTitle.text = "Edit Bid"
+//            self.fetchBidDetails()
+//        }
+        //self.openUrlWebview(url: "https://c8szizga07.execute-api.us-east-1.amazonaws.com/default/delta")
         
-        self.collVwFiles.register(UINib(nibName: "PlaceBidCollVwCell", bundle: nil), forCellWithReuseIdentifier: "PlaceBidCollVwCell")
+        self.displayPdf()
+    }
+    
+    func openUrlWebview(url: String){
+        let myUrl = URL(string: url)
+        let myRequest = URLRequest(url: myUrl!)
+        self.webviewForm.load(myRequest)
+    }
+    
+    private func createPdfDocument(forFileName fileName: String) -> PDFDocument? {
+        if let resourceUrl = URL(string: "https://c8szizga07.execute-api.us-east-1.amazonaws.com/default/delta") {
+            return PDFDocument(url: resourceUrl)
+        }
         
-        self.collVwFiles.delegate = self
-        self.collVwFiles.dataSource = self
+        return nil
+    }
+    
+    private func createPdfView(withFrame frame: CGRect) -> PDFView {
+        let pdfView = PDFView(frame: frame)
+        pdfView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        pdfView.autoScales = true
         
-        self.txtFldBidAmount.delegate = self
-        self.txtFldamountReceivable.delegate = self
-        self.txtEndDate.delegate = self
-        self.txtStartDate.delegate = self
-        self.txtVwDetail.setLeftPadding(14.0)
-        self.setFloatingTextVw()
+        return pdfView
+    }
+    
+    private func displayPdf() {
+        let pdfView = self.createPdfView(withFrame: self.view.bounds)
         
-        self.btnAddFiles.setRoundCorners(radius: 8.0)
-        txtFldBidAmount.setLeftPadding(14)
-        txtFldamountReceivable.setLeftPadding(14)
-        txtStartDate.setLeftPadding(14)
-        txtEndDate.setLeftPadding(14)
-        
-        vwBidetail.addCustomShadow()
-        bottomVw.addCustomShadow()
-        
-        self.showStartDatePicker()
-        self.showEndDatePicker()
-        if self.bidId != 0 {
-            self.btnSubmit.setTitle("Update Bid", for: .normal)
-            self.lblTopTitle.text = "Edit Bid"
-            self.fetchBidDetails()
+        if let pdfDocument = self.createPdfDocument(forFileName: "heaps") {
+            self.webviewForm.addSubview(pdfView)
+            pdfView.document = pdfDocument
         }
     }
     
