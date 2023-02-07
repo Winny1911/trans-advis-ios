@@ -39,6 +39,7 @@ class PlaceBidVC: BaseViewController {
     @IBOutlet weak var successFulView: UIView!
     @IBOutlet weak var blackView: UIView!
     
+    @IBOutlet weak var viewPDF: UIView!
     @IBOutlet weak var webviewForm: WKWebView!
     
     var projectTitle = String()
@@ -117,8 +118,9 @@ class PlaceBidVC: BaseViewController {
 //            self.lblTopTitle.text = "Edit Bid"
 //            self.fetchBidDetails()
 //        }
-        //self.openUrlWebview(url: "https://c8szizga07.execute-api.us-east-1.amazonaws.com/default/delta")
         
+        
+        //self.openUrlWebview(url: "https://c8szizga07.execute-api.us-east-1.amazonaws.com/default/delta")
         self.displayPdf()
     }
     
@@ -138,23 +140,23 @@ class PlaceBidVC: BaseViewController {
     
     private func createPdfView(withFrame frame: CGRect) -> PDFView {
         let pdfView = PDFView(frame: frame)
-        pdfView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        pdfView.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin]
         pdfView.autoScales = true
         
         return pdfView
     }
     
     private func displayPdf() {
-        let pdfView = self.createPdfView(withFrame: self.view.bounds)
+        let pdfView = self.createPdfView(withFrame: self.viewPDF.bounds)
         
         if let pdfDocument = self.createPdfDocument(forFileName: "heaps") {
-            self.webviewForm.addSubview(pdfView)
+            self.viewPDF.addSubview(pdfView)
             pdfView.document = pdfDocument
         }
     }
     
     var arrOfImgStrings = [String]()
-    
+
     func fetchBidDetails() {
         self.arrOfFilesFetchedFromServer.removeAll()
         self.arrOfFilesManually.removeAll()
@@ -175,13 +177,13 @@ class PlaceBidVC: BaseViewController {
             self.txtStartDate.text = DateHelper.convertDateString(dateString: model?.data?.proposedStartDate ?? "", fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: "dd MMM yyyy")
             self.txtEndDate.text = DateHelper.convertDateString(dateString: model?.data?.proposedEndDate ?? "", fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: "dd MMM yyyy")
             self.txtVwDetail.text = model?.data?.description ?? ""
-            
+
             self.txtFldBidAmount.resetFloatingLable()
             self.txtFldamountReceivable.resetFloatingLable()
             self.txtStartDate.resetFloatingLable()
             self.txtEndDate.resetFloatingLable()
             self.setFloatingTextVw()
-            
+
             let userImgVw = UIImageView()
             if model?.data?.bids_documents?.count ?? 0 > 0 {
                 self.fullViewImge.removeAll()
@@ -224,7 +226,7 @@ class PlaceBidVC: BaseViewController {
             }
         }
     }
-    
+
     func addCustomButtonOnTextField() {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "ic_tootltip_hover"), for: .normal)
@@ -234,7 +236,7 @@ class PlaceBidVC: BaseViewController {
         txtFldamountReceivable.rightView = button
         txtFldamountReceivable.rightViewMode = .always
     }
-    
+
     @objc func infoBtnTapped() {
         if self.viewInfo.isHidden {
             viewInfo.isHidden = false
@@ -248,7 +250,7 @@ class PlaceBidVC: BaseViewController {
             lblInfo.isHidden = true
         }
     }
-    
+
     func setFloatingTextVw() {
         self.txtVwDetail.isFloatingLabel = true
         self.txtVwDetail.placeholder = " Terms / Description"
@@ -257,7 +259,7 @@ class PlaceBidVC: BaseViewController {
         self.txtVwDetail.selectedColor = UIColor.appFloatText
         self.txtVwDetail.setLeftPadding(14.0)
     }
-    
+
     func imageSendAPI(imageData: Data, fileName:String) {
         placeBidViewModel.addInvitationImageApi(keyToUploadData: "file", fileNames: "\(fileName)", dataToUpload: imageData, param: [:]) { response in
             print(response!)
@@ -269,7 +271,7 @@ class PlaceBidVC: BaseViewController {
             self.setModelData(response: response!)
         }
     }
-    
+
     func docSendAPI(docLocalUrl:URL, fileName:String) {
         if self.docURL != nil {
             placeBidViewModel.addInvitationDocApi(localFileUrl: docLocalUrl, keyToUploadData: "file", fileNames: "\(fileName)") { response in
@@ -283,7 +285,7 @@ class PlaceBidVC: BaseViewController {
             }
         }
     }
-    
+
     func setModelData(response: [String:Any]) {
         let dataDict = response["data"] as! NSDictionary
         let randomName = "\(randomString())"
@@ -292,7 +294,7 @@ class PlaceBidVC: BaseViewController {
         self.arrOfFilesManually.append(dict)
         self.collVwFiles.reloadData()
     }
-    
+
     @IBAction func actionHideSuccessfulView(_ sender: Any) {
         self.btnSucces.isHidden = true
         self.successFulView.isHidden = true
@@ -300,12 +302,12 @@ class PlaceBidVC: BaseViewController {
         self.navigationController?.popViewController(animated: true)
         self.completionHandlerGoToInvitationDetailScreenFromPlaceBid?()
     }
-    
+
     //MARK: ACTION BACK
     @IBAction func actionBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    
+
     //MARK: ACTION ADD FILES
     @IBAction func actionAddFiles(_ sender: Any) {
         var count = arrOfImages.count
@@ -317,7 +319,7 @@ class PlaceBidVC: BaseViewController {
         }
        // handleCameraOptions()
     }
-    
+
     //MARK: ACTION SUBMIT
     @IBAction func actionSubmit(_ sender: Any) {
         let bidAmount2 = self.txtFldBidAmount.text?.trimmed ?? ""
@@ -330,13 +332,13 @@ class PlaceBidVC: BaseViewController {
 
         let dateFormatter = DateFormatter()
         let requiredDateFormatter = DateFormatter()
-        
+
         dateFormatter.dateFormat = "dd MMMM yyyy"
         requiredDateFormatter.dateFormat = "yyyy-MM-dd"
-        
+
         let dateStart = dateFormatter.date(from: startDate)
         let dateEnd = dateFormatter.date(from: endDate)
-        
+
         let stringStartDate = requiredDateFormatter.string(from: dateStart ?? Date())
         let stringEndDate = requiredDateFormatter.string(from: dateEnd ?? Date())
         var mediaArrCount = 0
@@ -369,7 +371,7 @@ class PlaceBidVC: BaseViewController {
             }
         }
     }
-    
+
     func handleSuccessApi() {
         if self.bidId == 0 {
             self.lblSuccess.text! = "Bid Placed successfully"
@@ -426,7 +428,7 @@ extension PlaceBidVC {
         txtStartDate.text = formatter.string(from: startDatePicker.date)
         self.view.endEditing(true)
     }
-    
+
     private func showEndDatePicker(){
         //Formate Date
         endDatePicker.datePickerMode = .date
@@ -451,14 +453,14 @@ extension PlaceBidVC {
         txtEndDate.text = formatter.string(from: endDatePicker.date)
         self.view.endEditing(true)
     }
-    
+
     @objc private func cancelDatePicker(){
         self.view.endEditing(true)
     }
 }
 
 extension PlaceBidVC: UITextFieldDelegate {
-    
+
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField == txtStartDate ||  textField == txtEndDate{
             return false
@@ -472,12 +474,12 @@ extension PlaceBidVC: UITextFieldDelegate {
             let str = "\(textField.text!)\(string)"
             let str2 = str.replacingOccurrences(of: "$ ", with: "")
 //            textField.text! = "$ \(str2)"
-            
+
             let formatter = NumberFormatter()
             formatter.numberStyle = .decimal
             formatter.locale = Locale.current
             formatter.maximumFractionDigits = 0
-            
+
             if let groupingSeparator = formatter.groupingSeparator {
 
                     if string == groupingSeparator {
@@ -498,10 +500,10 @@ extension PlaceBidVC: UITextFieldDelegate {
                                 txtFldBidAmount.resetFloatingLable()
                                 return false
                             }
-                    
+
                         }
             }
-            
+
             txtFldBidAmount.resetFloatingLable()
             if str == "$ " {
                 textField.text! = ""
@@ -520,13 +522,13 @@ extension PlaceBidVC: UITextFieldDelegate {
             } else {
                 return true
             }
-            
+
         } else if textField == txtFldamountReceivable {
             return false
         }
         return true
     }
-    
+
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == txtFldBidAmount {
             if txtFldBidAmount.text != "" || txtFldBidAmount.text?.count ?? 0 > 0 {
@@ -535,7 +537,7 @@ extension PlaceBidVC: UITextFieldDelegate {
                 if let bidAmntStr = bidAmount {
                     let bidAmnt = Double(bidAmntStr) ?? Double(0.0)
                     let receiveableAmount = (Double(90.0) * bidAmnt) / Double(100.0)
-                    
+
                     var realAmount = "\(receiveableAmount)"
                     let formatter = NumberFormatter()
                     formatter.numberStyle = NumberFormatter.Style.decimal
@@ -543,7 +545,7 @@ extension PlaceBidVC: UITextFieldDelegate {
                     let amount = Double(realAmount)
                     let formattedString = formatter.string(for: amount)
 //                    lblAMount.text =  "$ \(formattedString ?? "")"
-                    
+
                     self.txtFldamountReceivable.text = "$ \(formattedString ?? "")"
                     self.txtFldamountReceivable.resetFloatingLable()
                 }
@@ -567,7 +569,7 @@ extension PlaceBidVC: UICollectionViewDelegateFlowLayout{
         let size = (myText as NSString).size(withAttributes: fontAttributes as [NSAttributedString.Key : Any])
         return size.width + 25 + 45
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: getWidth(title: self.arrOfImagesNames[indexPath.row]), height:72)
     }
@@ -577,7 +579,7 @@ extension PlaceBidVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return fullViewImge.count //arrOfImages.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlaceBidCollVwCell", for: indexPath) as!  PlaceBidCollVwCell
         SDImageCache.shared.clearMemory()
@@ -590,7 +592,7 @@ extension PlaceBidVC: UICollectionViewDelegate, UICollectionViewDataSource {
         cell.projectTitle.text = self.arrOfImagesNames[indexPath.row]
         return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let a = self.fullViewImge[indexPath.row]
         let last4 = String(a.suffix(4))
@@ -606,14 +608,14 @@ extension PlaceBidVC: UICollectionViewDelegate, UICollectionViewDataSource {
             }
         }
     }
-    
+
 //    @objc func deleteFile(sender: UIButton) {
 //        self.arrOfFiles.remove(at: sender.tag)
 //        self.arrOfImages.remove(at: sender.tag)
 //        self.arrOfImagesNames.remove(at: sender.tag)
 //        self.collVwFiles.reloadData()
 //    }
-    
+
     @objc func deleteFile(sender: UIButton) {
         if self.bidId != 0 {
             if self.arrOfFilesFetchedFromServer.count > 0 {
@@ -632,14 +634,14 @@ extension PlaceBidVC: UICollectionViewDelegate, UICollectionViewDataSource {
             handleManualDeleteFile(indexOfFile:sender.tag)
         }
     }
-    
+
     func handleManualDeleteFile(indexOfFile:Int) {
         self.arrOfImages.remove(at: indexOfFile)
         self.arrOfImagesNames.remove(at: indexOfFile)
         self.arrOfFiles.remove(at: indexOfFile)
         self.collVwFiles.reloadData()
     }
-    
+
     func deleteProjectFile(fileId:Int, indexOfFile:Int) {
         let param = ["id":fileId]
         manageBidDetailViewModel.deleteBidFileApi(param) { response in
@@ -648,42 +650,42 @@ extension PlaceBidVC: UICollectionViewDelegate, UICollectionViewDataSource {
             self.handleManualDeleteFile(indexOfFile: indexOfFile)
         }
     }
-    
+
 }
 
 //MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
 extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+
     private func handleCameraOptions() {
-        
+
         self.view.endEditing(true)
-        
+
         let actionSheetController: UIAlertController = UIAlertController(title: UIFunction.getLocalizationString(text: "Project File"), message: nil, preferredStyle: .actionSheet)
-        
+
         let actionCamera: UIAlertAction = UIAlertAction(title: UIFunction.getLocalizationString(text: "Take photo"), style: .default) { action -> Void in
-            
+
             self.choosePhotoFromCameraAction()
         }
-        
+
         let actionGallery: UIAlertAction = UIAlertAction(title: UIFunction.getLocalizationString(text: "Choose from gallery"), style: .default) { action -> Void in
-            
+
             self.choosePhotoFromGalleryAction()
         }
-        
+
         let actionDocuments: UIAlertAction = UIAlertAction(title: UIFunction.getLocalizationString(text: "Choose Docs"), style: .default) { action -> Void in
-            
+
             self.chooseFromDocs()
         }
-        
+
         let cancelAction: UIAlertAction = UIAlertAction(title: UIFunction.getLocalizationString(text: "Cancel"), style: .cancel) { action -> Void in
             //Just dismiss the action sheet
         }
-        
+
         actionCamera.setValue(UIColor.rbg(r: 0, g: 0, b: 0), forKey: "titleTextColor")
         actionGallery.setValue(UIColor.rbg(r: 0, g: 0, b: 0), forKey: "titleTextColor")
         actionDocuments.setValue(UIColor.rbg(r: 0, g: 0, b: 0), forKey: "titleTextColor")
         cancelAction.setValue(UIColor.rbg(r: 0, g: 0, b: 0), forKey: "titleTextColor")
-        
+
         if userImage == nil || userImage?.count == 0
         {
             actionSheetController.addAction(actionCamera)
@@ -700,13 +702,13 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
             actionSheetController.addAction(actionDocuments)
             actionSheetController.addAction(cancelAction)
         }
-        
+
         actionSheetController.popoverPresentationController?.sourceView = self.view
         actionSheetController.popoverPresentationController?.sourceRect = CGRect(x: 20, y: self.view.bounds.size.height - 150, width: 1.0, height: 1.0)
         self.present(actionSheetController, animated: true, completion: nil)
-        
+
     }
-    
+
     // MARK:-
     // MARK:- -------- Permissions ---------
     func choosePhotoFromCameraAction()
@@ -726,7 +728,7 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
             self.present(alertController, animated: true, completion: nil)
         }
     }
-    
+
     @objc func showCamera()
     {
         let status  = AVCaptureDevice.authorizationStatus(for: .video)
@@ -760,7 +762,7 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
             }
         }
     }
-    
+
     func openCamera()
     {
         let imagePicker =  UIImagePickerController()
@@ -769,10 +771,10 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
         imagePicker.sourceType = .camera
         self.present(imagePicker, animated: true, completion: nil)
     }
-    
+
     func chooseFromDocs() {
         let importMenu = UIDocumentPickerViewController(documentTypes: [String(kUTTypeText),String(kUTTypeContent),String(kUTTypeItem),String(kUTTypeData),String(kUTTypeSpreadsheet),String(kUTTypeImage), String(kUTTypeRTF), String(kUTTypePDF)], in: .import)
-        
+
             if #available(iOS 11.0, *) {
                 importMenu.allowsMultipleSelection = true
             }
@@ -780,7 +782,7 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
             importMenu.modalPresentationStyle = .formSheet
             present(importMenu, animated: true)
     }
-    
+
     func choosePhotoFromGalleryAction()
     {
         let status = PHPhotoLibrary.authorizationStatus()
@@ -800,7 +802,7 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
                     }
                 }
             })
-            
+
         }
         else if (status == .authorized)
         {
@@ -815,7 +817,7 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
             }
         }
     }
-    
+
     // MARK:-
     // MARK:- Open Gallery
     func openGallery()
@@ -826,28 +828,28 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
         imagePicker.sourceType = .photoLibrary
         self.present(imagePicker, animated: true, completion: nil)
     }
-    
+
     // MARK:-
     // MARK:- Show Alert With No Permissions Message
     func showAlertOfPermissionsNotAvailable()
     {
         let message = UIFunction.getLocalizationString(text: "Camera permission not available")
         let alertController: UIAlertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        
+
         let cancel_title = UIFunction.getLocalizationString(text: "Cancel")
         let cancelAction = UIAlertAction(title: cancel_title, style: .destructive) { (_) -> Void in
         }
-        
+
         let settings_title = UIFunction.getLocalizationString(text: "Settings title")
         let settingsAction = UIAlertAction(title: settings_title, style: .default) { (_) -> Void in
             UIApplication.shared.open(URL.init(string: UIApplication.openSettingsURLString)!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
         }
-        
+
         alertController.addAction(cancelAction)
         alertController.addAction(settingsAction)
         self.present(alertController, animated: true, completion: nil)
     }
-    
+
     // MARK:-
     // MARK:- -------- Image Picker Delegates --------------
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
@@ -878,12 +880,12 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
         catch
         {}
     }
-    
+
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
     {
         picker.dismiss(animated: true, completion: nil)
     }
-    
+
     // MARK:-
     // MARK:- Show Image in User Image View
     func showImageInUserPhotoImageView(fileName:String)
