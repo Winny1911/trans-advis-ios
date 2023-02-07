@@ -118,7 +118,8 @@ class ChatWindowViewController: CameraBaseViewController {
     func buildViewRecordAudio() {
         viewRecordAudio.isHidden = false
         scrollToTheBottom(animated: true)
-        startRecording()
+        //startRecording()
+        recordAudio()
 //        playAudioButton.isHidden = true
         viewAudioRecorderLive.isHidden = false
 //        viewAudioRecorderLive.isHidden = true
@@ -232,17 +233,12 @@ class ChatWindowViewController: CameraBaseViewController {
     }
     
     func loadRecordingUI() {
-        recordAudioButton.isHidden = true
+        //recordAudioButton.isHidden = true
         stopRecordAudioButton.isHidden = false
         startRecording()
     }
     
     func startRecording() {
-        playAudioButton.isHidden = true
-        stopRecordAudioButton.isHidden = false
-        viewAudioRecorderLive.isHidden = false
-        timerCounting = true
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCounter), userInfo: nil, repeats: true)
         let audioFilename = getFileURL()
         
         let settings = [
@@ -256,6 +252,11 @@ class ChatWindowViewController: CameraBaseViewController {
             audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
             audioRecorder.delegate = self
             audioRecorder.record()
+            playAudioButton.isHidden = true
+            stopRecordAudioButton.isHidden = false
+            viewAudioRecorderLive.isHidden = false
+            timerCounting = true
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCounter), userInfo: nil, repeats: true)
         } catch {
             isAudioMessage = false
             finishRecording()
@@ -265,7 +266,7 @@ class ChatWindowViewController: CameraBaseViewController {
     func finishRecording() {
         viewAudioRecorderLive.isHidden = true
         //playAudioButton.isHidden = false
-        recordAudioButton.isHidden = false
+        //recordAudioButton.isHidden = false
         stopRecordAudioButton.isHidden = false
         audioRecorder.stop()
         audioRecorder = nil

@@ -445,6 +445,7 @@
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="j5h-Qb-zfg"/>
+                                        <exclude reference="zfZ-OL-QHl"/>
                                     </mask>
                                 </variation>
                             </view>
