@@ -382,7 +382,7 @@ class ChatWindowViewController: CameraBaseViewController {
             return
         } else if !messageText.isEmpty && self.viewModel.isSendMessageAllowed() {
             let sender_id = UIFunction.getCurrentUserId()
-            let chat_dialogue_id = self.viewModel.getChatDialogueID()
+            let chat_dialogue_id = viewModel.getChatDialogueID()
             let message_id = FirRef.child(FirebaseMessagesTable.tableName).child(chat_dialogue_id).childByAutoId().key ?? ""
             let message_time = String(UIFunction.getCurrentTime())
             let firebase_message_time = ServerValue.timestamp()

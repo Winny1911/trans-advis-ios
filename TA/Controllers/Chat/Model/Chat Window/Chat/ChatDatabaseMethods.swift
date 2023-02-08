@@ -97,6 +97,7 @@ extension FirebaseChatMessages {
     func getAllChatMessages(other_user_id:String, completion: @escaping(_ chatWindowMessages: [ChatMessages]) -> Void) {
         
         let observer_id = UIFunction.getChatDialogueId(for: other_user_id)
+        //let observer_id = "ID_429,ID_432"
         var messages = [ChatMessages]()
         do {
             let context = appDelegate().persistentContainer.viewContext

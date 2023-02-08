@@ -181,8 +181,7 @@ class InvitationDetailsVC: BaseViewController {
     
     @IBAction func sentMessageButtonAction(_ sender: UIButton) {
         if let chatController = Storyboard.messageHO.instantiateViewController(withIdentifier: "ChatWindowViewController") as? ChatWindowViewController {
-//            let dictionary = self.newProjectsListing[indexPath.row]
-            let user_id = String("ID_\(self.invitationDetail.project_data?.id ?? 0)")
+            let user_id = String("ID_\(self.invitationDetail.project_data?.userId ?? 0)")
             let user_name = (self.invitationDetail.project_data?.user_data?.firstName ?? "") + " " + (self.invitationDetail.project_data?.user_data?.lastName ?? "")
             let user_image = self.invitationDetail.project_data?.user_data?.profilePic ?? ""
             
@@ -190,6 +189,7 @@ class InvitationDetailsVC: BaseViewController {
             chatController.viewModel.user_id = user_id
             chatController.viewModel.user_name = user_name
             chatController.viewModel.user_image = user_image
+            
             self.navigationController?.pushViewController(chatController, animated: true)
         }
     }
