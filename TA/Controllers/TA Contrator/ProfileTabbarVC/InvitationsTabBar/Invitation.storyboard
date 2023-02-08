@@ -2135,7 +2135,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kitchen Renovation" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8oG-aS-3Te">
-                                        <rect key="frame" x="31" y="54.666666666666657" width="352" height="23"/>
+                                        <rect key="frame" x="31" y="54.666666666666664" width="352" height="22.666666666666664"/>
                                         <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="16"/>
                                         <color key="textColor" name="#484848"/>
                                         <nil key="highlightedColor"/>
