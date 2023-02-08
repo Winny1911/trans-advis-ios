@@ -116,10 +116,10 @@ extension MessageHOVC : UITableViewDataSource, UITableViewDelegate {
             let name = dictionary.name?.asDictionary()
             let profile_pic = dictionary.profile_pic?.asDictionary()
             let chat_dialogue_id = dictionary.chat_dialog_id ?? ""
-            let other_user_id = UIFunction.getOtherUserId(from: chat_dialogue_id) ?? ""
-            let user_name = name?.objectForKeyAsString(key: other_user_id)
-            let user_image = profile_pic?.objectForKeyAsString(key: other_user_id)
-            self.openChatWindow(user_id:other_user_id, user_image:user_image, user_name: user_name)
+            let user_id = UIFunction.getOtherUserId(from: chat_dialogue_id) ?? ""
+            let user_name = name?.objectForKeyAsString(key: user_id)
+            let user_image = profile_pic?.objectForKeyAsString(key: user_id)
+            self.openChatWindow(user_id:user_id, user_image:user_image, user_name: user_name)
         }
     }
     
