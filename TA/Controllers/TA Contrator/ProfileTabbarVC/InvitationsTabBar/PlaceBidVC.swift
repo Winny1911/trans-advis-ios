@@ -42,10 +42,12 @@ class PlaceBidVC: BaseViewController {
     @IBOutlet weak var viewPDF: UIView!
     @IBOutlet weak var webviewForm: WKWebView!
     
+    var wkWeb : WKWebView!
     var projectTitle = String()
     var projectDesc = String()
     var projectId = 0
     var imageUrl = String()
+    var cookiesWKwebview = [HTTPCookie]()
     
     let placeBidViewModel: PlaceBidViewModel = PlaceBidViewModel()
     private let startDatePicker = UIDatePicker()
@@ -76,59 +78,108 @@ class PlaceBidVC: BaseViewController {
         //lblInfo.isHidden = true
         //viewInfo.addCustomShadow()
         self.lblTitle.text = self.projectTitle
-//        self.lblDesc.text = self.projectDesc
-//        self.projectImageWidth.constant = 0.0
-//        if self.imageUrl != "" {
-//            projectImageWidth.constant = 65.0
-//            imgInvitation.sd_setImage(with: URL(string: imageUrl), placeholderImage: UIImage(named: "doc"), completed:nil)
-//        } else {
-//            projectImageWidth.constant = 0.0
-//        }
-//        addCustomButtonOnTextField()
-//        btnSucces.isHidden = true
-//        successFulView.setRoundCorners(radius: 14.0)
-//        successFulView.isHidden = true
-//        blackView.isHidden = true
-//
-//        self.collVwFiles.register(UINib(nibName: "PlaceBidCollVwCell", bundle: nil), forCellWithReuseIdentifier: "PlaceBidCollVwCell")
-//
-//        self.collVwFiles.delegate = self
-//        self.collVwFiles.dataSource = self
-//
-//        self.txtFldBidAmount.delegate = self
-//        self.txtFldamountReceivable.delegate = self
-//        self.txtEndDate.delegate = self
-//        self.txtStartDate.delegate = self
-//        self.txtVwDetail.setLeftPadding(14.0)
-//        self.setFloatingTextVw()
-//
-//        self.btnAddFiles.setRoundCorners(radius: 8.0)
-//        txtFldBidAmount.setLeftPadding(14)
-//        txtFldamountReceivable.setLeftPadding(14)
-//        txtStartDate.setLeftPadding(14)
-//        txtEndDate.setLeftPadding(14)
-//
-//        vwBidetail.addCustomShadow()
-//        bottomVw.addCustomShadow()
-//
-//        self.showStartDatePicker()
-//        self.showEndDatePicker()
-//        if self.bidId != 0 {
-//            self.btnSubmit.setTitle("Update Bid", for: .normal)
-//            self.lblTopTitle.text = "Edit Bid"
-//            self.fetchBidDetails()
-//        }
+        //        self.lblDesc.text = self.projectDesc
+        //        self.projectImageWidth.constant = 0.0
+        //        if self.imageUrl != "" {
+        //            projectImageWidth.constant = 65.0
+        //            imgInvitation.sd_setImage(with: URL(string: imageUrl), placeholderImage: UIImage(named: "doc"), completed:nil)
+        //        } else {
+        //            projectImageWidth.constant = 0.0
+        //        }
+        //        addCustomButtonOnTextField()
+        //        btnSucces.isHidden = true
+        //        successFulView.setRoundCorners(radius: 14.0)
+        //        successFulView.isHidden = true
+        //        blackView.isHidden = true
+        //
+        //        self.collVwFiles.register(UINib(nibName: "PlaceBidCollVwCell", bundle: nil), forCellWithReuseIdentifier: "PlaceBidCollVwCell")
+        //
+        //        self.collVwFiles.delegate = self
+        //        self.collVwFiles.dataSource = self
+        //
+        //        self.txtFldBidAmount.delegate = self
+        //        self.txtFldamountReceivable.delegate = self
+        //        self.txtEndDate.delegate = self
+        //        self.txtStartDate.delegate = self
+        //        self.txtVwDetail.setLeftPadding(14.0)
+        //        self.setFloatingTextVw()
+        //
+        //        self.btnAddFiles.setRoundCorners(radius: 8.0)
+        //        txtFldBidAmount.setLeftPadding(14)
+        //        txtFldamountReceivable.setLeftPadding(14)
+        //        txtStartDate.setLeftPadding(14)
+        //        txtEndDate.setLeftPadding(14)
+        //
+        //        vwBidetail.addCustomShadow()
+        //        bottomVw.addCustomShadow()
+        //
+        //        self.showStartDatePicker()
+        //        self.showEndDatePicker()
+        //        if self.bidId != 0 {
+        //            self.btnSubmit.setTitle("Update Bid", for: .normal)
+        //            self.lblTopTitle.text = "Edit Bid"
+        //            self.fetchBidDetails()
+        //        }
         
+        //        webviewForm.navigationDelegate = self
+        //        self.openUrlWebview(url: "http://ta123-webapp.s3-website-us-east-1.amazonaws.com/
         
-        //self.openUrlWebview(url: "https://c8szizga07.execute-api.us-east-1.amazonaws.com/default/delta")
-        self.displayPdf()
+        //        webviewForm.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        //
+        //
+        //        webviewForm.evaluateJavaScript("document.body.style.backgroundColor = 'red';")
+        //        webviewForm.evaluateJavaScript("document.body.style.backgroundColor = 'red';")
+        //
+        //        let myURL = URL(string: "http://ta123-webapp.s3-website-us-east-1.amazonaws.com/material")
+        //        let myRequest = URLRequest(url: myURL!)
+        //        webviewForm.load(myRequest)
+       
+        //self.displayPdf()
+        
+
+        let configuration = WKWebViewConfiguration()
+
+        let script = WKUserScript(
+            source: "window.localStorage.clear();",
+            injectionTime: .atDocumentStart,
+            forMainFrameOnly: true
+        )
+        configuration.userContentController.addUserScript(script)
+
+        let localStorageData: [String: Any] = [
+            "session": "1675911461064",
+            "rememberme": 1,
+            "access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDI5LCJlbWFpbCI6InZhbmVzc2EucGluYUBzd2VsbGl0c29sdXRpb25zLmNvbS5iciIsInR5cGUiOiJDTyIsImRldmljZVRva2VuIjoiTk9UT0tFTiIsImRldmljZVR5cGUiOiJXRUIiLCJkZXZpY2VJZGVudGlmaWVyIjoiMzMyNzY2IiwiaWF0IjoxNjc1OTEzNjk4fQ.lsxXAHrYrJx8lOWSIKxSyh7cduIZKBED-Mz7GFh7q1U",
+            "isLoggedIn":"true",
+            "loggedInUserId":"429",
+            "userProfileStatus": "CO",
+            "profileRoute": "/material"
+        ]
+
+        if JSONSerialization.isValidJSONObject(localStorageData),
+           let data = try? JSONSerialization.data(withJSONObject: localStorageData, options: []),
+           let value = String(data: data, encoding: .utf8) {
+            let script = WKUserScript(
+                source: "Object.assign(window.localStorage, \(value));",
+                injectionTime: .atDocumentStart,
+                forMainFrameOnly: true
+            )
+
+            configuration.userContentController.addUserScript(script)
+        }
+
+        wkWeb = WKWebView(frame: self.webviewForm.frame, configuration: configuration)
+        wkWeb.navigationDelegate = self
+        wkWeb.uiDelegate = self
+        let myURL = URL(string: "http://ta123-webapp.s3-website-us-east-1.amazonaws.com/material")
+        let myRequest = URLRequest(url: myURL!)
+        wkWeb.load(myRequest)
+        wkWeb.navigationDelegate = self
+        viewPDF.addSubview(wkWeb)
     }
     
-    func openUrlWebview(url: String){
-        let myUrl = URL(string: url)
-        let myRequest = URLRequest(url: myUrl!)
-        self.webviewForm.load(myRequest)
-    }
+    
     
     private func createPdfDocument(forFileName fileName: String) -> PDFDocument? {
         if let resourceUrl = URL(string: "https://c8szizga07.execute-api.us-east-1.amazonaws.com/default/delta") {
@@ -953,4 +1004,92 @@ extension PlaceBidVC: UIDocumentPickerDelegate {
      func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         controller.dismiss(animated: true, completion: nil)
     }
+}
+
+extension PlaceBidVC {
+    func openUrlWebview(url: String){
+//        let cookie = HTTPCookie(properties: [
+//            .domain: "186.237.229.127:3002",
+//            .path: "/",
+//            .name: "access_token",
+//            .value: TA_Storage.shared.apiAccessToken,
+//            .secure: "TRUE",
+//            //.name: "isLoggedIn",
+//            //.value: "TRUE",
+//            .expires: NSDate(timeIntervalSinceNow: 31556926)
+//        ])!
+        
+//        let cookies = HTTPCookieStorage.shared.cookies ?? []
+//        for cookie in cookies {
+//            webviewForm.configuration.websiteDataStore.httpCookieStore.setCookie(cookie)
+//        }
+        
+//        let arrCookies = ["access_token":"\(TA_Storage.shared.apiAccessToken)","isLoggedIn":"TRUE"]
+//
+//        self.cookiesWKwebview = createCookies(host: "http://186.237.229.127:3002", parameters: arrCookies)
+//
+//        for cookie in cookiesWKwebview {
+//            webviewForm.configuration.websiteDataStore.httpCookieStore.setCookie(cookie)
+//        }
+//
+//        let myUrl = URL(string: url)
+////        let myRequest = URLRequest(url: myUrl!)
+//        let req = NSMutableURLRequest(url: myUrl!)
+//
+//        let values = HTTPCookie.requestHeaderFields(with: cookiesWKwebview)
+//        print(cookiesWKwebview)
+//        req.allHTTPHeaderFields = values
+//        webviewForm.evaluateJavaScript("document.getElementById('loginEmail').innerText") { (result, error) in
+//            if error == nil {
+//                print(result)
+//            }
+//        }
+//        webviewForm.load(req as URLRequest)
+
+    }
+    
+    func createCookies(host: String, parameters: [String: Any]) -> [HTTPCookie] {
+        parameters.compactMap { (name, value) in
+            HTTPCookie(properties: [
+                .domain: host,
+                .path: "/",
+                .name: name,
+                .value: "\(value)",
+                .secure: "TRUE",
+                .expires: Date(timeIntervalSinceNow: 31556952),
+            ])
+        }
+    }
+}
+
+extension PlaceBidVC: WKNavigationDelegate, WKUIDelegate {
+
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        let script = "localStorage.getItem(\"access_token\")"
+        self.wkWeb.evaluateJavaScript(script) { (token, error) in
+            if let error = error {
+                print ("localStorage.getitem('token') failed due to \(error)")
+                assertionFailure()
+            }
+            print("token = \(token)")
+        }
+    }
+    
+    //    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+    //        let req = NSMutableURLRequest(url: navigationAction.request.url!)
+    //
+    //        for cookie in cookiesWKwebview {
+    //            webView.configuration.websiteDataStore.httpCookieStore.setCookie(cookie)
+    //            let values = HTTPCookie.requestHeaderFields(with: cookiesWKwebview)
+    //            req.allHTTPHeaderFields = values
+    //            decisionHandler(.allow)
+    //            webView.load(req as URLRequest)
+    //        }
+    //
+    //
+    //
+    //
+    //    }
+    
+    
 }
