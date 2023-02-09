@@ -120,63 +120,9 @@ class PlaceBidVC: BaseViewController {
         //            self.lblTopTitle.text = "Edit Bid"
         //            self.fetchBidDetails()
         //        }
-        
-        //        webviewForm.navigationDelegate = self
-        //        self.openUrlWebview(url: "http://ta123-webapp.s3-website-us-east-1.amazonaws.com/
-        
-        //        webviewForm.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
-        //
-        //
-        //        webviewForm.evaluateJavaScript("document.body.style.backgroundColor = 'red';")
-        //        webviewForm.evaluateJavaScript("document.body.style.backgroundColor = 'red';")
-        //
-        //        let myURL = URL(string: "http://ta123-webapp.s3-website-us-east-1.amazonaws.com/material")
-        //        let myRequest = URLRequest(url: myURL!)
-        //        webviewForm.load(myRequest)
-       
+    
+        self.openUrlWebview(url: "http://ta123-webapp.s3-website-us-east-1.amazonaws.com/contractors/invitations")
         //self.displayPdf()
-        
-
-        let configuration = WKWebViewConfiguration()
-
-        let script = WKUserScript(
-            source: "window.localStorage.clear();",
-            injectionTime: .atDocumentStart,
-            forMainFrameOnly: true
-        )
-        configuration.userContentController.addUserScript(script)
-
-        let localStorageData: [String: Any] = [
-            "session": "1675911461064",
-            "rememberme": 1,
-            "access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDI5LCJlbWFpbCI6InZhbmVzc2EucGluYUBzd2VsbGl0c29sdXRpb25zLmNvbS5iciIsInR5cGUiOiJDTyIsImRldmljZVRva2VuIjoiTk9UT0tFTiIsImRldmljZVR5cGUiOiJXRUIiLCJkZXZpY2VJZGVudGlmaWVyIjoiMzMyNzY2IiwiaWF0IjoxNjc1OTEzNjk4fQ.lsxXAHrYrJx8lOWSIKxSyh7cduIZKBED-Mz7GFh7q1U",
-            "isLoggedIn":"true",
-            "loggedInUserId":"429",
-            "userProfileStatus": "CO",
-            "profileRoute": "/material"
-        ]
-
-        if JSONSerialization.isValidJSONObject(localStorageData),
-           let data = try? JSONSerialization.data(withJSONObject: localStorageData, options: []),
-           let value = String(data: data, encoding: .utf8) {
-            let script = WKUserScript(
-                source: "Object.assign(window.localStorage, \(value));",
-                injectionTime: .atDocumentStart,
-                forMainFrameOnly: true
-            )
-
-            configuration.userContentController.addUserScript(script)
-        }
-
-        wkWeb = WKWebView(frame: self.webviewForm.frame, configuration: configuration)
-        wkWeb.navigationDelegate = self
-        wkWeb.uiDelegate = self
-        let myURL = URL(string: "http://ta123-webapp.s3-website-us-east-1.amazonaws.com/material")
-        let myRequest = URLRequest(url: myURL!)
-        wkWeb.load(myRequest)
-        wkWeb.navigationDelegate = self
-        viewPDF.addSubview(wkWeb)
     }
     
     
@@ -1008,6 +954,49 @@ extension PlaceBidVC: UIDocumentPickerDelegate {
 
 extension PlaceBidVC {
     func openUrlWebview(url: String){
+        let configuration = WKWebViewConfiguration()
+        
+        let script = WKUserScript(
+            source: "window.localStorage.clear();",
+            injectionTime: .atDocumentStart,
+            forMainFrameOnly: true
+        )
+        configuration.userContentController.addUserScript(script)
+        
+        let localStorageData: [String: Any] = [
+            "session": "1675918359863",
+            "rememberme": 1,
+            "access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDI5LCJlbWFpbCI6InZhbmVzc2EucGluYUBzd2VsbGl0c29sdXRpb25zLmNvbS5iciIsInR5cGUiOiJDTyIsImRldmljZVRva2VuIjoiTk9UT0tFTiIsImRldmljZVR5cGUiOiJXRUIiLCJkZXZpY2VJZGVudGlmaWVyIjoiMjY5ODEyIiwiaWF0IjoxNjc1OTE0NTM0fQ.SmgXWH9TodsK1wbkd89a47rzERmliW5M2xCA-dsKDew",
+            "isLoggedIn":"true",
+            "loggedInUserId":"429",
+            "userProfileStatus": "CO",
+            "profileRoute": "/contractors/invitations/place-bids"
+        ]
+        
+        if JSONSerialization.isValidJSONObject(localStorageData),
+           let data = try? JSONSerialization.data(withJSONObject: localStorageData, options: []),
+           let value = String(data: data, encoding: .utf8) {
+            let script = WKUserScript(
+                source: "Object.assign(window.localStorage, \(value));",
+                injectionTime: .atDocumentStart,
+                forMainFrameOnly: true
+            )
+            
+            configuration.userContentController.addUserScript(script)
+        }
+        
+        let cgRectWK = CGRect(x: .zero, y: .zero, width: self.view.frame.width, height: self.view.frame.height-180)
+        
+        wkWeb = WKWebView(frame: cgRectWK, configuration: configuration)
+        wkWeb.navigationDelegate = self
+        wkWeb.uiDelegate = self
+        //        let myURL = URL(string: "http://ta123-webapp.s3-website-us-east-1.amazonaws.com/material")
+        let myURL = URL(string: url)
+        let myRequest = URLRequest(url: myURL!)
+        wkWeb.load(myRequest)
+        wkWeb.navigationDelegate = self
+        viewPDF.addSubview(wkWeb)
+        
 //        let cookie = HTTPCookie(properties: [
 //            .domain: "186.237.229.127:3002",
 //            .path: "/",
@@ -1066,6 +1055,12 @@ extension PlaceBidVC: WKNavigationDelegate, WKUIDelegate {
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         let script = "localStorage.getItem(\"access_token\")"
+        let scriptDiv = "document.getElementsByClassName('ng-star-inserted')[0].style.visibility = 'hidden';"
+        self.wkWeb.evaluateJavaScript(scriptDiv) { (result, error) in
+            if let result = result {
+                print("result div = \(result)")
+            }
+        }
         self.wkWeb.evaluateJavaScript(script) { (token, error) in
             if let error = error {
                 print ("localStorage.getitem('token') failed due to \(error)")
@@ -1074,6 +1069,7 @@ extension PlaceBidVC: WKNavigationDelegate, WKUIDelegate {
             print("token = \(token)")
         }
     }
+    
     
     //    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
     //        let req = NSMutableURLRequest(url: navigationAction.request.url!)

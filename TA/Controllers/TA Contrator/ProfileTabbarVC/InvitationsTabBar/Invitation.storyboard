@@ -1337,15 +1337,19 @@
                             <constraint firstItem="Z2W-eT-Vya" firstAttribute="centerY" secondItem="0lR-DA-4G3" secondAttribute="centerY" id="aG2-9v-ycx"/>
                             <constraint firstItem="IG5-SP-mY2" firstAttribute="trailing" secondItem="0lR-DA-4G3" secondAttribute="trailing" id="aKd-dR-fMb"/>
                             <constraint firstItem="phG-6o-Pbz" firstAttribute="trailing" secondItem="0lR-DA-4G3" secondAttribute="trailing" id="alf-ZN-MAL"/>
+                            <constraint firstItem="IG5-SP-mY2" firstAttribute="trailing" secondItem="0lR-DA-4G3" secondAttribute="trailing" id="fb8-06-mqN"/>
+                            <constraint firstItem="IG5-SP-mY2" firstAttribute="bottom" secondItem="0lR-DA-4G3" secondAttribute="bottom" id="gmW-bz-fQl"/>
                             <constraint firstItem="Z2W-eT-Vya" firstAttribute="width" secondItem="INt-om-3Xq" secondAttribute="width" id="hJ6-wt-gTd"/>
                             <constraint firstItem="phG-6o-Pbz" firstAttribute="top" secondItem="0lR-DA-4G3" secondAttribute="top" id="iei-ue-Crc"/>
                             <constraint firstItem="Dol-HU-dTz" firstAttribute="top" secondItem="phG-6o-Pbz" secondAttribute="bottom" constant="8" symbolic="YES" id="ik1-LM-OVb"/>
                             <constraint firstItem="0lR-DA-4G3" firstAttribute="bottom" secondItem="2Mo-YF-Z5Q" secondAttribute="bottom" id="l4g-7Y-gII"/>
                             <constraint firstItem="0lR-DA-4G3" firstAttribute="trailing" secondItem="Dol-HU-dTz" secondAttribute="trailing" id="rKa-x0-6ek"/>
                             <constraint firstItem="0lR-DA-4G3" firstAttribute="leading" secondItem="MyL-3p-gG4" secondAttribute="leading" constant="-16" id="tUQ-dM-Rwa"/>
+                            <constraint firstItem="IG5-SP-mY2" firstAttribute="top" secondItem="phG-6o-Pbz" secondAttribute="bottom" id="tbv-d6-gmp"/>
                             <constraint firstItem="IG5-SP-mY2" firstAttribute="top" secondItem="phG-6o-Pbz" secondAttribute="bottom" id="v0z-zx-PYw"/>
                             <constraint firstItem="IG5-SP-mY2" firstAttribute="leading" secondItem="0lR-DA-4G3" secondAttribute="leading" id="w9q-41-9ey"/>
                             <constraint firstItem="IG5-SP-mY2" firstAttribute="leading" secondItem="0lR-DA-4G3" secondAttribute="leading" id="yo9-YO-meC"/>
+                            <constraint firstItem="IG5-SP-mY2" firstAttribute="leading" secondItem="0lR-DA-4G3" secondAttribute="leading" id="yzz-Cp-h8Y"/>
                             <constraint firstItem="0lR-DA-4G3" firstAttribute="trailing" secondItem="2Mo-YF-Z5Q" secondAttribute="trailing" id="zii-tJ-4Ea"/>
                         </constraints>
                         <variation key="default">
