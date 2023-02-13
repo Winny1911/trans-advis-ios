@@ -42,14 +42,18 @@ class PlaceBidVC: BaseViewController {
     @IBOutlet weak var viewPDF: UIView!
     @IBOutlet weak var webviewForm: WKWebView!
     
+    @IBOutlet weak var dateTextView: FloatingLabelInput!
+    
     var wkWeb : WKWebView!
     var projectTitle = String()
     var projectDesc = String()
     var projectId = 0
     var imageUrl = String()
-    var cookiesWKwebview = [HTTPCookie]()
-    
+    var datePickerView = UIDatePicker()
     let placeBidViewModel: PlaceBidViewModel = PlaceBidViewModel()
+    var listFieds = [String]()
+    var cellReuseIdentifier = "cellReuse"
+    
     private let startDatePicker = UIDatePicker()
     private let endDatePicker = UIDatePicker()
     
@@ -71,6 +75,7 @@ class PlaceBidVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         //self.arrOfFilesFetchedFromServer.removeAll()
         //self.arrOfFilesManually.removeAll()
@@ -121,11 +126,24 @@ class PlaceBidVC: BaseViewController {
         //            self.fetchBidDetails()
         //        }
     
-        self.openUrlWebview(url: "http://ta123-webapp.s3-website-us-east-1.amazonaws.com/contractors/invitations")
+//        self.openUrlWebview(url: "http://ta123-webapp.s3-website-us-east-1.amazonaws.com/contractors/invitations")
         //self.displayPdf()
+        buildFieldsForm()
     }
     
+    private func buildFieldsForm() {
+        listFieds = ["Home Owner","Home Owner"]
+        datePickerView.layer.position.x = dateTextView.layer.position.x
+        datePickerView.datePickerMode = .date
+        dateTextView.addSubview(datePickerView)
+        dateTextView.addTarget(self, action: Selector(("handelDatePicker")), for: .valueChanged)
+    }
     
+    func handelDatePicker()
+    {
+        let dateFormatter = DateFormatter()
+        dateTextView.text = dateFormatter.string(from: datePickerView.date)
+    }
     
     private func createPdfDocument(forFileName fileName: String) -> PDFDocument? {
         if let resourceUrl = URL(string: "https://c8szizga07.execute-api.us-east-1.amazonaws.com/default/delta") {
@@ -990,51 +1008,11 @@ extension PlaceBidVC {
         wkWeb = WKWebView(frame: cgRectWK, configuration: configuration)
         wkWeb.navigationDelegate = self
         wkWeb.uiDelegate = self
-        //        let myURL = URL(string: "http://ta123-webapp.s3-website-us-east-1.amazonaws.com/material")
         let myURL = URL(string: url)
         let myRequest = URLRequest(url: myURL!)
         wkWeb.load(myRequest)
         wkWeb.navigationDelegate = self
         viewPDF.addSubview(wkWeb)
-        
-//        let cookie = HTTPCookie(properties: [
-//            .domain: "186.237.229.127:3002",
-//            .path: "/",
-//            .name: "access_token",
-//            .value: TA_Storage.shared.apiAccessToken,
-//            .secure: "TRUE",
-//            //.name: "isLoggedIn",
-//            //.value: "TRUE",
-//            .expires: NSDate(timeIntervalSinceNow: 31556926)
-//        ])!
-        
-//        let cookies = HTTPCookieStorage.shared.cookies ?? []
-//        for cookie in cookies {
-//            webviewForm.configuration.websiteDataStore.httpCookieStore.setCookie(cookie)
-//        }
-        
-//        let arrCookies = ["access_token":"\(TA_Storage.shared.apiAccessToken)","isLoggedIn":"TRUE"]
-//
-//        self.cookiesWKwebview = createCookies(host: "http://186.237.229.127:3002", parameters: arrCookies)
-//
-//        for cookie in cookiesWKwebview {
-//            webviewForm.configuration.websiteDataStore.httpCookieStore.setCookie(cookie)
-//        }
-//
-//        let myUrl = URL(string: url)
-////        let myRequest = URLRequest(url: myUrl!)
-//        let req = NSMutableURLRequest(url: myUrl!)
-//
-//        let values = HTTPCookie.requestHeaderFields(with: cookiesWKwebview)
-//        print(cookiesWKwebview)
-//        req.allHTTPHeaderFields = values
-//        webviewForm.evaluateJavaScript("document.getElementById('loginEmail').innerText") { (result, error) in
-//            if error == nil {
-//                print(result)
-//            }
-//        }
-//        webviewForm.load(req as URLRequest)
-
     }
     
     func createCookies(host: String, parameters: [String: Any]) -> [HTTPCookie] {
@@ -1070,7 +1048,6 @@ extension PlaceBidVC: WKNavigationDelegate, WKUIDelegate {
         }
     }
     
-    
     //    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
     //        let req = NSMutableURLRequest(url: navigationAction.request.url!)
     //
@@ -1081,11 +1058,5 @@ extension PlaceBidVC: WKNavigationDelegate, WKUIDelegate {
     //            decisionHandler(.allow)
     //            webView.load(req as URLRequest)
     //        }
-    //
-    //
-    //
-    //
     //    }
-    
-    
 }
