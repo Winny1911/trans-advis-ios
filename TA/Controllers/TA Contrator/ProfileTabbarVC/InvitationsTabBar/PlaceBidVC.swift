@@ -42,14 +42,13 @@ class PlaceBidVC: BaseViewController {
     @IBOutlet weak var viewPDF: UIView!
     @IBOutlet weak var webviewForm: WKWebView!
     
-    @IBOutlet weak var dateTextView: FloatingLabelInput!
+    @IBOutlet weak var datePickerView: UIDatePicker!
     
     var wkWeb : WKWebView!
     var projectTitle = String()
     var projectDesc = String()
     var projectId = 0
     var imageUrl = String()
-    var datePickerView = UIDatePicker()
     let placeBidViewModel: PlaceBidViewModel = PlaceBidViewModel()
     var listFieds = [String]()
     var cellReuseIdentifier = "cellReuse"
@@ -132,19 +131,15 @@ class PlaceBidVC: BaseViewController {
     }
     
     private func buildFieldsForm() {
-        listFieds = ["Home Owner","Home Owner"]
-        datePickerView.layer.position.x = dateTextView.layer.position.x
         datePickerView.datePickerMode = .date
-        dateTextView.addSubview(datePickerView)
-        dateTextView.addTarget(self, action: Selector(("handelDatePicker")), for: .valueChanged)
     }
     
-    func handelDatePicker()
-    {
-        let dateFormatter = DateFormatter()
-        dateTextView.text = dateFormatter.string(from: datePickerView.date)
-    }
-    
+//    func handelDatePicker()
+//    {
+//        let dateFormatter = DateFormatter()
+//        dateTextView.text = dateFormatter.string(from: datePickerView.date)
+//    }
+//    
     private func createPdfDocument(forFileName fileName: String) -> PDFDocument? {
         if let resourceUrl = URL(string: "https://c8szizga07.execute-api.us-east-1.amazonaws.com/default/delta") {
             return PDFDocument(url: resourceUrl)
