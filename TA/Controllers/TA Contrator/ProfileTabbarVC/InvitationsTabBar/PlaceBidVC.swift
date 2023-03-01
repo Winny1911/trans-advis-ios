@@ -44,6 +44,9 @@ class PlaceBidVC: BaseViewController {
     
     @IBOutlet weak var datePickerView: UIDatePicker!
     
+    //MARK : Checkbox
+    
+    
     var wkWeb : WKWebView!
     var projectTitle = String()
     var projectDesc = String()
@@ -311,6 +314,13 @@ class PlaceBidVC: BaseViewController {
         self.blackView.isHidden = true
         self.navigationController?.popViewController(animated: true)
         self.completionHandlerGoToInvitationDetailScreenFromPlaceBid?()
+    }
+    
+    //MARK: checkbox action
+    @IBAction func checkMarkTapped(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        sender.transform = .identity
+        sender.titleLabel?.text = " ⃞"
     }
 
     //MARK: ACTION BACK

@@ -1609,27 +1609,38 @@ Cg
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1S-tP-D4N">
-                                                        <rect key="frame" x="83" y="47" width="51.333333333333343" height="35"/>
+                                                        <rect key="frame" x="83" y="52" width="30" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="35" id="dfy-Jh-7X6"/>
-                                                            <constraint firstAttribute="width" constant="51.329999999999998" id="w6K-BF-hTM"/>
+                                                            <constraint firstAttribute="height" constant="30" id="DIk-m3-KGe"/>
+                                                            <constraint firstAttribute="width" constant="30" id="V7r-4l-EUh"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Yes"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="⃞">
+                                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </buttonConfiguration>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="checkMarkTapped:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="ppB-za-ps9"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstItem="K22-wC-R1j" firstAttribute="leading" secondItem="htu-1w-JmL" secondAttribute="leading" constant="21" id="0tW-f7-l2w"/>
+                                                    <constraint firstItem="w1S-tP-D4N" firstAttribute="leading" secondItem="0TN-wT-Z2I" secondAttribute="trailing" constant="12" id="3sl-QV-ATh"/>
                                                     <constraint firstItem="K22-wC-R1j" firstAttribute="top" secondItem="htu-1w-JmL" secondAttribute="top" constant="8" id="DsJ-W1-OzZ"/>
                                                     <constraint firstItem="0TN-wT-Z2I" firstAttribute="leading" secondItem="htu-1w-JmL" secondAttribute="leading" constant="21" id="KqN-Ri-S22"/>
                                                     <constraint firstAttribute="trailing" secondItem="K22-wC-R1j" secondAttribute="trailing" constant="22" id="PV3-Nl-bVd"/>
                                                     <constraint firstAttribute="height" constant="96" id="XxS-jg-bLS"/>
-                                                    <constraint firstItem="w1S-tP-D4N" firstAttribute="top" secondItem="K22-wC-R1j" secondAttribute="bottom" constant="5" id="fSU-hc-XWB"/>
-                                                    <constraint firstItem="w1S-tP-D4N" firstAttribute="leading" secondItem="0TN-wT-Z2I" secondAttribute="trailing" constant="12" id="iwh-eK-u7G"/>
                                                     <constraint firstItem="0TN-wT-Z2I" firstAttribute="top" secondItem="K22-wC-R1j" secondAttribute="bottom" constant="13" id="k84-G1-YRu"/>
-                                                    <constraint firstItem="w1S-tP-D4N" firstAttribute="top" secondItem="K22-wC-R1j" secondAttribute="bottom" constant="5" id="sUE-jn-7Z2"/>
-                                                    <constraint firstItem="w1S-tP-D4N" firstAttribute="leading" secondItem="0TN-wT-Z2I" secondAttribute="trailing" constant="12" id="wMT-zI-ICe"/>
+                                                    <constraint firstItem="w1S-tP-D4N" firstAttribute="top" secondItem="K22-wC-R1j" secondAttribute="bottom" constant="10" id="lok-7D-MJH"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Urq-wO-LOP">
@@ -1661,7 +1672,7 @@ Cg
                                                 <rect key="frame" x="0.0" y="971" width="414" height="164"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ins Fully approved" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BX6-ZQ-4s7">
-                                                        <rect key="frame" x="97" y="8" width="138" height="21"/>
+                                                        <rect key="frame" x="75" y="8" width="138" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="CXe-Ph-guJ"/>
                                                             <constraint firstAttribute="width" constant="138" id="W2H-Su-MjF"/>
@@ -1671,16 +1682,27 @@ Cg
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gsR-uf-kQh">
-                                                        <rect key="frame" x="37" y="1" width="52" height="35"/>
+                                                        <rect key="frame" x="37" y="2" width="30" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="52" id="CDU-hj-3xP"/>
-                                                            <constraint firstAttribute="height" constant="35" id="zyw-hF-2cb"/>
+                                                            <constraint firstAttribute="width" constant="30" id="CDU-hj-3xP"/>
+                                                            <constraint firstAttribute="height" constant="30" id="zyw-hF-2cb"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Yes"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="⃞"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="checkMarkTapped:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="UfN-L0-XZA"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQo-ec-Wse">
-                                                        <rect key="frame" x="97" y="44" width="150" height="21"/>
+                                                        <rect key="frame" x="75" y="44" width="150" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="150" id="4gw-pj-ady"/>
                                                             <constraint firstAttribute="height" constant="21" id="hSt-8N-AYy"/>
@@ -1693,16 +1715,27 @@ Cg
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xa9-3L-5n7">
-                                                        <rect key="frame" x="37" y="37" width="52" height="35"/>
+                                                        <rect key="frame" x="37" y="38" width="30" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="52" id="bsY-SO-8Qd"/>
-                                                            <constraint firstAttribute="height" constant="35" id="wB9-Kb-Nia"/>
+                                                            <constraint firstAttribute="width" constant="30" id="bsY-SO-8Qd"/>
+                                                            <constraint firstAttribute="height" constant="30" id="wB9-Kb-Nia"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Yes"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="⃞"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="checkMarkTapped:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="2g9-ED-e2s"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Retail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hiP-GK-TRu">
-                                                        <rect key="frame" x="97" y="80" width="42.333333333333343" height="21"/>
+                                                        <rect key="frame" x="75" y="80" width="42.333333333333343" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="jE5-t6-E5j"/>
                                                             <constraint firstAttribute="width" constant="42.329999999999998" id="o9H-9x-UzI"/>
@@ -1712,16 +1745,27 @@ Cg
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyy-Hb-qgQ">
-                                                        <rect key="frame" x="37" y="73" width="52" height="35"/>
+                                                        <rect key="frame" x="37" y="74" width="30" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="52" id="4S3-u6-3dZ"/>
-                                                            <constraint firstAttribute="height" constant="35" id="hRV-P7-zAJ"/>
+                                                            <constraint firstAttribute="width" constant="30" id="4S3-u6-3dZ"/>
+                                                            <constraint firstAttribute="height" constant="30" id="hRV-P7-zAJ"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Yes"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="⃞"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="checkMarkTapped:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="ias-pN-uSv"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hfg-0H-Mef">
-                                                        <rect key="frame" x="96.999999999999986" y="116" width="162.66666666666663" height="21"/>
+                                                        <rect key="frame" x="74.999999999999986" y="116" width="162.66666666666663" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="ISM-s7-rXm"/>
                                                             <constraint firstAttribute="width" constant="162.66999999999999" id="K3V-co-oNM"/>
@@ -1733,27 +1777,38 @@ Cg
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ql-zH-1b5">
-                                                        <rect key="frame" x="37" y="109" width="52" height="35"/>
+                                                        <rect key="frame" x="37" y="110" width="30" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="52" id="Wiw-uQ-Owu"/>
-                                                            <constraint firstAttribute="height" constant="35" id="rea-HY-QvF"/>
+                                                            <constraint firstAttribute="width" constant="30" id="Wiw-uQ-Owu"/>
+                                                            <constraint firstAttribute="height" constant="30" id="rea-HY-QvF"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Yes"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="⃞"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="checkMarkTapped:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="EYt-CZ-0fL"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="164" id="2Mx-f5-Dws"/>
-                                                    <constraint firstItem="xa9-3L-5n7" firstAttribute="top" secondItem="gsR-uf-kQh" secondAttribute="bottom" constant="1" id="4PZ-GZ-od1"/>
+                                                    <constraint firstItem="xa9-3L-5n7" firstAttribute="top" secondItem="gsR-uf-kQh" secondAttribute="bottom" constant="6" id="4PZ-GZ-od1"/>
                                                     <constraint firstItem="Hfg-0H-Mef" firstAttribute="leading" secondItem="1ql-zH-1b5" secondAttribute="trailing" constant="8" symbolic="YES" id="G3a-bl-Hv6"/>
                                                     <constraint firstItem="1ql-zH-1b5" firstAttribute="leading" secondItem="aJM-Fc-a1k" secondAttribute="leading" constant="37" id="HX5-E4-pav"/>
                                                     <constraint firstItem="hiP-GK-TRu" firstAttribute="top" secondItem="VQo-ec-Wse" secondAttribute="bottom" constant="15" id="K5Y-1h-axQ"/>
                                                     <constraint firstItem="BX6-ZQ-4s7" firstAttribute="top" secondItem="aJM-Fc-a1k" secondAttribute="top" constant="8" id="KOV-hi-dku"/>
                                                     <constraint firstItem="hiP-GK-TRu" firstAttribute="leading" secondItem="hyy-Hb-qgQ" secondAttribute="trailing" constant="8" symbolic="YES" id="Kb3-eC-Iv0"/>
-                                                    <constraint firstItem="gsR-uf-kQh" firstAttribute="top" secondItem="aJM-Fc-a1k" secondAttribute="top" constant="1" id="XCV-z7-HCs"/>
-                                                    <constraint firstItem="1ql-zH-1b5" firstAttribute="top" secondItem="hyy-Hb-qgQ" secondAttribute="bottom" constant="1" id="dNA-sY-olc"/>
-                                                    <constraint firstItem="hyy-Hb-qgQ" firstAttribute="top" secondItem="xa9-3L-5n7" secondAttribute="bottom" constant="1" id="fAQ-Vh-lk5"/>
+                                                    <constraint firstItem="gsR-uf-kQh" firstAttribute="top" secondItem="aJM-Fc-a1k" secondAttribute="top" constant="2" id="XCV-z7-HCs"/>
+                                                    <constraint firstItem="1ql-zH-1b5" firstAttribute="top" secondItem="hyy-Hb-qgQ" secondAttribute="bottom" constant="6" id="dNA-sY-olc"/>
+                                                    <constraint firstItem="hyy-Hb-qgQ" firstAttribute="top" secondItem="xa9-3L-5n7" secondAttribute="bottom" constant="6" id="fAQ-Vh-lk5"/>
                                                     <constraint firstItem="Hfg-0H-Mef" firstAttribute="top" secondItem="hiP-GK-TRu" secondAttribute="bottom" constant="15" id="gc8-zC-Xg7"/>
                                                     <constraint firstItem="hyy-Hb-qgQ" firstAttribute="leading" secondItem="aJM-Fc-a1k" secondAttribute="leading" constant="37" id="jfl-hr-kUh"/>
                                                     <constraint firstItem="gsR-uf-kQh" firstAttribute="leading" secondItem="aJM-Fc-a1k" secondAttribute="leading" constant="37" id="js1-oS-NfL"/>
@@ -1995,49 +2050,104 @@ Cg
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O7h-ej-bLr">
-                                                        <rect key="frame" x="342" y="31" width="52" height="35"/>
+                                                        <rect key="frame" x="364" y="31" width="30" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="52" id="Nrx-LT-DDj"/>
-                                                            <constraint firstAttribute="height" constant="35" id="zVr-rs-K6f"/>
+                                                            <constraint firstAttribute="width" constant="30" id="Nrx-LT-DDj"/>
+                                                            <constraint firstAttribute="height" constant="30" id="zVr-rs-K6f"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Yes"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="⃞"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="checkMarkTapped:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="KYx-qA-f7J"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gBh-eI-1fd">
-                                                        <rect key="frame" x="342" y="68" width="52" height="35"/>
+                                                        <rect key="frame" x="364" y="63" width="30" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="52" id="Evn-m3-DZt"/>
-                                                            <constraint firstAttribute="height" constant="35" id="obr-r5-Fj1"/>
+                                                            <constraint firstAttribute="width" constant="30" id="Evn-m3-DZt"/>
+                                                            <constraint firstAttribute="height" constant="30" id="obr-r5-Fj1"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Yes"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="⃞"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="checkMarkTapped:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="v2h-n6-dzB"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Sh-ve-BlY">
-                                                        <rect key="frame" x="342" y="105" width="52" height="35"/>
+                                                        <rect key="frame" x="364" y="95" width="30" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="35" id="qdL-ve-pUC"/>
-                                                            <constraint firstAttribute="width" constant="52" id="vzP-Qj-Mme"/>
+                                                            <constraint firstAttribute="height" constant="30" id="qdL-ve-pUC"/>
+                                                            <constraint firstAttribute="width" constant="30" id="vzP-Qj-Mme"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Yes"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="⃞"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="checkMarkTapped:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="UxY-2F-QMq"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ivp-dx-cs6">
-                                                        <rect key="frame" x="342" y="170" width="52" height="35"/>
+                                                        <rect key="frame" x="364" y="168" width="30" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="52" id="Eh6-Sr-Usn"/>
-                                                            <constraint firstAttribute="height" constant="35" id="fYX-XI-4g6"/>
+                                                            <constraint firstAttribute="width" constant="30" id="Eh6-Sr-Usn"/>
+                                                            <constraint firstAttribute="height" constant="30" id="fYX-XI-4g6"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Yes"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="⃞"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="checkMarkTapped:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="ZBQ-cs-9WE"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zKs-Dz-Nbv">
-                                                        <rect key="frame" x="342" y="207" width="52" height="35"/>
+                                                        <rect key="frame" x="364" y="200" width="30" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="52" id="RcC-hs-Qbd"/>
-                                                            <constraint firstAttribute="height" constant="35" id="ZvX-Hn-3Ik"/>
+                                                            <constraint firstAttribute="width" constant="30" id="RcC-hs-Qbd"/>
+                                                            <constraint firstAttribute="height" constant="30" id="ZvX-Hn-3Ik"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Yes"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="⃞"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="checkMarkTapped:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="r6w-Ft-spB"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2063,7 +2173,7 @@ Cg
                                                     <constraint firstItem="rQf-bo-Yt1" firstAttribute="leading" secondItem="299-t0-VIs" secondAttribute="leading" constant="14" id="oBb-E0-Qak"/>
                                                     <constraint firstItem="kAZ-S2-f5T" firstAttribute="top" secondItem="299-t0-VIs" secondAttribute="top" constant="8" id="rUt-47-Lpj"/>
                                                     <constraint firstAttribute="height" constant="261" id="vvW-IY-eZM"/>
-                                                    <constraint firstItem="ivp-dx-cs6" firstAttribute="top" secondItem="5Sh-ve-BlY" secondAttribute="bottom" constant="30" id="vwe-1k-KNl"/>
+                                                    <constraint firstItem="ivp-dx-cs6" firstAttribute="top" secondItem="5Sh-ve-BlY" secondAttribute="bottom" constant="43" id="vwe-1k-KNl"/>
                                                     <constraint firstItem="6xm-CA-QlM" firstAttribute="leading" secondItem="299-t0-VIs" secondAttribute="leading" constant="16" id="wSc-Xi-0JM"/>
                                                     <constraint firstAttribute="trailing" secondItem="5Sh-ve-BlY" secondAttribute="trailing" constant="20" symbolic="YES" id="waN-Vk-ONA"/>
                                                     <constraint firstItem="PBE-c5-Nsk" firstAttribute="leading" secondItem="299-t0-VIs" secondAttribute="leading" constant="16" id="zeR-mc-0P0"/>
@@ -2093,13 +2203,24 @@ Cg
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hfY-je-ftc">
-                                                        <rect key="frame" x="342" y="30" width="52" height="35"/>
+                                                        <rect key="frame" x="364" y="30" width="30" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="35" id="4gW-7S-ABM"/>
-                                                            <constraint firstAttribute="width" constant="52" id="qYo-z9-022"/>
+                                                            <constraint firstAttribute="height" constant="30" id="4gW-7S-ABM"/>
+                                                            <constraint firstAttribute="width" constant="30" id="qYo-z9-022"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Yes"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="⃞"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="checkMarkTapped:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="mcu-ds-FyT"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IKO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sq6-A2-CeR">
                                                         <rect key="frame" x="15" y="73" width="150" height="21"/>
@@ -2112,13 +2233,24 @@ Cg
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="APE-Ox-P84">
-                                                        <rect key="frame" x="342" y="66" width="52" height="35"/>
+                                                        <rect key="frame" x="364" y="67" width="30" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="35" id="gMK-sh-xhk"/>
-                                                            <constraint firstAttribute="width" constant="52" id="zpQ-SR-eAi"/>
+                                                            <constraint firstAttribute="height" constant="30" id="gMK-sh-xhk"/>
+                                                            <constraint firstAttribute="width" constant="30" id="zpQ-SR-eAi"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Yes"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="⃞"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="checkMarkTapped:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="qUt-LQ-W9m"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ae-Dx-jKe">
                                                         <rect key="frame" x="15" y="109" width="150" height="21"/>
@@ -2131,13 +2263,24 @@ Cg
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jFy-50-ik8">
-                                                        <rect key="frame" x="342" y="102" width="52" height="35"/>
+                                                        <rect key="frame" x="364" y="104" width="30" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="52" id="aAR-6J-kJg"/>
-                                                            <constraint firstAttribute="height" constant="35" id="kuf-CG-tYs"/>
+                                                            <constraint firstAttribute="width" constant="30" id="aAR-6J-kJg"/>
+                                                            <constraint firstAttribute="height" constant="30" id="kuf-CG-tYs"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Yes"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="⃞"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="checkMarkTapped:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="zal-ec-7ZZ"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ridge Vent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wf1-S3-MQt">
                                                         <rect key="frame" x="15" y="145" width="200" height="21"/>
@@ -2160,13 +2303,24 @@ Cg
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lNK-AT-Nmy">
-                                                        <rect key="frame" x="342" y="174" width="52" height="35"/>
+                                                        <rect key="frame" x="364" y="171" width="30" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="52" id="oC2-Bm-AjH"/>
-                                                            <constraint firstAttribute="height" constant="35" id="rLl-vC-h0b"/>
+                                                            <constraint firstAttribute="width" constant="30" id="oC2-Bm-AjH"/>
+                                                            <constraint firstAttribute="height" constant="30" id="rLl-vC-h0b"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Yes"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="⃞"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="checkMarkTapped:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="GGQ-0y-edl"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAF" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oB4-C4-8Yn">
                                                         <rect key="frame" x="15" y="216" width="150" height="21"/>
@@ -2179,13 +2333,24 @@ Cg
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hPT-SM-f9P">
-                                                        <rect key="frame" x="342" y="210" width="52" height="35"/>
+                                                        <rect key="frame" x="364" y="208" width="30" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="52" id="25y-WH-1To"/>
-                                                            <constraint firstAttribute="height" constant="35" id="bnH-ng-qWV"/>
+                                                            <constraint firstAttribute="width" constant="30" id="25y-WH-1To"/>
+                                                            <constraint firstAttribute="height" constant="30" id="bnH-ng-qWV"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Yes"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="⃞"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="checkMarkTapped:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="GwX-t2-Nm1"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AIR VENT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4d6-MD-r8z">
                                                         <rect key="frame" x="15" y="252" width="150" height="21"/>
@@ -2198,13 +2363,24 @@ Cg
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="umN-XS-NyM">
-                                                        <rect key="frame" x="342" y="246" width="52" height="35"/>
+                                                        <rect key="frame" x="364" y="245" width="30" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="52" id="CVB-c1-OSb"/>
-                                                            <constraint firstAttribute="height" constant="35" id="WxI-q3-odT"/>
+                                                            <constraint firstAttribute="width" constant="30" id="CVB-c1-OSb"/>
+                                                            <constraint firstAttribute="height" constant="30" id="WxI-q3-odT"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Yes"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="⃞"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="checkMarkTapped:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="eAM-3Q-3yb"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cut &amp; Install Ridge Vent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ynm-NY-Lrs">
                                                         <rect key="frame" x="15" y="288" width="300" height="21"/>
@@ -2217,20 +2393,31 @@ Cg
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BUi-qg-TbC">
-                                                        <rect key="frame" x="342" y="282" width="52" height="35"/>
+                                                        <rect key="frame" x="364" y="282" width="30" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="52" id="2wR-rr-0bg"/>
-                                                            <constraint firstAttribute="height" constant="35" id="GJz-l7-0Hy"/>
+                                                            <constraint firstAttribute="width" constant="30" id="2wR-rr-0bg"/>
+                                                            <constraint firstAttribute="height" constant="30" id="GJz-l7-0Hy"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Yes"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="⃞"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="checkMarkTapped:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="x60-JA-s45"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstItem="4Ae-Dx-jKe" firstAttribute="leading" secondItem="mee-uQ-aN9" secondAttribute="leading" constant="15" id="4gv-Ko-7Dd"/>
-                                                    <constraint firstItem="umN-XS-NyM" firstAttribute="top" secondItem="hPT-SM-f9P" secondAttribute="bottom" constant="1" id="6fQ-Hq-orZ"/>
-                                                    <constraint firstItem="BUi-qg-TbC" firstAttribute="top" secondItem="umN-XS-NyM" secondAttribute="bottom" constant="1" id="D3D-nM-RL3"/>
+                                                    <constraint firstItem="umN-XS-NyM" firstAttribute="top" secondItem="hPT-SM-f9P" secondAttribute="bottom" constant="7" id="6fQ-Hq-orZ"/>
+                                                    <constraint firstItem="BUi-qg-TbC" firstAttribute="top" secondItem="umN-XS-NyM" secondAttribute="bottom" constant="7" id="D3D-nM-RL3"/>
                                                     <constraint firstAttribute="trailing" secondItem="jFy-50-ik8" secondAttribute="trailing" constant="20" symbolic="YES" id="H6z-TB-01e"/>
                                                     <constraint firstAttribute="trailing" secondItem="lNK-AT-Nmy" secondAttribute="trailing" constant="20" symbolic="YES" id="Imt-eA-Oy7"/>
                                                     <constraint firstItem="Ynm-NY-Lrs" firstAttribute="top" secondItem="4d6-MD-r8z" secondAttribute="bottom" constant="15" id="NPZ-aA-ERa"/>
@@ -2240,15 +2427,15 @@ Cg
                                                     <constraint firstAttribute="trailing" secondItem="umN-XS-NyM" secondAttribute="trailing" constant="20" symbolic="YES" id="WfN-PD-n0F"/>
                                                     <constraint firstItem="hfY-je-ftc" firstAttribute="top" secondItem="mee-uQ-aN9" secondAttribute="top" constant="30" id="Wna-8g-Yc5"/>
                                                     <constraint firstAttribute="trailing" secondItem="hfY-je-ftc" secondAttribute="trailing" constant="20" symbolic="YES" id="XGe-0r-b5c"/>
-                                                    <constraint firstItem="hPT-SM-f9P" firstAttribute="top" secondItem="lNK-AT-Nmy" secondAttribute="bottom" constant="1" id="YDI-lu-6wh"/>
+                                                    <constraint firstItem="hPT-SM-f9P" firstAttribute="top" secondItem="lNK-AT-Nmy" secondAttribute="bottom" constant="7" id="YDI-lu-6wh"/>
                                                     <constraint firstItem="oB4-C4-8Yn" firstAttribute="leading" secondItem="mee-uQ-aN9" secondAttribute="leading" constant="15" id="Yqt-oV-cnl"/>
-                                                    <constraint firstItem="jFy-50-ik8" firstAttribute="top" secondItem="APE-Ox-P84" secondAttribute="bottom" constant="1" id="bhJ-ju-qTj"/>
+                                                    <constraint firstItem="jFy-50-ik8" firstAttribute="top" secondItem="APE-Ox-P84" secondAttribute="bottom" constant="7" id="bhJ-ju-qTj"/>
                                                     <constraint firstItem="f7L-9T-0tA" firstAttribute="top" secondItem="mee-uQ-aN9" secondAttribute="top" constant="8" id="cCH-5Z-1hA"/>
                                                     <constraint firstAttribute="trailing" secondItem="BUi-qg-TbC" secondAttribute="trailing" constant="20" symbolic="YES" id="ec3-VK-cU9"/>
                                                     <constraint firstItem="4d6-MD-r8z" firstAttribute="top" secondItem="oB4-C4-8Yn" secondAttribute="bottom" constant="15" id="fUs-fK-cWa"/>
                                                     <constraint firstItem="wf1-S3-MQt" firstAttribute="top" secondItem="4Ae-Dx-jKe" secondAttribute="bottom" constant="15" id="ggV-Pm-1dy"/>
                                                     <constraint firstItem="Lzf-K8-miR" firstAttribute="leading" secondItem="mee-uQ-aN9" secondAttribute="leading" constant="15" id="hac-7I-xs6"/>
-                                                    <constraint firstItem="APE-Ox-P84" firstAttribute="top" secondItem="hfY-je-ftc" secondAttribute="bottom" constant="1" id="hl7-OG-eXW"/>
+                                                    <constraint firstItem="APE-Ox-P84" firstAttribute="top" secondItem="hfY-je-ftc" secondAttribute="bottom" constant="7" id="hl7-OG-eXW"/>
                                                     <constraint firstItem="sq6-A2-CeR" firstAttribute="top" secondItem="Lzf-K8-miR" secondAttribute="bottom" constant="15" id="ijy-Ky-xao"/>
                                                     <constraint firstItem="oB4-C4-8Yn" firstAttribute="top" secondItem="cpV-rv-8i1" secondAttribute="bottom" constant="15" id="ize-fO-8lN"/>
                                                     <constraint firstItem="lNK-AT-Nmy" firstAttribute="top" secondItem="jFy-50-ik8" secondAttribute="bottom" constant="37" id="jSz-1j-XgN"/>
@@ -2287,13 +2474,24 @@ Cg
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Xw-j8-3vt">
-                                                        <rect key="frame" x="342" y="30" width="52" height="35"/>
+                                                        <rect key="frame" x="364" y="30" width="30" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="35" id="gFX-V5-YGm"/>
-                                                            <constraint firstAttribute="width" constant="52" id="xC2-UG-MNZ"/>
+                                                            <constraint firstAttribute="height" constant="30" id="gFX-V5-YGm"/>
+                                                            <constraint firstAttribute="width" constant="30" id="xC2-UG-MNZ"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Yes"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="⃞"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="checkMarkTapped:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="efZ-Or-jHa"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cO9-lF-dam">
                                                         <rect key="frame" x="15" y="73" width="200" height="21"/>
@@ -2306,13 +2504,24 @@ Cg
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sTl-LY-8mL">
-                                                        <rect key="frame" x="342" y="66" width="52" height="35"/>
+                                                        <rect key="frame" x="364" y="67" width="30" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="35" id="DMK-Pb-94p"/>
-                                                            <constraint firstAttribute="width" constant="52" id="fQb-lQ-AuA"/>
+                                                            <constraint firstAttribute="height" constant="30" id="DMK-Pb-94p"/>
+                                                            <constraint firstAttribute="width" constant="30" id="fQb-lQ-AuA"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Yes"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="⃞"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="checkMarkTapped:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="xsE-5a-faS"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="White" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D40-DC-AR5">
                                                         <rect key="frame" x="15" y="109" width="200" height="21"/>
@@ -2325,13 +2534,24 @@ Cg
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fan-YN-ad8">
-                                                        <rect key="frame" x="342" y="102" width="52" height="35"/>
+                                                        <rect key="frame" x="364" y="104" width="30" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="52" id="39g-ft-Qur"/>
-                                                            <constraint firstAttribute="height" constant="35" id="oKQ-Dn-1wq"/>
+                                                            <constraint firstAttribute="width" constant="30" id="39g-ft-Qur"/>
+                                                            <constraint firstAttribute="height" constant="30" id="oKQ-Dn-1wq"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Yes"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="⃞"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="checkMarkTapped:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="oDf-tH-nxD"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copper" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYX-fL-PLH">
                                                         <rect key="frame" x="15" y="145" width="200" height="21"/>
@@ -2364,13 +2584,24 @@ Cg
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5oS-bj-z19">
-                                                        <rect key="frame" x="342" y="210" width="52" height="35"/>
+                                                        <rect key="frame" x="364" y="206" width="30" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="52" id="13H-7V-cdR"/>
-                                                            <constraint firstAttribute="height" constant="35" id="Iq1-Kp-Hdv"/>
+                                                            <constraint firstAttribute="width" constant="30" id="13H-7V-cdR"/>
+                                                            <constraint firstAttribute="height" constant="30" id="Iq1-Kp-Hdv"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Yes"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="⃞"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="checkMarkTapped:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="5wE-mW-oNr"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wq-Ua-XUm">
                                                         <rect key="frame" x="15" y="252" width="319" height="21"/>
@@ -2383,13 +2614,24 @@ Cg
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jGJ-yf-Ist">
-                                                        <rect key="frame" x="342" y="246" width="52" height="35"/>
+                                                        <rect key="frame" x="364" y="243" width="30" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="35" id="dJw-m0-kID"/>
-                                                            <constraint firstAttribute="width" constant="52" id="nId-vW-oXZ"/>
+                                                            <constraint firstAttribute="height" constant="30" id="dJw-m0-kID"/>
+                                                            <constraint firstAttribute="width" constant="30" id="nId-vW-oXZ"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Yes"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="⃞"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="checkMarkTapped:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="avu-Pf-pam"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grey" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BVa-Os-PDH">
                                                         <rect key="frame" x="15" y="288" width="300" height="21"/>
@@ -2402,22 +2644,44 @@ Cg
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voi-Uq-lHy">
-                                                        <rect key="frame" x="342" y="282" width="52" height="35"/>
+                                                        <rect key="frame" x="364" y="280" width="30" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="52" id="9nk-90-9tt"/>
-                                                            <constraint firstAttribute="height" constant="35" id="T8r-8h-JXa"/>
+                                                            <constraint firstAttribute="width" constant="30" id="9nk-90-9tt"/>
+                                                            <constraint firstAttribute="height" constant="30" id="T8r-8h-JXa"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Yes"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="⃞"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="checkMarkTapped:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="JiQ-XM-SYg"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b1U-1D-WA6">
-                                                        <rect key="frame" x="342" y="138" width="52" height="35"/>
+                                                        <rect key="frame" x="364" y="141" width="30" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="35" id="5by-S3-Kyk"/>
-                                                            <constraint firstAttribute="width" constant="52" id="kcJ-if-5VD"/>
+                                                            <constraint firstAttribute="height" constant="30" id="5by-S3-Kyk"/>
+                                                            <constraint firstAttribute="width" constant="30" id="kcJ-if-5VD"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Yes"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="⃞"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="checkMarkTapped:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="scI-AB-Rtr"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="White" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZg-MQ-RyU">
                                                         <rect key="frame" x="15" y="324" width="300" height="21"/>
@@ -2430,56 +2694,65 @@ Cg
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jce-Lh-jEs">
-                                                        <rect key="frame" x="342" y="318" width="52" height="35"/>
+                                                        <rect key="frame" x="364" y="317" width="30" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="52" id="HzG-IV-OUz"/>
-                                                            <constraint firstAttribute="height" constant="35" id="P3m-Bl-dka"/>
+                                                            <constraint firstAttribute="width" constant="30" id="HzG-IV-OUz"/>
+                                                            <constraint firstAttribute="height" constant="30" id="P3m-Bl-dka"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Yes"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="⃞"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="checkMarkTapped:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="3Zg-Qh-kJQ"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstItem="sF4-Bf-hfW" firstAttribute="top" secondItem="jFY-ad-aEe" secondAttribute="bottom" constant="15" id="0oz-2Z-Aan"/>
-                                                    <constraint firstAttribute="trailing" secondItem="b1U-1D-WA6" secondAttribute="trailing" constant="20" symbolic="YES" id="5Jq-ga-dzl"/>
-                                                    <constraint firstAttribute="height" constant="380" id="7ZL-OB-ocj"/>
-                                                    <constraint firstAttribute="trailing" secondItem="5Xw-j8-3vt" secondAttribute="trailing" constant="20" symbolic="YES" id="7vW-tc-iOX"/>
-                                                    <constraint firstItem="slc-Xk-aly" firstAttribute="leading" secondItem="0rL-Ff-iKx" secondAttribute="leading" constant="15" id="AFW-CO-tbl"/>
-                                                    <constraint firstItem="5Xw-j8-3vt" firstAttribute="top" secondItem="0rL-Ff-iKx" secondAttribute="top" constant="30" id="Geq-AT-kLY"/>
-                                                    <constraint firstItem="wZg-MQ-RyU" firstAttribute="leading" secondItem="0rL-Ff-iKx" secondAttribute="leading" constant="15" id="HNN-0e-oOl"/>
-                                                    <constraint firstItem="sF4-Bf-hfW" firstAttribute="leading" secondItem="0rL-Ff-iKx" secondAttribute="leading" constant="15" id="Itp-Fd-QXb"/>
-                                                    <constraint firstItem="voi-Uq-lHy" firstAttribute="top" secondItem="jGJ-yf-Ist" secondAttribute="bottom" constant="1" id="Jwk-km-apx"/>
+                                                    <constraint firstAttribute="trailing" secondItem="5Xw-j8-3vt" secondAttribute="trailing" constant="20" symbolic="YES" id="2Zd-mJ-OeM"/>
+                                                    <constraint firstItem="sF4-Bf-hfW" firstAttribute="leading" secondItem="0rL-Ff-iKx" secondAttribute="leading" constant="15" id="3Z6-ek-tg0"/>
+                                                    <constraint firstItem="jFY-ad-aEe" firstAttribute="top" secondItem="aYX-fL-PLH" secondAttribute="bottom" constant="14" id="411-uX-ffe"/>
+                                                    <constraint firstAttribute="trailing" secondItem="5oS-bj-z19" secondAttribute="trailing" constant="20" symbolic="YES" id="64b-O3-0G5"/>
+                                                    <constraint firstAttribute="trailing" secondItem="fan-YN-ad8" secondAttribute="trailing" constant="20" symbolic="YES" id="8O1-gv-pmW"/>
+                                                    <constraint firstItem="aYX-fL-PLH" firstAttribute="leading" secondItem="0rL-Ff-iKx" secondAttribute="leading" constant="15" id="8dT-Tg-xT8"/>
+                                                    <constraint firstItem="5Xw-j8-3vt" firstAttribute="top" secondItem="0rL-Ff-iKx" secondAttribute="top" constant="30" id="Abd-vQ-1SW"/>
+                                                    <constraint firstItem="D40-DC-AR5" firstAttribute="leading" secondItem="0rL-Ff-iKx" secondAttribute="leading" constant="15" id="Eqe-5d-OW1"/>
+                                                    <constraint firstItem="cO9-lF-dam" firstAttribute="leading" secondItem="0rL-Ff-iKx" secondAttribute="leading" constant="15" id="FCK-mK-kQn"/>
+                                                    <constraint firstItem="slc-Xk-aly" firstAttribute="top" secondItem="0rL-Ff-iKx" secondAttribute="top" constant="8" id="H8L-AN-7AW"/>
+                                                    <constraint firstAttribute="trailing" secondItem="voi-Uq-lHy" secondAttribute="trailing" constant="20" symbolic="YES" id="HVn-co-Wrl"/>
+                                                    <constraint firstAttribute="trailing" secondItem="jGJ-yf-Ist" secondAttribute="trailing" constant="20" symbolic="YES" id="IU9-d9-Ty9"/>
+                                                    <constraint firstItem="voi-Uq-lHy" firstAttribute="top" secondItem="jGJ-yf-Ist" secondAttribute="bottom" constant="7" id="Jwk-km-apx"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Jce-Lh-jEs" secondAttribute="trailing" constant="20" symbolic="YES" id="KeJ-x4-56g"/>
                                                     <constraint firstItem="wZg-MQ-RyU" firstAttribute="top" secondItem="BVa-Os-PDH" secondAttribute="bottom" constant="15" id="LIV-67-Z7J"/>
-                                                    <constraint firstAttribute="trailing" secondItem="jGJ-yf-Ist" secondAttribute="trailing" constant="20" symbolic="YES" id="MwC-w6-fOX"/>
-                                                    <constraint firstItem="voi-Uq-lHy" firstAttribute="top" secondItem="jGJ-yf-Ist" secondAttribute="bottom" constant="1" id="Nh9-wS-2j9"/>
-                                                    <constraint firstItem="jFY-ad-aEe" firstAttribute="top" secondItem="aYX-fL-PLH" secondAttribute="bottom" constant="14" id="OkJ-7L-g10"/>
-                                                    <constraint firstItem="5oS-bj-z19" firstAttribute="top" secondItem="b1U-1D-WA6" secondAttribute="bottom" constant="37" id="PF9-ML-4Rr"/>
-                                                    <constraint firstItem="9wq-Ua-XUm" firstAttribute="top" secondItem="sF4-Bf-hfW" secondAttribute="bottom" constant="15" id="RA1-rs-20d"/>
-                                                    <constraint firstItem="aYX-fL-PLH" firstAttribute="top" secondItem="D40-DC-AR5" secondAttribute="bottom" constant="15" id="RET-yz-8hj"/>
+                                                    <constraint firstItem="wZg-MQ-RyU" firstAttribute="leading" secondItem="0rL-Ff-iKx" secondAttribute="leading" constant="15" id="MLF-tG-BiG"/>
+                                                    <constraint firstItem="sF4-Bf-hfW" firstAttribute="top" secondItem="jFY-ad-aEe" secondAttribute="bottom" constant="15" id="MZf-72-GZo"/>
+                                                    <constraint firstItem="5oS-bj-z19" firstAttribute="top" secondItem="b1U-1D-WA6" secondAttribute="bottom" constant="35" id="PF9-ML-4Rr"/>
                                                     <constraint firstItem="cO9-lF-dam" firstAttribute="top" secondItem="4AW-zB-T2X" secondAttribute="bottom" constant="15" id="RI6-Ca-1gQ"/>
-                                                    <constraint firstItem="4AW-zB-T2X" firstAttribute="leading" secondItem="0rL-Ff-iKx" secondAttribute="leading" constant="15" id="Tob-HD-t16"/>
-                                                    <constraint firstAttribute="trailing" secondItem="sTl-LY-8mL" secondAttribute="trailing" constant="20" symbolic="YES" id="aqV-Vl-ySq"/>
-                                                    <constraint firstItem="jGJ-yf-Ist" firstAttribute="top" secondItem="5oS-bj-z19" secondAttribute="bottom" constant="1" id="ccy-SO-EmO"/>
-                                                    <constraint firstItem="jGJ-yf-Ist" firstAttribute="top" secondItem="5oS-bj-z19" secondAttribute="bottom" constant="1" id="dQH-3v-PR9"/>
+                                                    <constraint firstAttribute="height" constant="380" id="T5c-f8-OGg"/>
+                                                    <constraint firstItem="4AW-zB-T2X" firstAttribute="leading" secondItem="0rL-Ff-iKx" secondAttribute="leading" constant="15" id="UdR-Xg-USt"/>
+                                                    <constraint firstItem="aYX-fL-PLH" firstAttribute="top" secondItem="D40-DC-AR5" secondAttribute="bottom" constant="15" id="VQR-Xc-aJa"/>
+                                                    <constraint firstItem="slc-Xk-aly" firstAttribute="leading" secondItem="0rL-Ff-iKx" secondAttribute="leading" constant="15" id="XuS-L6-Nkb"/>
+                                                    <constraint firstItem="jGJ-yf-Ist" firstAttribute="top" secondItem="5oS-bj-z19" secondAttribute="bottom" constant="7" id="dQH-3v-PR9"/>
+                                                    <constraint firstAttribute="trailing" secondItem="sTl-LY-8mL" secondAttribute="trailing" constant="20" symbolic="YES" id="er0-SA-m2e"/>
                                                     <constraint firstItem="BVa-Os-PDH" firstAttribute="top" secondItem="9wq-Ua-XUm" secondAttribute="bottom" constant="15" id="gQG-uI-clz"/>
-                                                    <constraint firstAttribute="trailing" secondItem="fan-YN-ad8" secondAttribute="trailing" constant="20" symbolic="YES" id="gw3-ax-u6x"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Jce-Lh-jEs" secondAttribute="trailing" constant="20" symbolic="YES" id="hJ0-5H-ZI4"/>
-                                                    <constraint firstItem="9wq-Ua-XUm" firstAttribute="leading" secondItem="0rL-Ff-iKx" secondAttribute="leading" constant="15" id="hh5-Zj-JeT"/>
-                                                    <constraint firstItem="b1U-1D-WA6" firstAttribute="top" secondItem="fan-YN-ad8" secondAttribute="bottom" constant="1" id="hjk-Rg-r2X"/>
+                                                    <constraint firstItem="b1U-1D-WA6" firstAttribute="top" secondItem="fan-YN-ad8" secondAttribute="bottom" constant="7" id="hjk-Rg-r2X"/>
                                                     <constraint firstItem="4AW-zB-T2X" firstAttribute="top" secondItem="slc-Xk-aly" secondAttribute="bottom" constant="7" id="iWY-3c-O79"/>
-                                                    <constraint firstItem="BVa-Os-PDH" firstAttribute="leading" secondItem="0rL-Ff-iKx" secondAttribute="leading" constant="15" id="jC9-mU-LNQ"/>
-                                                    <constraint firstItem="cO9-lF-dam" firstAttribute="leading" secondItem="0rL-Ff-iKx" secondAttribute="leading" constant="15" id="jyu-Xz-9el"/>
-                                                    <constraint firstItem="Jce-Lh-jEs" firstAttribute="top" secondItem="voi-Uq-lHy" secondAttribute="bottom" constant="1" id="m70-Fc-Nbt"/>
-                                                    <constraint firstItem="D40-DC-AR5" firstAttribute="top" secondItem="cO9-lF-dam" secondAttribute="bottom" constant="15" id="nAR-vK-UBd"/>
-                                                    <constraint firstItem="fan-YN-ad8" firstAttribute="top" secondItem="sTl-LY-8mL" secondAttribute="bottom" constant="1" id="nBL-wB-QGS"/>
-                                                    <constraint firstAttribute="trailing" secondItem="voi-Uq-lHy" secondAttribute="trailing" constant="20" symbolic="YES" id="q8h-5h-HQ2"/>
-                                                    <constraint firstItem="D40-DC-AR5" firstAttribute="leading" secondItem="0rL-Ff-iKx" secondAttribute="leading" constant="15" id="r54-Sa-SS7"/>
-                                                    <constraint firstItem="aYX-fL-PLH" firstAttribute="leading" secondItem="0rL-Ff-iKx" secondAttribute="leading" constant="15" id="scJ-dF-pYs"/>
-                                                    <constraint firstItem="sTl-LY-8mL" firstAttribute="top" secondItem="5Xw-j8-3vt" secondAttribute="bottom" constant="1" id="sgw-eu-hRf"/>
-                                                    <constraint firstItem="slc-Xk-aly" firstAttribute="top" secondItem="0rL-Ff-iKx" secondAttribute="top" constant="8" id="vCh-zb-9G8"/>
-                                                    <constraint firstAttribute="trailing" secondItem="5oS-bj-z19" secondAttribute="trailing" constant="20" symbolic="YES" id="xvU-Pr-RyV"/>
-                                                    <constraint firstItem="jFY-ad-aEe" firstAttribute="leading" secondItem="0rL-Ff-iKx" secondAttribute="leading" constant="15" id="yIv-GM-x6T"/>
+                                                    <constraint firstItem="9wq-Ua-XUm" firstAttribute="top" secondItem="sF4-Bf-hfW" secondAttribute="bottom" constant="15" id="kzn-Wb-AGc"/>
+                                                    <constraint firstItem="Jce-Lh-jEs" firstAttribute="top" secondItem="voi-Uq-lHy" secondAttribute="bottom" constant="7" id="m70-Fc-Nbt"/>
+                                                    <constraint firstItem="fan-YN-ad8" firstAttribute="top" secondItem="sTl-LY-8mL" secondAttribute="bottom" constant="7" id="nBL-wB-QGS"/>
+                                                    <constraint firstItem="D40-DC-AR5" firstAttribute="top" secondItem="cO9-lF-dam" secondAttribute="bottom" constant="15" id="pD7-Fq-kQA"/>
+                                                    <constraint firstItem="jFY-ad-aEe" firstAttribute="leading" secondItem="0rL-Ff-iKx" secondAttribute="leading" constant="15" id="pYc-7d-SCB"/>
+                                                    <constraint firstAttribute="trailing" secondItem="b1U-1D-WA6" secondAttribute="trailing" constant="20" symbolic="YES" id="rOi-fT-zHj"/>
+                                                    <constraint firstItem="sTl-LY-8mL" firstAttribute="top" secondItem="5Xw-j8-3vt" secondAttribute="bottom" constant="7" id="sgw-eu-hRf"/>
+                                                    <constraint firstItem="9wq-Ua-XUm" firstAttribute="leading" secondItem="0rL-Ff-iKx" secondAttribute="leading" constant="15" id="wKM-5W-Pjh"/>
+                                                    <constraint firstItem="BVa-Os-PDH" firstAttribute="leading" secondItem="0rL-Ff-iKx" secondAttribute="leading" constant="15" id="xAz-6l-go6"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gb9-pr-JKw">
@@ -2506,13 +2779,24 @@ Cg
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cNY-uH-ACQ">
-                                                        <rect key="frame" x="342" y="30" width="52" height="35"/>
+                                                        <rect key="frame" x="364" y="30" width="30" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="35" id="2ci-5u-Dkj"/>
-                                                            <constraint firstAttribute="width" constant="52" id="iM1-Ui-MQD"/>
+                                                            <constraint firstAttribute="height" constant="30" id="2ci-5u-Dkj"/>
+                                                            <constraint firstAttribute="width" constant="30" id="iM1-Ui-MQD"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Yes"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="⃞"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="checkMarkTapped:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="2xd-59-grc"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detach &amp; Reset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EX8-DJ-dNJ">
                                                         <rect key="frame" x="15" y="73" width="250" height="21"/>
@@ -2525,13 +2809,24 @@ Cg
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IKK-Nd-jAf">
-                                                        <rect key="frame" x="342" y="66" width="52" height="35"/>
+                                                        <rect key="frame" x="364" y="67" width="30" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="52" id="8qa-s1-gbp"/>
-                                                            <constraint firstAttribute="height" constant="35" id="HoC-QQ-FR6"/>
+                                                            <constraint firstAttribute="width" constant="30" id="8qa-s1-gbp"/>
+                                                            <constraint firstAttribute="height" constant="30" id="HoC-QQ-FR6"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Yes"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="⃞"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="checkMarkTapped:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="j6p-eS-gqE"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remove &amp; Cover Holes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2rx-dr-1CJ">
                                                         <rect key="frame" x="15" y="109" width="250" height="21"/>
@@ -2544,13 +2839,24 @@ Cg
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K67-1C-Ddg">
-                                                        <rect key="frame" x="342" y="102" width="52" height="35"/>
+                                                        <rect key="frame" x="364" y="104" width="30" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="35" id="3eO-DB-D2o"/>
-                                                            <constraint firstAttribute="width" constant="52" id="p9y-P7-iDh"/>
+                                                            <constraint firstAttribute="height" constant="30" id="3eO-DB-D2o"/>
+                                                            <constraint firstAttribute="width" constant="30" id="p9y-P7-iDh"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Yes"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="⃞"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="checkMarkTapped:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="fTF-oe-O0U"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2565,9 +2871,9 @@ Cg
                                                     <constraint firstItem="EX8-DJ-dNJ" firstAttribute="leading" secondItem="gb9-pr-JKw" secondAttribute="leading" constant="15" id="Pdk-tH-6iI"/>
                                                     <constraint firstItem="cNY-uH-ACQ" firstAttribute="top" secondItem="gb9-pr-JKw" secondAttribute="top" constant="30" id="SBf-rN-upX"/>
                                                     <constraint firstItem="EX8-DJ-dNJ" firstAttribute="top" secondItem="cjm-n3-DVN" secondAttribute="bottom" constant="15" id="SC4-SB-nFL"/>
-                                                    <constraint firstItem="IKK-Nd-jAf" firstAttribute="top" secondItem="cNY-uH-ACQ" secondAttribute="bottom" constant="1" id="Ulu-Qe-KEz"/>
+                                                    <constraint firstItem="IKK-Nd-jAf" firstAttribute="top" secondItem="cNY-uH-ACQ" secondAttribute="bottom" constant="7" id="Ulu-Qe-KEz"/>
                                                     <constraint firstAttribute="trailing" secondItem="cNY-uH-ACQ" secondAttribute="trailing" constant="20" symbolic="YES" id="VDN-fH-dIT"/>
-                                                    <constraint firstItem="K67-1C-Ddg" firstAttribute="top" secondItem="IKK-Nd-jAf" secondAttribute="bottom" constant="1" id="VSh-SC-RSt"/>
+                                                    <constraint firstItem="K67-1C-Ddg" firstAttribute="top" secondItem="IKK-Nd-jAf" secondAttribute="bottom" constant="7" id="VSh-SC-RSt"/>
                                                     <constraint firstAttribute="trailing" secondItem="K67-1C-Ddg" secondAttribute="trailing" constant="20" symbolic="YES" id="sbR-85-wdI"/>
                                                     <constraint firstItem="0th-g3-BFm" firstAttribute="top" secondItem="gb9-pr-JKw" secondAttribute="top" constant="8" id="vE7-pz-mfB"/>
                                                 </constraints>
@@ -4305,7 +4611,7 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                                                             <constraint firstAttribute="height" constant="3181" id="1bn-fz-Sec"/>
                                                             <constraint firstAttribute="width" constant="378" id="bnS-UA-aJY"/>
                                                         </constraints>
-                                                        <mutableString key="text">1. This Agreement pertains to services provided by American Empire General Contracting Corp and or its Assign(s), (hereinafter “AEGC” or “Contractor”).
+                                                        <string key="text">1. This Agreement pertains to services provided by American Empire General Contracting Corp and or its Assign(s), (hereinafter “AEGC” or “Contractor”).
 2. Good Faith required - Home owner agrees to allow a competent, license adjuster and/or public adjuster to examine the alleged damage and agrees to cooperate fully with the inspection and negotiation of a fair settlement of the claim.
 3. Definitions: ACV = Actual Cash Value, RCV = Replacement Cost Value
 4. Management Review Clause - After acceptance of this Proposal by the customer, contractor has the option to withdraw based upon management review of the final settlement and offer by the Insurance Carrier. If Contractor withdraws, the Home Owner owes no fees for portions of the work canceled by the contractor. If the Insurance Carrier denies the claim the Home owner owes nothing.
@@ -4335,7 +4641,7 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
 31. Public Adjuster – Contractor will cede negotiations to a licensed Public Adjuster in the event one is retained to settle this claim. Parties agree to accept all pricing and scope of work as approved by the Public Adjuster and as priced in Xactimate. Customer will have no out-of-pocket expense if a Public Adjuster is retained and only a Public Adjuster willing to accept payment from insurance proceeds shall be retained. In the event a Public Adjuster is not hired, the Contract price will default to final settlement of the Insurance Carrier as negotiated by the Contractor.
 32. AEGC is the sole responsible party for workmanship of subcontractors and payment of materials and labor of the same said subcontractors.
 33. Warranty – Contractor warrants its work to be free from defects and leaks for a period of 10 year.s. After the expiration of 1 year the manufacturer's 10 year labor and material warranty shall apply. Contractor assumes liability for repair of any installation workmanship defects causing leakage. Contractor agrees to repair defective contract work. Building materials warranties are provided by product manufacturers not by contractor. Contractor warranty shall be effective only after payment of the contract in full. It is the responsibility of the customer to notify contractor within seventy-two (72) hours of the discovery of a leak or defect. You may call for service or email our offices at aegcroof@gmail.com.
-34. What To Do If a Leak Occurs - If a roof leak occurs, the customer agrees to take reasonable and immediate action to help avoid interior water damage. Contact Contractor as soon as possible for repair.</mutableString>
+34. What To Do If a Leak Occurs - If a roof leak occurs, the customer agrees to take reasonable and immediate action to help avoid interior water damage. Contact Contractor as soon as possible for repair.</string>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="13"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
