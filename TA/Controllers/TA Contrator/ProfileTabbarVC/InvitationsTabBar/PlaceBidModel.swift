@@ -81,7 +81,7 @@ class PlaceBidModel {
     var overheadProfit: String = ""
     var codeUpgrades: String = ""
     var paymentTermsDeductible: String = ""
-    var paymantTermsFinance: String = ""
+    var paymentTermsFinance: String = ""
     var homeOwner: String = ""
     var homeOwnerDate: String = ""
     var homeOwnerBA: String = ""
@@ -233,7 +233,7 @@ class PlaceBidModel {
         self.overheadProfit = overheadProfit
         self.codeUpgrades = codeUpgrades
         self.paymentTermsDeductible = paymentTermsDeductible
-        self.paymantTermsFinance = paymantTermsFinance
+        self.paymentTermsFinance = paymantTermsFinance
         self.homeOwner = homeOwner
         self.homeOwnerDate = homeOwnerDate
         self.homeOwnerBA = homeOwnerBA
