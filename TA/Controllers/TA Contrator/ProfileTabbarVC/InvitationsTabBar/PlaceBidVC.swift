@@ -42,10 +42,92 @@ class PlaceBidVC: BaseViewController {
     @IBOutlet weak var viewPDF: UIView!
     @IBOutlet weak var webviewForm: WKWebView!
     
+    
+    //MARK : New fields form
     @IBOutlet weak var datePickerView: UIDatePicker!
+    @IBOutlet weak var txtHomeOwner: FloatingLabelInput!
+    @IBOutlet weak var txtHomeOwnerB: FloatingLabelInput!
+    @IBOutlet weak var txtStreetAddress: FloatingLabelInput!
+    @IBOutlet weak var txtMailingAddress: FloatingLabelInput!
+    @IBOutlet weak var txtCellPhone: FloatingLabelInput!
+    @IBOutlet weak var txtEmail: FloatingLabelInput!
+    @IBOutlet weak var txtHOA: FloatingLabelInput!
+    @IBOutlet weak var txtInsurance: FloatingLabelInput!
+    @IBOutlet weak var txtClaimNumber: FloatingLabelInput!
+    @IBOutlet weak var txtMainDwellingRoof: FloatingLabelInput!
+    @IBOutlet weak var txtDetachedGarage: FloatingLabelInput!
+    @IBOutlet weak var txtShed: FloatingLabelInput!
+    @IBOutlet weak var txtDecking: FloatingLabelInput!
+    @IBOutlet weak var txtFlatRoof: FloatingLabelInput!
+    @IBOutlet weak var txtTotal: FloatingLabelInput!
+    @IBOutlet weak var txtDeducible: FloatingLabelInput!
+    @IBOutlet weak var txtFe: FloatingLabelInput!
+    @IBOutlet weak var txtRetail: FloatingLabelInput!
+    @IBOutlet weak var txtBe: FloatingLabelInput!
+    @IBOutlet weak var txtBrand: FloatingLabelInput!
+    @IBOutlet weak var txtStyle: FloatingLabelInput!
+    @IBOutlet weak var txtColor: FloatingLabelInput!
+    @IBOutlet weak var txtPermaBoot: FloatingLabelInput!
+    @IBOutlet weak var txtPermaBootB: FloatingLabelInput!
+    @IBOutlet weak var txtPipeJack: FloatingLabelInput!
+    @IBOutlet weak var txtPipeJackB: FloatingLabelInput!
+    @IBOutlet weak var txtColorB: FloatingLabelInput!
+    @IBOutlet weak var txtMaterialLocation: FloatingLabelInput!
+    @IBOutlet weak var txtDumpsterLocation: FloatingLabelInput!
+    @IBOutlet weak var txtSpecialInstructions: FloatingLabelInput!
+    @IBOutlet weak var txtNotes: FloatingLabelInput!
+    @IBOutlet weak var txtRoofing: FloatingLabelInput!
+    @IBOutlet weak var txtRoofingPrice: FloatingLabelInput!
+    @IBOutlet weak var txtDebrisRemoval: FloatingLabelInput!
+    @IBOutlet weak var txtDebrisRemovalPrice: FloatingLabelInput!
+    @IBOutlet weak var txtOverheadProfit: FloatingLabelInput!
+    @IBOutlet weak var txtOverheadProfitPrice: FloatingLabelInput!
+    @IBOutlet weak var txtCodeUpgrades: FloatingLabelInput!
+    @IBOutlet weak var txtCodeUpgradesPrice: FloatingLabelInput!
+    @IBOutlet weak var txtHomeOwnerBA: FloatingLabelInput!
+    @IBOutlet weak var txtHomeOwnerBB: FloatingLabelInput!
+    @IBOutlet weak var txtHomeOwnerBADate: FloatingLabelInput!
+    @IBOutlet weak var txtHomeOwnerBBDate: FloatingLabelInput!
+    @IBOutlet weak var txtAegcRepresentative: FloatingLabelInput!
+    @IBOutlet weak var txtAegcRepresentativeDate: FloatingLabelInput!
     
     //MARK : Checkbox
-    
+    @IBOutlet weak var ckbPaymentTermsFinance: UIButton!
+    @IBOutlet weak var ckbPaymentTermsDeductible: UIButton!
+    @IBOutlet weak var ckbInsFullyApproved: UIButton!
+    @IBOutlet weak var ckbInsPartialApproved: UIButton!
+    @IBOutlet weak var ckbRetail: UIButton!
+    @IBOutlet weak var ckbRetailDepreciation: UIButton!
+    @IBOutlet weak var ckbWhiteDripEdge: UIButton!
+    @IBOutlet weak var ckbBrown: UIButton!
+    @IBOutlet weak var ckbAlmond: UIButton!
+    @IBOutlet weak var ckbBlack: UIButton!
+    @IBOutlet weak var ckbBrownB: UIButton!
+    @IBOutlet weak var ckbAegc: UIButton!
+    @IBOutlet weak var ckbIko: UIButton!
+    @IBOutlet weak var ckbOc: UIButton!
+    @IBOutlet weak var ckbOCb: UIButton!
+    @IBOutlet weak var ckbGaf: UIButton!
+    @IBOutlet weak var ckbAirVent: UIButton!
+    @IBOutlet weak var ckbBlackB: UIButton!
+    @IBOutlet weak var ckbBrownC: UIButton!
+    @IBOutlet weak var ckbWhite: UIButton!
+    @IBOutlet weak var ckbCopper: UIButton!
+    @IBOutlet weak var ckbBlackC: UIButton!
+    @IBOutlet weak var ckbBrownD: UIButton!
+    @IBOutlet weak var ckbWhiteB: UIButton!
+    @IBOutlet weak var ckbGrey: UIButton!
+    @IBOutlet weak var ckbRemoveReplace: UIButton!
+    @IBOutlet weak var ckbDetachReset: UIButton!
+    @IBOutlet weak var ckbRemoveCoverHoles: UIButton!
+    @IBOutlet weak var ckbRemoveReplaceB: UIButton!
+    @IBOutlet weak var ckbDetachResetB: UIButton!
+    @IBOutlet weak var ckbSatelliteDish: UIButton!
+    @IBOutlet weak var ckbAntenna: UIButton!
+    @IBOutlet weak var ckbDetach: UIButton!
+    @IBOutlet weak var ckbDetachDispose: UIButton!
+    @IBOutlet weak var ckbPermit: UIButton!
+    @IBOutlet weak var ckbCutInstallRidgVent: UIButton!
     
     var wkWeb : WKWebView!
     var projectTitle = String()
@@ -367,7 +449,80 @@ class PlaceBidVC: BaseViewController {
         } else {
             mediaArrCount = self.arrOfFilesManually.count + self.arrOfFiles.count
         }
-        let placeBidModel  = PlaceBidModel(bidAmount: bidAmount, amountReceivable: amountReceivable, startDate: startDate, endDate: endDate, description: description, arrOfFilesCount:mediaArrCount)
+        let placeBidModel  = PlaceBidModel(homeOwnerFirst: txtHomeOwner.text ?? "",
+                                           homeOwnerSecond: txtHomeOwnerB.text ?? "",
+                                           streetAddress: txtStreetAddress.text ?? "",
+                                           mailingAddress: txtMailingAddress.text ?? "",
+                                           cellPhone: txtCellPhone.text ?? "",
+                                           email: txtEmail.text ?? "",
+                                           hoa: txtHOA.text ?? "",
+                                           permit: String(ckbPermit.isSelected),
+                                           insurance: txtInsurance.text ?? "",
+                                           claimNeumber: txtClaimNumber.text ?? "",
+                                           insFullyApproved: String(ckbInsFullyApproved.isSelected),
+                                           insPartialApproved: String(ckbInsPartialApproved.isSelected),
+                                           retail: String(ckbRetail.isSelected),
+                                           retailWDepreciation: String(ckbRetailDepreciation.isSelected),
+                                           mainDwellingRoof: txtMainDwellingRoof.text ?? "",
+                                           shedSQ: txtShed.text ?? "",
+                                           decking: txtDecking.text ?? "",
+                                           flatRoofSQ: txtFlatRoof.text ?? "",
+                                           total: txtTotal.text ?? "",
+                                           deducible: txtDeducible.text ?? "",
+                                           fe: txtFe.text  ?? "",
+                                           retailB: txtRetail.text ?? "",
+                                           be: txtBe.text  ?? "",
+                                           brand: txtBrand.text ?? "",
+                                           style: txtStyle.text ?? "",
+                                           color: txtColor.text ?? "",
+                                           white: String(ckbWhiteDripEdge.isSelected),
+                                           brown: String(ckbBrown.isSelected),
+                                           aegc: String(ckbAegc.isSelected),
+                                           iko: String(ckbIko.isSelected),
+                                           oc: String(ckbOc.isSelected),
+                                           ocB: String(ckbOCb.isSelected),
+                                           gaf: String(ckbGaf.isSelected),
+                                           airVent: String(ckbAirVent.isSelected),
+                                           cutInstallRidgeVent: String(ckbCutInstallRidgVent.isSelected),
+                                           black: String(ckbBlack.isSelected),
+                                           brownB: String(ckbBrownB.isSelected),
+                                           whiteB: String(ckbWhite.isSelected),
+                                           copper: String(ckbCopper.isSelected),
+                                           blackB: String(ckbBlackB.isSelected),
+                                           brownC: String(ckbBrownC.isSelected),
+                                           grey: String(ckbGrey.isSelected),
+                                           whiteC: String(ckbWhiteB.isSelected),
+                                           removeReplace: String(ckbRemoveReplace.isSelected),
+                                           deatchReset: String(ckbDetachReset.isSelected),
+                                           removeCoverHoles: String(ckbRemoveCoverHoles.isSelected),
+                                           permaBoot: txtPermaBoot.text ?? "",
+                                           permaBootB: txtPermaBootB.text ?? "",
+                                           pipeJack: txtPipeJack.text ?? "",
+                                           pipeJackB: txtPipeJackB.text ?? "",
+                                           removeReplaceB: String(ckbRemoveReplaceB.isSelected),
+                                           deatchResetB: String(ckbDetachResetB.isSelected),
+                                           colorB: txtColorB.text ?? "",
+                                           satelliteDish: String(ckbSatelliteDish.isSelected),
+                                           antenna: String(ckbAntenna.isSelected),
+                                           detachOnly: String(ckbDetach.isSelected),
+                                           detachDispose: String(ckbDetachDispose.isSelected),
+                                           materialLocation: txtMaterialLocation.text ?? "",
+                                           dumpsterLocation: txtDumpsterLocation.text ?? "",
+                                           specialInstructions: txtSpecialInstructions.text ?? "",
+                                           notes: txtNotes.text ?? "",
+                                           roofing: txtRoofing.text ?? "",
+                                           roofingPrice: txtRoofingPrice.text  ?? "",
+                                           debrisRemoval: txtDebrisRemoval.text ?? "",
+                                           overheadProfit: txtOverheadProfit.text ?? "",
+                                           codeUpgrades: txtCodeUpgrades.text ?? "",
+                                           paymentTermsDeductible: String(ckbPaymentTermsDeductible.isSelected),
+                                           paymantTermsFinance: String(ckbPaymentTermsFinance.isSelected),
+                                           homeOwner: txtHomeOwner.text ?? "",
+                                           homeOwnerDate: txtHomeOwnerBADate.text ?? "",
+                                           homeOwnerBA: txtHomeOwnerBB.text ?? "",
+                                           homeOwnerDateBA: txtHomeOwnerBBDate.text ?? "",
+                                           aegcRepresentative: txtAegcRepresentative.text ?? "",
+                                           aegcRepresentativeBA: txtAegcRepresentativeDate.text ?? "")
         placeBidViewModel.model = placeBidModel
         placeBidViewModel.validatePlaceBidnModel {[weak self] (success, error) in
             guard let strongSelf = self else { return }

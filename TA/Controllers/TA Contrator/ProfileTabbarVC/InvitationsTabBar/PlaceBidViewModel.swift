@@ -12,37 +12,37 @@ class PlaceBidViewModel: NSObject {
     
     func validatePlaceBidnModel(completion: (_ success:PlaceBidModel?, _ error: String?) -> Void) {
         error = nil
-        if model.bidAmount.isEmpty {
-            error = ValidationError.emptyBidAmount
-            completion(nil, error)
-            return
-        } else if model.amountReceivable.isEmpty {
-            error = ValidationError.emptyAmountReceivable
-            completion(nil, error)
-            return
-        } else if model.startDate.isEmpty {
-            error = ValidationError.emptyStartDate
-            completion(nil, error)
-            return
-        } else if model.endDate.isEmpty {
-            error = ValidationError.emptyEndDate
-            completion(nil, error)
-            return
-        } else if validEndDate(startDateString: model.startDate, endDateString: model.endDate) == false {
-            error = ValidationError.validEndDate
-            completion(nil, error)
-            return
-        } else if model.description.isEmpty {
-            error = ValidationError.emptyTermsDesc
-            completion(nil, error)
-            return
-        } else if model.arrOfFilesCount <= 0 {
-            error = ValidationError.emptyProjectFile
-            completion(nil, error)
-            return
-        } else {
+//        if model.bidAmount.isEmpty {
+//            error = ValidationError.emptyBidAmount
+//            completion(nil, error)
+//            return
+//        } else if model.amountReceivable.isEmpty {
+//            error = ValidationError.emptyAmountReceivable
+//            completion(nil, error)
+//            return
+//        } else if model.startDate.isEmpty {
+//            error = ValidationError.emptyStartDate
+//            completion(nil, error)
+//            return
+//        } else if model.endDate.isEmpty {
+//            error = ValidationError.emptyEndDate
+//            completion(nil, error)
+//            return
+//        } else if validEndDate(startDateString: model.startDate, endDateString: model.endDate) == false {
+//            error = ValidationError.validEndDate
+//            completion(nil, error)
+//            return
+//        } else if model.description.isEmpty {
+//            error = ValidationError.emptyTermsDesc
+//            completion(nil, error)
+//            return
+//        } else if model.arrOfFilesCount <= 0 {
+//            error = ValidationError.emptyProjectFile
+//            completion(nil, error)
+//            return
+//        } else {
             completion(model, nil)
-        }
+//        }
     }
     
     func validEndDate(startDateString:String, endDateString:String) -> Bool {
