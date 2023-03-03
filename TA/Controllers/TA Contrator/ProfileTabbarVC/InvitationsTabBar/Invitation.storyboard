@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -30,7 +30,7 @@
             <objects>
                 <viewController storyboardIdentifier="InvitationVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="InvitationVC" customModule="TA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invitations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f61-YG-qhD">
@@ -40,7 +40,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Wg-tf-qM7">
-                                <rect key="frame" x="360" y="53" width="30" height="30"/>
+                                <rect key="frame" x="376" y="53" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="UWf-em-1uP"/>
                                     <constraint firstAttribute="width" secondItem="7Wg-tf-qM7" secondAttribute="height" multiplier="1:1" id="eQG-Bm-Ld7"/>
@@ -53,13 +53,13 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="2Pr-My-lRy">
-                                <rect key="frame" x="0.0" y="102" width="414" height="30"/>
+                                <rect key="frame" x="0.0" y="102" width="430" height="30"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VfB-Z0-ufy">
-                                        <rect key="frame" x="0.0" y="0.0" width="207" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="215" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c63-XV-4c0">
-                                                <rect key="frame" x="0.0" y="-2.3333333333333286" width="207" height="35"/>
+                                                <rect key="frame" x="0.0" y="-2.3333333333333286" width="215" height="35"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
                                                 <color key="tintColor" red="0.30980392156862746" green="0.31764705882352939" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
@@ -75,7 +75,7 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wBE-XH-Ji6">
-                                                <rect key="frame" x="0.0" y="28" width="207" height="2"/>
+                                                <rect key="frame" x="0.0" y="28" width="215" height="2"/>
                                                 <color key="backgroundColor" red="0.30588235289999999" green="0.77999997139999999" blue="0.1650000066" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="2" id="ihI-No-To7"/>
@@ -93,10 +93,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vFV-TG-d07">
-                                        <rect key="frame" x="207" y="0.0" width="207" height="30"/>
+                                        <rect key="frame" x="215" y="0.0" width="215" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ljl-K0-WUx">
-                                                <rect key="frame" x="0.0" y="-2.3333333333333286" width="207" height="35"/>
+                                                <rect key="frame" x="0.0" y="-2.3333333333333286" width="215" height="35"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
                                                 <color key="tintColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
@@ -112,7 +112,7 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bcr-AE-Isv">
-                                                <rect key="frame" x="0.0" y="28" width="207" height="2"/>
+                                                <rect key="frame" x="0.0" y="28" width="215" height="2"/>
                                                 <color key="backgroundColor" red="0.30588235289999999" green="0.77999997139999999" blue="0.1650000066" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="2" id="vrM-Ji-DNU"/>
@@ -135,17 +135,17 @@
                                 </constraints>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="xis-Uh-VN8">
-                                <rect key="frame" x="0.0" y="211" width="414" height="525"/>
+                                <rect key="frame" x="0.0" y="211" width="430" height="687"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Record Found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSz-NR-yTr">
-                                <rect key="frame" x="120.66666666666669" y="354" width="173" height="28"/>
+                                <rect key="frame" x="128.66666666666666" y="464.66666666666669" width="172.99999999999997" height="28"/>
                                 <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="20"/>
                                 <color key="textColor" red="0.30980392159999998" green="0.31764705879999999" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vWr-3Q-sw7">
-                                <rect key="frame" x="353" y="160" width="45" height="46"/>
+                                <rect key="frame" x="369" y="160" width="45" height="46"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_filter" translatesAutoresizingMaskIntoConstraints="NO" id="uoE-on-KhO">
                                         <rect key="frame" x="4.6666666666666856" y="11" width="36" height="24"/>
@@ -174,7 +174,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dpa-vM-wEk">
-                                <rect key="frame" x="16" y="160" width="324" height="46"/>
+                                <rect key="frame" x="16" y="160" width="340" height="46"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_search" translatesAutoresizingMaskIntoConstraints="NO" id="TDw-yv-se5">
                                         <rect key="frame" x="5" y="8" width="30" height="30"/>
@@ -193,7 +193,7 @@
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UMm-9S-1y6">
-                                        <rect key="frame" x="40" y="6" width="254" height="34"/>
+                                        <rect key="frame" x="40" y="6" width="270" height="34"/>
                                         <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="FCs-oR-X3X"/>
@@ -202,7 +202,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r94-zn-zP6">
-                                        <rect key="frame" x="299" y="13" width="20" height="20"/>
+                                        <rect key="frame" x="315" y="13" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="r94-zn-zP6" secondAttribute="height" multiplier="1:1" id="7Oo-Nd-Kcr"/>
                                             <constraint firstAttribute="width" constant="20" id="RdK-Kp-89y"/>
@@ -284,14 +284,14 @@
             <objects>
                 <viewController storyboardIdentifier="InvitationFilterVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DW9-B1-cbZ" customClass="InvitationFilterVC" customModule="TA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="agd-id-gTq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ucy-GS-u2t">
-                                <rect key="frame" x="0.0" y="100" width="414" height="636"/>
+                                <rect key="frame" x="0.0" y="159" width="430" height="773"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WMJ-Sj-WKO">
-                                        <rect key="frame" x="24" y="548" width="366" height="56"/>
+                                        <rect key="frame" x="24" y="685" width="382" height="56"/>
                                         <color key="backgroundColor" red="0.30588235294117649" green="0.7803921568627451" blue="0.16470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="mgg-PX-XlW"/>
@@ -310,12 +310,12 @@
                                         </connections>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tsf-T7-Q47">
-                                        <rect key="frame" x="24" y="83" width="366" height="460"/>
+                                        <rect key="frame" x="24" y="83" width="382" height="597"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ja-tT-f6N">
-                                        <rect key="frame" x="146" y="40" width="122" height="23"/>
+                                        <rect key="frame" x="154" y="40" width="122" height="23"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="122" id="VAm-fD-839"/>
                                             <constraint firstAttribute="height" constant="23" id="tbf-Ti-uHb"/>
@@ -325,7 +325,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aOk-1W-SG4">
-                                        <rect key="frame" x="328" y="35" width="62" height="33"/>
+                                        <rect key="frame" x="344" y="35" width="62" height="33"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="15"/>
                                         <color key="tintColor" red="0.30980392159999998" green="0.31764705879999999" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -441,10 +441,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Lb-Xa-IWv">
-                                <rect key="frame" x="0.0" y="90" width="414" height="1110"/>
+                                <rect key="frame" x="0.0" y="90" width="414" height="1076"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKW-EC-DP2">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1009"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="975"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ROY-FU-iwH" userLabel="contentView">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="863.33333333333337"/>
@@ -833,7 +833,7 @@
                                         </constraints>
                                     </scrollView>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ehf-Yr-HJJ">
-                                        <rect key="frame" x="0.0" y="1014" width="414" height="96"/>
+                                        <rect key="frame" x="0.0" y="980" width="414" height="96"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Yn6-Xm-Vdh">
                                                 <rect key="frame" x="24" y="20" width="366" height="56"/>
@@ -953,7 +953,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="phG-6o-Pbz">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
+                                <rect key="frame" x="0.0" y="59" width="414" height="88"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDo-Zx-Nlv">
                                         <rect key="frame" x="10" y="54" width="24" height="24"/>
@@ -1000,7 +1000,7 @@
                                 </constraints>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Mo-YF-Z5Q">
-                                <rect key="frame" x="0.0" y="5712" width="414" height="96"/>
+                                <rect key="frame" x="0.0" y="5678" width="414" height="96"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ra3-A0-c1V">
                                         <rect key="frame" x="24" y="20" width="175" height="56"/>
@@ -1302,8 +1302,8 @@
                                     <constraint firstItem="1kp-QS-3pM" firstAttribute="top" secondItem="jis-ME-yxc" secondAttribute="bottom" constant="17" id="yJO-EH-8lW"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dol-HU-dTz">
-                                <rect key="frame" x="0.0" y="96" width="414" height="5608"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dol-HU-dTz">
+                                <rect key="frame" x="0.0" y="155" width="414" height="5515"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Fdc-XE-gb3">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="5243"/>
@@ -3971,7 +3971,7 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                     <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agreed Scope of work:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0N-0L-flc">
-                            <rect key="frame" x="18" y="12.999999999999998" width="372" height="20.333333333333329"/>
+                            <rect key="frame" x="18" y="13.000000000000002" width="372" height="20.666666666666671"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -4051,10 +4051,10 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sct-e3-5tt">
-                                <rect key="frame" x="0.0" y="90" width="414" height="1110"/>
+                                <rect key="frame" x="0.0" y="90" width="414" height="1076"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0SU-mi-DiS">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1009"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="975"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LmS-Ho-TYk" userLabel="contentView">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="766.33333333333337"/>
@@ -4495,7 +4495,7 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                                         </constraints>
                                     </scrollView>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XXD-v4-TJ0">
-                                        <rect key="frame" x="0.0" y="1014" width="414" height="96"/>
+                                        <rect key="frame" x="0.0" y="980" width="414" height="96"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="rRY-Ue-rXt">
                                                 <rect key="frame" x="24" y="20" width="366" height="56"/>
@@ -4645,11 +4645,11 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
             <objects>
                 <viewController storyboardIdentifier="TermAgreement" id="0yL-3U-6NO" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hqo-S1-ICc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="3657"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="3608"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REq-vn-HkO">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="3657"/>
+                                <rect key="frame" x="0.0" y="59" width="414" height="3549"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="k5A-N8-dbP">
                                         <rect key="frame" x="0.0" y="0.0" width="419" height="3278"/>
@@ -4754,24 +4754,24 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
             <objects>
                 <viewController storyboardIdentifier="RecallBidVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rgd-qI-z8I" customClass="RecallBidVC" customModule="TA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="DrG-qN-qBh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="grx-yF-TCg">
-                                <rect key="frame" x="0.0" y="539.66666666666663" width="414" height="196.33333333333337"/>
+                                <rect key="frame" x="0.0" y="701.66666666666663" width="430" height="196.33333333333337"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you sure you want to Recall Bid?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efX-HK-tLP">
-                                        <rect key="frame" x="35" y="55.000000000000007" width="344" height="25.333333333333336"/>
+                                        <rect key="frame" x="35" y="55.000000000000007" width="360" height="25.333333333333336"/>
                                         <color key="tintColor" name="#4F515D"/>
                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="VcT-id-9dt">
-                                        <rect key="frame" x="24" y="120.33333333333337" width="366" height="56"/>
+                                        <rect key="frame" x="24" y="120.33333333333337" width="382" height="56"/>
                                         <subviews>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WGd-kb-mDb">
-                                                <rect key="frame" x="0.0" y="0.0" width="175.66666666666666" height="56"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="183.66666666666666" height="56"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="PiU-pi-zap"/>
                                                 </constraints>
@@ -4795,7 +4795,7 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Tj-rm-vNc">
-                                                <rect key="frame" x="190.66666666666663" y="0.0" width="175.33333333333337" height="56"/>
+                                                <rect key="frame" x="198.66666666666663" y="0.0" width="183.33333333333337" height="56"/>
                                                 <color key="backgroundColor" name="#4EC72A"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="mCU-Ur-ufc"/>
@@ -4859,11 +4859,11 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
             <objects>
                 <viewController storyboardIdentifier="ViewBidLogVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KCF-wD-7g9" customClass="ViewBidLogVC" customModule="TA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="E3E-sH-6Sn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2IJ-Dh-D73">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
+                                <rect key="frame" x="0.0" y="0.0" width="430" height="88"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpj-Hc-BfE">
                                         <rect key="frame" x="10" y="54" width="24" height="24"/>
@@ -4878,13 +4878,13 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kitchen Renovation" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8oG-aS-3Te">
-                                        <rect key="frame" x="31" y="54.666666666666664" width="352" height="22.666666666666664"/>
+                                        <rect key="frame" x="31" y="54.666666666666657" width="368" height="23"/>
                                         <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="16"/>
                                         <color key="textColor" name="#484848"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ApI-56-vew">
-                                        <rect key="frame" x="0.0" y="87" width="414" height="1"/>
+                                        <rect key="frame" x="0.0" y="87" width="430" height="1"/>
                                         <color key="backgroundColor" name="#ECECEC"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="y3y-cD-6pn"/>
@@ -4906,7 +4906,7 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5Ex-1r-Q0h">
-                                <rect key="frame" x="5" y="89" width="404" height="647"/>
+                                <rect key="frame" x="5" y="89" width="420" height="809"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
@@ -4937,11 +4937,11 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
             <objects>
                 <viewController storyboardIdentifier="EVerificationVC" id="MEd-mB-sUB" customClass="EVerificationVC" customModule="TA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="czR-0f-Cw4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aHx-Lg-UJo">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
+                                <rect key="frame" x="0.0" y="59" width="430" height="88"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZqK-5s-k8N">
                                         <rect key="frame" x="10" y="54" width="24" height="24"/>
@@ -4956,13 +4956,13 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-Verification" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRK-Os-2DL">
-                                        <rect key="frame" x="150" y="54.666666666666664" width="114.33333333333331" height="22.666666666666664"/>
+                                        <rect key="frame" x="158" y="54.666666666666664" width="114.33333333333331" height="22.666666666666664"/>
                                         <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="16"/>
                                         <color key="textColor" name="#484848"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b4A-Gb-19B">
-                                        <rect key="frame" x="0.0" y="87" width="414" height="1"/>
+                                        <rect key="frame" x="0.0" y="87" width="430" height="1"/>
                                         <color key="backgroundColor" name="#ECECEC"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="kLB-m6-ews"/>
@@ -4982,38 +4982,38 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-Verification" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ci-dO-hic">
-                                <rect key="frame" x="24" y="127.00000000000001" width="171.66666666666666" height="33.666666666666671"/>
+                                <rect key="frame" x="24" y="186" width="171.66666666666666" height="33.666666666666657"/>
                                 <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="24"/>
                                 <color key="textColor" red="0.31174111370000002" green="0.31747674939999998" blue="0.36456388239999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To accept the bid you have to upload signed contract OR go through eSign process." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgF-Rt-fck">
-                                <rect key="frame" x="24" y="168.66666666666666" width="366" height="45"/>
+                                <rect key="frame" x="24" y="227.66666666666666" width="382" height="44.999999999999972"/>
                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                 <color key="textColor" name="labelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wju-cZ-E3g" customClass="CustomeDasboardView" customModule="TA" customModuleProvider="target">
-                                <rect key="frame" x="24" y="257.66666666666669" width="366" height="140"/>
+                                <rect key="frame" x="24" y="316.66666666666669" width="382" height="140"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_upload_image-1" translatesAutoresizingMaskIntoConstraints="NO" id="jPQ-bb-cDd">
-                                        <rect key="frame" x="161" y="24" width="44" height="44"/>
+                                        <rect key="frame" x="169" y="24" width="44" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="eNs-77-my3"/>
                                             <constraint firstAttribute="width" constant="44" id="wbe-aP-uYk"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload Signed Contract" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ljG-86-5U6">
-                                        <rect key="frame" x="86.333333333333329" y="79" width="193.66666666666669" height="22.666666666666671"/>
+                                        <rect key="frame" x="94.333333333333329" y="79" width="193.66666666666669" height="22.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
                                         <color key="textColor" red="0.98061341049999995" green="0.5763967633" blue="0.39566504959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5wz-G8-dGI">
-                                        <rect key="frame" x="0.0" y="0.0" width="366" height="140"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="140"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cSh-Ha-2A2">
-                                        <rect key="frame" x="0.0" y="0.0" width="366" height="140"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="140"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title=" "/>
                                         <connections>
@@ -5059,7 +5059,7 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HWk-vW-UeO">
-                                <rect key="frame" x="24" y="257.66666666666669" width="366" height="60"/>
+                                <rect key="frame" x="24" y="316.66666666666669" width="382" height="60"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zqc-79-jXE">
                                         <rect key="frame" x="5" y="5" width="50" height="50"/>
@@ -5069,13 +5069,13 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload Licence" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W9L-gd-Wf4">
-                                        <rect key="frame" x="65" y="20.333333333333314" width="236" height="19.666666666666671"/>
+                                        <rect key="frame" x="65" y="20.333333333333314" width="252" height="19.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
                                         <color key="textColor" red="0.31174111370000002" green="0.31747674939999998" blue="0.36456388239999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Igq-E9-UHb">
-                                        <rect key="frame" x="306" y="0.0" width="60" height="60"/>
+                                        <rect key="frame" x="322" y="0.0" width="60" height="60"/>
                                         <color key="tintColor" red="0.98039215690000003" green="0.57647058819999997" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title=" " image="ic_delete"/>
@@ -5099,10 +5099,10 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="BeD-8i-dhV">
-                                <rect key="frame" x="24" y="662" width="366" height="56"/>
+                                <rect key="frame" x="24" y="824" width="382" height="56"/>
                                 <subviews>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z1D-SC-YRp">
-                                        <rect key="frame" x="0.0" y="0.0" width="366" height="56"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="56"/>
                                         <color key="backgroundColor" red="0.30729794500000002" green="0.77796691659999995" blue="0.1622525454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="AcD-AE-ieo"/>
@@ -5162,14 +5162,14 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
             <objects>
                 <viewController storyboardIdentifier="ShowImageVC" id="FSZ-jO-bwv" customClass="ShowImageVC" customModule="TA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rs8-fW-eZl">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W1L-Lv-YcM">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="12.666666666666686" width="430" height="932"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4aE-W3-SbP">
-                                <rect key="frame" x="359" y="34" width="35" height="35"/>
+                                <rect key="frame" x="375" y="93" width="35" height="35"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Qgx-02-Evb"/>
