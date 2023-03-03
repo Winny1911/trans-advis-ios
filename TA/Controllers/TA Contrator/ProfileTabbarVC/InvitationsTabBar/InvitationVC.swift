@@ -23,6 +23,7 @@ class InvitationVC: BaseViewController {
     @IBOutlet weak var bottomVwInvitation: UIView!
     @IBOutlet weak var btnInvitation: UIButton!
     
+    
     var arrInvitation = [InvitationsDetails]()
     var arrManageBids = [ManageBidsResponseDetails]()
     

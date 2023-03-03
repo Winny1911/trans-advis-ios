@@ -15,15 +15,15 @@ import WebKit
 import PDFKit
 
 class PlaceBidVC: BaseViewController {
-
+    
     @IBOutlet weak var lblTopTitle: UILabel!
     @IBOutlet weak var lblSuccess: UILabel!
     @IBOutlet weak var lblInfo: UILabel!
     @IBOutlet weak var viewInfo: UIView!
-//    @IBOutlet weak var projectImageWidth: NSLayoutConstraint!
-//    @IBOutlet weak var lblDesc: UILabel!
+    //    @IBOutlet weak var projectImageWidth: NSLayoutConstraint!
+    //    @IBOutlet weak var lblDesc: UILabel!
     @IBOutlet weak var lblTitle: UILabel!
-//    @IBOutlet weak var imgInvitation: UIImageView!
+    //    @IBOutlet weak var imgInvitation: UIImageView!
     @IBOutlet weak var btnSubmit: UIButton!
     @IBOutlet weak var bottomVw: UIView!
     @IBOutlet weak var collVwFiles: UICollectionView!
@@ -42,7 +42,92 @@ class PlaceBidVC: BaseViewController {
     @IBOutlet weak var viewPDF: UIView!
     @IBOutlet weak var webviewForm: WKWebView!
     
+    
+    //MARK : New fields form
     @IBOutlet weak var datePickerView: UIDatePicker!
+    @IBOutlet weak var txtHomeOwner: FloatingLabelInput!
+    @IBOutlet weak var txtHomeOwnerB: FloatingLabelInput!
+    @IBOutlet weak var txtStreetAddress: FloatingLabelInput!
+    @IBOutlet weak var txtMailingAddress: FloatingLabelInput!
+    @IBOutlet weak var txtCellPhone: FloatingLabelInput!
+    @IBOutlet weak var txtEmail: FloatingLabelInput!
+    @IBOutlet weak var txtHOA: FloatingLabelInput!
+    @IBOutlet weak var txtInsurance: FloatingLabelInput!
+    @IBOutlet weak var txtClaimNumber: FloatingLabelInput!
+    @IBOutlet weak var txtMainDwellingRoof: FloatingLabelInput!
+    @IBOutlet weak var txtDetachedGarage: FloatingLabelInput!
+    @IBOutlet weak var txtShed: FloatingLabelInput!
+    @IBOutlet weak var txtDecking: FloatingLabelInput!
+    @IBOutlet weak var txtFlatRoof: FloatingLabelInput!
+    @IBOutlet weak var txtTotal: FloatingLabelInput!
+    @IBOutlet weak var txtDeducible: FloatingLabelInput!
+    @IBOutlet weak var txtFe: FloatingLabelInput!
+    @IBOutlet weak var txtRetail: FloatingLabelInput!
+    @IBOutlet weak var txtBe: FloatingLabelInput!
+    @IBOutlet weak var txtBrand: FloatingLabelInput!
+    @IBOutlet weak var txtStyle: FloatingLabelInput!
+    @IBOutlet weak var txtColor: FloatingLabelInput!
+    @IBOutlet weak var txtPermaBoot: FloatingLabelInput!
+    @IBOutlet weak var txtPermaBootB: FloatingLabelInput!
+    @IBOutlet weak var txtPipeJack: FloatingLabelInput!
+    @IBOutlet weak var txtPipeJackB: FloatingLabelInput!
+    @IBOutlet weak var txtColorB: FloatingLabelInput!
+    @IBOutlet weak var txtMaterialLocation: FloatingLabelInput!
+    @IBOutlet weak var txtDumpsterLocation: FloatingLabelInput!
+    @IBOutlet weak var txtSpecialInstructions: FloatingLabelInput!
+    @IBOutlet weak var txtNotes: FloatingLabelInput!
+    @IBOutlet weak var txtRoofing: FloatingLabelInput!
+    @IBOutlet weak var txtRoofingPrice: FloatingLabelInput!
+    @IBOutlet weak var txtDebrisRemoval: FloatingLabelInput!
+    @IBOutlet weak var txtDebrisRemovalPrice: FloatingLabelInput!
+    @IBOutlet weak var txtOverheadProfit: FloatingLabelInput!
+    @IBOutlet weak var txtOverheadProfitPrice: FloatingLabelInput!
+    @IBOutlet weak var txtCodeUpgrades: FloatingLabelInput!
+    @IBOutlet weak var txtCodeUpgradesPrice: FloatingLabelInput!
+    @IBOutlet weak var txtHomeOwnerBA: FloatingLabelInput!
+    @IBOutlet weak var txtHomeOwnerBB: FloatingLabelInput!
+    @IBOutlet weak var txtHomeOwnerBADate: FloatingLabelInput!
+    @IBOutlet weak var txtHomeOwnerBBDate: FloatingLabelInput!
+    @IBOutlet weak var txtAegcRepresentative: FloatingLabelInput!
+    @IBOutlet weak var txtAegcRepresentativeDate: FloatingLabelInput!
+    
+    //MARK : Checkbox
+    @IBOutlet weak var ckbPaymentTermsFinance: UIButton!
+    @IBOutlet weak var ckbPaymentTermsDeductible: UIButton!
+    @IBOutlet weak var ckbInsFullyApproved: UIButton!
+    @IBOutlet weak var ckbInsPartialApproved: UIButton!
+    @IBOutlet weak var ckbRetail: UIButton!
+    @IBOutlet weak var ckbRetailDepreciation: UIButton!
+    @IBOutlet weak var ckbWhiteDripEdge: UIButton!
+    @IBOutlet weak var ckbBrown: UIButton!
+    @IBOutlet weak var ckbAlmond: UIButton!
+    @IBOutlet weak var ckbBlack: UIButton!
+    @IBOutlet weak var ckbBrownB: UIButton!
+    @IBOutlet weak var ckbAegc: UIButton!
+    @IBOutlet weak var ckbIko: UIButton!
+    @IBOutlet weak var ckbOc: UIButton!
+    @IBOutlet weak var ckbOCb: UIButton!
+    @IBOutlet weak var ckbGaf: UIButton!
+    @IBOutlet weak var ckbAirVent: UIButton!
+    @IBOutlet weak var ckbBlackB: UIButton!
+    @IBOutlet weak var ckbBrownC: UIButton!
+    @IBOutlet weak var ckbWhite: UIButton!
+    @IBOutlet weak var ckbCopper: UIButton!
+    @IBOutlet weak var ckbBlackC: UIButton!
+    @IBOutlet weak var ckbBrownD: UIButton!
+    @IBOutlet weak var ckbWhiteB: UIButton!
+    @IBOutlet weak var ckbGrey: UIButton!
+    @IBOutlet weak var ckbRemoveReplace: UIButton!
+    @IBOutlet weak var ckbDetachReset: UIButton!
+    @IBOutlet weak var ckbRemoveCoverHoles: UIButton!
+    @IBOutlet weak var ckbRemoveReplaceB: UIButton!
+    @IBOutlet weak var ckbDetachResetB: UIButton!
+    @IBOutlet weak var ckbSatelliteDish: UIButton!
+    @IBOutlet weak var ckbAntenna: UIButton!
+    @IBOutlet weak var ckbDetach: UIButton!
+    @IBOutlet weak var ckbDetachDispose: UIButton!
+    @IBOutlet weak var ckbPermit: UIButton!
+    @IBOutlet weak var ckbCutInstallRidgVent: UIButton!
     
     var wkWeb : WKWebView!
     var projectTitle = String()
@@ -74,7 +159,7 @@ class PlaceBidVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        txtFldBidAmount.backgroundColor = .red
         
         //self.arrOfFilesFetchedFromServer.removeAll()
         //self.arrOfFilesManually.removeAll()
@@ -124,8 +209,8 @@ class PlaceBidVC: BaseViewController {
         //            self.lblTopTitle.text = "Edit Bid"
         //            self.fetchBidDetails()
         //        }
-    
-//        self.openUrlWebview(url: "http://ta123-webapp.s3-website-us-east-1.amazonaws.com/contractors/invitations")
+        
+        //        self.openUrlWebview(url: "http://ta123-webapp.s3-website-us-east-1.amazonaws.com/contractors/invitations")
         //self.displayPdf()
         buildFieldsForm()
     }
@@ -134,12 +219,12 @@ class PlaceBidVC: BaseViewController {
         datePickerView.datePickerMode = .date
     }
     
-//    func handelDatePicker()
-//    {
-//        let dateFormatter = DateFormatter()
-//        dateTextView.text = dateFormatter.string(from: datePickerView.date)
-//    }
-//    
+    //    func handelDatePicker()
+    //    {
+    //        let dateFormatter = DateFormatter()
+    //        dateTextView.text = dateFormatter.string(from: datePickerView.date)
+    //    }
+    //
     private func createPdfDocument(forFileName fileName: String) -> PDFDocument? {
         if let resourceUrl = URL(string: "https://c8szizga07.execute-api.us-east-1.amazonaws.com/default/delta") {
             return PDFDocument(url: resourceUrl)
@@ -166,34 +251,34 @@ class PlaceBidVC: BaseViewController {
     }
     
     var arrOfImgStrings = [String]()
-
+    
     func fetchBidDetails() {
         self.arrOfFilesFetchedFromServer.removeAll()
         self.arrOfFilesManually.removeAll()
         let params = ["id": self.bidId]
         manageBidDetailViewModel.getManageBidsDetailApi(params) { model in
-//            self.projectImageWidth.constant = 0.0
-//            if model?.data?.project_details?.project_files?.count ?? 0 > 0 {
-//                self.projectImageWidth.constant = 65.0
-//                self.imgInvitation.sd_setImage(with: URL(string: model?.data?.project_details?.project_files?[0].file ?? ""), placeholderImage: UIImage(named: "doc"), completed:nil)
-//            } else {
-//                self.projectImageWidth.constant = 0.0
-//            }
+            //            self.projectImageWidth.constant = 0.0
+            //            if model?.data?.project_details?.project_files?.count ?? 0 > 0 {
+            //                self.projectImageWidth.constant = 65.0
+            //                self.imgInvitation.sd_setImage(with: URL(string: model?.data?.project_details?.project_files?[0].file ?? ""), placeholderImage: UIImage(named: "doc"), completed:nil)
+            //            } else {
+            //                self.projectImageWidth.constant = 0.0
+            //            }
             self.lblTitle.text = model?.data?.project_details?.title ?? ""
-//            self.lblDesc.text = model?.data?.project_details?.description ?? ""
+            //            self.lblDesc.text = model?.data?.project_details?.description ?? ""
             self.arrOfImgStrings.removeAll()
             self.txtFldBidAmount.text = "$ \(model?.data?.bidAmount ?? "0.0")"
             self.txtFldamountReceivable.text = "$ \(model?.data?.amountRecievable ?? "0.0")"
             self.txtStartDate.text = DateHelper.convertDateString(dateString: model?.data?.proposedStartDate ?? "", fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: "dd MMM yyyy")
             self.txtEndDate.text = DateHelper.convertDateString(dateString: model?.data?.proposedEndDate ?? "", fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: "dd MMM yyyy")
             self.txtVwDetail.text = model?.data?.description ?? ""
-
+            
             self.txtFldBidAmount.resetFloatingLable()
             self.txtFldamountReceivable.resetFloatingLable()
             self.txtStartDate.resetFloatingLable()
             self.txtEndDate.resetFloatingLable()
             self.setFloatingTextVw()
-
+            
             let userImgVw = UIImageView()
             if model?.data?.bids_documents?.count ?? 0 > 0 {
                 self.fullViewImge.removeAll()
@@ -236,7 +321,7 @@ class PlaceBidVC: BaseViewController {
             }
         }
     }
-
+    
     func addCustomButtonOnTextField() {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "ic_tootltip_hover"), for: .normal)
@@ -246,7 +331,7 @@ class PlaceBidVC: BaseViewController {
         txtFldamountReceivable.rightView = button
         txtFldamountReceivable.rightViewMode = .always
     }
-
+    
     @objc func infoBtnTapped() {
         if self.viewInfo.isHidden {
             viewInfo.isHidden = false
@@ -260,7 +345,7 @@ class PlaceBidVC: BaseViewController {
             lblInfo.isHidden = true
         }
     }
-
+    
     func setFloatingTextVw() {
         self.txtVwDetail.isFloatingLabel = true
         self.txtVwDetail.placeholder = " Terms / Description"
@@ -269,7 +354,7 @@ class PlaceBidVC: BaseViewController {
         self.txtVwDetail.selectedColor = UIColor.appFloatText
         self.txtVwDetail.setLeftPadding(14.0)
     }
-
+    
     func imageSendAPI(imageData: Data, fileName:String) {
         placeBidViewModel.addInvitationImageApi(keyToUploadData: "file", fileNames: "\(fileName)", dataToUpload: imageData, param: [:]) { response in
             print(response!)
@@ -281,7 +366,7 @@ class PlaceBidVC: BaseViewController {
             self.setModelData(response: response!)
         }
     }
-
+    
     func docSendAPI(docLocalUrl:URL, fileName:String) {
         if self.docURL != nil {
             placeBidViewModel.addInvitationDocApi(localFileUrl: docLocalUrl, keyToUploadData: "file", fileNames: "\(fileName)") { response in
@@ -295,7 +380,7 @@ class PlaceBidVC: BaseViewController {
             }
         }
     }
-
+    
     func setModelData(response: [String:Any]) {
         let dataDict = response["data"] as! NSDictionary
         let randomName = "\(randomString())"
@@ -304,7 +389,7 @@ class PlaceBidVC: BaseViewController {
         self.arrOfFilesManually.append(dict)
         self.collVwFiles.reloadData()
     }
-
+    
     @IBAction func actionHideSuccessfulView(_ sender: Any) {
         self.btnSucces.isHidden = true
         self.successFulView.isHidden = true
@@ -312,12 +397,19 @@ class PlaceBidVC: BaseViewController {
         self.navigationController?.popViewController(animated: true)
         self.completionHandlerGoToInvitationDetailScreenFromPlaceBid?()
     }
-
+    
+    //MARK: checkbox action
+    @IBAction func checkMarkTapped(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        sender.transform = .identity
+        sender.titleLabel?.text = " ⃞"
+    }
+    
     //MARK: ACTION BACK
     @IBAction func actionBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-
+    
     //MARK: ACTION ADD FILES
     @IBAction func actionAddFiles(_ sender: Any) {
         var count = arrOfImages.count
@@ -327,61 +419,261 @@ class PlaceBidVC: BaseViewController {
         }else{
             print("limit is 150")
         }
-       // handleCameraOptions()
+        // handleCameraOptions()
     }
-
+    
+    func buildParams(date: String) -> [String : Any]{
+        let model = placeBidViewModel.model
+        return ["projectId": "\(self.projectId ?? 0)", "date": date, "startDate": date, "endDate": date, "amount": 900,
+                "homeOwner1":  model.homeOwnerFirst,
+                "homeOwner2": model.homeOwnerSecond,
+                "streetAddress": model.streetAddress,
+                "mailingAddress": model.mailingAddress,
+                "cellPhone": model.cellPhone,
+                "email": model.email,
+                "hoa": model.hoa,
+                "permit": model.permit,
+                "insurance": model.insurance,
+                "claimNumber": model.claimNeumber,
+                "insFullyApproved": model.insFullyApproved,
+                "insPartialApproved": model.insPartialApproved,
+                "retail1": model.retail,
+                "retailDepreciation": model.retailWDepreciation,
+                "mainDwellingRoofSQ": model.mainDwellingRoof,
+                "detachedGarageSQ": "",
+                "shedSQ": model.shedSQ,
+                "decking": model.decking,
+                "flatRoofSQ": model.flatRoofSQ,
+                "totalSQ": model.total,
+                "deducible": model.deducible,
+                "fe": model.fe,
+                "retail2": model.retailB,
+                "be": model.be,
+                "brand": model.brand,
+                "style": model.style,
+                "color1": model.color,
+                "dripEdgeF55": "",
+                "counterFlashing": "",
+                "syntheticUnderlayment": "",
+                "ridgeVent": model.airVent,
+                "cutInstallRidgeVent": model.cutInstallRidgeVent,
+                "chimneyFlashing": "",
+                "sprayPaint": "",
+                "turtleVents": "",
+                "permaBoot123": model.permaBoot,
+                "permaBoot34": model.permaBootB,
+                "pipeJack123": model.pipeJack,
+                "pipeJack34": model.pipeJackB,
+                "atticFan": "",
+                "color2": model.colorB,
+                "satelliteDish": model.satelliteDish,
+                "antenna": model.antenna,
+                "lightningRod": "",
+                "materialLocation": model.materialLocation,
+                "dumpsterLocation": model.dumpsterLocation,
+                "specialInstructions": model.specialInstructions,
+                "notes": model.notes,
+                "roofing1": model.roofing,
+                "roofing2": model.roofingPrice,
+                "debrisRemoval1": model.debrisRemoval,
+                "debrisRemoval2": model.debrisRemoval,
+                "overheadProfit1": model.overheadProfit,
+                "overheadProfit2": "",
+                "codeUpgrades": model.codeUpgrades,
+                "total": model.total,
+                "paymentTerms1": model.paymentTermsFinance,
+                "paymentTerms2": model.paymentTermsDeductible,
+                "homeOwnerSign1": model.homeOwner,
+                "homeOwnerSignDate1": model.homeOwnerDate,
+                "homeOwnerSign2": model.homeOwnerBA,
+                "homeOwnerSignDate2": model.homeOwnerDateBA,
+                "aegcRepresentativeSign": model.aegcRepresentative,
+                "aegcRepresentativeDate": model.aegcRepresentativeBA,
+                "homeOwnerInitial1": model.homeOwnerFirst,
+                "homeOwnerInitial2": model.homeOwnerSecond] as [String : Any]
+    }
+    
     //MARK: ACTION SUBMIT
     @IBAction func actionSubmit(_ sender: Any) {
-        let bidAmount2 = self.txtFldBidAmount.text?.trimmed ?? ""
+        let bidAmount2 = "$50,00"//self.txtFldBidAmount.text?.trimmed ?? ""
         let bidAmount3 = bidAmount2.replacingOccurrences(of: "$ ", with: "")
         let bidAmount = bidAmount3.replacingOccurrences(of: ",", with: "")
-        let amountReceivable = self.txtFldamountReceivable.text?.trimmed ?? ""
-        let startDate = self.txtStartDate.text?.trimmed ?? ""
-        let endDate = self.txtEndDate.text?.trimmed ?? ""
-        let description = self.txtVwDetail.text ?? ""
-
+        let formDate = datePickerView.date.stringValue
         let dateFormatter = DateFormatter()
         let requiredDateFormatter = DateFormatter()
-
         dateFormatter.dateFormat = "dd MMMM yyyy"
+        let formDateTime = dateFormatter.date(from: formDate)
         requiredDateFormatter.dateFormat = "yyyy-MM-dd"
-
-        let dateStart = dateFormatter.date(from: startDate)
-        let dateEnd = dateFormatter.date(from: endDate)
-
-        let stringStartDate = requiredDateFormatter.string(from: dateStart ?? Date())
-        let stringEndDate = requiredDateFormatter.string(from: dateEnd ?? Date())
+        let stringDate = requiredDateFormatter.string(from: formDateTime ?? Date())
         var mediaArrCount = 0
         if self.bidId == 0 {
             mediaArrCount = self.arrOfFiles.count
         } else {
             mediaArrCount = self.arrOfFilesManually.count + self.arrOfFiles.count
         }
-        let placeBidModel  = PlaceBidModel(bidAmount: bidAmount, amountReceivable: amountReceivable, startDate: startDate, endDate: endDate, description: description, arrOfFilesCount:mediaArrCount)
+        let placeBidModel  = PlaceBidModel(homeOwnerFirst: txtHomeOwner.text ?? "",
+                                           homeOwnerSecond: txtHomeOwnerB.text ?? "",
+                                           streetAddress: txtStreetAddress.text ?? "",
+                                           mailingAddress: txtMailingAddress.text ?? "",
+                                           cellPhone: txtCellPhone.text ?? "",
+                                           email: txtEmail.text ?? "",
+                                           hoa: txtHOA.text ?? "",
+                                           permit: String(ckbPermit.isSelected),
+                                           insurance: txtInsurance.text ?? "",
+                                           claimNeumber: txtClaimNumber.text ?? "",
+                                           insFullyApproved: String(ckbInsFullyApproved.isSelected),
+                                           insPartialApproved: String(ckbInsPartialApproved.isSelected),
+                                           retail: String(ckbRetail.isSelected),
+                                           retailWDepreciation: String(ckbRetailDepreciation.isSelected),
+                                           mainDwellingRoof: txtMainDwellingRoof.text ?? "",
+                                           shedSQ: txtShed.text ?? "",
+                                           decking: txtDecking.text ?? "",
+                                           flatRoofSQ: txtFlatRoof.text ?? "",
+                                           total: txtTotal.text ?? "",
+                                           deducible: txtDeducible.text ?? "",
+                                           fe: txtFe.text  ?? "",
+                                           retailB: txtRetail.text ?? "",
+                                           be: txtBe.text  ?? "",
+                                           brand: txtBrand.text ?? "",
+                                           style: txtStyle.text ?? "",
+                                           color: txtColor.text ?? "",
+                                           white: String(ckbWhiteDripEdge.isSelected),
+                                           brown: String(ckbBrown.isSelected),
+                                           aegc: String(ckbAegc.isSelected),
+                                           iko: String(ckbIko.isSelected),
+                                           oc: String(ckbOc.isSelected),
+                                           ocB: String(ckbOCb.isSelected),
+                                           gaf: String(ckbGaf.isSelected),
+                                           airVent: String(ckbAirVent.isSelected),
+                                           cutInstallRidgeVent: String(ckbCutInstallRidgVent.isSelected),
+                                           black: String(ckbBlack.isSelected),
+                                           brownB: String(ckbBrownB.isSelected),
+                                           whiteB: String(ckbWhite.isSelected),
+                                           copper: String(ckbCopper.isSelected),
+                                           blackB: String(ckbBlackB.isSelected),
+                                           brownC: String(ckbBrownC.isSelected),
+                                           grey: String(ckbGrey.isSelected),
+                                           whiteC: String(ckbWhiteB.isSelected),
+                                           removeReplace: String(ckbRemoveReplace.isSelected),
+                                           deatchReset: String(ckbDetachReset.isSelected),
+                                           removeCoverHoles: String(ckbRemoveCoverHoles.isSelected),
+                                           permaBoot: txtPermaBoot.text ?? "",
+                                           permaBootB: txtPermaBootB.text ?? "",
+                                           pipeJack: txtPipeJack.text ?? "",
+                                           pipeJackB: txtPipeJackB.text ?? "",
+                                           removeReplaceB: String(ckbRemoveReplaceB.isSelected),
+                                           deatchResetB: String(ckbDetachResetB.isSelected),
+                                           colorB: txtColorB.text ?? "",
+                                           satelliteDish: String(ckbSatelliteDish.isSelected),
+                                           antenna: String(ckbAntenna.isSelected),
+                                           detachOnly: String(ckbDetach.isSelected),
+                                           detachDispose: String(ckbDetachDispose.isSelected),
+                                           materialLocation: txtMaterialLocation.text ?? "",
+                                           dumpsterLocation: txtDumpsterLocation.text ?? "",
+                                           specialInstructions: txtSpecialInstructions.text ?? "",
+                                           notes: txtNotes.text ?? "",
+                                           roofing: txtRoofing.text ?? "",
+                                           roofingPrice: txtRoofingPrice.text  ?? "",
+                                           debrisRemoval: txtDebrisRemoval.text ?? "",
+                                           overheadProfit: txtOverheadProfit.text ?? "",
+                                           codeUpgrades: txtCodeUpgrades.text ?? "",
+                                           paymentTermsDeductible: String(ckbPaymentTermsDeductible.isSelected),
+                                           paymantTermsFinance: String(ckbPaymentTermsFinance.isSelected),
+                                           homeOwner: txtHomeOwner.text ?? "",
+                                           homeOwnerDate: txtHomeOwnerBADate.text ?? "",
+                                           homeOwnerBA: txtHomeOwnerBB.text ?? "",
+                                           homeOwnerDateBA: txtHomeOwnerBBDate.text ?? "",
+                                           aegcRepresentative: txtAegcRepresentative.text ?? "",
+                                           aegcRepresentativeBA: txtAegcRepresentativeDate.text ?? "")
         placeBidViewModel.model = placeBidModel
-        placeBidViewModel.validatePlaceBidnModel {[weak self] (success, error) in
-            guard let strongSelf = self else { return }
-            if error == nil {
-                if self?.bidId == 0 {
-                    let params = ["projectId": "\(self?.projectId ?? 0)", "amount": bidAmount, "startDate": stringStartDate, "endDate": stringEndDate, "description": description, "ProjectFiles": self?.arrOfFiles.toJSONString() ?? [].toJSONString()] as [String : Any]
-                    placeBidViewModel.submitBidApi(params) { response in
-                        self?.handleSuccessApi()
-                    }
-                } else {
-                    let params = ["id": "\(self?.bidId ?? 0)", "amount": bidAmount, "startDate": stringStartDate, "endDate": stringEndDate, "description": description, "ProjectFiles": self?.arrOfFilesManually.toJSONString() ?? [].toJSONString()] as [String : Any]
-                    placeBidViewModel.updateBidApi(params) { response in
-                        self?.handleSuccessApi()
-                    }
-                }
-            }
-            else {
-                if let errorMsg = strongSelf.placeBidViewModel.error {
-                    showMessage(with: errorMsg)
-                }
-            }
+        //placeBidViewModel.validatePlaceBidnModel {[weak self] (success, error) in
+        //    guard let strongSelf = self else { return }
+        //    if error == nil {
+        //                if self?.bidId == 0 {
+        
+        placeBidViewModel.submitBidApi(self.buildParams(date: stringDate)) { response in
+            self.handleSuccessApi()
         }
+        //                        } else {
+        //                            let params = ["projectId": "\(self?.projectId ?? 0)",
+        //                                          "date": stringDate,
+        //                                          "homeOwner1": txtHomeOwner.text ?? "",
+        //                                          "homeOwner2": txtHomeOwnerB.text ?? "",
+        //                                          "streetAddress": txtStreetAddress.text ?? "",
+        //                                          "mailingAddress": txtMailingAddress.text ?? "",
+        //                                          "cellPhone": txtCellPhone.text ?? "",
+        //                                          "email": txtEmail.text ?? "",
+        //                                          "hoa": txtHOA.text ?? "",
+        //                                          "permit": String(ckbPermit.isSelected),
+        //                                          "insurance": txtInsurance.text ?? "",
+        //                                          "claimNumber": txtClaimNumber.text ?? "",
+        //                                          "insFullyApproved": String(ckbInsFullyApproved.isSelected),
+        //                                          "insPartialApproved": String(ckbInsPartialApproved.isSelected),
+        //                                          "retail1": String(ckbRetail.isSelected),
+        //                                          "retailDepreciation": String(ckbRetailDepreciation.isSelected),
+        //                                          "mainDwellingRoofSQ": txtMainDwellingRoof.text ?? "",
+        //                                          "detachedGarageSQ": txtDetachedGarage.text ?? "",
+        //                                          "shedSQ": txtShed.text ?? "",
+        //                                          "decking": txtDecking.text ?? "",
+        //                                          "flatRoofSQ": txtFlatRoof.text ?? "",
+        //                                          "totalSQ": txtTotal.text ?? "",
+        //                                          "deducible": txtDeducible.text ?? "",
+        //                                          "fe": txtFe.text ?? "",
+        //                                          "retail2": txtRetail.text ?? "",
+        //                                          "be": txtBe.text ?? "",
+        //                                          "brand": txtBrand.text ?? "",
+        //                                          "style": txtStyle.text ?? "",
+        //                                          "color1": txtColorB.text ?? "",
+        //                                          "dripEdgeF55": String(ckbWhiteDripEdge.isSelected),
+        //                                          "counterFlashing": "",
+        //                                          "syntheticUnderlayment": "",
+        //                                          "ridgeVent": "\(ckbAirVent.isSelected)",
+        //                                          "cutInstallRidgeVent": "\(ckbCutInstallRidgVent.isSelected)",
+        //                                          "chimneyFlashing": "",
+        //                                          "sprayPaint": "",
+        //                                          "turtleVents": "",
+        //                                          "permaBoot123": txtPermaBoot.text ?? "",
+        //                                          "permaBoot34": txtPermaBootB.text ?? "",
+        //                                          "pipeJack123": txtPipeJack.text ?? "",
+        //                                          "pipeJack34": txtPipeJackB.text ?? "",
+        //                                          "atticFan": "",
+        //                                          "color2": "\(txtColorB.text)",
+        //                                          "satelliteDish": "\(ckbSatelliteDish.isSelected)",
+        //                                          "antenna": String(ckbAntenna.isSelected),
+        //                                          "lightningRod": "",
+        //                                          "materialLocation": txtMaterialLocation.text ?? "",
+        //                                          "dumpsterLocation": txtDumpsterLocation.text ?? "",
+        //                                          "specialInstructions": txtSpecialInstructions.text ?? "",
+        //                                          "notes": txtNotes.text ?? "",
+        //                                          "roofing1": txtRoofing.text ?? "",
+        //                                          "roofing2": txtRoofingPrice.text ?? "",
+        //                                          "debrisRemoval1": txtDebrisRemoval.text ?? "",
+        //                                          "debrisRemoval2": txtDebrisRemovalPrice.text ?? "",
+        //                                          "overheadProfit1": txtOverheadProfit.text ?? "",
+        //                                          "overheadProfit2": txtOverheadProfitPrice.text ?? "",
+        //                                          "codeUpgrades": txtCodeUpgrades.text ?? "",
+        //                                          "total": txtTotal.text ?? "",
+        //                                          "paymentTerms1": String(ckbPaymentTermsFinance.isSelected),
+        //                                          "paymentTerms2": String(ckbPaymentTermsDeductible.isSelected),
+        //                                          "homeOwnerSign1": txtHomeOwnerBA.text ?? "",
+        //                                          "homeOwnerSignDate1": txtHomeOwnerBADate.text ?? "",
+        //                                          "homeOwnerSign2": txtHomeOwnerBB.text ?? "",
+        //                                          "homeOwnerSignDate2": txtHomeOwnerBBDate.text ?? "",
+        //                                          "aegcRepresentativeSign": txtAegcRepresentative.text ?? "",
+        //                                          "aegcRepresentativeDate": txtAegcRepresentativeDate.text ?? "",
+        //                                          "homeOwnerInitial1": txtHomeOwner.text ?? "",
+        //                                          "homeOwnerInitial2": txtHomeOwnerB.text ?? ""] as [String : Any]
+        //                            placeBidViewModel.updateBidApi(params) { response in
+        //                                self?.handleSuccessApi()
+        //                            }
+        //                    }
+        //                    else {
+        //                        if let errorMsg = strongSelf.placeBidViewModel.error {
+        //                            showMessage(with: errorMsg)
+        //                        }
+        //                    }
     }
-
+    
     func handleSuccessApi() {
         if self.bidId == 0 {
             self.lblSuccess.text! = "Bid Placed successfully"
@@ -431,14 +723,14 @@ extension PlaceBidVC {
         txtStartDate.inputAccessoryView = toolbar
         txtStartDate.inputView = startDatePicker
     }
-
+    
     @objc private func doneStartDatePicker(){
         let formatter = DateFormatter()
         formatter.dateFormat = "dd MMMM yyyy"
         txtStartDate.text = formatter.string(from: startDatePicker.date)
         self.view.endEditing(true)
     }
-
+    
     private func showEndDatePicker(){
         //Formate Date
         endDatePicker.datePickerMode = .date
@@ -456,21 +748,21 @@ extension PlaceBidVC {
         txtEndDate.inputAccessoryView = toolbar
         txtEndDate.inputView = endDatePicker
     }
-
+    
     @objc private func doneEndDatePicker(){
         let formatter = DateFormatter()
         formatter.dateFormat = "dd MMMM yyyy"
         txtEndDate.text = formatter.string(from: endDatePicker.date)
         self.view.endEditing(true)
     }
-
+    
     @objc private func cancelDatePicker(){
         self.view.endEditing(true)
     }
 }
 
 extension PlaceBidVC: UITextFieldDelegate {
-
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField == txtStartDate ||  textField == txtEndDate{
             return false
@@ -480,40 +772,40 @@ extension PlaceBidVC: UITextFieldDelegate {
             } else if textField.text?.count ?? 0 > 9 && !string.isEmpty {
                 return false
             }
-
+            
             let str = "\(textField.text!)\(string)"
             let str2 = str.replacingOccurrences(of: "$ ", with: "")
-//            textField.text! = "$ \(str2)"
-
+            //            textField.text! = "$ \(str2)"
+            
             let formatter = NumberFormatter()
             formatter.numberStyle = .decimal
             formatter.locale = Locale.current
             formatter.maximumFractionDigits = 0
-
+            
             if let groupingSeparator = formatter.groupingSeparator {
-
-                    if string == groupingSeparator {
-                        return true
-                    }
+                
+                if string == groupingSeparator {
+                    return true
+                }
                 if let textWithoutGroupingSeparator = textField.text?.replacingOccurrences(of: groupingSeparator, with: "") {
-                            var totalTextWithoutGroupingSeparators = textWithoutGroupingSeparator + string
-                            if string.isEmpty { // pressed Backspace key
-                                totalTextWithoutGroupingSeparators.removeLast()
-                            }
+                    var totalTextWithoutGroupingSeparators = textWithoutGroupingSeparator + string
+                    if string.isEmpty { // pressed Backspace key
+                        totalTextWithoutGroupingSeparators.removeLast()
+                    }
                     let totalTextWithoutGroupingSeparator = totalTextWithoutGroupingSeparators.replacingOccurrences(of: "$ ", with: "")
-                            if let numberWithoutGroupingSeparator = formatter.number(from: totalTextWithoutGroupingSeparator),
-                                let formattedText = formatter.string(from: numberWithoutGroupingSeparator) {
-
-                                textField.text = formattedText
-                                amount = formattedText
-                                textField.text = "$ " + amount
-                                txtFldBidAmount.resetFloatingLable()
-                                return false
-                            }
-
-                        }
+                    if let numberWithoutGroupingSeparator = formatter.number(from: totalTextWithoutGroupingSeparator),
+                       let formattedText = formatter.string(from: numberWithoutGroupingSeparator) {
+                        
+                        textField.text = formattedText
+                        amount = formattedText
+                        textField.text = "$ " + amount
+                        txtFldBidAmount.resetFloatingLable()
+                        return false
+                    }
+                    
+                }
             }
-
+            
             txtFldBidAmount.resetFloatingLable()
             if str == "$ " {
                 textField.text! = ""
@@ -532,13 +824,13 @@ extension PlaceBidVC: UITextFieldDelegate {
             } else {
                 return true
             }
-
+            
         } else if textField == txtFldamountReceivable {
             return false
         }
         return true
     }
-
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == txtFldBidAmount {
             if txtFldBidAmount.text != "" || txtFldBidAmount.text?.count ?? 0 > 0 {
@@ -547,15 +839,15 @@ extension PlaceBidVC: UITextFieldDelegate {
                 if let bidAmntStr = bidAmount {
                     let bidAmnt = Double(bidAmntStr) ?? Double(0.0)
                     let receiveableAmount = (Double(90.0) * bidAmnt) / Double(100.0)
-
+                    
                     var realAmount = "\(receiveableAmount)"
                     let formatter = NumberFormatter()
                     formatter.numberStyle = NumberFormatter.Style.decimal
-
+                    
                     let amount = Double(realAmount)
                     let formattedString = formatter.string(for: amount)
-//                    lblAMount.text =  "$ \(formattedString ?? "")"
-
+                    //                    lblAMount.text =  "$ \(formattedString ?? "")"
+                    
                     self.txtFldamountReceivable.text = "$ \(formattedString ?? "")"
                     self.txtFldamountReceivable.resetFloatingLable()
                 }
@@ -579,7 +871,7 @@ extension PlaceBidVC: UICollectionViewDelegateFlowLayout{
         let size = (myText as NSString).size(withAttributes: fontAttributes as [NSAttributedString.Key : Any])
         return size.width + 25 + 45
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: getWidth(title: self.arrOfImagesNames[indexPath.row]), height:72)
     }
@@ -589,7 +881,7 @@ extension PlaceBidVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return fullViewImge.count //arrOfImages.count
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlaceBidCollVwCell", for: indexPath) as!  PlaceBidCollVwCell
         SDImageCache.shared.clearMemory()
@@ -602,7 +894,7 @@ extension PlaceBidVC: UICollectionViewDelegate, UICollectionViewDataSource {
         cell.projectTitle.text = self.arrOfImagesNames[indexPath.row]
         return cell
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let a = self.fullViewImge[indexPath.row]
         let last4 = String(a.suffix(4))
@@ -618,14 +910,14 @@ extension PlaceBidVC: UICollectionViewDelegate, UICollectionViewDataSource {
             }
         }
     }
-
-//    @objc func deleteFile(sender: UIButton) {
-//        self.arrOfFiles.remove(at: sender.tag)
-//        self.arrOfImages.remove(at: sender.tag)
-//        self.arrOfImagesNames.remove(at: sender.tag)
-//        self.collVwFiles.reloadData()
-//    }
-
+    
+    //    @objc func deleteFile(sender: UIButton) {
+    //        self.arrOfFiles.remove(at: sender.tag)
+    //        self.arrOfImages.remove(at: sender.tag)
+    //        self.arrOfImagesNames.remove(at: sender.tag)
+    //        self.collVwFiles.reloadData()
+    //    }
+    
     @objc func deleteFile(sender: UIButton) {
         if self.bidId != 0 {
             if self.arrOfFilesFetchedFromServer.count > 0 {
@@ -644,14 +936,14 @@ extension PlaceBidVC: UICollectionViewDelegate, UICollectionViewDataSource {
             handleManualDeleteFile(indexOfFile:sender.tag)
         }
     }
-
+    
     func handleManualDeleteFile(indexOfFile:Int) {
         self.arrOfImages.remove(at: indexOfFile)
         self.arrOfImagesNames.remove(at: indexOfFile)
         self.arrOfFiles.remove(at: indexOfFile)
         self.collVwFiles.reloadData()
     }
-
+    
     func deleteProjectFile(fileId:Int, indexOfFile:Int) {
         let param = ["id":fileId]
         manageBidDetailViewModel.deleteBidFileApi(param) { response in
@@ -660,42 +952,42 @@ extension PlaceBidVC: UICollectionViewDelegate, UICollectionViewDataSource {
             self.handleManualDeleteFile(indexOfFile: indexOfFile)
         }
     }
-
+    
 }
 
 //MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
 extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     private func handleCameraOptions() {
-
+        
         self.view.endEditing(true)
-
+        
         let actionSheetController: UIAlertController = UIAlertController(title: UIFunction.getLocalizationString(text: "Project File"), message: nil, preferredStyle: .actionSheet)
-
+        
         let actionCamera: UIAlertAction = UIAlertAction(title: UIFunction.getLocalizationString(text: "Take photo"), style: .default) { action -> Void in
-
+            
             self.choosePhotoFromCameraAction()
         }
-
+        
         let actionGallery: UIAlertAction = UIAlertAction(title: UIFunction.getLocalizationString(text: "Choose from gallery"), style: .default) { action -> Void in
-
+            
             self.choosePhotoFromGalleryAction()
         }
-
+        
         let actionDocuments: UIAlertAction = UIAlertAction(title: UIFunction.getLocalizationString(text: "Choose Docs"), style: .default) { action -> Void in
-
+            
             self.chooseFromDocs()
         }
-
+        
         let cancelAction: UIAlertAction = UIAlertAction(title: UIFunction.getLocalizationString(text: "Cancel"), style: .cancel) { action -> Void in
             //Just dismiss the action sheet
         }
-
+        
         actionCamera.setValue(UIColor.rbg(r: 0, g: 0, b: 0), forKey: "titleTextColor")
         actionGallery.setValue(UIColor.rbg(r: 0, g: 0, b: 0), forKey: "titleTextColor")
         actionDocuments.setValue(UIColor.rbg(r: 0, g: 0, b: 0), forKey: "titleTextColor")
         cancelAction.setValue(UIColor.rbg(r: 0, g: 0, b: 0), forKey: "titleTextColor")
-
+        
         if userImage == nil || userImage?.count == 0
         {
             actionSheetController.addAction(actionCamera)
@@ -705,20 +997,20 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
         }
         else
         {
-         //   actionSheetController.addAction(removePhoto)
-        //    actionSheetController.addAction(viewPhoto)
+            //   actionSheetController.addAction(removePhoto)
+            //    actionSheetController.addAction(viewPhoto)
             actionSheetController.addAction(actionCamera)
             actionSheetController.addAction(actionGallery)
             actionSheetController.addAction(actionDocuments)
             actionSheetController.addAction(cancelAction)
         }
-
+        
         actionSheetController.popoverPresentationController?.sourceView = self.view
         actionSheetController.popoverPresentationController?.sourceRect = CGRect(x: 20, y: self.view.bounds.size.height - 150, width: 1.0, height: 1.0)
         self.present(actionSheetController, animated: true, completion: nil)
-
+        
     }
-
+    
     // MARK:-
     // MARK:- -------- Permissions ---------
     func choosePhotoFromCameraAction()
@@ -730,15 +1022,15 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
         else
         {
             let alertController: UIAlertController = UIAlertController(title: "Error", message: "Device has no camera.", preferredStyle: .alert)
-
+            
             let okAction = UIAlertAction(title: "OK", style: .default) { (_) -> Void in
             }
-
+            
             alertController.addAction(okAction)
             self.present(alertController, animated: true, completion: nil)
         }
     }
-
+    
     @objc func showCamera()
     {
         let status  = AVCaptureDevice.authorizationStatus(for: .video)
@@ -760,7 +1052,7 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
                 else
                 {
                     DispatchQueue.main.async {
-                    self.showAlertOfPermissionsNotAvailable()
+                        self.showAlertOfPermissionsNotAvailable()
                     }
                 }
             })
@@ -768,11 +1060,11 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
         else if status == .restricted || status == .denied
         {
             DispatchQueue.main.async {
-            self.showAlertOfPermissionsNotAvailable()
+                self.showAlertOfPermissionsNotAvailable()
             }
         }
     }
-
+    
     func openCamera()
     {
         let imagePicker =  UIImagePickerController()
@@ -781,18 +1073,18 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
         imagePicker.sourceType = .camera
         self.present(imagePicker, animated: true, completion: nil)
     }
-
+    
     func chooseFromDocs() {
         let importMenu = UIDocumentPickerViewController(documentTypes: [String(kUTTypeText),String(kUTTypeContent),String(kUTTypeItem),String(kUTTypeData),String(kUTTypeSpreadsheet),String(kUTTypeImage), String(kUTTypeRTF), String(kUTTypePDF)], in: .import)
-
-            if #available(iOS 11.0, *) {
-                importMenu.allowsMultipleSelection = true
-            }
-            importMenu.delegate = self
-            importMenu.modalPresentationStyle = .formSheet
-            present(importMenu, animated: true)
+        
+        if #available(iOS 11.0, *) {
+            importMenu.allowsMultipleSelection = true
+        }
+        importMenu.delegate = self
+        importMenu.modalPresentationStyle = .formSheet
+        present(importMenu, animated: true)
     }
-
+    
     func choosePhotoFromGalleryAction()
     {
         let status = PHPhotoLibrary.authorizationStatus()
@@ -808,11 +1100,11 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
                 else
                 {
                     DispatchQueue.main.async {
-                    self.showAlertOfPermissionsNotAvailable()
+                        self.showAlertOfPermissionsNotAvailable()
                     }
                 }
             })
-
+            
         }
         else if (status == .authorized)
         {
@@ -823,11 +1115,11 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
         else if (status == .restricted || status == .denied)
         {
             DispatchQueue.main.async {
-            self.showAlertOfPermissionsNotAvailable()
+                self.showAlertOfPermissionsNotAvailable()
             }
         }
     }
-
+    
     // MARK:-
     // MARK:- Open Gallery
     func openGallery()
@@ -838,33 +1130,33 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
         imagePicker.sourceType = .photoLibrary
         self.present(imagePicker, animated: true, completion: nil)
     }
-
+    
     // MARK:-
     // MARK:- Show Alert With No Permissions Message
     func showAlertOfPermissionsNotAvailable()
     {
         let message = UIFunction.getLocalizationString(text: "Camera permission not available")
         let alertController: UIAlertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-
+        
         let cancel_title = UIFunction.getLocalizationString(text: "Cancel")
         let cancelAction = UIAlertAction(title: cancel_title, style: .destructive) { (_) -> Void in
         }
-
+        
         let settings_title = UIFunction.getLocalizationString(text: "Settings title")
         let settingsAction = UIAlertAction(title: settings_title, style: .default) { (_) -> Void in
             UIApplication.shared.open(URL.init(string: UIApplication.openSettingsURLString)!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
         }
-
+        
         alertController.addAction(cancelAction)
         alertController.addAction(settingsAction)
         self.present(alertController, animated: true, completion: nil)
     }
-
+    
     // MARK:-
     // MARK:- -------- Image Picker Delegates --------------
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
     {
-// Local variable inserted by Swift 4.2 migrator.
+        // Local variable inserted by Swift 4.2 migrator.
         let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
         picker.dismiss(animated: true, completion: nil)
         let imageName: String = UIFunction.getRandomImageName()
@@ -890,12 +1182,12 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
         catch
         {}
     }
-
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
     {
         picker.dismiss(animated: true, completion: nil)
     }
-
+    
     // MARK:-
     // MARK:- Show Image in User Image View
     func showImageInUserPhotoImageView(fileName:String)
@@ -905,9 +1197,9 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
         {
             return
         }
-
-//        self.buttonAddImage .setTitle(nil, for: .normal)
-
+        
+        //        self.buttonAddImage .setTitle(nil, for: .normal)
+        
         if (userImage as String).count == 0
         {
         }
@@ -959,8 +1251,8 @@ extension PlaceBidVC: UIDocumentPickerDelegate {
         self.arrOfImages.append(UIImage(named: "doc")!)
         self.docSendAPI(docLocalUrl: myURL, fileName: "\(randomString()).pdf")
     }
-
-     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+    
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         controller.dismiss(animated: true, completion: nil)
     }
 }
@@ -1025,7 +1317,7 @@ extension PlaceBidVC {
 }
 
 extension PlaceBidVC: WKNavigationDelegate, WKUIDelegate {
-
+    
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         let script = "localStorage.getItem(\"access_token\")"
         let scriptDiv = "document.getElementsByClassName('ng-star-inserted')[0].style.visibility = 'hidden';"
