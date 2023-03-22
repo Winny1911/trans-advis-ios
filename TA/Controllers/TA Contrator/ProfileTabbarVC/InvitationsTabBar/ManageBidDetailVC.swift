@@ -304,6 +304,8 @@ class ManageBidDetailVC: BaseViewController {
         } else if self.bidStatus == 2 || self.bidStatus == 3 || self.bidStatus == 4 {
             let vc = Storyboard.invitation.instantiateViewController(withIdentifier: "PlaceBidVC") as? PlaceBidVC
             vc!.bidId = self.manageBidId
+            vc!.projectId = self.projectId
+            vc?.manageBidDetailViewModel = self.manageBidDetailViewModel
             self.navigationController?.pushViewController(vc!, animated: true)
         } else {
             self.getAgreement()

@@ -7,13 +7,7 @@
 
 import Foundation
 class PlaceBidModel {
-    
-    //    var bidAmount: String = ""
-    //    var amountReceivable: String = ""
-    //    var startDate: String = ""
-    //    var endDate: String = ""
-    //    var description: String = ""
-    //    var arrOfFilesCount :Int = 0
+    var projectId: Int = 0
     var homeOwnerFirst: String = ""
     var homeOwnerSecond: String = ""
     var streetAddress: String = ""
@@ -21,13 +15,13 @@ class PlaceBidModel {
     var cellPhone: String = ""
     var email: String = ""
     var hoa: String = ""
-    var permit: String = ""
+    var permit: Bool = false
     var insurance: String = ""
     var claimNeumber: String = ""
-    var insFullyApproved: String = ""
-    var insPartialApproved: String = ""
-    var retail: String = ""
-    var retailWDepreciation: String = ""
+    var insFullyApproved: Bool = false
+    var insPartialApproved: Bool = false
+    var retail: Bool = false
+    var retailWDepreciation: Bool = false
     var mainDwellingRoof: String = ""
     var shedSQ: String = ""
     var decking: String = ""
@@ -48,7 +42,7 @@ class PlaceBidModel {
     var ocB: String = ""
     var gaf: String = ""
     var airVent: String = ""
-    var cutInstallRidgeVent: String = ""
+    var cutInstallRidgeVent: Bool = false
     var black: String = ""
     var brownB: String = ""
     var whiteB: String = ""
@@ -67,8 +61,8 @@ class PlaceBidModel {
     var removeReplaceB: String = ""
     var deatchResetB: String = ""
     var colorB: String = ""
-    var satelliteDish: String = ""
-    var antenna: String = ""
+    var satelliteDish: Bool = false
+    var antenna: Bool = false
     var detachOnly: String = ""
     var detachDispose: String = ""
     var materialLocation: String = ""
@@ -80,8 +74,8 @@ class PlaceBidModel {
     var debrisRemoval: String = ""
     var overheadProfit: String = ""
     var codeUpgrades: String = ""
-    var paymentTermsDeductible: String = ""
-    var paymentTermsFinance: String = ""
+    var paymentTermsDeductible: Bool = false
+    var paymentTermsFinance: Bool = false
     var homeOwner: String = ""
     var homeOwnerDate: String = ""
     var homeOwnerBA: String = ""
@@ -92,20 +86,21 @@ class PlaceBidModel {
     init() {
     }
     
-    init(homeOwnerFirst: String,
+    init(projectId: Int,
+         homeOwnerFirst: String,
          homeOwnerSecond: String,
          streetAddress: String,
          mailingAddress: String,
          cellPhone: String,
          email: String,
          hoa: String,
-         permit: String,
+         permit: Bool,
          insurance: String,
          claimNeumber: String,
-         insFullyApproved: String,
-         insPartialApproved: String,
-         retail: String,
-         retailWDepreciation: String,
+         insFullyApproved: Bool,
+         insPartialApproved: Bool,
+         retail: Bool,
+         retailWDepreciation: Bool,
          mainDwellingRoof: String,
          shedSQ: String,
          decking: String,
@@ -126,7 +121,7 @@ class PlaceBidModel {
          ocB: String,
          gaf: String,
          airVent: String,
-         cutInstallRidgeVent: String,
+         cutInstallRidgeVent: Bool,
          black: String,
          brownB: String,
          whiteB: String,
@@ -145,8 +140,8 @@ class PlaceBidModel {
          removeReplaceB: String,
          deatchResetB: String,
          colorB: String,
-         satelliteDish: String,
-         antenna: String,
+         satelliteDish: Bool,
+         antenna: Bool,
          detachOnly: String ,
          detachDispose: String,
          materialLocation: String,
@@ -158,14 +153,15 @@ class PlaceBidModel {
          debrisRemoval: String,
          overheadProfit: String,
          codeUpgrades: String ,
-         paymentTermsDeductible: String,
-         paymantTermsFinance: String,
+         paymentTermsDeductible: Bool,
+         paymantTermsFinance: Bool,
          homeOwner: String,
          homeOwnerDate: String,
          homeOwnerBA: String ,
          homeOwnerDateBA: String,
          aegcRepresentative: String,
          aegcRepresentativeBA: String) {
+        self.projectId = projectId
         self.homeOwnerFirst = homeOwnerFirst
         self.homeOwnerSecond = homeOwnerSecond
         self.streetAddress = streetAddress

@@ -132,7 +132,7 @@ class PlaceBidVC: BaseViewController {
     var wkWeb : WKWebView!
     var projectTitle = String()
     var projectDesc = String()
-    var projectId = 0
+    var projectId: Int = 0
     var imageUrl = String()
     let placeBidViewModel: PlaceBidViewModel = PlaceBidViewModel()
     var listFieds = [String]()
@@ -149,7 +149,7 @@ class PlaceBidVC: BaseViewController {
     var fullViewImge = [String]()
     var imageNameArray = [String]()
     var bidId = 0
-    let manageBidDetailViewModel: ManageBidDetailViewModel = ManageBidDetailViewModel()
+    var manageBidDetailViewModel: ManageBidDetailViewModel = ManageBidDetailViewModel()
     var arrOfFilesFetchedFromServer = [[String:Any]]()
     var arrOfFilesManually = [[String:Any]]()
     var bidFilesArray : [BidsDocumentsDetails]?
@@ -160,7 +160,6 @@ class PlaceBidVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         txtFldBidAmount.backgroundColor = .red
-        
         //self.arrOfFilesFetchedFromServer.removeAll()
         //self.arrOfFilesManually.removeAll()
         //viewInfo.isHidden = true
@@ -212,7 +211,87 @@ class PlaceBidVC: BaseViewController {
         
         //        self.openUrlWebview(url: "http://ta123-webapp.s3-website-us-east-1.amazonaws.com/contractors/invitations")
         //self.displayPdf()
+        fillWithData()
         buildFieldsForm()
+    }
+    
+    private func fillWithData(){
+        self.txtHomeOwner.text = "Roberto"
+        self.txtHomeOwnerB.text = "Junior"
+        self.txtStreetAddress.text = "Rua Zet"
+        self.txtMailingAddress.text = "Manso"
+        self.txtCellPhone.text = "11933939933"
+        self.txtEmail.text = "ioijoij@okjoijoi.com"
+        self.txtHOA.text = "klknlkn"
+        self.ckbPermit.isSelected = true
+        self.txtInsurance.text = "fvdvdv"
+        self.txtClaimNumber.text = "dfvdfvdfv"
+        self.ckbInsFullyApproved.isSelected = true
+        self.ckbInsPartialApproved.isSelected = true
+        self.ckbRetail.isSelected = true
+        self.ckbRetailDepreciation.isSelected = true
+        self.txtMainDwellingRoof.text = "dfvdfvdfv"
+        self.txtShed.text = "dfvdfv"
+        self.txtDecking.text = "dfvdfvvdf"
+        self.txtFlatRoof.text = "dfvfdvfd"
+        self.txtTotal.text = "tythtythty"
+        self.txtDeducible.text = "yukykuyk"
+        self.txtFe.text = "wgrwrthtyny"
+        self.txtRetail.text = "gertyjrteyhrg"
+        self.txtBe.text = "rnytbgtyhrgb"
+        self.txtBrand.text = "trngbrtyhngr"
+        self.txtStyle.text = "trntrnygngb"
+        self.txtColor.text = "fdbgrhygf"
+        self.txtDetachedGarage.text = "kmlkmlkds"
+        self.ckbWhiteDripEdge.isSelected = true
+        self.ckbBrown.isSelected = true
+        self.ckbAegc.isSelected = true
+        self.ckbIko.isSelected = true
+        self.ckbOc.isSelected = true
+        self.ckbOCb.isSelected = true
+        self.ckbGaf.isSelected = true
+        self.ckbAirVent.isSelected = true
+        self.ckbAlmond.isSelected = true
+        self.ckbCutInstallRidgVent.isSelected = true
+        self.ckbBlack.isSelected  = true
+        self.ckbBrownB.isSelected  = true
+        self.ckbWhite.isSelected = true
+        self.ckbCopper.isSelected = true
+        self.ckbBlackB.isSelected = true
+        self.ckbBlackC.isSelected = true
+        self.ckbBrownC.isSelected = true
+        self.ckbGrey.isSelected = true
+        self.ckbWhiteB.isSelected = true
+        self.ckbRemoveReplace.isSelected = true
+        self.ckbDetachReset.isSelected = true
+        self.ckbRemoveCoverHoles.isSelected = true
+        self.txtPermaBoot.text = "fgbfgbfbgf"
+        self.txtPermaBootB.text = "fgbfgbfgbf"
+        self.txtPipeJack.text = "fgbfgbfgb"
+        self.txtPipeJackB.text = "fgbfgbfgb"
+        self.ckbRemoveReplaceB.isSelected = true
+        self.ckbDetachResetB.isSelected = true
+        self.txtColorB.text = "fgbfgbfgb"
+        self.ckbSatelliteDish.isSelected = true
+        self.ckbAntenna.isSelected = true
+        self.ckbDetach.isSelected = true
+        self.ckbDetachDispose.isSelected = true
+        self.txtMaterialLocation.text = "fgbfgbfgbf"
+        self.txtDumpsterLocation.text = "fgbfgbfggf"
+        self.txtSpecialInstructions.text = "fgbfgbfg"
+        self.txtNotes.text = "gfbgfd"
+        self.txtRoofing.text = "fgbfgbfbg"
+        self.txtRoofingPrice.text = "ghfnhnfnh"
+        self.txtDebrisRemoval.text = "fghdytrryt"
+        self.txtOverheadProfit.text = "uyiynhftgs"
+        self.txtCodeUpgrades.text = "ryntyndfs"
+        self.ckbPaymentTermsDeductible.isSelected = true
+        self.ckbPaymentTermsFinance.isSelected = true
+        self.txtHomeOwnerBADate.text = "fgdbgbdfgsb"
+        self.txtHomeOwnerBB.text = "fgbdgbdfb"
+        self.txtHomeOwnerBBDate.text = "dfgbdfnh"
+        self.txtAegcRepresentative.text = "gfdhng"
+        self.txtAegcRepresentativeDate.text = "fdnhgnbfds"
     }
     
     private func buildFieldsForm() {
@@ -412,7 +491,7 @@ class PlaceBidVC: BaseViewController {
     
     //MARK: ACTION ADD FILES
     @IBAction func actionAddFiles(_ sender: Any) {
-        var count = arrOfImages.count
+        let count = arrOfImages.count
         let limit  = 149
         if count < limit {
             handleCameraOptions()
@@ -424,7 +503,12 @@ class PlaceBidVC: BaseViewController {
     
     func buildParams(date: String) -> [String : Any]{
         let model = placeBidViewModel.model
-        return ["projectId": "\(self.projectId ?? 0)", "date": date, "startDate": date, "endDate": date, "amount": 900,
+        return ["projectId": "\(self.projectId)",
+                "date": date,
+                //"startDate": date,
+                //"endDate": date,
+                //"amount": 900,
+                
                 "homeOwner1":  model.homeOwnerFirst,
                 "homeOwner2": model.homeOwnerSecond,
                 "streetAddress": model.streetAddress,
@@ -484,27 +568,27 @@ class PlaceBidVC: BaseViewController {
                 "paymentTerms1": model.paymentTermsFinance,
                 "paymentTerms2": model.paymentTermsDeductible,
                 "homeOwnerSign1": model.homeOwner,
-                "homeOwnerSignDate1": model.homeOwnerDate,
+                //"homeOwnerSignDate1": date,
                 "homeOwnerSign2": model.homeOwnerBA,
-                "homeOwnerSignDate2": model.homeOwnerDateBA,
-                "aegcRepresentativeSign": model.aegcRepresentative,
-                "aegcRepresentativeDate": model.aegcRepresentativeBA,
+                //"homeOwnerSignDate2": date,
+                //"aegcRepresentativeSign": model.aegcRepresentative,
+                //"aegcRepresentativeDate": model.aegcRepresentativeBA,
                 "homeOwnerInitial1": model.homeOwnerFirst,
                 "homeOwnerInitial2": model.homeOwnerSecond] as [String : Any]
     }
     
     //MARK: ACTION SUBMIT
     @IBAction func actionSubmit(_ sender: Any) {
-        let bidAmount2 = "$50,00"//self.txtFldBidAmount.text?.trimmed ?? ""
-        let bidAmount3 = bidAmount2.replacingOccurrences(of: "$ ", with: "")
-        let bidAmount = bidAmount3.replacingOccurrences(of: ",", with: "")
+//        let bidAmount2 = "$ \(model?.data?.bidAmount ?? "0.0")"
+//        let bidAmount3 = bidAmount2.replacingOccurrences(of: "$ ", with: "")
+//        let bidAmount = bidAmount3.replacingOccurrences(of: ",", with: "")
         let formDate = datePickerView.date.stringValue
         let dateFormatter = DateFormatter()
         let requiredDateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMMM yyyy"
         let formDateTime = dateFormatter.date(from: formDate)
-        requiredDateFormatter.dateFormat = "yyyy-MM-dd"
-        let stringDate = requiredDateFormatter.string(from: formDateTime ?? Date())
+        requiredDateFormatter.dateFormat = "YYYY-MM-DD"
+        let stringDate = "2023-03-08"//requiredDateFormatter.string(from: formDateTime ?? Date())
         var mediaArrCount = 0
         if self.bidId == 0 {
             mediaArrCount = self.arrOfFiles.count
@@ -518,13 +602,13 @@ class PlaceBidVC: BaseViewController {
                                            cellPhone: txtCellPhone.text ?? "",
                                            email: txtEmail.text ?? "",
                                            hoa: txtHOA.text ?? "",
-                                           permit: String(ckbPermit.isSelected),
+                                           permit: ckbPermit.isSelected,
                                            insurance: txtInsurance.text ?? "",
                                            claimNeumber: txtClaimNumber.text ?? "",
-                                           insFullyApproved: String(ckbInsFullyApproved.isSelected),
-                                           insPartialApproved: String(ckbInsPartialApproved.isSelected),
-                                           retail: String(ckbRetail.isSelected),
-                                           retailWDepreciation: String(ckbRetailDepreciation.isSelected),
+                                           insFullyApproved: ckbInsFullyApproved.isSelected,
+                                           insPartialApproved: ckbInsPartialApproved.isSelected,
+                                           retail: ckbRetail.isSelected,
+                                           retailWDepreciation: ckbRetailDepreciation.isSelected,
                                            mainDwellingRoof: txtMainDwellingRoof.text ?? "",
                                            shedSQ: txtShed.text ?? "",
                                            decking: txtDecking.text ?? "",
@@ -545,7 +629,7 @@ class PlaceBidVC: BaseViewController {
                                            ocB: String(ckbOCb.isSelected),
                                            gaf: String(ckbGaf.isSelected),
                                            airVent: String(ckbAirVent.isSelected),
-                                           cutInstallRidgeVent: String(ckbCutInstallRidgVent.isSelected),
+                                           cutInstallRidgeVent: ckbCutInstallRidgVent.isSelected,
                                            black: String(ckbBlack.isSelected),
                                            brownB: String(ckbBrownB.isSelected),
                                            whiteB: String(ckbWhite.isSelected),
@@ -564,8 +648,8 @@ class PlaceBidVC: BaseViewController {
                                            removeReplaceB: String(ckbRemoveReplaceB.isSelected),
                                            deatchResetB: String(ckbDetachResetB.isSelected),
                                            colorB: txtColorB.text ?? "",
-                                           satelliteDish: String(ckbSatelliteDish.isSelected),
-                                           antenna: String(ckbAntenna.isSelected),
+                                           satelliteDish: ckbSatelliteDish.isSelected,
+                                           antenna: ckbAntenna.isSelected,
                                            detachOnly: String(ckbDetach.isSelected),
                                            detachDispose: String(ckbDetachDispose.isSelected),
                                            materialLocation: txtMaterialLocation.text ?? "",
@@ -577,8 +661,8 @@ class PlaceBidVC: BaseViewController {
                                            debrisRemoval: txtDebrisRemoval.text ?? "",
                                            overheadProfit: txtOverheadProfit.text ?? "",
                                            codeUpgrades: txtCodeUpgrades.text ?? "",
-                                           paymentTermsDeductible: String(ckbPaymentTermsDeductible.isSelected),
-                                           paymantTermsFinance: String(ckbPaymentTermsFinance.isSelected),
+                                           paymentTermsDeductible: ckbPaymentTermsDeductible.isSelected,
+                                           paymantTermsFinance: ckbPaymentTermsFinance.isSelected,
                                            homeOwner: txtHomeOwner.text ?? "",
                                            homeOwnerDate: txtHomeOwnerBADate.text ?? "",
                                            homeOwnerBA: txtHomeOwnerBB.text ?? "",
@@ -1317,7 +1401,7 @@ extension PlaceBidVC {
 }
 
 extension PlaceBidVC: WKNavigationDelegate, WKUIDelegate {
-    
+
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         let script = "localStorage.getItem(\"access_token\")"
         let scriptDiv = "document.getElementsByClassName('ng-star-inserted')[0].style.visibility = 'hidden';"
@@ -1334,7 +1418,7 @@ extension PlaceBidVC: WKNavigationDelegate, WKUIDelegate {
             print("token = \(token)")
         }
     }
-    
+
     //    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
     //        let req = NSMutableURLRequest(url: navigationAction.request.url!)
     //
