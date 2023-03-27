@@ -86,10 +86,10 @@ class PlaceBidVC: BaseViewController {
     @IBOutlet weak var txtCodeUpgradesPrice: FloatingLabelInput!
     @IBOutlet weak var txtHomeOwnerBA: FloatingLabelInput!
     @IBOutlet weak var txtHomeOwnerBB: FloatingLabelInput!
-    @IBOutlet weak var txtHomeOwnerBADate: FloatingLabelInput!
-    @IBOutlet weak var txtHomeOwnerBBDate: FloatingLabelInput!
     @IBOutlet weak var txtAegcRepresentative: FloatingLabelInput!
-    @IBOutlet weak var txtAegcRepresentativeDate: FloatingLabelInput!
+    @IBOutlet weak var datePickerAEGCDate: UIDatePicker!
+    @IBOutlet weak var datePickerHomeOwnerBBDate: UIDatePicker!
+    @IBOutlet weak var datePickerHomeOwnerBADate: UIDatePicker!
     
     //MARK : Checkbox
     @IBOutlet weak var ckbPaymentTermsFinance: UIButton!
@@ -153,6 +153,7 @@ class PlaceBidVC: BaseViewController {
     var arrOfFilesFetchedFromServer = [[String:Any]]()
     var arrOfFilesManually = [[String:Any]]()
     var bidFilesArray : [BidsDocumentsDetails]?
+    var manageBids: ManageBidsResponseDetailsV2?
     var amount = ""
     
     var completionHandlerGoToInvitationDetailScreenFromPlaceBid: (() -> Void)?
@@ -174,11 +175,11 @@ class PlaceBidVC: BaseViewController {
         //        } else {
         //            projectImageWidth.constant = 0.0
         //        }
-        //        addCustomButtonOnTextField()
-        //        btnSucces.isHidden = true
-        //        successFulView.setRoundCorners(radius: 14.0)
-        //        successFulView.isHidden = true
-        //        blackView.isHidden = true
+                addCustomButtonOnTextField()
+                btnSucces.isHidden = true
+                successFulView.setRoundCorners(radius: 14.0)
+                successFulView.isHidden = true
+                blackView.isHidden = true
         //
         //        self.collVwFiles.register(UINib(nibName: "PlaceBidCollVwCell", bundle: nil), forCellWithReuseIdentifier: "PlaceBidCollVwCell")
         //
@@ -203,107 +204,68 @@ class PlaceBidVC: BaseViewController {
         //
         //        self.showStartDatePicker()
         //        self.showEndDatePicker()
-        //        if self.bidId != 0 {
-        //            self.btnSubmit.setTitle("Update Bid", for: .normal)
-        //            self.lblTopTitle.text = "Edit Bid"
-        //            self.fetchBidDetails()
-        //        }
+        if self.bidId != 0 {
+            self.btnSubmit.setTitle("Update Bid", for: .normal)
+            self.lblTopTitle.text = "Edit Bid"
+            self.fetchBidDetails()
+        }
         
-        //        self.openUrlWebview(url: "http://ta123-webapp.s3-website-us-east-1.amazonaws.com/contractors/invitations")
-        //self.displayPdf()
-        fillWithData()
         buildFieldsForm()
     }
     
-    private func fillWithData(){
-        self.txtHomeOwner.text = "Roberto"
-        self.txtHomeOwnerB.text = "Junior"
-        self.txtStreetAddress.text = "Rua Zet"
-        self.txtMailingAddress.text = "Manso"
-        self.txtCellPhone.text = "11933939933"
-        self.txtEmail.text = "ioijoij@okjoijoi.com"
-        self.txtHOA.text = "klknlkn"
-        self.ckbPermit.isSelected = true
-        self.txtInsurance.text = "fvdvdv"
-        self.txtClaimNumber.text = "dfvdfvdfv"
-        self.ckbInsFullyApproved.isSelected = true
-        self.ckbInsPartialApproved.isSelected = true
-        self.ckbRetail.isSelected = true
-        self.ckbRetailDepreciation.isSelected = true
-        self.txtMainDwellingRoof.text = "dfvdfvdfv"
-        self.txtShed.text = "dfvdfv"
-        self.txtDecking.text = "dfvdfvvdf"
-        self.txtFlatRoof.text = "dfvfdvfd"
-        self.txtTotal.text = "tythtythty"
-        self.txtDeducible.text = "yukykuyk"
-        self.txtFe.text = "wgrwrthtyny"
-        self.txtRetail.text = "gertyjrteyhrg"
-        self.txtBe.text = "rnytbgtyhrgb"
-        self.txtBrand.text = "trngbrtyhngr"
-        self.txtStyle.text = "trntrnygngb"
-        self.txtColor.text = "fdbgrhygf"
-        self.txtDetachedGarage.text = "kmlkmlkds"
-        self.ckbWhiteDripEdge.isSelected = true
-        self.ckbBrown.isSelected = true
-        self.ckbAegc.isSelected = true
-        self.ckbIko.isSelected = true
-        self.ckbOc.isSelected = true
-        self.ckbOCb.isSelected = true
-        self.ckbGaf.isSelected = true
-        self.ckbAirVent.isSelected = true
-        self.ckbAlmond.isSelected = true
-        self.ckbCutInstallRidgVent.isSelected = true
-        self.ckbBlack.isSelected  = true
-        self.ckbBrownB.isSelected  = true
-        self.ckbWhite.isSelected = true
-        self.ckbCopper.isSelected = true
-        self.ckbBlackB.isSelected = true
-        self.ckbBlackC.isSelected = true
-        self.ckbBrownC.isSelected = true
-        self.ckbGrey.isSelected = true
-        self.ckbWhiteB.isSelected = true
-        self.ckbRemoveReplace.isSelected = true
-        self.ckbDetachReset.isSelected = true
-        self.ckbRemoveCoverHoles.isSelected = true
-        self.txtPermaBoot.text = "fgbfgbfbgf"
-        self.txtPermaBootB.text = "fgbfgbfgbf"
-        self.txtPipeJack.text = "fgbfgbfgb"
-        self.txtPipeJackB.text = "fgbfgbfgb"
-        self.ckbRemoveReplaceB.isSelected = true
-        self.ckbDetachResetB.isSelected = true
-        self.txtColorB.text = "fgbfgbfgb"
-        self.ckbSatelliteDish.isSelected = true
-        self.ckbAntenna.isSelected = true
-        self.ckbDetach.isSelected = true
-        self.ckbDetachDispose.isSelected = true
-        self.txtMaterialLocation.text = "fgbfgbfgbf"
-        self.txtDumpsterLocation.text = "fgbfgbfggf"
-        self.txtSpecialInstructions.text = "fgbfgbfg"
-        self.txtNotes.text = "gfbgfd"
-        self.txtRoofing.text = "fgbfgbfbg"
-        self.txtRoofingPrice.text = "ghfnhnfnh"
-        self.txtDebrisRemoval.text = "fghdytrryt"
-        self.txtOverheadProfit.text = "uyiynhftgs"
-        self.txtCodeUpgrades.text = "ryntyndfs"
-        self.ckbPaymentTermsDeductible.isSelected = true
-        self.ckbPaymentTermsFinance.isSelected = true
-        self.txtHomeOwnerBADate.text = "fgdbgbdfgsb"
-        self.txtHomeOwnerBB.text = "fgbdgbdfb"
-        self.txtHomeOwnerBBDate.text = "dfgbdfnh"
-        self.txtAegcRepresentative.text = "gfdhng"
-        self.txtAegcRepresentativeDate.text = "fdnhgnbfds"
+    private func resetFloatingLabel(){
+        self.txtStreetAddress.resetFloatingLable()
+        self.txtHomeOwner.resetFloatingLable()
+        self.txtHomeOwnerB.resetFloatingLable()
+        self.txtMailingAddress.resetFloatingLable()
+        self.txtCellPhone.resetFloatingLable()
+        self.txtEmail.resetFloatingLable()
+        self.txtHOA.resetFloatingLable()
+        self.txtInsurance.resetFloatingLable()
+        self.txtClaimNumber.resetFloatingLable()
+        self.txtMainDwellingRoof.resetFloatingLable()
+        self.txtShed.resetFloatingLable()
+        self.txtDecking.resetFloatingLable()
+        self.txtFlatRoof.resetFloatingLable()
+        self.txtTotal.resetFloatingLable()
+        self.txtDeducible.resetFloatingLable()
+        self.txtFe.resetFloatingLable()
+        self.txtRetail.resetFloatingLable()
+        self.txtBe.resetFloatingLable()
+        self.txtBrand.resetFloatingLable()
+        self.txtStyle.resetFloatingLable()
+        self.txtColor.resetFloatingLable()
+        self.txtDetachedGarage.resetFloatingLable()
+        self.txtPermaBoot.resetFloatingLable()
+        self.txtPermaBootB.resetFloatingLable()
+        self.txtPipeJack.resetFloatingLable()
+        self.txtPipeJackB.resetFloatingLable()
+        self.txtColorB.resetFloatingLable()
+        self.txtMaterialLocation.resetFloatingLable()
+        self.txtDumpsterLocation.resetFloatingLable()
+        self.txtSpecialInstructions.resetFloatingLable()
+        self.txtNotes.resetFloatingLable()
+        self.txtRoofing.resetFloatingLable()
+        self.txtRoofingPrice.resetFloatingLable()
+        self.txtDebrisRemoval.resetFloatingLable()
+        self.txtDebrisRemovalPrice.resetFloatingLable()
+        self.txtOverheadProfit.resetFloatingLable()
+        self.txtCodeUpgrades.resetFloatingLable()
+        self.txtHomeOwnerBA.resetFloatingLable()
+        self.txtHomeOwnerBB.resetFloatingLable()
+        self.txtAegcRepresentative.resetFloatingLable()
     }
+    
+    
     
     private func buildFieldsForm() {
+        txtCellPhone.delegate = self
         datePickerView.datePickerMode = .date
+        datePickerAEGCDate.datePickerMode = .date
+        datePickerHomeOwnerBADate.datePickerMode = .date
+        datePickerHomeOwnerBBDate.datePickerMode = .date
     }
     
-    //    func handelDatePicker()
-    //    {
-    //        let dateFormatter = DateFormatter()
-    //        dateTextView.text = dateFormatter.string(from: datePickerView.date)
-    //    }
-    //
     private func createPdfDocument(forFileName fileName: String) -> PDFDocument? {
         if let resourceUrl = URL(string: "https://c8szizga07.execute-api.us-east-1.amazonaws.com/default/delta") {
             return PDFDocument(url: resourceUrl)
@@ -331,73 +293,418 @@ class PlaceBidVC: BaseViewController {
     
     var arrOfImgStrings = [String]()
     
+    //    func fetchBidDetails() {
+    //        self.arrOfFilesFetchedFromServer.removeAll()
+    //        self.arrOfFilesManually.removeAll()
+    //        let params = ["id": self.bidId]
+    //        manageBidDetailViewModel.getManageBidsDetailApi(params) { model in
+    //            self.fillWithData(model: model)
+    //            //            self.projectImageWidth.constant = 0.0
+    //            //            if model?.data?.project_details?.project_files?.count ?? 0 > 0 {
+    //            //                self.projectImageWidth.constant = 65.0
+    //            //                self.imgInvitation.sd_setImage(with: URL(string: model?.data?.project_details?.project_files?[0].file ?? ""), placeholderImage: UIImage(named: "doc"), completed:nil)
+    //            //            } else {
+    //            //                self.projectImageWidth.constant = 0.0
+    //            //            }
+    //            self.lblTitle.text = model?.data?.project_details?.title ?? ""
+    //            //            self.lblDesc.text = model?.data?.project_details?.description ?? ""
+    //            self.arrOfImgStrings.removeAll()
+    //            self.txtFldBidAmount.text = "$ \(model?.data?.bidAmount ?? "0.0")"
+    //            self.txtFldamountReceivable.text = "$ \(model?.data?.amountRecievable ?? "0.0")"
+    //            self.txtStartDate.text = DateHelper.convertDateString(dateString: model?.data?.proposedStartDate ?? "", fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: "dd MMM yyyy")
+    //            self.txtEndDate.text = DateHelper.convertDateString(dateString: model?.data?.proposedEndDate ?? "", fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: "dd MMM yyyy")
+    //            self.txtVwDetail.text = model?.data?.description ?? ""
+    //
+    //            self.txtFldBidAmount.resetFloatingLable()
+    //            self.txtFldamountReceivable.resetFloatingLable()
+    //            self.txtStartDate.resetFloatingLable()
+    //            self.txtEndDate.resetFloatingLable()
+    //            self.setFloatingTextVw()
+    //
+    //            let userImgVw = UIImageView()
+    //            if model?.data?.bids_documents?.count ?? 0 > 0 {
+    //                self.fullViewImge.removeAll()
+    //                for i in 0 ..< (model?.data?.bids_documents!.count)! {
+    //                    self.arrOfImgStrings.append(model?.data?.bids_documents?[i].file ?? "")
+    //                    let fileStr = model?.data?.bids_documents?[i].file ?? ""
+    //                    self.fullViewImge.append(fileStr)
+    //                    self.imageNameArray.append("\(model?.data?.bids_documents?[i].title ?? "")")
+    //                    userImgVw.image = nil
+    //                    if fileStr.contains(".png") || fileStr.contains(".jpg") || fileStr.contains(".jpeg") {
+    //                        userImgVw.sd_setImage(with: URL(string: fileStr), placeholderImage: UIImage(named: "doc"), completed: nil)
+    //                        let imageStr = model?.data?.bids_documents?[i].file
+    //                        let strOfImage = imageStr?.replacingOccurrences(of: "https://transadvisor-dev.s3.amazonaws.com/bidUploads/", with: "")
+    //                        let dict = ["image": "\(strOfImage ?? "")", "name":model?.data?.bids_documents?[i].title]
+    //                        self.arrOfFiles.append(dict as [String : Any])
+    //                        let titleImage = model?.data?.bids_documents?[i].title ?? ""
+    //                        if titleImage.contains(".jpg") || titleImage.contains(".jpeg") || titleImage.contains(".png") {
+    //                            self.arrOfImagesNames.append("\(model?.data?.bids_documents?[i].title ?? "")")
+    //                        } else {
+    //                            self.arrOfImagesNames.append("\(model?.data?.bids_documents?[i].title ?? "").png")
+    //                        }
+    //                        self.arrOfImages.append(userImgVw.image!)
+    //                    } else {
+    //                        let imageStr = model?.data?.bids_documents?[i].file
+    //                        let strOfDoc = imageStr?.replacingOccurrences(of: "https://transadvisor-dev.s3.amazonaws.com/bidUploads/", with: "")
+    //                        let dict = ["image": "\(strOfDoc ?? "")", "name":model?.data?.bids_documents?[i].title]
+    //                        self.arrOfFiles.append(dict as [String : Any])
+    //                        let titleDoc = model?.data?.bids_documents?[i].title ?? ""
+    //                        if titleDoc.contains(".pdf") || titleDoc.contains(".doc") {
+    //                            self.arrOfImagesNames.append("\(model?.data?.bids_documents?[i].title ?? "")")
+    //                        } else {
+    //                            self.arrOfImagesNames.append("\(model?.data?.bids_documents?[i].title ?? "").doc")
+    //                        }
+    //                        self.arrOfImages.append(UIImage(named: "doc")!)
+    //                    }
+    //                }
+    //                self.arrOfFilesFetchedFromServer = self.arrOfFiles
+    //                self.bidFilesArray = model?.data?.bids_documents
+    //                self.collVwFiles.reloadData()
+    //            }
+    //        }
+    //    }
+    
     func fetchBidDetails() {
-        self.arrOfFilesFetchedFromServer.removeAll()
-        self.arrOfFilesManually.removeAll()
         let params = ["id": self.bidId]
-        manageBidDetailViewModel.getManageBidsDetailApi(params) { model in
-            //            self.projectImageWidth.constant = 0.0
-            //            if model?.data?.project_details?.project_files?.count ?? 0 > 0 {
-            //                self.projectImageWidth.constant = 65.0
-            //                self.imgInvitation.sd_setImage(with: URL(string: model?.data?.project_details?.project_files?[0].file ?? ""), placeholderImage: UIImage(named: "doc"), completed:nil)
-            //            } else {
-            //                self.projectImageWidth.constant = 0.0
-            //            }
+        manageBidDetailViewModel.getManageBidsDetailApiV2(params) { model in
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ"
+            let aegcDateString = dateFormatter.date(from: model?.data?.aegcRepresentativeDate ?? "")
+            let homeOwnerBADateString = dateFormatter.date(from: model?.data?.proposedStartDate ?? "")
+            let homeOwnerBBDateString = dateFormatter.date(from: model?.data?.proposedEndDate ?? "")
+            
+            
+            self.manageBids = model?.data
+            self.lblTopTitle.text = "Bid Details" //model?.data?.project_details?.title ?? ""
+            //self.bidStatus = model?.data?.bidStatus ?? 0
+            self.projectId = model?.data?.project_details?.id ?? 0
+            self.projectTitle = model?.data?.project_details?.title ?? ""
+            //self.btnRecallBid.isUserInteractionEnabled = true
+            
             self.lblTitle.text = model?.data?.project_details?.title ?? ""
-            //            self.lblDesc.text = model?.data?.project_details?.description ?? ""
-            self.arrOfImgStrings.removeAll()
-            self.txtFldBidAmount.text = "$ \(model?.data?.bidAmount ?? "0.0")"
-            self.txtFldamountReceivable.text = "$ \(model?.data?.amountRecievable ?? "0.0")"
-            self.txtStartDate.text = DateHelper.convertDateString(dateString: model?.data?.proposedStartDate ?? "", fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: "dd MMM yyyy")
-            self.txtEndDate.text = DateHelper.convertDateString(dateString: model?.data?.proposedEndDate ?? "", fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: "dd MMM yyyy")
-            self.txtVwDetail.text = model?.data?.description ?? ""
             
-            self.txtFldBidAmount.resetFloatingLable()
-            self.txtFldamountReceivable.resetFloatingLable()
-            self.txtStartDate.resetFloatingLable()
-            self.txtEndDate.resetFloatingLable()
-            self.setFloatingTextVw()
+            //self.lblDesc.text = model?.data?.description ?? ""
+            //self.addressLabel.text = "\(model?.data?.project_details?.addressLine1 ?? "" )"
+            //            if model?.data?.project_details?.addressLine1 ?? "" == model?.data?.project_details?.addressLine2 ?? "" {
+            //                self.addressLabel.text = "\(model?.data?.project_details?.addressLine2 ?? "" ), \(model?.data?.project_details?.zipCode ?? "")"
+            //            } else {
+            //                self.addressLabel.text = "\(model?.data?.project_details?.addressLine1 ?? "" ), \(model?.data?.project_details?.city ?? "" ), \(model?.data?.project_details?.state ?? ""), \(model?.data?.project_details?.zipCode ?? "")"
+            //            }
             
-            let userImgVw = UIImageView()
-            if model?.data?.bids_documents?.count ?? 0 > 0 {
-                self.fullViewImge.removeAll()
-                for i in 0 ..< (model?.data?.bids_documents!.count)! {
-                    self.arrOfImgStrings.append(model?.data?.bids_documents?[i].file ?? "")
-                    let fileStr = model?.data?.bids_documents?[i].file ?? ""
-                    self.fullViewImge.append(fileStr)
-                    self.imageNameArray.append("\(model?.data?.bids_documents?[i].title ?? "")")
-                    userImgVw.image = nil
-                    if fileStr.contains(".png") || fileStr.contains(".jpg") || fileStr.contains(".jpeg") {
-                        userImgVw.sd_setImage(with: URL(string: fileStr), placeholderImage: UIImage(named: "doc"), completed: nil)
-                        let imageStr = model?.data?.bids_documents?[i].file
-                        let strOfImage = imageStr?.replacingOccurrences(of: "https://transadvisor-dev.s3.amazonaws.com/bidUploads/", with: "")
-                        let dict = ["image": "\(strOfImage ?? "")", "name":model?.data?.bids_documents?[i].title]
-                        self.arrOfFiles.append(dict as [String : Any])
-                        let titleImage = model?.data?.bids_documents?[i].title ?? ""
-                        if titleImage.contains(".jpg") || titleImage.contains(".jpeg") || titleImage.contains(".png") {
-                            self.arrOfImagesNames.append("\(model?.data?.bids_documents?[i].title ?? "")")
-                        } else {
-                            self.arrOfImagesNames.append("\(model?.data?.bids_documents?[i].title ?? "").png")
-                        }
-                        self.arrOfImages.append(userImgVw.image!)
-                    } else {
-                        let imageStr = model?.data?.bids_documents?[i].file
-                        let strOfDoc = imageStr?.replacingOccurrences(of: "https://transadvisor-dev.s3.amazonaws.com/bidUploads/", with: "")
-                        let dict = ["image": "\(strOfDoc ?? "")", "name":model?.data?.bids_documents?[i].title]
-                        self.arrOfFiles.append(dict as [String : Any])
-                        let titleDoc = model?.data?.bids_documents?[i].title ?? ""
-                        if titleDoc.contains(".pdf") || titleDoc.contains(".doc") {
-                            self.arrOfImagesNames.append("\(model?.data?.bids_documents?[i].title ?? "")")
-                        } else {
-                            self.arrOfImagesNames.append("\(model?.data?.bids_documents?[i].title ?? "").doc")
-                        }
-                        self.arrOfImages.append(UIImage(named: "doc")!)
-                    }
-                }
-                self.arrOfFilesFetchedFromServer = self.arrOfFiles
-                self.bidFilesArray = model?.data?.bids_documents
-                self.collVwFiles.reloadData()
-            }
+            //self.projectTypeLabel.text = "\(model?.data?.project_details?.type ?? "" )"
+            //            for i in 0..<(model?.data?.project_details?.project_deliverable?.count ?? 0) {
+            //                self.diverableData.append("\(String(describing: model?.data?.project_details?.project_deliverable?[i].deliveralble ?? ""))")
+            //            }
+            //            var diverable = self.diverableData.map{String($0)}.joined(separator: ", ")
+            //            self.projectDeliverableLabel.text = "\(diverable)"
+            //            self.diverableData.removeAll()
+            //            self.lblAmount.text = "$ \(model?.data?.bidAmount ?? "")"
+            
+            var realAmount = "\(model?.data?.bidAmount ?? "")"
+            let formatter = NumberFormatter()
+            formatter.numberStyle = NumberFormatter.Style.decimal
+            
+            let amount = Double(realAmount)
+            let formattedString = formatter.string(for: amount)
+            self.txtFldBidAmount.text = "$ \(formattedString ?? "")"
+            
+            //self.startDatePicker.date.stringValue = model.data.proposedStartDate
+            //self.endDatePicker.date.stringValue = model?.data?.proposedEndDate
+            //self.lblNotableItems.text = model?.data?.description ?? ""
+            
+            //            if model?.data?.project_details?.projectType == 1 {
+            //                self.topLeftVw.backgroundColor = UIColor.appColorBlue
+            //                self.topLeftTitle.text = "Sub Task"
+            //                self.inviteTask = true
+            //                self.projectDeliverable.text = "Description"
+            //                self.projectDeliverableLabel.text = model?.data?.project_details?.taskDescription ?? ""
+            //                self.projectTypeLabel.text = model?.data?.project_details?.projectCategory?.title ?? ""
+            //            } else {
+            //                self.inviteTask = false
+            //                self.topLeftTitle.text = "Main Project"
+            //                self.topLeftVw.backgroundColor = UIColor.appBtnColorOrange
+            //                self.projectDeliverable.text = "Project deliverables"
+            //            }
+            
+            
+            //self.lblAcceptedStartEndDate.text = "\(DateHelper.convertDateString(dateString: model?.data?.proposedStartDate ?? "", fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: "dd MMM"))-\(DateHelper.convertDateString(dateString: model?.data?.proposedEndDate ?? "", fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: "dd MMM"))"
+            
+            //                self.lblAcceptedBidAmount.text = "$ \(model?.data?.bidAmount ?? "0.0")"
+            
+            //var realAmount = "\(model?.data?.bidAmount ?? "0.0")"
+            //let formatter = NumberFormatter()
+            //formatter.numberStyle = NumberFormatter.Style.decimal
+            
+            //let amount = Double(realAmount)
+            //let formattedString = formatter.string(for: amount)
+            //self.lblAcceptedBidAmount.text = "$ \(formattedString ?? "")"
+            
+            //self.imgHomeOwner.sd_setImage(with: URL(string: model?.data?.project_details?.user_ProjectDetail?.profilePic ?? ""), placeholderImage: UIImage(named: "ic_HO_profile"), completed:nil)
+            self.txtHomeOwner.text = "\(model?.data?.project_details?.user_ProjectDetail?.firstName ?? "")"
+            self.txtHomeOwnerB.text = "\(model?.data?.project_details?.user_ProjectDetail?.lastName ?? "" )"
+            self.txtStreetAddress.text = "\(model?.data?.project_details?.addressLine1 ?? "" )"
+            self.txtMailingAddress.text = "\(model?.data?.mailingAddress ?? "" )"
+            self.txtCellPhone.text = "\(model?.data?.cellPhone ?? "" )"
+            self.datePickerAEGCDate.setDate(aegcDateString ?? Date(), animated: false)
+            self.txtHomeOwnerBA.text = "\(model?.data?.homeOwner1 ?? "" )"
+            self.txtHomeOwnerBB.text = "\(model?.data?.homeOwner2 ?? "" )"
+            self.txtEmail.text = "\(model?.data?.email ?? "" )"
+            self.txtHOA.text = "\(model?.data?.hoa ?? "" )"
+            self.ckbPermit.isSelected = model?.data?.permit == 1
+            self.ckbCutInstallRidgVent.isSelected = model?.data?.cutInstallRidgeVent == 1
+            self.txtInsurance.text = "\(model?.data?.insurance ?? "" )"
+            self.txtClaimNumber.text = "\(model?.data?.claimNumber ?? "" )"
+            self.ckbInsFullyApproved.isSelected = model?.data?.insFullyApproved == 1
+            self.ckbInsPartialApproved.isSelected = model?.data?.insPartialApproved == 1
+            self.ckbRetail.isSelected = model?.data?.retail1 == 1
+            self.ckbRetailDepreciation.isSelected = model?.data?.retailDepreciation == 1
+            self.txtMainDwellingRoof.text = "\(model?.data?.mainDwellingRoofSQ ?? "")"
+            self.txtShed.text = "\(model?.data?.shedSQ ?? "")"
+            self.txtDecking.text = "\(model?.data?.decking ?? "")"
+            self.txtFlatRoof.text = "\(model?.data?.flatRoofSQ ?? "")"
+            self.txtTotal.text = "\(model?.data?.total ?? "")"
+            self.txtDeducible.text = "\(model?.data?.deducible ?? "")"
+            self.txtFe.text = "\(model?.data?.fe ?? "")"
+            self.txtRetail.text = "\(model?.data?.retail2 ?? "")"
+            self.ckbRetailDepreciation.isSelected = model?.data?.retailDepreciation == 1
+            //            var retailB: String = ""
+            self.txtBe.text = "\(model?.data?.be ?? "")"
+            self.txtBrand.text = "\(model?.data?.brand ?? "")"
+            self.txtStyle.text = "\(model?.data?.style ?? "")"
+            self.txtColor.text = "\(model?.data?.color1 ?? "")"
+            //self.ckbWhite.isSelected = model?.data?.white
+            //self.ckbBrown.isSelected = model?.data?.brown
+            //            var brown: String = ""
+            //self.txtAegcRepresentative.text = "\(model?.data?.aegcRepresentative ?? "")"
+            
+            
+            
+            //self.ckbIko.isSelected =
+            //            var iko: String = ""
+            //            var oc: String = ""
+            //            var ocB: String = ""
+            //            var gaf: String = ""
+            //            var airVent: String = ""
+            //            var cutInstallRidgeVent: Bool = false
+            //            var black: String = ""
+            //            var brownB: String = ""
+            //            var whiteB: String = ""
+            //            var copper: String = ""
+            //            var blackB: String = ""
+            //            var brownC: String = ""
+            //            var grey: String = ""
+            //            var whiteC: String = ""
+            //            self.ckbRemoveReplace.isSelected = model?.data?.removeReplace
+            //            var removeReplace: String = ""
+            //            var deatchReset: String = ""
+            //            var removeCoverHoles: String = ""
+            self.txtPermaBoot.text = "\(model?.data?.permaBoot123 ?? "")"
+            self.txtPermaBootB.text = "\(model?.data?.permaBoot34 ?? "")"
+            self.txtPipeJack.text = "\(model?.data?.pipeJack123 ?? "")"
+            self.txtPipeJackB.text = "\(model?.data?.pipeJack34 ?? "")"
+            self.txtColorB.text = "\(model?.data?.color2 ?? "")"
+            self.txtMaterialLocation.text = "\(model?.data?.materialLocation ?? "")"
+            self.txtDumpsterLocation.text = "\(model?.data?.dumpsterLocation ?? "")"
+            self.txtSpecialInstructions.text = "\(model?.data?.specialInstructions ?? "")"
+            self.txtNotes.text = "\(model?.data?.notes ?? "")"
+            self.txtRoofing.text = "\(model?.data?.roofing1 ?? "")"
+            self.txtRoofingPrice.text = "\(model?.data?.roofing2 ?? "")"
+            self.txtDebrisRemoval.text = "\(model?.data?.debrisRemoval1 ?? "")"
+            self.txtDebrisRemovalPrice.text = "\(model?.data?.debrisRemoval2 ?? "")"
+            self.txtOverheadProfit.text = "\(model?.data?.overheadProfit1 ?? "")"
+            self.txtOverheadProfitPrice.text = "\(model?.data?.overheadProfit2 ?? "")"
+            self.txtCodeUpgrades.text = "\(model?.data?.codeUpgrades ?? "")"
+            self.txtTotal.text = "\(model?.data?.total ?? "")"
+            self.ckbPaymentTermsDeductible.isSelected = model?.data?.paymentTerms1 == 1
+            self.ckbSatelliteDish.isSelected = model?.data?.satelliteDish == 1
+            self.ckbPaymentTermsFinance.isSelected = model?.data?.paymentTerms2 == 1
+            self.ckbAntenna.isSelected = model?.data?.antenna == 1
+            self.datePickerHomeOwnerBADate.setDate(homeOwnerBADateString ?? Date(), animated: false)
+            self.datePickerHomeOwnerBBDate.setDate(homeOwnerBBDateString ?? Date(), animated: false)
+            self.txtDetachedGarage.text = "\(model?.data?.detachedGarageSQ ?? "")"
+            
+            //checkbox
+            self.getCodeComboBoxTurtleVents(for: model?.data?.turtleVents ?? "")
+            self.getCodeComboBoxDripEdge(for: model?.data?.dripEdgeF55 ?? "")
+            self.getCodeComboBoxCounterFlashing(for: model?.data?.counterFlashing ?? "")
+            self.getCodeComboBoxUnderlayment(for: model?.data?.syntheticUnderlayment ?? "")
+            self.getCodeComboBoxRidgeVent(for: model?.data?.ridgeVent ?? "")
+            self.getCodeComboBoxChimneyFlashing(for: model?.data?.chimneyFlashing ?? "")
+            self.getCodeComboBoxSprayPaint(for: model?.data?.sprayPaint ?? "")
+            self.getCodeComboBoxAtticFan(for: model?.data?.atticFan ?? "")
+            
+            //self.txtAegcRepresentative.text = "\(model?.data?. ??")"
+            
+            //            var removeReplaceB: String = ""
+            //            var deatchResetB: String = ""
+            
+            //            var satelliteDish: Bool = false
+            //            var antenna: Bool = false
+            //            var detachOnly: String = ""
+            //            var detachDispose: String = ""
+            
+            //            var homeOwnerDate: String = ""
+            //            var homeOwnerBA: String = ""
+            //            var homeOwnerDateBA: String = ""
+            //            var aegcRepresentative: String = ""
+            //            var aegcRepresentativeBA: String = ""
+            
+            //self.lblStaticStartedOn.text! = "Notable Terms"
+            //self.lblStaticNotableItems.text! = "Started On"
+            //self.lblStaticEndsOnTwo.text! = "Ends On"
+            
+            //self.lblDateStart.text = model?.data?.description ?? ""
+            
+            //self.lblDateEndsOnTwo.text = DateHelper.convertDateString(dateString: model?.data?.proposedEndDate ?? "", fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: "dd MMM yyyy")
+            //self.lblNotableItems.text = DateHelper.convertDateString(dateString: model?.data?.proposedStartDate ?? "", fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: "dd MMM yyyy")
+            //self.arrProjectFiles = model?.data?.bids_documents ?? [BidsDocumentsDetails]()
+            //self.arrProjectUploadFiles = model?.data?.project_details?.project_files ?? [ProjectFiles]()
+            //var count = self.arrProjectFiles.count + self.arrProjectUploadFiles.count
+            //            if count == 0 || count == nil {
+            //                self.lblAttachedFiles.text = "Attached Files"
+            //            } else {
+            //                self.lblAttachedFiles.text = "Attached Files (\(count))"
+            //            }
+            //
+            //            if model?.data?.project_details?.project_files?.count ?? 0 > 0 {
+            //                self.lblAttachedFiles.isHidden = false
+            //            } else {
+            //                self.lblAttachedFiles.isHidden = false
+            //            }
+            //self.collectionVw.reloadData()
+            self.resetFloatingLabel()
+        }
+    }
+    
+    func getCodeComboBoxTurtleVents(for buttonValue: String) {
+        switch buttonValue {
+        case "Remove & Replace":
+            self.ckbRemoveReplace.isSelected = true
+        case "Detach & Reset":
+            self.ckbDetachReset.isSelected = true
+        case "Remove & Cover Holes":
+            self.ckbRemoveCoverHoles.isSelected = true
+        default:
+            self.ckbRemoveReplace.isSelected = false
+            self.ckbDetachReset.isSelected = false
+            self.ckbDetachReset.isSelected = false
+        }
+    }
+    
+    func getCodeComboBoxDripEdge(for buttonValue: String) {
+        switch buttonValue {
+        case "White":
+            self.ckbWhiteDripEdge.isSelected = true
+        case "Brown":
+            self.ckbBrown.isSelected = true
+        case "Almond":
+            self.ckbAlmond.isSelected = true
+        default:
+            self.ckbWhiteDripEdge.isSelected = false
+            self.ckbBrown.isSelected = false
+            self.ckbAlmond.isSelected = false
+        }
+    }
+    
+    func getCodeComboBoxCounterFlashing(for buttonValue: String) {
+        switch buttonValue {
+        case "Black":
+            self.ckbBlack.isSelected = true
+        case "Brown":
+            self.ckbBrownB.isSelected = true
+        default:
+            self.ckbBlack.isSelected = false
+            self.ckbBrownB.isSelected = false
+        }
+    }
+    
+    func getCodeComboBoxUnderlayment(for buttonValue: String) {
+        switch buttonValue {
+        case "AEGC":
+            self.ckbAegc.isSelected = true
+        case "IKO":
+            self.ckbIko.isSelected = true
+        case "OC":
+            self.ckbOc.isSelected = true
+        default:
+            self.ckbAegc.isSelected = false
+            self.ckbIko.isSelected = false
+            self.ckbOc.isSelected = false
+        }
+    }
+    
+    func getCodeComboBoxRidgeVent(for buttonValue: String) {
+        switch buttonValue {
+        case "OC":
+            self.ckbOCb.isSelected = true
+        case "GAF":
+            self.ckbGaf.isSelected = true
+        case "AIR VENT":
+            self.ckbAirVent.isSelected = true
+        default:
+            self.ckbOCb.isSelected = false
+            self.ckbGaf.isSelected = false
+            self.ckbAirVent.isSelected = false
+        }
+    }
+    
+    func getCodeComboBoxChimneyFlashing(for buttonValue: String) {
+        switch buttonValue {
+        case "Black":
+            self.ckbBlackB.isSelected = true
+        case "Brown":
+            self.ckbBrownC.isSelected = true
+        case "White":
+            self.ckbWhite.isSelected = true
+        case "Copper":
+            self.ckbCopper.isSelected = true
+        default:
+            self.ckbBlackB.isSelected = false
+            self.ckbBrownC.isSelected = false
+            self.ckbWhite.isSelected = false
+            self.ckbCopper.isSelected = false
+        }
+    }
+    
+    func getCodeComboBoxSprayPaint(for buttonValue: String) {
+        switch buttonValue {
+        case "Black":
+            self.ckbBlackC.isSelected = true
+        case "Brown":
+            self.ckbBrownD.isSelected = true
+        case "Grey":
+            self.ckbGrey.isSelected = true
+        case "White":
+            self.ckbWhiteB.isSelected = true
+        default:
+            self.ckbBlackC.isSelected = false
+            self.ckbBrownD.isSelected = false
+            self.ckbGrey.isSelected = false
+            self.ckbWhiteB.isSelected = false
+        }
+    }
+    
+    func getCodeComboBoxAtticFan(for buttonValue: String) {
+        switch buttonValue {
+        case "Remove & Replace":
+            self.ckbRemoveReplaceB.isSelected = true
+        case "Detach & Reset":
+            self.ckbDetachResetB.isSelected = true
+        default:
+            self.ckbRemoveReplaceB.isSelected = false
+            self.ckbDetachResetB.isSelected = false
+        }
+    }
+    
+    func getCodeComboBoxLightningRod(for buttonValue: String) {
+        switch buttonValue {
+        case "Detach Only":
+            self.ckbDetach.isSelected = true
+        case "Detach/Dispose":
+            self.ckbDetachDispose.isSelected = true
+        default:
+            self.ckbDetach.isSelected = false
+            self.ckbDetachDispose.isSelected = false
         }
     }
     
@@ -503,259 +810,253 @@ class PlaceBidVC: BaseViewController {
     
     func buildParams(date: String) -> [String : Any]{
         let model = placeBidViewModel.model
-        return ["projectId": "\(self.projectId)",
-                "date": date,
-                //"startDate": date,
-                //"endDate": date,
-                //"amount": 900,
-                
-                "homeOwner1":  model.homeOwnerFirst,
-                "homeOwner2": model.homeOwnerSecond,
-                "streetAddress": model.streetAddress,
-                "mailingAddress": model.mailingAddress,
-                "cellPhone": model.cellPhone,
-                "email": model.email,
-                "hoa": model.hoa,
-                "permit": model.permit,
-                "insurance": model.insurance,
-                "claimNumber": model.claimNeumber,
-                "insFullyApproved": model.insFullyApproved,
-                "insPartialApproved": model.insPartialApproved,
-                "retail1": model.retail,
-                "retailDepreciation": model.retailWDepreciation,
-                "mainDwellingRoofSQ": model.mainDwellingRoof,
-                "detachedGarageSQ": "",
-                "shedSQ": model.shedSQ,
-                "decking": model.decking,
-                "flatRoofSQ": model.flatRoofSQ,
-                "totalSQ": model.total,
-                "deducible": model.deducible,
-                "fe": model.fe,
-                "retail2": model.retailB,
-                "be": model.be,
-                "brand": model.brand,
-                "style": model.style,
-                "color1": model.color,
-                "dripEdgeF55": "",
-                "counterFlashing": "",
-                "syntheticUnderlayment": "",
-                "ridgeVent": model.airVent,
-                "cutInstallRidgeVent": model.cutInstallRidgeVent,
-                "chimneyFlashing": "",
-                "sprayPaint": "",
-                "turtleVents": "",
-                "permaBoot123": model.permaBoot,
-                "permaBoot34": model.permaBootB,
-                "pipeJack123": model.pipeJack,
-                "pipeJack34": model.pipeJackB,
-                "atticFan": "",
-                "color2": model.colorB,
-                "satelliteDish": model.satelliteDish,
-                "antenna": model.antenna,
-                "lightningRod": "",
-                "materialLocation": model.materialLocation,
-                "dumpsterLocation": model.dumpsterLocation,
-                "specialInstructions": model.specialInstructions,
-                "notes": model.notes,
-                "roofing1": model.roofing,
-                "roofing2": model.roofingPrice,
-                "debrisRemoval1": model.debrisRemoval,
-                "debrisRemoval2": model.debrisRemoval,
-                "overheadProfit1": model.overheadProfit,
-                "overheadProfit2": "",
-                "codeUpgrades": model.codeUpgrades,
-                "total": model.total,
-                "paymentTerms1": model.paymentTermsFinance,
-                "paymentTerms2": model.paymentTermsDeductible,
-                "homeOwnerSign1": model.homeOwner,
-                //"homeOwnerSignDate1": date,
-                "homeOwnerSign2": model.homeOwnerBA,
-                //"homeOwnerSignDate2": date,
-                //"aegcRepresentativeSign": model.aegcRepresentative,
-                //"aegcRepresentativeDate": model.aegcRepresentativeBA,
-                "homeOwnerInitial1": model.homeOwnerFirst,
-                "homeOwnerInitial2": model.homeOwnerSecond] as [String : Any]
+        let params = [
+                      "date": date,
+                      
+                      //"startDate": date,
+                      //"endDate": date,
+                      //"amount": amount,
+                      
+                      "homeOwner1":  model.homeOwnerFirst,
+                      "homeOwner2": model.homeOwnerSecond,
+                      "streetAddress": model.streetAddress,
+                      "mailingAddress": model.mailingAddress,
+                      "cellPhone": model.cellPhone,
+                      "email": model.email,
+                      "hoa": model.hoa,
+                      "permit": model.permit,
+                      "insurance": model.insurance,
+                      "claimNumber": model.claimNumber,
+                      "insFullyApproved": model.insFullyApproved,
+                      "insPartialApproved": model.insPartialApproved,
+                      "retail1": model.retail,
+                      "retailDepreciation": model.retailWDepreciation,
+                      "mainDwellingRoofSQ": model.mainDwellingRoof,
+                      "detachedGarageSQ": model.detachedGarageSQ,
+                      "shedSQ": model.shedSQ,
+                      "decking": model.decking,
+                      "flatRoofSQ": model.flatRoofSQ,
+                      "totalSQ": model.total,
+                      "deducible": model.deducible,
+                      "fe": model.fe,
+                      "retail2": model.retailB,
+                      "be": model.be,
+                      "brand": model.brand,
+                      "style": model.style,
+                      "color1": model.color,
+                      "dripEdgeF55": self.setDripEdgeF55(checkedWhite: self.ckbWhiteDripEdge.isSelected,
+                                                         checkedBrown: self.ckbBrown.isSelected,
+                                                         checkedAlmond: self.ckbAlmond.isSelected),
+                      "counterFlashing": self.setCounterFlashing(checkedBlack: self.ckbBlack.isSelected,
+                                                                 checkedBrown: self.ckbBrownB.isSelected),
+                      "syntheticUnderlayment": self.setSyntheticUnderlayment(checkedAegc: self.ckbAegc.isSelected,
+                                                                             checkedIko: self.ckbIko.isSelected,
+                                                                             checkedOc: self.ckbOc.isSelected),
+                      "ridgeVent": self.setRidgeVent(checkedOc: self.ckbOCb.isSelected,
+                                                     checkedGaf: self.ckbGaf.isSelected,
+                                                     checkedAirVent: self.ckbAirVent.isSelected),
+                      "cutInstallRidgeVent": model.cutInstallRidgeVent,
+                      "chimneyFlashing": self.setChimneyFlashing(checkedBlack: self.ckbBlackC.isSelected,
+                                                                 checkedBrown: self.ckbBrownB.isSelected,
+                                                                 checkedWhite: self.ckbWhite.isSelected,
+                                                                 checkedCopper: self.ckbCopper.isSelected),
+                      "sprayPaint": setSprayPaint(checkedBlack: self.ckbBlackC.isSelected,
+                                                  checkedBrown: self.ckbBlackC.isSelected,
+                                                  checkedWhite: self.ckbWhiteB.isSelected,
+                                                  checkedGrey: self.ckbGrey.isSelected),
+                      "turtleVents": setTurtleVents(checkedRemoveReplace: self.ckbRemoveReplace.isSelected, checkedDetachReset: self.ckbDetachReset.isSelected, checkedRemoveCoverHoles: ckbRemoveCoverHoles.isSelected),
+                      "permaBoot123": model.permaBoot,
+                      "permaBoot34": model.permaBootB,
+                      "pipeJack123": model.pipeJack,
+                      "pipeJack34": model.pipeJackB,
+                      "atticFan": setAtticFan(checkedRemoveReplace: self.ckbRemoveReplaceB.isSelected,
+                                              checkedDetachReset: self.ckbDetachResetB.isSelected),
+                      "color2": model.colorB,
+                      "satelliteDish": model.satelliteDish,
+                      "antenna": model.antenna,
+                      "lightningRod": setLightningRod(checkedDetachOnly: self.ckbDetach.isSelected,
+                                                      checkedDetachDispose: self.ckbDetachDispose.isSelected),
+                      "materialLocation": model.materialLocation,
+                      "dumpsterLocation": model.dumpsterLocation,
+                      "specialInstructions": model.specialInstructions,
+                      "notes": model.notes,
+                      "roofing1": model.roofing,
+                      "roofing2": model.roofingPrice,
+                      "debrisRemoval1": model.debrisRemoval,
+                      "debrisRemoval2": model.debrisRemovalPrice,
+                      "overheadProfit1": model.overheadProfit,
+                      "overheadProfit2": "",
+                      "codeUpgrades": model.codeUpgrades,
+                      "total": model.total,
+                      "paymentTerms1": model.paymentTermsFinance,
+                      "paymentTerms2": model.paymentTermsDeductible,
+                      "homeOwnerSign1": model.homeOwner,
+                      "homeOwnerSignDate1": model.dateHomeOwner1,
+                      "homeOwnerSign2": model.homeOwnerBA,
+                      "homeOwnerSignDate2": model.dateHomeOwner2,
+                      "aegcRepresentativeDate": model.dateAEGC,
+                      "ProjectFiles" : "",
+                      "homeOwnerInitial1": model.homeOwnerFirst,
+                      "homeOwnerInitial2": model.homeOwnerSecond] as [String : Any]
+        return addParamsID(params: params)
     }
+    
+    func addParamsID(params: [String: Any]) -> [String:Any] {
+        var param = params
+        if self.bidId == 0 {
+             param["projectId"] = "\(self.projectId)"
+        } else {
+            param["id"] = self.bidId
+        }
+        return param
+    }
+    
+    func setChimneyFlashing(checkedBlack: Bool, checkedBrown: Bool, checkedWhite: Bool, checkedCopper: Bool) -> String {
+        if checkedBlack {
+            return "Black"
+        } else if checkedBrown {
+            return "Brown"
+        } else if checkedWhite {
+            return "White"
+        } else if checkedCopper {
+            return "Copper"
+        }
+        return ""
+    }
+    
+    func setSprayPaint(checkedBlack: Bool, checkedBrown: Bool, checkedWhite: Bool, checkedGrey: Bool) -> String {
+        if checkedBlack {
+            return "Black"
+        } else if checkedBrown {
+            return "Brown"
+        } else if checkedWhite {
+            return "White"
+        } else if checkedGrey {
+            return "Grey"
+        }
+        return ""
+    }
+    
+    func setTurtleVents(checkedRemoveReplace: Bool, checkedDetachReset: Bool, checkedRemoveCoverHoles: Bool) -> String {
+        if checkedRemoveReplace {
+            return "Remove & Replace"
+        } else if checkedDetachReset {
+            return "Detach & Reset"
+        } else if checkedRemoveCoverHoles {
+            return "Remove & Cover Holes"
+        }
+        return ""
+    }
+    
+    func setDripEdgeF55(checkedWhite: Bool, checkedBrown: Bool, checkedAlmond: Bool) -> String {
+        if checkedWhite {
+            return "White"
+        } else if checkedBrown {
+            return "Brown"
+        } else if checkedAlmond {
+            return "Almond"
+        }
+        return ""
+    }
+    
+    func setRidgeVent(checkedOc: Bool,
+                      checkedGaf: Bool,
+                      checkedAirVent: Bool) -> String {
+        if checkedOc {
+            return "OC"
+        } else if checkedGaf {
+            return "GAF"
+        } else if checkedAirVent {
+            return "AIR VENT"
+        }
+        return ""
+    }
+    
+    func setCounterFlashing(checkedBlack: Bool,
+                       checkedBrown: Bool) -> String {
+        if checkedBlack {
+            return "Black"
+        } else if checkedBrown {
+            return "Brown"
+        }
+        return ""
+    }
+    
+    func setSyntheticUnderlayment(checkedAegc: Bool,
+                                  checkedIko: Bool,
+                                  checkedOc: Bool) -> String {
+        if checkedAegc {
+            return "AEGC"
+        } else if checkedIko {
+            return "IKO"
+        } else if checkedOc {
+            return "OC"
+        }
+        return ""
+    }
+    
+    
+    func setAtticFan(checkedRemoveReplace: Bool, checkedDetachReset: Bool) -> String {
+        if checkedRemoveReplace {
+            return "Remove & Replace"
+        } else if checkedDetachReset {
+            return "Detach & Reset"
+        }
+        return ""
+    }
+    
+    func setLightningRod(checkedDetachOnly: Bool,
+                         checkedDetachDispose: Bool) -> String {
+        if checkedDetachOnly {
+            return "Detach Only"
+        } else if checkedDetachDispose {
+            return "Detach/Dispose"
+        }
+        return ""
+    }
+    
     
     //MARK: ACTION SUBMIT
     @IBAction func actionSubmit(_ sender: Any) {
-//        let bidAmount2 = "$ \(model?.data?.bidAmount ?? "0.0")"
-//        let bidAmount3 = bidAmount2.replacingOccurrences(of: "$ ", with: "")
-//        let bidAmount = bidAmount3.replacingOccurrences(of: ",", with: "")
-        let formDate = datePickerView.date.stringValue
-        let dateFormatter = DateFormatter()
-        let requiredDateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMMM yyyy"
-        let formDateTime = dateFormatter.date(from: formDate)
-        requiredDateFormatter.dateFormat = "YYYY-MM-DD"
-        let stringDate = "2023-03-08"//requiredDateFormatter.string(from: formDateTime ?? Date())
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let stringDate = formatter.string(from: datePickerView.date)
+        let stringDateHomeOwnerA = formatter.string(from: datePickerHomeOwnerBADate.date)
+        let stringDateHomeOwnerB = formatter.string(from: datePickerHomeOwnerBBDate.date)
+        let stringDateAEGC = formatter.string(from: datePickerAEGCDate.date)
+        
         var mediaArrCount = 0
         if self.bidId == 0 {
             mediaArrCount = self.arrOfFiles.count
         } else {
             mediaArrCount = self.arrOfFilesManually.count + self.arrOfFiles.count
         }
-        let placeBidModel  = PlaceBidModel(homeOwnerFirst: txtHomeOwner.text ?? "",
-                                           homeOwnerSecond: txtHomeOwnerB.text ?? "",
-                                           streetAddress: txtStreetAddress.text ?? "",
-                                           mailingAddress: txtMailingAddress.text ?? "",
-                                           cellPhone: txtCellPhone.text ?? "",
-                                           email: txtEmail.text ?? "",
-                                           hoa: txtHOA.text ?? "",
-                                           permit: ckbPermit.isSelected,
-                                           insurance: txtInsurance.text ?? "",
-                                           claimNeumber: txtClaimNumber.text ?? "",
-                                           insFullyApproved: ckbInsFullyApproved.isSelected,
-                                           insPartialApproved: ckbInsPartialApproved.isSelected,
-                                           retail: ckbRetail.isSelected,
-                                           retailWDepreciation: ckbRetailDepreciation.isSelected,
-                                           mainDwellingRoof: txtMainDwellingRoof.text ?? "",
-                                           shedSQ: txtShed.text ?? "",
-                                           decking: txtDecking.text ?? "",
-                                           flatRoofSQ: txtFlatRoof.text ?? "",
-                                           total: txtTotal.text ?? "",
-                                           deducible: txtDeducible.text ?? "",
-                                           fe: txtFe.text  ?? "",
-                                           retailB: txtRetail.text ?? "",
-                                           be: txtBe.text  ?? "",
-                                           brand: txtBrand.text ?? "",
-                                           style: txtStyle.text ?? "",
-                                           color: txtColor.text ?? "",
-                                           white: String(ckbWhiteDripEdge.isSelected),
-                                           brown: String(ckbBrown.isSelected),
-                                           aegc: String(ckbAegc.isSelected),
-                                           iko: String(ckbIko.isSelected),
-                                           oc: String(ckbOc.isSelected),
-                                           ocB: String(ckbOCb.isSelected),
-                                           gaf: String(ckbGaf.isSelected),
-                                           airVent: String(ckbAirVent.isSelected),
-                                           cutInstallRidgeVent: ckbCutInstallRidgVent.isSelected,
-                                           black: String(ckbBlack.isSelected),
-                                           brownB: String(ckbBrownB.isSelected),
-                                           whiteB: String(ckbWhite.isSelected),
-                                           copper: String(ckbCopper.isSelected),
-                                           blackB: String(ckbBlackB.isSelected),
-                                           brownC: String(ckbBrownC.isSelected),
-                                           grey: String(ckbGrey.isSelected),
-                                           whiteC: String(ckbWhiteB.isSelected),
-                                           removeReplace: String(ckbRemoveReplace.isSelected),
-                                           deatchReset: String(ckbDetachReset.isSelected),
-                                           removeCoverHoles: String(ckbRemoveCoverHoles.isSelected),
-                                           permaBoot: txtPermaBoot.text ?? "",
-                                           permaBootB: txtPermaBootB.text ?? "",
-                                           pipeJack: txtPipeJack.text ?? "",
-                                           pipeJackB: txtPipeJackB.text ?? "",
-                                           removeReplaceB: String(ckbRemoveReplaceB.isSelected),
-                                           deatchResetB: String(ckbDetachResetB.isSelected),
-                                           colorB: txtColorB.text ?? "",
-                                           satelliteDish: ckbSatelliteDish.isSelected,
-                                           antenna: ckbAntenna.isSelected,
-                                           detachOnly: String(ckbDetach.isSelected),
-                                           detachDispose: String(ckbDetachDispose.isSelected),
-                                           materialLocation: txtMaterialLocation.text ?? "",
-                                           dumpsterLocation: txtDumpsterLocation.text ?? "",
-                                           specialInstructions: txtSpecialInstructions.text ?? "",
-                                           notes: txtNotes.text ?? "",
-                                           roofing: txtRoofing.text ?? "",
-                                           roofingPrice: txtRoofingPrice.text  ?? "",
-                                           debrisRemoval: txtDebrisRemoval.text ?? "",
-                                           overheadProfit: txtOverheadProfit.text ?? "",
-                                           codeUpgrades: txtCodeUpgrades.text ?? "",
-                                           paymentTermsDeductible: ckbPaymentTermsDeductible.isSelected,
-                                           paymantTermsFinance: ckbPaymentTermsFinance.isSelected,
-                                           homeOwner: txtHomeOwner.text ?? "",
-                                           homeOwnerDate: txtHomeOwnerBADate.text ?? "",
-                                           homeOwnerBA: txtHomeOwnerBB.text ?? "",
-                                           homeOwnerDateBA: txtHomeOwnerBBDate.text ?? "",
-                                           aegcRepresentative: txtAegcRepresentative.text ?? "",
-                                           aegcRepresentativeBA: txtAegcRepresentativeDate.text ?? "")
-        placeBidViewModel.model = placeBidModel
-        //placeBidViewModel.validatePlaceBidnModel {[weak self] (success, error) in
-        //    guard let strongSelf = self else { return }
-        //    if error == nil {
-        //                if self?.bidId == 0 {
         
-        placeBidViewModel.submitBidApi(self.buildParams(date: stringDate)) { response in
-            self.handleSuccessApi()
-        }
-        //                        } else {
-        //                            let params = ["projectId": "\(self?.projectId ?? 0)",
-        //                                          "date": stringDate,
-        //                                          "homeOwner1": txtHomeOwner.text ?? "",
-        //                                          "homeOwner2": txtHomeOwnerB.text ?? "",
-        //                                          "streetAddress": txtStreetAddress.text ?? "",
-        //                                          "mailingAddress": txtMailingAddress.text ?? "",
-        //                                          "cellPhone": txtCellPhone.text ?? "",
-        //                                          "email": txtEmail.text ?? "",
-        //                                          "hoa": txtHOA.text ?? "",
-        //                                          "permit": String(ckbPermit.isSelected),
-        //                                          "insurance": txtInsurance.text ?? "",
-        //                                          "claimNumber": txtClaimNumber.text ?? "",
-        //                                          "insFullyApproved": String(ckbInsFullyApproved.isSelected),
-        //                                          "insPartialApproved": String(ckbInsPartialApproved.isSelected),
-        //                                          "retail1": String(ckbRetail.isSelected),
-        //                                          "retailDepreciation": String(ckbRetailDepreciation.isSelected),
-        //                                          "mainDwellingRoofSQ": txtMainDwellingRoof.text ?? "",
-        //                                          "detachedGarageSQ": txtDetachedGarage.text ?? "",
-        //                                          "shedSQ": txtShed.text ?? "",
-        //                                          "decking": txtDecking.text ?? "",
-        //                                          "flatRoofSQ": txtFlatRoof.text ?? "",
-        //                                          "totalSQ": txtTotal.text ?? "",
-        //                                          "deducible": txtDeducible.text ?? "",
-        //                                          "fe": txtFe.text ?? "",
-        //                                          "retail2": txtRetail.text ?? "",
-        //                                          "be": txtBe.text ?? "",
-        //                                          "brand": txtBrand.text ?? "",
-        //                                          "style": txtStyle.text ?? "",
-        //                                          "color1": txtColorB.text ?? "",
-        //                                          "dripEdgeF55": String(ckbWhiteDripEdge.isSelected),
-        //                                          "counterFlashing": "",
-        //                                          "syntheticUnderlayment": "",
-        //                                          "ridgeVent": "\(ckbAirVent.isSelected)",
-        //                                          "cutInstallRidgeVent": "\(ckbCutInstallRidgVent.isSelected)",
-        //                                          "chimneyFlashing": "",
-        //                                          "sprayPaint": "",
-        //                                          "turtleVents": "",
-        //                                          "permaBoot123": txtPermaBoot.text ?? "",
-        //                                          "permaBoot34": txtPermaBootB.text ?? "",
-        //                                          "pipeJack123": txtPipeJack.text ?? "",
-        //                                          "pipeJack34": txtPipeJackB.text ?? "",
-        //                                          "atticFan": "",
-        //                                          "color2": "\(txtColorB.text)",
-        //                                          "satelliteDish": "\(ckbSatelliteDish.isSelected)",
-        //                                          "antenna": String(ckbAntenna.isSelected),
-        //                                          "lightningRod": "",
-        //                                          "materialLocation": txtMaterialLocation.text ?? "",
-        //                                          "dumpsterLocation": txtDumpsterLocation.text ?? "",
-        //                                          "specialInstructions": txtSpecialInstructions.text ?? "",
-        //                                          "notes": txtNotes.text ?? "",
-        //                                          "roofing1": txtRoofing.text ?? "",
-        //                                          "roofing2": txtRoofingPrice.text ?? "",
-        //                                          "debrisRemoval1": txtDebrisRemoval.text ?? "",
-        //                                          "debrisRemoval2": txtDebrisRemovalPrice.text ?? "",
-        //                                          "overheadProfit1": txtOverheadProfit.text ?? "",
-        //                                          "overheadProfit2": txtOverheadProfitPrice.text ?? "",
-        //                                          "codeUpgrades": txtCodeUpgrades.text ?? "",
-        //                                          "total": txtTotal.text ?? "",
-        //                                          "paymentTerms1": String(ckbPaymentTermsFinance.isSelected),
-        //                                          "paymentTerms2": String(ckbPaymentTermsDeductible.isSelected),
-        //                                          "homeOwnerSign1": txtHomeOwnerBA.text ?? "",
-        //                                          "homeOwnerSignDate1": txtHomeOwnerBADate.text ?? "",
-        //                                          "homeOwnerSign2": txtHomeOwnerBB.text ?? "",
-        //                                          "homeOwnerSignDate2": txtHomeOwnerBBDate.text ?? "",
-        //                                          "aegcRepresentativeSign": txtAegcRepresentative.text ?? "",
-        //                                          "aegcRepresentativeDate": txtAegcRepresentativeDate.text ?? "",
-        //                                          "homeOwnerInitial1": txtHomeOwner.text ?? "",
-        //                                          "homeOwnerInitial2": txtHomeOwnerB.text ?? ""] as [String : Any]
-        //                            placeBidViewModel.updateBidApi(params) { response in
-        //                                self?.handleSuccessApi()
-        //                            }
-        //                    }
-        //                    else {
-        //                        if let errorMsg = strongSelf.placeBidViewModel.error {
-        //                            showMessage(with: errorMsg)
-        //                        }
-        //                    }
+        let permit : Bool = ckbPermit.isSelected
+        
+        let placeBidModel  = PlaceBidModel(homeOwnerFirst: txtHomeOwner.text ?? "", homeOwnerSecond: txtHomeOwnerB.text ?? "", streetAddress: txtStreetAddress.text ?? "", mailingAddress: txtMailingAddress.text ?? "", cellPhone: txtCellPhone.text ?? "", email: txtEmail.text ?? "", hoa: txtHOA.text ?? "", permit: permit , insurance: txtInsurance.text ?? "", claimNumber: txtClaimNumber.text ?? "", insFullyApproved: ckbInsFullyApproved.isSelected, insPartialApproved: ckbInsPartialApproved.isSelected, retail: ckbRetail.isSelected, retailWDepreciation: ckbRetailDepreciation.isSelected, mainDwellingRoof: txtMainDwellingRoof.text ?? "", shedSQ: txtShed.text ?? "", decking: txtDecking.text ?? "", flatRoofSQ: txtFlatRoof.text ?? "", total: txtTotal.text ?? "", deducible: txtDeducible.text ?? "", fe: txtFe.text  ?? "", retailB: txtRetail.text ?? "", be: txtBe.text  ?? "", brand: txtBrand.text ?? "", style: txtStyle.text ?? "", color: txtColor.text ?? "", white: String(ckbWhiteDripEdge.isSelected), brown: String(ckbBrown.isSelected), aegc: String(ckbAegc.isSelected), iko: String(ckbIko.isSelected), oc: String(ckbOc.isSelected), ocB: String(ckbOCb.isSelected), gaf: String(ckbGaf.isSelected), airVent: String(ckbAirVent.isSelected), cutInstallRidgeVent: ckbCutInstallRidgVent.isSelected, black: String(ckbBlack.isSelected), brownB: String(ckbBrownB.isSelected), whiteB: String(ckbWhite.isSelected), copper: String(ckbCopper.isSelected), blackB: String(ckbBlackB.isSelected), brownC: String(ckbBrownC.isSelected), grey: String(ckbGrey.isSelected), whiteC: String(ckbWhiteB.isSelected), removeReplace: String(ckbRemoveReplace.isSelected), deatchReset: String(ckbDetachReset.isSelected), removeCoverHoles: String(ckbRemoveCoverHoles.isSelected), permaBoot: txtPermaBoot.text ?? "", permaBootB: txtPermaBootB.text ?? "", pipeJack: txtPipeJack.text ?? "", pipeJackB: txtPipeJackB.text ?? "", removeReplaceB: String(ckbRemoveReplaceB.isSelected), deatchResetB: String(ckbDetachResetB.isSelected), colorB: txtColorB.text ?? "", satelliteDish: ckbSatelliteDish.isSelected, antenna: ckbAntenna.isSelected, detachOnly: String(ckbDetach.isSelected), detachDispose: String(ckbDetachDispose.isSelected), materialLocation: txtMaterialLocation.text ?? "", dumpsterLocation: txtDumpsterLocation.text ?? "", specialInstructions: txtSpecialInstructions.text ?? "", notes: txtNotes.text ?? "", roofing: txtRoofing.text ?? "", roofingPrice: txtRoofingPrice.text  ?? "", debrisRemoval: txtDebrisRemoval.text ?? "", debrisRemovalPrice : txtDebrisRemovalPrice.text ?? "", overheadProfit: txtOverheadProfit.text ?? "", codeUpgrades: txtCodeUpgrades.text ?? "", paymentTermsDeductible: ckbPaymentTermsDeductible.isSelected, paymantTermsFinance: ckbPaymentTermsFinance.isSelected, homeOwner: txtHomeOwner.text ?? "", homeOwnerDate: stringDateHomeOwnerA, homeOwnerBA: txtHomeOwnerBA.text ?? "", homeOwnerDateBA: txtHomeOwnerBB.text ?? "", aegcRepresentative: txtAegcRepresentative.text ?? "", aegcRepresentativeBA: "", dateHomeOwner1: stringDateHomeOwnerA, dateHomeOwner2: stringDateHomeOwnerB, dateAEGC: stringDateAEGC, detachedGarageSQ: txtDetachedGarage.text ?? "")
+        placeBidViewModel.model = placeBidModel
+//        placeBidViewModel.validatePlaceBidnModel {[weak self] (success, error) in
+//            guard let strongSelf = self else { return }
+//            if error == nil {
+                if self.bidId == 0 {
+                    placeBidViewModel.submitBidApi(self.buildParams(date: stringDate)) { response in
+                        self.handleSuccessApi()
+                    }
+                } else {
+                    placeBidViewModel.updateBidApi(self.buildParams(date: stringDate)) { response in
+                        self.handleSuccessApi()
+                    }
+                }
+//            } else {
+//                let alertController: UIAlertController = UIAlertController(title: "Error", message: "\(String(describing: error))", preferredStyle: .alert)
+//                let okAction = UIAlertAction(title: "OK", style: .default) { (_) -> Void in
+//                }
+//
+//                alertController.addAction(okAction)
+//                self!.present(alertController, animated: true, completion: nil)
+//            }
+//        }
     }
     
     func handleSuccessApi() {
@@ -846,11 +1147,19 @@ extension PlaceBidVC {
 }
 
 extension PlaceBidVC: UITextFieldDelegate {
-    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField == txtStartDate ||  textField == txtEndDate{
             return false
-        } else if textField == txtFldBidAmount {
+        } else if textField == txtCellPhone {
+            if string.count > 0 {
+                self.txtCellPhone.resetFloatingLable()
+            }
+            guard let text = textField.text else { return false }
+            let newString = (text as NSString).replacingCharacters(in: range, with: string)
+            textField.text = textField.format(with: "(XXX)-XXX-XXXX", phone: newString)
+            return false
+        }
+        else if textField == txtFldBidAmount {
             if (textField.text?.isEmpty ?? true), string == "0" {
                 return false
             } else if textField.text?.count ?? 0 > 9 && !string.isEmpty {
@@ -923,15 +1232,12 @@ extension PlaceBidVC: UITextFieldDelegate {
                 if let bidAmntStr = bidAmount {
                     let bidAmnt = Double(bidAmntStr) ?? Double(0.0)
                     let receiveableAmount = (Double(90.0) * bidAmnt) / Double(100.0)
-                    
-                    var realAmount = "\(receiveableAmount)"
+                    let realAmount = "\(receiveableAmount)"
                     let formatter = NumberFormatter()
                     formatter.numberStyle = NumberFormatter.Style.decimal
-                    
                     let amount = Double(realAmount)
                     let formattedString = formatter.string(for: amount)
                     //                    lblAMount.text =  "$ \(formattedString ?? "")"
-                    
                     self.txtFldamountReceivable.text = "$ \(formattedString ?? "")"
                     self.txtFldamountReceivable.resetFloatingLable()
                 }
@@ -995,13 +1301,6 @@ extension PlaceBidVC: UICollectionViewDelegate, UICollectionViewDataSource {
         }
     }
     
-    //    @objc func deleteFile(sender: UIButton) {
-    //        self.arrOfFiles.remove(at: sender.tag)
-    //        self.arrOfImages.remove(at: sender.tag)
-    //        self.arrOfImagesNames.remove(at: sender.tag)
-    //        self.collVwFiles.reloadData()
-    //    }
-    
     @objc func deleteFile(sender: UIButton) {
         if self.bidId != 0 {
             if self.arrOfFilesFetchedFromServer.count > 0 {
@@ -1036,16 +1335,13 @@ extension PlaceBidVC: UICollectionViewDelegate, UICollectionViewDataSource {
             self.handleManualDeleteFile(indexOfFile: indexOfFile)
         }
     }
-    
 }
 
 //MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
 extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     private func handleCameraOptions() {
-        
         self.view.endEditing(true)
-        
         let actionSheetController: UIAlertController = UIAlertController(title: UIFunction.getLocalizationString(text: "Project File"), message: nil, preferredStyle: .actionSheet)
         
         let actionCamera: UIAlertAction = UIAlertAction(title: UIFunction.getLocalizationString(text: "Take photo"), style: .default) { action -> Void in
@@ -1308,7 +1604,6 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
     }
 }
 
-
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
     return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
@@ -1341,67 +1636,8 @@ extension PlaceBidVC: UIDocumentPickerDelegate {
     }
 }
 
-extension PlaceBidVC {
-    func openUrlWebview(url: String){
-        let configuration = WKWebViewConfiguration()
-        
-        let script = WKUserScript(
-            source: "window.localStorage.clear();",
-            injectionTime: .atDocumentStart,
-            forMainFrameOnly: true
-        )
-        configuration.userContentController.addUserScript(script)
-        
-        let localStorageData: [String: Any] = [
-            "session": "1675918359863",
-            "rememberme": 1,
-            "access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDI5LCJlbWFpbCI6InZhbmVzc2EucGluYUBzd2VsbGl0c29sdXRpb25zLmNvbS5iciIsInR5cGUiOiJDTyIsImRldmljZVRva2VuIjoiTk9UT0tFTiIsImRldmljZVR5cGUiOiJXRUIiLCJkZXZpY2VJZGVudGlmaWVyIjoiMjY5ODEyIiwiaWF0IjoxNjc1OTE0NTM0fQ.SmgXWH9TodsK1wbkd89a47rzERmliW5M2xCA-dsKDew",
-            "isLoggedIn":"true",
-            "loggedInUserId":"429",
-            "userProfileStatus": "CO",
-            "profileRoute": "/contractors/invitations/place-bids"
-        ]
-        
-        if JSONSerialization.isValidJSONObject(localStorageData),
-           let data = try? JSONSerialization.data(withJSONObject: localStorageData, options: []),
-           let value = String(data: data, encoding: .utf8) {
-            let script = WKUserScript(
-                source: "Object.assign(window.localStorage, \(value));",
-                injectionTime: .atDocumentStart,
-                forMainFrameOnly: true
-            )
-            
-            configuration.userContentController.addUserScript(script)
-        }
-        
-        let cgRectWK = CGRect(x: .zero, y: .zero, width: self.view.frame.width, height: self.view.frame.height-180)
-        
-        wkWeb = WKWebView(frame: cgRectWK, configuration: configuration)
-        wkWeb.navigationDelegate = self
-        wkWeb.uiDelegate = self
-        let myURL = URL(string: url)
-        let myRequest = URLRequest(url: myURL!)
-        wkWeb.load(myRequest)
-        wkWeb.navigationDelegate = self
-        viewPDF.addSubview(wkWeb)
-    }
-    
-    func createCookies(host: String, parameters: [String: Any]) -> [HTTPCookie] {
-        parameters.compactMap { (name, value) in
-            HTTPCookie(properties: [
-                .domain: host,
-                .path: "/",
-                .name: name,
-                .value: "\(value)",
-                .secure: "TRUE",
-                .expires: Date(timeIntervalSinceNow: 31556952),
-            ])
-        }
-    }
-}
-
 extension PlaceBidVC: WKNavigationDelegate, WKUIDelegate {
-
+    
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         let script = "localStorage.getItem(\"access_token\")"
         let scriptDiv = "document.getElementsByClassName('ng-star-inserted')[0].style.visibility = 'hidden';"
@@ -1418,16 +1654,4 @@ extension PlaceBidVC: WKNavigationDelegate, WKUIDelegate {
             print("token = \(token)")
         }
     }
-
-    //    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-    //        let req = NSMutableURLRequest(url: navigationAction.request.url!)
-    //
-    //        for cookie in cookiesWKwebview {
-    //            webView.configuration.websiteDataStore.httpCookieStore.setCookie(cookie)
-    //            let values = HTTPCookie.requestHeaderFields(with: cookiesWKwebview)
-    //            req.allHTTPHeaderFields = values
-    //            decisionHandler(.allow)
-    //            webView.load(req as URLRequest)
-    //        }
-    //    }
 }

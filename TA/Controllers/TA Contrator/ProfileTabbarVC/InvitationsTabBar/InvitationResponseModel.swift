@@ -90,6 +90,12 @@ struct ManageBidDetailResponseModel : Codable {
     var data : ManageBidsResponseDetails?
 }
 
+struct ManageBidDetailResponseModelV2 : Codable {
+    var message : String?
+    var statusCode : Int?
+    var data : ManageBidsResponseDetailsV2?
+}
+
 struct ManageBidsResponseModel : Codable {
     var message : String?
     var statusCode : Int?
@@ -116,6 +122,104 @@ struct ManageBidsResponseDetails : Codable {
     var updatedAt : String?
     var user : ManageBidUser?
     
+}
+
+struct ManageBidsResponseDetailsV2 : Codable {
+    var amountCurrency : String?
+    var amountRecievable : String?
+    var bidAmount : String?
+    var bidStatus : Int?
+    var bids_documents : [BidsDocumentsDetails]?
+    var project_agreement : [ProjectAgreementDetails]?
+    
+    var createdAt : String?
+    var description : String?
+    var id : Int?
+    var isBlocked : Int?
+    var isDeleted : Int?
+    var projectId : Int?
+    var project_details : ProjectDetails?
+    var cellPhone : String?
+    var aegcRepresentativeDate : String?
+    //var aegcRepresentative: String
+    var antenna : Int?
+    
+    var homeOwner1: String?
+    var homeOwner2: String?
+    var streetAddress: String?
+    var mailingAddress: String?
+    var email: String?
+    var hoa: String?
+    var permit: Int?
+    var insurance: String?
+    var claimNumber: String?
+    var insFullyApproved: Int?
+    var insPartialApproved: Int?
+    var retail1: Int?
+    var retailDepreciation: Int?
+    var mainDwellingRoofSQ: String?
+    var shedSQ: String?
+    var decking: String?
+    var flatRoofSQ: String?
+    var totalSQ: String?
+    var total: String?
+    var deducible: String?
+    var fe: String?
+    var retail2: String?
+    var be: String?
+    var brand: String?
+    var style: String?
+    var color1: String?
+    var white: String?
+    var brown: String?
+    var aegc: String?
+    var gaf: String?
+    var ridgeVent: String?
+    var cutInstallRidgeVent: Int?
+    var black: String?
+    var brownB: String?
+    var whiteB: String?
+    var copper: String?
+    var blackB: String?
+    var brownC: String?
+    var grey: String?
+    var whiteC: String?
+    var removeReplace: String?
+    var deatchReset: String?
+    var removeCoverHoles: String?
+    var permaBoot123: String?
+    var permaBoot34: String?
+    var pipeJack123: String?
+    var pipeJack34: String?
+    var color2: String?
+    var satelliteDish: Int?
+    var detachOnly: String?
+    var lightningRod: String?
+    var materialLocation: String?
+    var dumpsterLocation: String?
+    var specialInstructions: String?
+    var notes: String?
+    var roofing1: String?
+    var roofing2: String?
+    var debrisRemoval1: String?
+    var debrisRemoval2: String?
+    var overheadProfit1: String?
+    var overheadProfit2: String?
+    var codeUpgrades: String?
+    var paymentTerms1: Int?
+    var paymentTerms2: Int?
+    var proposedEndDate : String?
+    var proposedStartDate : String?
+    var updatedAt : String?
+    var turtleVents : String?
+    var dripEdgeF55 : String?
+    var counterFlashing : String?
+    var syntheticUnderlayment : String?
+    var user : ManageBidUser?
+    var chimneyFlashing : String?
+    var sprayPaint : String?
+    var atticFan : String?
+    var detachedGarageSQ : String?
 }
 
 struct ProjectAgreementDetails : Codable {

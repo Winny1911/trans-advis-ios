@@ -968,10 +968,10 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place Bid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8u5-yu-5D7">
-                                        <rect key="frame" x="169.66666666666666" y="54.666666666666664" width="74.666666666666657" height="22.666666666666664"/>
+                                        <rect key="frame" x="82" y="54.666666666666664" width="250" height="22.666666666666664"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22.670000000000002" id="cP0-QE-mef"/>
-                                            <constraint firstAttribute="width" constant="74.670000000000002" id="iee-dx-jBE"/>
+                                            <constraint firstAttribute="width" constant="250" id="iee-dx-jBE"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="16"/>
                                         <color key="textColor" name="#484848"/>
@@ -1229,78 +1229,6 @@
                                         <exclude reference="8Yd-db-9Fg"/>
                                     </mask>
                                 </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IG5-SP-mY2">
-                                <rect key="frame" x="0.0" y="88" width="414" height="648"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ug4-mx-a74">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="648"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <wkWebViewConfiguration key="configuration">
-                                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                            <wkPreferences key="preferences"/>
-                                        </wkWebViewConfiguration>
-                                    </wkWebView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <variation key="default">
-                                    <mask key="subviews">
-                                        <exclude reference="Ug4-mx-a74"/>
-                                    </mask>
-                                </variation>
-                            </view>
-                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z2W-eT-Vya">
-                                <rect key="frame" x="0.0" y="-36.666666666666686" width="414" height="809.33333333333348"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gqu-qy-1ld">
-                                        <rect key="frame" x="0.0" y="-1" width="414" height="809.33333333333337"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <connections>
-                                            <action selector="actionHideSuccessfulView:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="xRn-91-FAO"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MyL-3p-gG4">
-                                <rect key="frame" x="16" y="244" width="382" height="248.33333333333337"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="ic_successful" translatesAutoresizingMaskIntoConstraints="NO" id="jis-ME-yxc">
-                                        <rect key="frame" x="151" y="22" width="80" height="80"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="82V-R5-AYa"/>
-                                            <constraint firstAttribute="width" secondItem="jis-ME-yxc" secondAttribute="height" multiplier="1:1" id="Mzk-8T-uqz"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Bid Placed Successfully" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kp-QS-3pM">
-                                        <rect key="frame" x="82.666666666666686" y="119" width="217" height="23"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="23" id="sMD-k3-Rqw"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="18"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Congratulations! You have successfully placed your bid and all the details have been saved." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="puE-KI-pDq">
-                                        <rect key="frame" x="24" y="153" width="334" height="67.333333333333314"/>
-                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="1kp-QS-3pM" firstAttribute="centerX" secondItem="jis-ME-yxc" secondAttribute="centerX" id="5fQ-pP-lY4"/>
-                                    <constraint firstItem="puE-KI-pDq" firstAttribute="top" secondItem="1kp-QS-3pM" secondAttribute="bottom" constant="11" id="hSg-WF-XdK"/>
-                                    <constraint firstItem="1kp-QS-3pM" firstAttribute="top" secondItem="jis-ME-yxc" secondAttribute="bottom" constant="17" id="yJO-EH-8lW"/>
-                                </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dol-HU-dTz">
                                 <rect key="frame" x="0.0" y="155" width="414" height="5515"/>
@@ -1596,7 +1524,7 @@ Cg
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="HOA" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K22-wC-R1j" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="21" y="8" width="371" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                        <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Permit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0TN-wT-Z2I">
                                                         <rect key="frame" x="21" y="55" width="50" height="21"/>
@@ -1649,12 +1577,12 @@ Cg
                                                     <textField opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Claim Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5ld-JP-Xh9" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="20" y="48" width="373" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Insurance" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zvp-WH-cV6" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="20" y="8" width="373" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                        <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1824,17 +1752,17 @@ Cg
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Main Dwelling Roof - SQ" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zjJ-VV-Ap3" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="18" y="8" width="379" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Shed - SQ" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DJh-xj-K9t" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="18" y="92" width="379" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Detached Garage - SQ" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3ZY-fz-sv8" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="18" y="50" width="379" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1857,17 +1785,17 @@ Cg
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Decking" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sgs-sD-PNb" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="18" y="8" width="379" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Flat Roof - SQ" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XNe-Gf-OiE" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="18" y="50" width="379" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Total" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xoO-2d-fxe" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="18" y="92" width="379" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1890,22 +1818,22 @@ Cg
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Deducible" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nAH-ch-OE6" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="18" y="8" width="379" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="FE" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lvi-WO-Vwy" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="18" y="50" width="379" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Retail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0tR-or-ekv" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="18" y="92" width="379" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="BE" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iOX-x8-gLt" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="18" y="134" width="379" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1949,17 +1877,17 @@ Cg
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Brand" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WTS-9v-wId" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="17" y="8" width="381" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Color" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="waa-MN-q9P" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="17" y="96" width="381" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Style" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SdD-Ki-DyM" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="17" y="52" width="381" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2125,6 +2053,9 @@ Cg
                                                                 <real key="value" value="1"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="checkMarkTapped:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="P8e-lD-KMp"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zKs-Dz-Nbv">
                                                         <rect key="frame" x="364" y="200" width="30" height="30"/>
@@ -2881,23 +2812,23 @@ Cg
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Perma Boot: 1/2&quot; - 3&quot;" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O1v-6C-S43" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="17" y="8" width="381" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pipe Jack 1/2&quot; - 3&quot;" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YtQ-XI-6OK" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="17" y="96" width="381" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="3&quot; - 4&quot;" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MYx-ry-yN6" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="17" y="140" width="381" height="34"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits" textContentType="name"/>
                                                     </textField>
                                                     <textField opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="3&quot; - 4&quot;" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k5e-ap-CBT" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="17" y="52" width="381" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -3178,12 +3109,12 @@ Cg
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Material Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hnl-lm-9b7" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="17" y="8" width="381" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits" textContentType="name"/>
                                                     </textField>
                                                     <textField opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Dumpster Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dJH-jv-PVb" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="17" y="52" width="381" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits" textContentType="name"/>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -3203,12 +3134,12 @@ Cg
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Special Instructions" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TKJ-dH-e8G" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="17" y="8" width="381" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Notes" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sIR-w0-WNy" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="17" y="52" width="381" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -3272,7 +3203,7 @@ Cg
                                                             <constraint firstAttribute="width" constant="140" id="WTW-Dc-g9u"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="name"/>
                                                     </textField>
                                                     <textField opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Overhead &amp; Profit" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qnr-E8-NIL" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="17" y="140" width="140" height="34"/>
@@ -3280,7 +3211,7 @@ Cg
                                                             <constraint firstAttribute="width" constant="140" id="dU5-V0-5cA"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="name"/>
                                                     </textField>
                                                     <textField opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Code Upgrades" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wXK-jH-rrP" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="17" y="185" width="140" height="34"/>
@@ -3288,7 +3219,7 @@ Cg
                                                             <constraint firstAttribute="width" constant="140" id="5CF-7b-3ay"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="name"/>
                                                     </textField>
                                                     <textField opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Debris Removal" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0FI-aD-IaA" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="17" y="94" width="140" height="34"/>
@@ -3296,7 +3227,7 @@ Cg
                                                             <constraint firstAttribute="width" constant="140" id="cBk-FC-LSt"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="name"/>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The following items make up the agreed scope of work:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOP-M2-qME">
                                                         <rect key="frame" x="17" y="8" width="372" height="33.666666666666664"/>
@@ -3323,7 +3254,7 @@ Cg
                                                             <constraint firstAttribute="width" constant="140" id="ZLL-DI-gQF"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                     </textField>
                                                     <textField opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7It-nP-5on" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="257" y="139" width="140" height="34"/>
@@ -3331,7 +3262,7 @@ Cg
                                                             <constraint firstAttribute="width" constant="140" id="gAM-6u-9tn"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                     </textField>
                                                     <textField opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G0S-R5-9YX" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="257" y="184" width="140" height="34"/>
@@ -3339,7 +3270,7 @@ Cg
                                                             <constraint firstAttribute="width" constant="140" id="rVP-6L-4kr"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                     </textField>
                                                     <textField opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xe6-lF-WKl" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="257" y="93" width="140" height="34"/>
@@ -3347,7 +3278,7 @@ Cg
                                                             <constraint firstAttribute="width" constant="140" id="bk9-AX-cNb"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -3596,7 +3527,7 @@ Name Printed</string>
                                                             <constraint firstAttribute="height" constant="34" id="zBb-A9-mc8"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits" textContentType="name"/>
                                                     </textField>
                                                     <textField opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="AEGC Representative" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TR7-71-e3w" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="17" y="100" width="180" height="34"/>
@@ -3604,7 +3535,7 @@ Name Printed</string>
                                                             <constraint firstAttribute="width" constant="180" id="elO-W0-pme"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits" textContentType="name"/>
                                                     </textField>
                                                     <textField opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Home Owner" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c8S-db-jR2" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
                                                         <rect key="frame" x="17" y="54" width="180" height="34"/>
@@ -3612,32 +3543,7 @@ Name Printed</string>
                                                             <constraint firstAttribute="width" constant="180" id="lMe-iF-F2Z"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
-                                                    </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NyS-4V-iGI" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
-                                                        <rect key="frame" x="257" y="9" width="140" height="34"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="34" id="89g-Nz-XgX"/>
-                                                            <constraint firstAttribute="width" constant="140" id="vjz-81-alf"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
-                                                    </textField>
-                                                    <textField opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KxT-F6-S0Z" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
-                                                        <rect key="frame" x="257" y="99" width="140" height="34"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="140" id="O1V-Kd-qYs"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
-                                                    </textField>
-                                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IbU-dM-RNy" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
-                                                        <rect key="frame" x="257" y="53" width="140" height="34"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="140" id="3ny-My-9UW"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                        <textInputTraits key="textInputTraits" textContentType="name"/>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Printed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yp-py-Asd">
                                                         <rect key="frame" x="172" y="136" width="70" height="18"/>
@@ -3649,24 +3555,46 @@ Name Printed</string>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="pKW-Yj-Oib">
+                                                        <rect key="frame" x="204" y="13" width="193" height="28"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="193" id="Xst-hQ-mR5"/>
+                                                            <constraint firstAttribute="height" constant="28" id="h3G-AR-haU"/>
+                                                        </constraints>
+                                                    </datePicker>
+                                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="HoW-kA-2Y9">
+                                                        <rect key="frame" x="204" y="57" width="193" height="28"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="193" id="2K1-8L-3rh"/>
+                                                            <constraint firstAttribute="height" constant="28" id="Ksh-65-gY4"/>
+                                                        </constraints>
+                                                    </datePicker>
+                                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="yIl-X4-ECg">
+                                                        <rect key="frame" x="204" y="103" width="193" height="28"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="28" id="7AW-Bm-9q0"/>
+                                                            <constraint firstAttribute="width" constant="193" id="bEN-7a-rzy"/>
+                                                        </constraints>
+                                                    </datePicker>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstItem="y9h-hm-9cH" firstAttribute="top" secondItem="oxw-vW-RZr" secondAttribute="top" constant="10" id="2Bj-0f-gtd"/>
-                                                    <constraint firstItem="NyS-4V-iGI" firstAttribute="top" secondItem="oxw-vW-RZr" secondAttribute="top" constant="9" id="3nX-4B-Tcu"/>
-                                                    <constraint firstItem="IbU-dM-RNy" firstAttribute="top" secondItem="NyS-4V-iGI" secondAttribute="bottom" constant="10" id="DpQ-s1-3gk"/>
+                                                    <constraint firstItem="yIl-X4-ECg" firstAttribute="top" secondItem="HoW-kA-2Y9" secondAttribute="bottom" constant="18" id="5Dn-Q1-F4q"/>
                                                     <constraint firstItem="TR7-71-e3w" firstAttribute="leading" secondItem="oxw-vW-RZr" secondAttribute="leading" constant="17" id="I6U-0U-ADi"/>
+                                                    <constraint firstItem="HoW-kA-2Y9" firstAttribute="top" secondItem="pKW-Yj-Oib" secondAttribute="bottom" constant="16" id="JtB-Hp-dvx"/>
+                                                    <constraint firstAttribute="trailing" secondItem="pKW-Yj-Oib" secondAttribute="trailing" constant="17" id="KXh-U2-TNt"/>
                                                     <constraint firstAttribute="bottom" secondItem="5yp-py-Asd" secondAttribute="bottom" constant="11" id="LPc-EB-Om1"/>
-                                                    <constraint firstAttribute="trailing" secondItem="IbU-dM-RNy" secondAttribute="trailing" constant="17" id="UO2-cW-b2C"/>
+                                                    <constraint firstItem="5yp-py-Asd" firstAttribute="top" secondItem="yIl-X4-ECg" secondAttribute="bottom" constant="5" id="QIL-px-0xL"/>
                                                     <constraint firstItem="y9h-hm-9cH" firstAttribute="leading" secondItem="oxw-vW-RZr" secondAttribute="leading" constant="17" id="Vjl-sq-w4Y"/>
-                                                    <constraint firstAttribute="trailing" secondItem="KxT-F6-S0Z" secondAttribute="trailing" constant="17" id="XJl-gK-JDu"/>
                                                     <constraint firstItem="TR7-71-e3w" firstAttribute="top" secondItem="c8S-db-jR2" secondAttribute="bottom" constant="12" id="XSR-vl-XG0"/>
                                                     <constraint firstItem="c8S-db-jR2" firstAttribute="leading" secondItem="oxw-vW-RZr" secondAttribute="leading" constant="17" id="dPV-Nm-o8h"/>
-                                                    <constraint firstAttribute="trailing" secondItem="NyS-4V-iGI" secondAttribute="trailing" constant="17" id="jBa-Yg-xFs"/>
+                                                    <constraint firstItem="pKW-Yj-Oib" firstAttribute="top" secondItem="oxw-vW-RZr" secondAttribute="top" constant="13" id="kJU-Q6-N9X"/>
                                                     <constraint firstAttribute="height" constant="165" id="knH-3e-Dcq"/>
+                                                    <constraint firstAttribute="trailing" secondItem="yIl-X4-ECg" secondAttribute="trailing" constant="17" id="qcA-hu-8Fd"/>
+                                                    <constraint firstAttribute="trailing" secondItem="HoW-kA-2Y9" secondAttribute="trailing" constant="17" id="sZ6-vR-tUA"/>
                                                     <constraint firstItem="5yp-py-Asd" firstAttribute="centerX" secondItem="oxw-vW-RZr" secondAttribute="centerX" id="ssd-DT-1z9"/>
                                                     <constraint firstItem="c8S-db-jR2" firstAttribute="top" secondItem="y9h-hm-9cH" secondAttribute="bottom" constant="10" id="tYZ-uF-laZ"/>
-                                                    <constraint firstItem="KxT-F6-S0Z" firstAttribute="top" secondItem="IbU-dM-RNy" secondAttribute="bottom" constant="12" id="zjM-do-P8U"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OZy-Cc-2Jz">
@@ -3834,31 +3762,91 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                                     <constraint firstItem="Fdc-XE-gb3" firstAttribute="trailing" secondItem="Dol-HU-dTz" secondAttribute="trailing" id="sQ9-L1-Vyh"/>
                                 </constraints>
                             </scrollView>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z2W-eT-Vya">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="5808"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gqu-qy-1ld">
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <connections>
+                                            <action selector="actionHideSuccessfulView:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="xRn-91-FAO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MyL-3p-gG4">
+                                <rect key="frame" x="16" y="2780" width="382" height="248.33333333333348"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_successful" translatesAutoresizingMaskIntoConstraints="NO" id="jis-ME-yxc">
+                                        <rect key="frame" x="151" y="22" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="82V-R5-AYa"/>
+                                            <constraint firstAttribute="width" secondItem="jis-ME-yxc" secondAttribute="height" multiplier="1:1" id="Mzk-8T-uqz"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bid Placed Successfully" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kp-QS-3pM">
+                                        <rect key="frame" x="82.666666666666686" y="119" width="217" height="23"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="23" id="sMD-k3-Rqw"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations! You have successfully placed your bid and all the details have been saved." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="puE-KI-pDq">
+                                        <rect key="frame" x="24" y="153" width="334" height="67.333333333333314"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="67.329999999999998" id="08r-r3-IdU"/>
+                                            <constraint firstAttribute="width" constant="334" id="gYq-KB-pWm"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="382" id="0g9-cc-AjG"/>
+                                    <constraint firstItem="jis-ME-yxc" firstAttribute="top" secondItem="MyL-3p-gG4" secondAttribute="top" constant="22" id="0wh-bW-ix8"/>
+                                    <constraint firstItem="1kp-QS-3pM" firstAttribute="centerX" secondItem="jis-ME-yxc" secondAttribute="centerX" id="5fQ-pP-lY4"/>
+                                    <constraint firstItem="puE-KI-pDq" firstAttribute="top" secondItem="1kp-QS-3pM" secondAttribute="bottom" constant="11" id="hSg-WF-XdK"/>
+                                    <constraint firstItem="jis-ME-yxc" firstAttribute="centerX" secondItem="MyL-3p-gG4" secondAttribute="centerX" id="rEX-hO-zho"/>
+                                    <constraint firstAttribute="height" constant="248.33000000000001" id="tbz-vf-lXL"/>
+                                    <constraint firstItem="puE-KI-pDq" firstAttribute="centerX" secondItem="MyL-3p-gG4" secondAttribute="centerX" id="td4-WB-dUq"/>
+                                    <constraint firstItem="1kp-QS-3pM" firstAttribute="top" secondItem="jis-ME-yxc" secondAttribute="bottom" constant="17" id="yJO-EH-8lW"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0lR-DA-4G3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="0lR-DA-4G3" firstAttribute="bottom" secondItem="2Mo-YF-Z5Q" secondAttribute="bottom" id="0Rw-rW-QzY"/>
                             <constraint firstItem="phG-6o-Pbz" firstAttribute="trailing" secondItem="0lR-DA-4G3" secondAttribute="trailing" id="19r-t4-uAw"/>
+                            <constraint firstItem="Z2W-eT-Vya" firstAttribute="top" secondItem="INt-om-3Xq" secondAttribute="top" id="3V3-W2-VJu"/>
                             <constraint firstItem="Dol-HU-dTz" firstAttribute="leading" secondItem="phG-6o-Pbz" secondAttribute="leading" id="BZf-4B-EKg"/>
                             <constraint firstItem="2Mo-YF-Z5Q" firstAttribute="top" secondItem="Dol-HU-dTz" secondAttribute="bottom" constant="8" id="BaT-Vi-cev"/>
+                            <constraint firstItem="0lR-DA-4G3" firstAttribute="bottom" secondItem="Dol-HU-dTz" secondAttribute="bottom" constant="104" id="JiR-Oh-2e7"/>
                             <constraint firstItem="phG-6o-Pbz" firstAttribute="top" secondItem="0lR-DA-4G3" secondAttribute="top" id="P9m-Mr-zoD"/>
+                            <constraint firstAttribute="bottom" secondItem="Z2W-eT-Vya" secondAttribute="bottom" id="QsK-HW-4Ex"/>
                             <constraint firstItem="2Mo-YF-Z5Q" firstAttribute="trailing" secondItem="0lR-DA-4G3" secondAttribute="trailing" id="ReK-BC-NfV"/>
+                            <constraint firstItem="MyL-3p-gG4" firstAttribute="centerX" secondItem="INt-om-3Xq" secondAttribute="centerX" id="SuH-23-nRY"/>
                             <constraint firstItem="Dol-HU-dTz" firstAttribute="top" secondItem="phG-6o-Pbz" secondAttribute="bottom" constant="8" symbolic="YES" id="Y7z-Gx-WVD"/>
+                            <constraint firstItem="Z2W-eT-Vya" firstAttribute="trailing" secondItem="0lR-DA-4G3" secondAttribute="trailing" id="ZKp-q6-Fzt"/>
                             <constraint firstItem="Dol-HU-dTz" firstAttribute="trailing" secondItem="phG-6o-Pbz" secondAttribute="trailing" id="avE-Wo-8Lc"/>
+                            <constraint firstItem="MyL-3p-gG4" firstAttribute="centerY" secondItem="INt-om-3Xq" secondAttribute="centerY" id="eNd-wU-RzL"/>
+                            <constraint firstItem="Z2W-eT-Vya" firstAttribute="centerY" secondItem="INt-om-3Xq" secondAttribute="centerY" id="gok-BI-aHz"/>
                             <constraint firstItem="2Mo-YF-Z5Q" firstAttribute="bottom" secondItem="0lR-DA-4G3" secondAttribute="bottom" id="jEA-fS-LZ0"/>
                             <constraint firstItem="phG-6o-Pbz" firstAttribute="leading" secondItem="0lR-DA-4G3" secondAttribute="leading" id="lBC-9H-pNd"/>
+                            <constraint firstItem="Z2W-eT-Vya" firstAttribute="centerX" secondItem="INt-om-3Xq" secondAttribute="centerX" id="lhU-dw-UHg"/>
                             <constraint firstItem="2Mo-YF-Z5Q" firstAttribute="leading" secondItem="0lR-DA-4G3" secondAttribute="leading" id="lij-Ib-3hV"/>
+                            <constraint firstItem="Z2W-eT-Vya" firstAttribute="leading" secondItem="0lR-DA-4G3" secondAttribute="leading" id="peg-Xc-Osb"/>
                             <constraint firstItem="2Mo-YF-Z5Q" firstAttribute="trailing" secondItem="0lR-DA-4G3" secondAttribute="trailing" id="qJd-kS-i55"/>
                             <constraint firstItem="2Mo-YF-Z5Q" firstAttribute="leading" secondItem="0lR-DA-4G3" secondAttribute="leading" id="r9V-1K-9aa"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="IG5-SP-mY2"/>
-                                <exclude reference="Z2W-eT-Vya"/>
-                                <exclude reference="MyL-3p-gG4"/>
-                            </mask>
-                        </variation>
                     </view>
                     <size key="freeformSize" width="414" height="5808"/>
                     <connections>
@@ -3904,6 +3892,9 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                         <outlet property="ckbWhiteB" destination="Jce-Lh-jEs" id="EkO-C0-SuI"/>
                         <outlet property="ckbWhiteDripEdge" destination="O7h-ej-bLr" id="4pE-nY-Sb0"/>
                         <outlet property="collVwFiles" destination="bMj-cx-w1m" id="gi6-M1-Os1"/>
+                        <outlet property="datePickerAEGCDate" destination="yIl-X4-ECg" id="oC5-PN-Ziq"/>
+                        <outlet property="datePickerHomeOwnerBADate" destination="pKW-Yj-Oib" id="HdG-EA-TQF"/>
+                        <outlet property="datePickerHomeOwnerBBDate" destination="HoW-kA-2Y9" id="D1p-WA-DAG"/>
                         <outlet property="datePickerView" destination="fib-HB-T2m" id="a85-PS-um8"/>
                         <outlet property="lblInfo" destination="xTo-Sa-hZy" id="mN9-Xl-bAE"/>
                         <outlet property="lblSuccess" destination="1kp-QS-3pM" id="9cT-BL-iEZ"/>
@@ -3911,7 +3902,6 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                         <outlet property="lblTopTitle" destination="8u5-yu-5D7" id="iex-2S-0wX"/>
                         <outlet property="successFulView" destination="MyL-3p-gG4" id="1za-l5-to2"/>
                         <outlet property="txtAegcRepresentative" destination="TR7-71-e3w" id="nYy-op-Y8g"/>
-                        <outlet property="txtAegcRepresentativeDate" destination="KxT-F6-S0Z" id="sSs-0t-NFC"/>
                         <outlet property="txtBe" destination="iOX-x8-gLt" id="gPx-Id-0J7"/>
                         <outlet property="txtBrand" destination="WTS-9v-wId" id="yLh-Na-qf9"/>
                         <outlet property="txtCellPhone" destination="gkg-eB-kA3" id="tRR-w0-NnZ"/>
@@ -3936,9 +3926,7 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                         <outlet property="txtHomeOwner" destination="Vn2-N8-rDx" id="a2M-lN-Nn0"/>
                         <outlet property="txtHomeOwnerB" destination="DrX-aq-G02" id="Xii-KA-j6a"/>
                         <outlet property="txtHomeOwnerBA" destination="y9h-hm-9cH" id="g1S-2W-pmG"/>
-                        <outlet property="txtHomeOwnerBADate" destination="NyS-4V-iGI" id="1z8-HH-Pry"/>
                         <outlet property="txtHomeOwnerBB" destination="c8S-db-jR2" id="JDe-pj-Itw"/>
-                        <outlet property="txtHomeOwnerBBDate" destination="IbU-dM-RNy" id="LTa-T4-PDc"/>
                         <outlet property="txtInsurance" destination="zvp-WH-cV6" id="Tpj-Mp-Oms"/>
                         <outlet property="txtMailingAddress" destination="xXM-kC-Jzw" id="NRJ-5H-pKT"/>
                         <outlet property="txtMainDwellingRoof" destination="zjJ-VV-Ap3" id="clv-qN-474"/>
@@ -3961,51 +3949,10 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                         <outlet property="txtTotal" destination="xoO-2d-fxe" id="DBJ-ir-oQb"/>
                         <outlet property="txtVwDetail" destination="g2l-68-y6b" id="sHZ-Hk-cTR"/>
                         <outlet property="viewInfo" destination="mg5-1M-nOA" id="cet-wV-DPN"/>
-                        <outlet property="viewPDF" destination="IG5-SP-mY2" id="fIK-oG-3Wp"/>
                         <outlet property="vwBidetail" destination="Tfc-wV-OYB" id="boW-7Z-lym"/>
-                        <outlet property="webviewForm" destination="Ug4-mx-a74" id="GHM-vi-xdi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QM3-ZY-hXr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k9I-Ak-Bu3">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agreed Scope of work:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0N-0L-flc">
-                            <rect key="frame" x="18" y="13.000000000000002" width="372" height="20.666666666666671"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <viewLayoutGuide key="safeArea" id="qqZ-pd-IEB"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstAttribute="trailing" secondItem="Z0N-0L-flc" secondAttribute="trailing" constant="24" id="Imf-Qu-6kw"/>
-                        <constraint firstItem="Z0N-0L-flc" firstAttribute="top" secondItem="k9I-Ak-Bu3" secondAttribute="top" constant="13" id="L2c-54-JLV"/>
-                        <constraint firstAttribute="height" constant="50" id="kSa-bb-4sZ"/>
-                        <constraint firstItem="Z0N-0L-flc" firstAttribute="leading" secondItem="k9I-Ak-Bu3" secondAttribute="leading" constant="18" id="sIS-Ub-dU3"/>
-                    </constraints>
-                </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qni-lN-vQv">
-                    <rect key="frame" x="0.0" y="0.0" width="380" height="78"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="78" id="Pm9-1D-NQq"/>
-                    </constraints>
-                    <string key="text">The above terms, specifications and conditions are satisfactory and are hereby accepted. The Contractor is authorized to perform the work specified in the final agreement with the insurance carrier or at such time as the insurance claim is approved. Home Owner agrees to make all payments in accordance with the “Payment Terms” shown above.</string>
-                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="11"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wAN-qU-ceG">
-                    <rect key="frame" x="0.0" y="0.0" width="380" height="78"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="78" id="4V1-wY-GHY"/>
-                    </constraints>
-                    <string key="text">The above terms, specifications and conditions are satisfactory and are hereby accepted. The Contractor is authorized to perform the work specified in the final agreement with the insurance carrier or at such time as the insurance claim is approved. Home Owner agrees to make all payments in accordance with the “Payment Terms” shown above.</string>
-                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="11"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </objects>
             <point key="canvasLocation" x="2926.0869565217395" y="-139.4021739130435"/>
         </scene>
@@ -4878,7 +4825,7 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kitchen Renovation" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8oG-aS-3Te">
-                                        <rect key="frame" x="31" y="54.666666666666657" width="368" height="23"/>
+                                        <rect key="frame" x="31" y="54.666666666666664" width="368" height="22.666666666666664"/>
                                         <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="16"/>
                                         <color key="textColor" name="#484848"/>
                                         <nil key="highlightedColor"/>
