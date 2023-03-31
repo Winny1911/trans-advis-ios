@@ -220,6 +220,9 @@ struct ManageBidsResponseDetailsV2 : Codable {
     var sprayPaint : String?
     var atticFan : String?
     var detachedGarageSQ : String?
+    var homeOwnerSignDate1: String?
+    var homeOwnerSignDate2: String?
+    var date: String?
 }
 
 struct ProjectAgreementDetails : Codable {

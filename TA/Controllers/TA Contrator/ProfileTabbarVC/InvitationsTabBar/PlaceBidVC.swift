@@ -241,46 +241,47 @@ class PlaceBidVC: BaseViewController {
     }
     
     private func resetFloatingLabel(){
-        self.txtHOA.resetFloatingLable()
-        self.txtInsurance.resetFloatingLable()
-        self.txtClaimNumber.resetFloatingLable()
-        self.txtMainDwellingRoof.resetFloatingLable()
-        self.txtShed.resetFloatingLable()
-        self.txtDecking.resetFloatingLable()
-        self.txtFlatRoof.resetFloatingLable()
-        self.txtTotal.resetFloatingLable()
-        self.txtDeducible.resetFloatingLable()
-        self.txtFe.resetFloatingLable()
-        self.txtRetail.resetFloatingLable()
-        self.txtBe.resetFloatingLable()
-        self.txtBrand.resetFloatingLable()
-        self.txtStyle.resetFloatingLable()
-        self.txtColor.resetFloatingLable()
-        self.txtDetachedGarage.resetFloatingLable()
-        self.txtPermaBoot.resetFloatingLable()
-        self.txtPermaBootB.resetFloatingLable()
-        self.txtPipeJack.resetFloatingLable()
-        self.txtPipeJackB.resetFloatingLable()
-        self.txtColorB.resetFloatingLable()
-        self.txtMaterialLocation.resetFloatingLable()
-        self.txtDumpsterLocation.resetFloatingLable()
-        self.txtSpecialInstructions.resetFloatingLable()
-        self.txtNotes.resetFloatingLable()
-        self.txtRoofing.resetFloatingLable()
-        self.txtRoofingPrice.resetFloatingLable()
-        self.txtDebrisRemoval.resetFloatingLable()
-        self.txtDebrisRemovalPrice.resetFloatingLable()
-        self.txtOverheadProfit.resetFloatingLable()
-        self.txtCodeUpgrades.resetFloatingLable()
-        //self.txtHomeOwnerBA.resetFloatingLable()
-        self.txtHomeOwnerBB.resetFloatingLable()
-        self.txtAegcRepresentative.resetFloatingLable()
-        self.txtCodeUpgradesPrice.resetFloatingLable()
+        DispatchQueue.main.async {
+            self.txtHOA.resetFloatingLable()
+            self.txtInsurance.resetFloatingLable()
+            self.txtClaimNumber.resetFloatingLable()
+            self.txtMainDwellingRoof.resetFloatingLable()
+            self.txtShed.resetFloatingLable()
+            self.txtDecking.resetFloatingLable()
+            self.txtFlatRoof.resetFloatingLable()
+            self.txtTotal.resetFloatingLable()
+            self.txtDeducible.resetFloatingLable()
+            self.txtFe.resetFloatingLable()
+            self.txtRetail.resetFloatingLable()
+            self.txtBe.resetFloatingLable()
+            self.txtBrand.resetFloatingLable()
+            self.txtStyle.resetFloatingLable()
+            self.txtColor.resetFloatingLable()
+            self.txtDetachedGarage.resetFloatingLable()
+            self.txtPermaBoot.resetFloatingLable()
+            self.txtPermaBootB.resetFloatingLable()
+            self.txtPipeJack.resetFloatingLable()
+            self.txtPipeJackB.resetFloatingLable()
+            self.txtColorB.resetFloatingLable()
+            self.txtMaterialLocation.resetFloatingLable()
+            self.txtDumpsterLocation.resetFloatingLable()
+            self.txtSpecialInstructions.resetFloatingLable()
+            self.txtNotes.resetFloatingLable()
+            self.txtRoofing.resetFloatingLable()
+            self.txtRoofingPrice.resetFloatingLable()
+            self.txtDebrisRemoval.resetFloatingLable()
+            self.txtDebrisRemovalPrice.resetFloatingLable()
+            self.txtOverheadProfit.resetFloatingLable()
+            self.txtCodeUpgrades.resetFloatingLable()
+            self.txtHomeOwnerBB.resetFloatingLable()
+            self.txtAegcRepresentative.resetFloatingLable()
+            self.txtCodeUpgradesPrice.resetFloatingLable()
+        }
     }
     
-    func buildParams(date: String, model: PlaceBidModel) -> [String : Any]{
+    func buildParams(model: PlaceBidModel) -> [String : Any]{
         let params = [
-            "date": date,
+            "date": model.date,
             
             //"startDate": date,
             //"endDate": date,
@@ -425,7 +426,26 @@ class PlaceBidVC: BaseViewController {
     //            self.txtStartDate.resetFloatingLable()
     //            self.txtEndDate.resetFloatingLable()
     //            self.setFloatingTextVw()
+    var dateString = Date()
+    var aegcDateString = Date()
+    var homeOwnerBADateString = Date()
+    var homeOwnerBBDateString = Date()
     
+    func dateFormtterBid(model: ManageBidsResponseDetailsV2?){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        DispatchQueue.main.async {
+            self.aegcDateString = dateFormatter.date(from: model?.aegcRepresentativeDate ?? "")!
+            self.dateString = dateFormatter.date(from: model?.date ?? "")!
+            self.homeOwnerBADateString = dateFormatter.date(from: model?.homeOwnerSignDate1 ?? "")!
+            self.homeOwnerBBDateString = dateFormatter.date(from: model?.homeOwnerSignDate2 ?? "")!
+            
+            self.datePickerAEGCDate.setDate(self.aegcDateString, animated: false)
+            self.datePickerHomeOwnerBADate.setDate(self.homeOwnerBADateString, animated: false)
+            self.datePickerHomeOwnerBBDate.setDate(self.homeOwnerBBDateString, animated: false)
+            self.datePickerView.setDate(self.dateString, animated: false)
+        }
+    }
     
     func fetchBidDetails() {
         let params = ["id": self.bidId]
@@ -433,12 +453,6 @@ class PlaceBidVC: BaseViewController {
             if model?.data?.project_details?.project_files?.count ?? 0 > 0 {
                 //                self.imgInvitation.sd_setImage(with: URL(string: model?.data?.project_details?.project_files?[0].file ?? ""), placeholderImage: UIImage(named: "doc"), completed:nil)
             }
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            let aegcDateString = dateFormatter.date(from: model?.data?.aegcRepresentativeDate ?? "")
-            let homeOwnerBADateString = dateFormatter.date(from: model?.data?.proposedStartDate ?? "")
-            let homeOwnerBBDateString = dateFormatter.date(from: model?.data?.proposedEndDate ?? "")
-            
             var arrOfImgStrings = [String]()
             let userImgVw = UIImageView()
             if model?.data?.bids_documents?.count ?? 0 > 0 {
@@ -480,7 +494,9 @@ class PlaceBidVC: BaseViewController {
                 self.bidFilesArray = model?.data?.bids_documents
                 self.collVwFiles.reloadData()
             }
-            
+            DispatchQueue.main.async {
+                self.dateFormtterBid(model: model?.data)
+            }
             
             self.manageBids = model?.data
             self.lblTopTitle.text = "Bid Details" //model?.data?.project_details?.title ?? ""
@@ -554,7 +570,7 @@ class PlaceBidVC: BaseViewController {
             self.txtStreetAddress.text = "\(model?.data?.project_details?.addressLine1 ?? "" )"
             self.txtMailingAddress.text = "\(model?.data?.mailingAddress ?? "" )"
             self.txtCellPhone.text = "\(model?.data?.cellPhone ?? "" )"
-            self.datePickerAEGCDate.setDate(aegcDateString ?? Date(), animated: false)
+
 //            self.txtHomeOwnerBA.text = "\(model?.data?.homeOwner1 ?? "" )"
             self.setImageSignature(imageSignatureBase64: model?.data?.homeOwnerSign1 ?? "")
             self.txtHomeOwnerBB.text = "\(model?.data?.homeOwner2 ?? "" )"
@@ -577,37 +593,10 @@ class PlaceBidVC: BaseViewController {
             self.txtFe.text = "\(model?.data?.fe ?? "")"
             self.txtRetail.text = "\(model?.data?.retail2 ?? "")"
             self.ckbRetailDepreciation.isSelected = model?.data?.retailDepreciation == 1
-            //            var retailB: String = ""
             self.txtBe.text = "\(model?.data?.be ?? "")"
             self.txtBrand.text = "\(model?.data?.brand ?? "")"
             self.txtStyle.text = "\(model?.data?.style ?? "")"
             self.txtColor.text = "\(model?.data?.color1 ?? "")"
-            //self.ckbWhite.isSelected = model?.data?.white
-            //self.ckbBrown.isSelected = model?.data?.brown
-            //            var brown: String = ""
-            //self.txtAegcRepresentative.text = "\(model?.data?.aegcRepresentative ?? "")"
-            
-            
-            
-            //self.ckbIko.isSelected =
-            //            var iko: String = ""
-            //            var oc: String = ""
-            //            var ocB: String = ""
-            //            var gaf: String = ""
-            //            var airVent: String = ""
-            //            var cutInstallRidgeVent: Bool = false
-            //            var black: String = ""
-            //            var brownB: String = ""
-            //            var whiteB: String = ""
-            //            var copper: String = ""
-            //            var blackB: String = ""
-            //            var brownC: String = ""
-            //            var grey: String = ""
-            //            var whiteC: String = ""
-            //            self.ckbRemoveReplace.isSelected = model?.data?.removeReplace
-            //            var removeReplace: String = ""
-            //            var deatchReset: String = ""
-            //            var removeCoverHoles: String = ""
             self.txtPermaBoot.text = "\(model?.data?.permaBoot123 ?? "")"
             self.txtPermaBootB.text = "\(model?.data?.permaBoot34 ?? "")"
             self.txtPipeJack.text = "\(model?.data?.pipeJack123 ?? "")"
@@ -622,7 +611,6 @@ class PlaceBidVC: BaseViewController {
             self.txtDebrisRemoval.text = "\(model?.data?.debrisRemoval1 ?? "")"
             self.txtDebrisRemovalPrice.text = "\(model?.data?.debrisRemoval2 ?? "")"
             self.txtOverheadProfit.text = "\(model?.data?.overheadProfit1 ?? "")"
-            
             self.txtCodeUpgrades.text = "\(model?.data?.codeUpgrades ?? "")"
             self.txtTotal.text = "\(model?.data?.totalSQ ?? "")"
             self.txtCodeUpgradesPrice.text = "\(model?.data?.total ?? "")"
@@ -630,8 +618,6 @@ class PlaceBidVC: BaseViewController {
             self.ckbSatelliteDish.isSelected = model?.data?.satelliteDish == 1
             self.ckbPaymentTermsFinance.isSelected = model?.data?.paymentTerms2 == 1
             self.ckbAntenna.isSelected = model?.data?.antenna == 1
-            self.datePickerHomeOwnerBADate.setDate(homeOwnerBADateString ?? Date(), animated: false)
-            self.datePickerHomeOwnerBBDate.setDate(homeOwnerBBDateString ?? Date(), animated: false)
             self.txtDetachedGarage.text = "\(model?.data?.detachedGarageSQ ?? "")"
             
             //checkbox
@@ -643,28 +629,6 @@ class PlaceBidVC: BaseViewController {
             self.getCodeComboBoxChimneyFlashing(for: model?.data?.chimneyFlashing ?? "")
             self.getCodeComboBoxSprayPaint(for: model?.data?.sprayPaint ?? "")
             self.getCodeComboBoxAtticFan(for: model?.data?.atticFan ?? "")
-            
-            //self.txtAegcRepresentative.text = "\(model?.data?. ??")"
-            
-            //            var removeReplaceB: String = ""
-            //            var deatchResetB: String = ""
-            
-            //            var satelliteDish: Bool = false
-            //            var antenna: Bool = false
-            //            var detachOnly: String = ""
-            //            var detachDispose: String = ""
-            
-            //            var homeOwnerDate: String = ""
-            //            var homeOwnerBA: String = ""
-            //            var homeOwnerDateBA: String = ""
-            //            var aegcRepresentative: String = ""
-            //            var aegcRepresentativeBA: String = ""
-            
-            //self.lblStaticStartedOn.text! = "Notable Terms"
-            //self.lblStaticNotableItems.text! = "Started On"
-            //self.lblStaticEndsOnTwo.text! = "Ends On"
-            
-            //self.lblDateStart.text = model?.data?.description ?? ""
             
             //self.lblDateEndsOnTwo.text = DateHelper.convertDateString(dateString: model?.data?.proposedEndDate ?? "", fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: "dd MMM yyyy")
             //self.lblNotableItems.text = DateHelper.convertDateString(dateString: model?.data?.proposedStartDate ?? "", fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: "dd MMM yyyy")
@@ -684,7 +648,7 @@ class PlaceBidVC: BaseViewController {
             //            }
             //self.collectionVw.reloadData()
             arrOfImgStrings.removeAll()
-            //self.resetFloatingLabel()
+            self.resetFloatingLabel()
         }
     }
     
@@ -972,17 +936,17 @@ class PlaceBidVC: BaseViewController {
         
         let permit : Bool = ckbPermit.isSelected
         
-        let placeBidModel  = PlaceBidModel(homeOwnerFirst: txtHomeOwner.text ?? "", homeOwnerSecond: txtHomeOwnerB.text ?? "", streetAddress: txtStreetAddress.text ?? "", mailingAddress: txtMailingAddress.text ?? "", cellPhone: txtCellPhone.text ?? "", email: txtEmail.text ?? "", hoa: txtHOA.text ?? "", permit: permit , insurance: txtInsurance.text ?? "", claimNumber: txtClaimNumber.text ?? "", insFullyApproved: ckbInsFullyApproved.isSelected, insPartialApproved: ckbInsPartialApproved.isSelected, retail: ckbRetail.isSelected, retailWDepreciation: ckbRetailDepreciation.isSelected, mainDwellingRoof: txtMainDwellingRoof.text ?? "", shedSQ: txtShed.text ?? "", decking: txtDecking.text ?? "", flatRoofSQ: txtFlatRoof.text ?? "", total: txtTotal.text ?? "", totalSQ: txtCodeUpgradesPrice.text ?? "", deducible: txtDeducible.text ?? "", fe: txtFe.text  ?? "", retailB: txtRetail.text ?? "", be: txtBe.text  ?? "", brand: txtBrand.text ?? "", style: txtStyle.text ?? "", color: txtColor.text ?? "", white: String(ckbWhiteDripEdge.isSelected), brown: String(ckbBrown.isSelected), aegc: String(ckbAegc.isSelected), iko: String(ckbIko.isSelected), oc: String(ckbOc.isSelected), ocB: String(ckbOCb.isSelected), gaf: String(ckbGaf.isSelected), airVent: String(ckbAirVent.isSelected), cutInstallRidgeVent: ckbCutInstallRidgVent.isSelected, black: String(ckbBlack.isSelected), brownB: String(ckbBrownB.isSelected), whiteB: String(ckbWhite.isSelected), copper: String(ckbCopper.isSelected), blackB: String(ckbBlackB.isSelected), brownC: String(ckbBrownC.isSelected), grey: String(ckbGrey.isSelected), whiteC: String(ckbWhiteB.isSelected), removeReplace: String(ckbRemoveReplace.isSelected), deatchReset: String(ckbDetachReset.isSelected), removeCoverHoles: String(ckbRemoveCoverHoles.isSelected), permaBoot: txtPermaBoot.text ?? "", permaBootB: txtPermaBootB.text ?? "", pipeJack: txtPipeJack.text ?? "", pipeJackB: txtPipeJackB.text ?? "", removeReplaceB: String(ckbRemoveReplaceB.isSelected), deatchResetB: String(ckbDetachResetB.isSelected), colorB: txtColorB.text ?? "", satelliteDish: ckbSatelliteDish.isSelected, antenna: ckbAntenna.isSelected, detachOnly: String(ckbDetach.isSelected), detachDispose: String(ckbDetachDispose.isSelected), materialLocation: txtMaterialLocation.text ?? "", dumpsterLocation: txtDumpsterLocation.text ?? "", specialInstructions: txtSpecialInstructions.text ?? "", notes: txtNotes.text ?? "", roofing: txtRoofing.text ?? "", roofingPrice: txtRoofingPrice.text  ?? "", debrisRemoval: txtDebrisRemoval.text ?? "", debrisRemovalPrice : txtDebrisRemovalPrice.text ?? "", overheadProfit: txtOverheadProfit.text ?? "", codeUpgrades: txtCodeUpgrades.text ?? "", paymentTermsDeductible: ckbPaymentTermsDeductible.isSelected, paymantTermsFinance: ckbPaymentTermsFinance.isSelected, homeOwner: txtHomeOwner.text ?? "", homeOwnerDate: stringDateHomeOwnerA, homeOwnerDateBA: txtHomeOwnerBB.text ?? "", aegcRepresentative: txtAegcRepresentative.text ?? "", aegcRepresentativeBA: "", dateHomeOwner1: stringDateHomeOwnerA, dateHomeOwner2: stringDateHomeOwnerB, dateAEGC: stringDateAEGC, detachedGarageSQ: txtDetachedGarage.text ?? "")
+        let placeBidModel  = PlaceBidModel(date: stringDate, homeOwnerFirst: txtHomeOwner.text ?? "", homeOwnerSecond: txtHomeOwnerB.text ?? "", streetAddress: txtStreetAddress.text ?? "", mailingAddress: txtMailingAddress.text ?? "", cellPhone: txtCellPhone.text ?? "", email: txtEmail.text ?? "", hoa: txtHOA.text ?? "", permit: permit , insurance: txtInsurance.text ?? "", claimNumber: txtClaimNumber.text ?? "", insFullyApproved: ckbInsFullyApproved.isSelected, insPartialApproved: ckbInsPartialApproved.isSelected, retail: ckbRetail.isSelected, retailWDepreciation: ckbRetailDepreciation.isSelected, mainDwellingRoof: txtMainDwellingRoof.text ?? "", shedSQ: txtShed.text ?? "", decking: txtDecking.text ?? "", flatRoofSQ: txtFlatRoof.text ?? "", total: txtTotal.text ?? "", totalSQ: txtCodeUpgradesPrice.text ?? "", deducible: txtDeducible.text ?? "", fe: txtFe.text  ?? "", retailB: txtRetail.text ?? "", be: txtBe.text  ?? "", brand: txtBrand.text ?? "", style: txtStyle.text ?? "", color: txtColor.text ?? "", white: String(ckbWhiteDripEdge.isSelected), brown: String(ckbBrown.isSelected), aegc: String(ckbAegc.isSelected), iko: String(ckbIko.isSelected), oc: String(ckbOc.isSelected), ocB: String(ckbOCb.isSelected), gaf: String(ckbGaf.isSelected), airVent: String(ckbAirVent.isSelected), cutInstallRidgeVent: ckbCutInstallRidgVent.isSelected, black: String(ckbBlack.isSelected), brownB: String(ckbBrownB.isSelected), whiteB: String(ckbWhite.isSelected), copper: String(ckbCopper.isSelected), blackB: String(ckbBlackB.isSelected), brownC: String(ckbBrownC.isSelected), grey: String(ckbGrey.isSelected), whiteC: String(ckbWhiteB.isSelected), removeReplace: String(ckbRemoveReplace.isSelected), deatchReset: String(ckbDetachReset.isSelected), removeCoverHoles: String(ckbRemoveCoverHoles.isSelected), permaBoot: txtPermaBoot.text ?? "", permaBootB: txtPermaBootB.text ?? "", pipeJack: txtPipeJack.text ?? "", pipeJackB: txtPipeJackB.text ?? "", removeReplaceB: String(ckbRemoveReplaceB.isSelected), deatchResetB: String(ckbDetachResetB.isSelected), colorB: txtColorB.text ?? "", satelliteDish: ckbSatelliteDish.isSelected, antenna: ckbAntenna.isSelected, detachOnly: String(ckbDetach.isSelected), detachDispose: String(ckbDetachDispose.isSelected), materialLocation: txtMaterialLocation.text ?? "", dumpsterLocation: txtDumpsterLocation.text ?? "", specialInstructions: txtSpecialInstructions.text ?? "", notes: txtNotes.text ?? "", roofing: txtRoofing.text ?? "", roofingPrice: txtRoofingPrice.text  ?? "", debrisRemoval: txtDebrisRemoval.text ?? "", debrisRemovalPrice : txtDebrisRemovalPrice.text ?? "", overheadProfit: txtOverheadProfit.text ?? "", codeUpgrades: txtCodeUpgrades.text ?? "", paymentTermsDeductible: ckbPaymentTermsDeductible.isSelected, paymantTermsFinance: ckbPaymentTermsFinance.isSelected, homeOwner: txtHomeOwner.text ?? "", homeOwnerDate: stringDateHomeOwnerA, homeOwnerDateBA: txtHomeOwnerBB.text ?? "", aegcRepresentative: txtAegcRepresentative.text ?? "", aegcRepresentativeBA: "", dateHomeOwner1: stringDateHomeOwnerA, dateHomeOwner2: stringDateHomeOwnerB, dateAEGC: stringDateAEGC, detachedGarageSQ: txtDetachedGarage.text ?? "")
         placeBidViewModel.model = placeBidModel
         //        placeBidViewModel.validatePlaceBidnModel {[weak self] (success, error) in
         //            guard let strongSelf = self else { return }
         //            if error == nil {
         if self.bidId == 0 {
-            placeBidViewModel.submitBidApi(self.buildParams(date: stringDate, model: placeBidViewModel.model)) { response in
+            placeBidViewModel.submitBidApi(self.buildParams(model: placeBidViewModel.model)) { response in
                 self.handleSuccessApi()
             }
         } else {
-            placeBidViewModel.updateBidApi(self.buildParams(date: stringDate, model: placeBidViewModel.model)) { response in
+            placeBidViewModel.updateBidApi(self.buildParams(model: placeBidViewModel.model)) { response in
                 self.handleSuccessApi()
             }
         }

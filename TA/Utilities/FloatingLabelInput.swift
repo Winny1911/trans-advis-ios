@@ -27,12 +27,14 @@ class FloatingLabelInput: UITextField {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self._placeholder = (self._placeholder != nil) ? self._placeholder : placeholder
-        placeholder = self._placeholder // Make sure the placeholder is shown
-        if self.floatingLabel == nil {
-            self.addFloatingLabel()
+        DispatchQueue.main.async {
+            self._placeholder = (self._placeholder != nil) ? self._placeholder : self.placeholder
+            self.placeholder = self._placeholder // Make sure the placeholder is shown
+            if self.floatingLabel == nil {
+                self.addFloatingLabel()
+            }
+            self.addTarget(self, action: #selector(self.resetFloatingLable), for: [.editingDidEnd, .editingChanged])
         }
-        self.addTarget(self, action: #selector(self.resetFloatingLable), for: [.editingDidEnd, .editingChanged])
     }
     
 //    // Add a floating label to the view on becoming first responder
