@@ -264,3 +264,24 @@ extension String {
        return self.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 }
+
+extension String {
+    func formatPhone(with mask: String) -> String {
+        let digits = self.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        var result = ""
+        var index = digits.startIndex
+        
+        for character in mask {
+            if index == digits.endIndex {
+                break
+            }
+            if character == "X" {
+                result.append(digits[index])
+                index = digits.index(after: index)
+            } else {
+                result.append(character)
+            }
+        }
+        return result
+    }
+}

@@ -228,20 +228,19 @@ class PlaceBidVC: BaseViewController {
         self.txtHomeOwner.text = self.fetchHomeOwner
         self.txtHomeOwnerB.text = self.fetchHomeOwnerB
         self.txtStreetAddress.text = self.fetchStreetAddress
-        self.txtCellPhone.text = self.fetchCellPhone
+        self.txtCellPhone.text = self.fetchCellPhone.formatPhone(with: "(XXX) XXX-XXXX")
         self.txtMailingAddress.text = self.fetchMailingAddress
         self.txtEmail.text = self.fetchEmail
-        
-        self.txtHomeOwner.resetFloatingLable()
-        self.txtHomeOwnerB.resetFloatingLable()
-        self.txtStreetAddress.resetFloatingLable()
-        self.txtCellPhone.resetFloatingLable()
-        self.txtMailingAddress.resetFloatingLable()
-        self.txtEmail.resetFloatingLable()
     }
     
     private func resetFloatingLabel(){
         DispatchQueue.main.async {
+            self.txtHomeOwner.resetFloatingLable()
+            self.txtHomeOwnerB.resetFloatingLable()
+            self.txtStreetAddress.resetFloatingLable()
+            self.txtCellPhone.resetFloatingLable()
+            self.txtMailingAddress.resetFloatingLable()
+            self.txtEmail.resetFloatingLable()
             self.txtHOA.resetFloatingLable()
             self.txtInsurance.resetFloatingLable()
             self.txtClaimNumber.resetFloatingLable()
@@ -1024,7 +1023,7 @@ extension PlaceBidVC {
     
     @objc private func doneStartDatePicker(){
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd MMMM yyyy"
+        formatter.dateFormat = "yyyy-MM-dd"
         txtStartDate.text = formatter.string(from: startDatePicker.date)
         self.view.endEditing(true)
     }
@@ -1049,7 +1048,7 @@ extension PlaceBidVC {
     
     @objc private func doneEndDatePicker(){
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd MMMM yyyy"
+        formatter.dateFormat = "yyyy-MM-dd"
         txtEndDate.text = formatter.string(from: endDatePicker.date)
         self.view.endEditing(true)
     }
@@ -1069,7 +1068,7 @@ extension PlaceBidVC: UITextFieldDelegate {
             }
             guard let text = textField.text else { return false }
             let newString = (text as NSString).replacingCharacters(in: range, with: string)
-            textField.text = textField.format(with: "(XXX)-XXX-XXXX", phone: newString)
+            textField.text = textField.format(with: "(XXX) XXX-XXXX", phone: newString)
             return false
         }
         else if textField == txtFldBidAmount {
