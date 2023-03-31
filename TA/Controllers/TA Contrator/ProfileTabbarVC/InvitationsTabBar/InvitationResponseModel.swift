@@ -143,7 +143,7 @@ struct ManageBidsResponseDetailsV2 : Codable {
     var aegcRepresentativeDate : String?
     //var aegcRepresentative: String
     var antenna : Int?
-    
+    var homeOwnerSign1 : String?
     var homeOwner1: String?
     var homeOwner2: String?
     var streetAddress: String?

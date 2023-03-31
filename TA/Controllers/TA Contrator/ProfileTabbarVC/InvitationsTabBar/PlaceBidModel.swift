@@ -7,7 +7,6 @@
 
 import Foundation
 class PlaceBidModel {
-    //    var projectId: Int = 0
     var homeOwnerFirst: String = ""
     var homeOwnerSecond: String = ""
     var streetAddress: String = ""
@@ -27,6 +26,7 @@ class PlaceBidModel {
     var decking: String = ""
     var flatRoofSQ: String = ""
     var total: String = ""
+    var totalSQ: String = ""
     var deducible: String = ""
     var fe: String = ""
     var retailB: String = ""
@@ -79,7 +79,6 @@ class PlaceBidModel {
     var paymentTermsFinance: Bool = false
     var homeOwner: String = ""
     var homeOwnerDate: String = ""
-    var homeOwnerBA: String = ""
     var homeOwnerDateBA: String = ""
     var aegcRepresentative: String = ""
     var aegcRepresentativeBA: String = ""
@@ -91,8 +90,7 @@ class PlaceBidModel {
     init() {
     }
     
-    init(//projectId: Int,
-        homeOwnerFirst: String,
+    init(homeOwnerFirst: String,
         homeOwnerSecond: String,
         streetAddress: String,
         mailingAddress: String,
@@ -111,6 +109,7 @@ class PlaceBidModel {
         decking: String,
         flatRoofSQ: String,
         total: String,
+        totalSQ: String,
         deducible: String,
         fe: String,
         retailB: String,
@@ -163,7 +162,6 @@ class PlaceBidModel {
         paymantTermsFinance: Bool,
         homeOwner: String,
         homeOwnerDate: String,
-        homeOwnerBA: String ,
         homeOwnerDateBA: String,
         aegcRepresentative: String,
         aegcRepresentativeBA: String,
@@ -171,7 +169,6 @@ class PlaceBidModel {
         dateHomeOwner2: String,
         dateAEGC: String,
         detachedGarageSQ: String) {
-            //self.projectId = projectId
             self.homeOwnerFirst = homeOwnerFirst
             self.homeOwnerSecond = homeOwnerSecond
             self.streetAddress = streetAddress
@@ -191,6 +188,7 @@ class PlaceBidModel {
             self.decking = decking
             self.flatRoofSQ = flatRoofSQ
             self.total = total
+            self.totalSQ = totalSQ
             self.deducible = deducible
             self.fe = fe
             self.retailB = retailB
@@ -243,7 +241,6 @@ class PlaceBidModel {
             self.paymentTermsFinance = paymantTermsFinance
             self.homeOwner = homeOwner
             self.homeOwnerDate = homeOwnerDate
-            self.homeOwnerBA = homeOwnerBA
             self.homeOwnerDateBA = homeOwnerDateBA
             self.aegcRepresentative = aegcRepresentative
             self.aegcRepresentativeBA = aegcRepresentativeBA

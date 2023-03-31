@@ -166,6 +166,12 @@ class InvitationDetailsVC: BaseViewController {
         vc!.projectId = self.invitationDetail.project_data?.id ?? 0
         vc!.projectTitle = self.invitationDetail.project_data?.title ?? ""
         vc!.projectDesc = self.invitationDetail.project_data?.description ?? ""
+        vc!.fetchHomeOwner = self.lblHomeOwnerName.text ?? ""
+        vc!.fetchHomeOwnerB = self.lblHomeOwnerName.text ?? ""
+        vc!.fetchStreetAddress = self.addressLabel.text ?? ""
+        vc!.fetchCellPhone = self.invitationDetail.project_data?.user_data?.phoneNumber ?? ""
+        vc!.fetchMailingAddress = self.addressLabel.text ?? ""
+        vc!.fetchEmail = self.invitationDetail.project_data?.user_data?.email ?? ""
         if self.invitationDetail.project_data?.project_files?.count ?? 0 > 0 {
             vc!.imageUrl = self.invitationDetail.project_data?.project_files?[0].file ?? ""
         } else {

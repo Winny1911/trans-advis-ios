@@ -15,7 +15,7 @@ class FloatingLabelInput: UITextField {
     var imageView = UIImageView(frame: CGRect.zero)
     
     var _placeholder: String?
-                
+    
     @IBInspectable
     var _backgroundColor: UIColor = UIColor.white {
         didSet {
@@ -32,50 +32,35 @@ class FloatingLabelInput: UITextField {
         if self.floatingLabel == nil {
             self.addFloatingLabel()
         }
-        self.addTarget(self, action: #selector(self.resetFloatingLable), for: .editingDidEnd)
-        self.addTarget(self, action: #selector(self.resetFloatingLable), for: .editingChanged)
+        self.addTarget(self, action: #selector(self.resetFloatingLable), for: [.editingDidEnd, .editingChanged])
     }
-
-    // Add a floating label to the view on becoming first responder
-    @objc func addFloatingLabel() {
-        self.floatingLabel = UILabel(frame: CGRect.zero)
-        self.floatingLabel.textColor = UIColor.init(named: "#B2B2B2")
-        self.floatingLabel.font = self.font
-        self.floatingLabel.text = " " + (self._placeholder ?? "") + "  "
-        self.floatingLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.floatingLabel.textAlignment = .center
-        self.addSubview(self.floatingLabel)
-        //            self.layer.borderColor = self.activeBorderColor.cgColor
-        
-        self.floatingLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 14).isActive = true
-        
-        ticketTop = self.floatingLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0)
-        ticketTop?.isActive = true
-        self.placeholder = ""
-        
-        self.bringSubviewToFront(subviews.last!)
-        self.setNeedsDisplay()
+    
+//    // Add a floating label to the view on becoming first responder
+    func addFloatingLabel() {
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.init(named: "#B2B2B2")!,
+            .font: self.font!
+        ]
+        self.attributedPlaceholder = NSAttributedString(string: self._placeholder ?? "", attributes: attributes)
     }
     
     @objc func resetFloatingLable() {
-        
-        ticketTop?.isActive = false
-        
-        if self.text?.isEmpty ?? true {
-            ticketTop = self.floatingLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0) // Place our label -- pts above the text field
-            self.floatingLabel.layer.backgroundColor = UIColor.clear.cgColor
-            self.floatingLabel.textColor = UIColor.init(named: "#B2B2B2")
-
-        } else {
-            ticketTop = self.floatingLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -(self.frame.height / 2)) // Place our label -- pts above the text field
-            self.floatingLabel.layer.backgroundColor = UIColor.white.cgColor
-            self.floatingLabel.textColor = UIColor.init(named: "#767676")
-        }
-        
-        ticketTop?.isActive = true
-        
-        UIView.animate(withDuration: 0.5) {
-            self.layoutIfNeeded()
+        DispatchQueue.main.async {
+            self.ticketTop?.isActive = false
+            
+            if self.text?.isEmpty ?? true {
+                self.ticketTop = self.floatingLabel?.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0)
+            } else {
+                self.ticketTop = self.floatingLabel?.bottomAnchor.constraint(equalTo: self.topAnchor, constant: -5)
+            }
+            
+            self.ticketTop?.isActive = true
+            
+            UIView.animate(withDuration: 0.2) {
+                if let view = self.superview {
+                    view.layoutIfNeeded()
+                }
+            }
         }
     }
 }
