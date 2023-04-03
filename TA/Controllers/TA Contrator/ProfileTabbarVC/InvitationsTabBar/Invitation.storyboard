@@ -4205,11 +4205,6 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                             <constraint firstItem="2Mo-YF-Z5Q" firstAttribute="trailing" secondItem="0lR-DA-4G3" secondAttribute="trailing" id="qJd-kS-i55"/>
                             <constraint firstItem="2Mo-YF-Z5Q" firstAttribute="leading" secondItem="0lR-DA-4G3" secondAttribute="leading" id="r9V-1K-9aa"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="Z2W-eT-Vya"/>
-                            </mask>
-                        </variation>
                     </view>
                     <size key="freeformSize" width="414" height="5808"/>
                     <connections>
