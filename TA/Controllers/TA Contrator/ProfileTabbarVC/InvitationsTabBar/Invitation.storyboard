@@ -1371,7 +1371,7 @@
                                 <rect key="frame" x="0.0" y="155" width="414" height="5515"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Fdc-XE-gb3">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="5258"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="5386"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y2u-Dx-DEW">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="369"/>
@@ -4033,6 +4033,53 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                                                     <constraint firstItem="sx1-Dr-GHu" firstAttribute="top" secondItem="W3f-Qr-EWo" secondAttribute="bottom" constant="16.5" id="tZi-DB-3dt"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iP0-E4-Aci">
+                                                <rect key="frame" x="0.0" y="5258" width="414" height="128"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5HO-dO-DPg">
+                                                        <rect key="frame" x="12" y="3" width="390" height="121.33333333333333"/>
+                                                        <subviews>
+                                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ONS-g6-fYg">
+                                                                <rect key="frame" x="0.0" y="36.33333333333303" width="390" height="75"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="75" id="o9y-QV-Bv8"/>
+                                                                </constraints>
+                                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Tck-pl-vyk">
+                                                                    <size key="itemSize" width="128" height="81"/>
+                                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                                </collectionViewFlowLayout>
+                                                                <cells/>
+                                                            </collectionView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project Files" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7A-6i-cY5">
+                                                                <rect key="frame" x="0.0" y="0.0" width="84.333333333333329" height="19.666666666666668"/>
+                                                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
+                                                                <color key="textColor" name="placeholderColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="ONS-g6-fYg" secondAttribute="bottom" constant="10" id="4DB-fw-eBw"/>
+                                                            <constraint firstItem="ONS-g6-fYg" firstAttribute="top" secondItem="J7A-6i-cY5" secondAttribute="bottom" constant="16.5" id="GYa-QJ-P4I"/>
+                                                            <constraint firstItem="J7A-6i-cY5" firstAttribute="top" secondItem="5HO-dO-DPg" secondAttribute="top" id="Rql-Ws-hVr"/>
+                                                            <constraint firstAttribute="trailing" secondItem="ONS-g6-fYg" secondAttribute="trailing" id="WhW-3x-xXn"/>
+                                                            <constraint firstItem="J7A-6i-cY5" firstAttribute="leading" secondItem="5HO-dO-DPg" secondAttribute="leading" id="b9h-ij-42a"/>
+                                                            <constraint firstItem="ONS-g6-fYg" firstAttribute="leading" secondItem="5HO-dO-DPg" secondAttribute="leading" id="rE1-vj-5zD"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="5HO-dO-DPg" firstAttribute="top" secondItem="iP0-E4-Aci" secondAttribute="top" constant="3" id="Y6l-RO-hdc"/>
+                                                    <constraint firstAttribute="height" constant="128" id="Z96-HU-CSk"/>
+                                                    <constraint firstAttribute="trailing" secondItem="5HO-dO-DPg" secondAttribute="trailing" constant="12" id="iUK-76-FsG"/>
+                                                    <constraint firstItem="5HO-dO-DPg" firstAttribute="leading" secondItem="iP0-E4-Aci" secondAttribute="leading" constant="12" id="l6D-bk-nRI"/>
+                                                    <constraint firstAttribute="bottom" secondItem="5HO-dO-DPg" secondAttribute="bottom" constant="3.6699999999999999" id="qQH-9x-Xin"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="y2u-Dx-DEW" firstAttribute="top" secondItem="Fdc-XE-gb3" secondAttribute="top" id="87I-ux-JdO"/>
@@ -4146,12 +4193,6 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                             <constraint firstItem="2Mo-YF-Z5Q" firstAttribute="trailing" secondItem="0lR-DA-4G3" secondAttribute="trailing" id="qJd-kS-i55"/>
                             <constraint firstItem="2Mo-YF-Z5Q" firstAttribute="leading" secondItem="0lR-DA-4G3" secondAttribute="leading" id="r9V-1K-9aa"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="Z2W-eT-Vya"/>
-                                <exclude reference="MyL-3p-gG4"/>
-                            </mask>
-                        </variation>
                     </view>
                     <size key="freeformSize" width="414" height="5808"/>
                     <connections>
@@ -4196,12 +4237,13 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                         <outlet property="ckbWhite" destination="fan-YN-ad8" id="z0P-hB-geO"/>
                         <outlet property="ckbWhiteB" destination="Jce-Lh-jEs" id="EkO-C0-SuI"/>
                         <outlet property="ckbWhiteDripEdge" destination="O7h-ej-bLr" id="4pE-nY-Sb0"/>
-                        <outlet property="collVwFiles" destination="bMj-cx-w1m" id="gi6-M1-Os1"/>
+                        <outlet property="collectionProjectFiles" destination="ONS-g6-fYg" id="pkg-rm-vhW"/>
                         <outlet property="datePickerAEGCDate" destination="yIl-X4-ECg" id="oC5-PN-Ziq"/>
                         <outlet property="datePickerHomeOwnerBADate" destination="pKW-Yj-Oib" id="HdG-EA-TQF"/>
                         <outlet property="datePickerHomeOwnerBBDate" destination="HoW-kA-2Y9" id="D1p-WA-DAG"/>
                         <outlet property="datePickerView" destination="fib-HB-T2m" id="a85-PS-um8"/>
                         <outlet property="imgDrawSignature" destination="2Yf-PT-PAd" id="gbN-Zl-ibs"/>
+                        <outlet property="lblAttachedFiles" destination="J7A-6i-cY5" id="xkU-KI-9QH"/>
                         <outlet property="lblInfo" destination="xTo-Sa-hZy" id="mN9-Xl-bAE"/>
                         <outlet property="lblSuccess" destination="1kp-QS-3pM" id="9cT-BL-iEZ"/>
                         <outlet property="lblTitle" destination="tVt-Cf-FYS" id="t1u-69-FCX"/>

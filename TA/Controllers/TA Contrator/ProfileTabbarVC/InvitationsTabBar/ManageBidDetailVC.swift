@@ -305,7 +305,15 @@ class ManageBidDetailVC: BaseViewController {
             let vc = Storyboard.invitation.instantiateViewController(withIdentifier: "PlaceBidVC") as? PlaceBidVC
             vc!.bidId = self.manageBidId
             vc!.projectId = self.projectId
-            vc?.manageBidDetailViewModel = self.manageBidDetailViewModel
+            vc!.fetchHomeOwner = self.lblHomeOwner.text ?? ""
+            vc!.fetchHomeOwnerB = self.lblHomeOwner.text ?? ""
+            vc!.fetchStreetAddress = self.manageBids?.user?.addressLine1 ?? ""
+            vc!.fetchCellPhone = self.manageBids?.user?.phoneNumber ?? ""
+            vc!.fetchMailingAddress = self.manageBids?.user?.addressLine2 ?? ""
+            vc!.fetchEmail = self.manageBids?.user?.email ?? ""
+            vc!.manageBidDetailViewModel = self.manageBidDetailViewModel
+            vc!.arrProjectFiles = self.arrProjectFiles
+            vc!.arrProjectUploadFiles = self.arrProjectUploadFiles
             self.navigationController?.pushViewController(vc!, animated: true)
         } else {
             self.getAgreement()

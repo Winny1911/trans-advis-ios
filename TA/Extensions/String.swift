@@ -266,6 +266,16 @@ extension String {
 }
 
 extension String {
+    func hasImageExtension() -> Bool {
+        return self.contains(".jpg") || self.contains(".jpeg") || self.contains(".png")
+    }
+    
+    func hasDocExtension() -> Bool {
+        return self.contains(".pdf") || self.contains(".doc")
+    }
+}
+
+extension String {
     func formatPhone(with mask: String) -> String {
         let digits = self.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
         var result = ""

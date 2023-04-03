@@ -172,6 +172,7 @@ class InvitationDetailsVC: BaseViewController {
         vc!.fetchCellPhone = self.invitationDetail.project_data?.user_data?.phoneNumber ?? ""
         vc!.fetchMailingAddress = self.addressLabel.text ?? ""
         vc!.fetchEmail = self.invitationDetail.project_data?.user_data?.email ?? ""
+        vc!.invitationDetail = self.invitationDetail
         if self.invitationDetail.project_data?.project_files?.count ?? 0 > 0 {
             vc!.imageUrl = self.invitationDetail.project_data?.project_files?[0].file ?? ""
         } else {
