@@ -1282,9 +1282,6 @@
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" image="ic_add_images"/>
-                                                <connections>
-                                                    <action selector="actionAddFiles:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="81X-jr-DCD"/>
-                                                </connections>
                                             </button>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bMj-cx-w1m">
                                                 <rect key="frame" x="96" y="510.33333333333337" width="318" height="75"/>
@@ -4040,7 +4037,7 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                                                         <rect key="frame" x="12" y="3" width="390" height="121.33333333333333"/>
                                                         <subviews>
                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ONS-g6-fYg">
-                                                                <rect key="frame" x="0.0" y="36.33333333333303" width="390" height="75"/>
+                                                                <rect key="frame" x="85" y="36.33333333333303" width="305" height="75"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="75" id="o9y-QV-Bv8"/>
@@ -4059,15 +4056,30 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                                                                 <color key="textColor" name="placeholderColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b2R-4p-g2v">
+                                                                <rect key="frame" x="14" y="45" width="57" height="57"/>
+                                                                <color key="backgroundColor" name="#F6F6F7"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="57" id="UV2-K5-0aE"/>
+                                                                    <constraint firstAttribute="width" constant="57" id="hD6-AF-ULy"/>
+                                                                </constraints>
+                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                <state key="normal" image="ic_add_images"/>
+                                                                <connections>
+                                                                    <action selector="actionAddFiles:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="gjR-jt-H9D"/>
+                                                                </connections>
+                                                            </button>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="bottom" secondItem="ONS-g6-fYg" secondAttribute="bottom" constant="10" id="4DB-fw-eBw"/>
+                                                            <constraint firstItem="b2R-4p-g2v" firstAttribute="leading" secondItem="5HO-dO-DPg" secondAttribute="leading" constant="14" id="FEl-KS-BgI"/>
                                                             <constraint firstItem="ONS-g6-fYg" firstAttribute="top" secondItem="J7A-6i-cY5" secondAttribute="bottom" constant="16.5" id="GYa-QJ-P4I"/>
+                                                            <constraint firstItem="ONS-g6-fYg" firstAttribute="leading" secondItem="b2R-4p-g2v" secondAttribute="trailing" constant="14" id="Gea-ps-3SG"/>
                                                             <constraint firstItem="J7A-6i-cY5" firstAttribute="top" secondItem="5HO-dO-DPg" secondAttribute="top" id="Rql-Ws-hVr"/>
                                                             <constraint firstAttribute="trailing" secondItem="ONS-g6-fYg" secondAttribute="trailing" id="WhW-3x-xXn"/>
+                                                            <constraint firstItem="b2R-4p-g2v" firstAttribute="top" secondItem="J7A-6i-cY5" secondAttribute="bottom" constant="25.329999999999998" id="a9Z-kl-buH"/>
                                                             <constraint firstItem="J7A-6i-cY5" firstAttribute="leading" secondItem="5HO-dO-DPg" secondAttribute="leading" id="b9h-ij-42a"/>
-                                                            <constraint firstItem="ONS-g6-fYg" firstAttribute="leading" secondItem="5HO-dO-DPg" secondAttribute="leading" id="rE1-vj-5zD"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
@@ -4193,12 +4205,17 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                             <constraint firstItem="2Mo-YF-Z5Q" firstAttribute="trailing" secondItem="0lR-DA-4G3" secondAttribute="trailing" id="qJd-kS-i55"/>
                             <constraint firstItem="2Mo-YF-Z5Q" firstAttribute="leading" secondItem="0lR-DA-4G3" secondAttribute="leading" id="r9V-1K-9aa"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Z2W-eT-Vya"/>
+                            </mask>
+                        </variation>
                     </view>
                     <size key="freeformSize" width="414" height="5808"/>
                     <connections>
                         <outlet property="blackView" destination="Z2W-eT-Vya" id="vfn-aU-Rvs"/>
                         <outlet property="bottomVw" destination="2Mo-YF-Z5Q" id="A6x-ur-8oN"/>
-                        <outlet property="btnAddFiles" destination="zP8-lf-se0" id="obA-IG-ZEc"/>
+                        <outlet property="btnAddFiles" destination="b2R-4p-g2v" id="wo8-wg-eLB"/>
                         <outlet property="btnSubmit" destination="QzU-vx-f7n" id="4nq-WW-E13"/>
                         <outlet property="btnSucces" destination="Gqu-qy-1ld" id="Xyw-fW-F79"/>
                         <outlet property="ckbAegc" destination="hfY-je-ftc" id="U1A-Wq-p3V"/>

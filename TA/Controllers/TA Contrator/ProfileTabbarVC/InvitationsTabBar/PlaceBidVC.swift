@@ -77,7 +77,6 @@ class PlaceBidVC: BaseViewController {
     @IBOutlet weak var txtOverheadProfit: FloatingLabelInput!
     @IBOutlet weak var txtCodeUpgrades: FloatingLabelInput!
     @IBOutlet weak var txtCodeUpgradesPrice: FloatingLabelInput!
-    @IBOutlet weak var txtHomeOwnerBA: FloatingLabelInput!
     @IBOutlet weak var txtHomeOwnerBB: FloatingLabelInput!
     @IBOutlet weak var txtAegcRepresentative: FloatingLabelInput!
     @IBOutlet weak var datePickerAEGCDate: UIDatePicker!
@@ -249,11 +248,6 @@ class PlaceBidVC: BaseViewController {
     func buildParams(model: PlaceBidModel) -> [String : Any]{
         let params = [
             "date": model.date,
-            
-            //"startDate": date,
-            //"endDate": date,
-            //"amount": amount,
-            
             "homeOwner1":  model.homeOwnerFirst,
             "homeOwner2": model.homeOwnerSecond,
             "streetAddress": model.streetAddress,
@@ -513,52 +507,8 @@ class PlaceBidVC: BaseViewController {
             }
             
             self.collectionProjectFiles.reloadData()
-            //self.arrOfImgStrings.removeAll()
             self.resetFloatingLabel()
         }
-        
-        //            var arrOfImgStrings = [String]()
-        //            let userImgVw = UIImageView()
-        //            if model?.data?.project_details?.project_files?.count ?? 0 > 0 {
-        //                self.fullViewImge.removeAll()
-        //                for i in 0 ..< (model?.data?.project_details?.project_files?.count)! {
-        //                    arrOfImgStrings.append(model?.data?.project_details?.project_files?[i].file ?? "")
-        //                    let fileStr = model?.data?.project_details?.project_files?[i].file ?? ""
-        //                    self.fullViewImge.append(fileStr)
-        //                    self.imageNameArray.append("\(model?.data?.project_details?.project_files?[i].title ?? "")")
-        //                    userImgVw.image = nil
-        //                    if fileStr.contains(".png") || fileStr.contains(".jpg") || fileStr.contains(".jpeg") {
-        //                        userImgVw.sd_setImage(with: URL(string: fileStr), placeholderImage: UIImage(named: "doc"), completed: nil)
-        //                        let imageStr = model?.data?.project_details?.project_files?[i].file
-        //                        let strOfImage = imageStr?.replacingOccurrences(of: "https://transadvisor-dev.s3.amazonaws.com/bidUploads/", with: "")
-        //                        let dict = ["image": "\(strOfImage ?? "")", "name":model?.data?.project_details?.project_files?[i].title]
-        //                        self.arrOfFiles.append(dict as [String : Any])
-        //                        let titleImage = model?.data?.project_details?.project_files?[i].title ?? ""
-        //                        if titleImage.contains(".jpg") || titleImage.contains(".jpeg") || titleImage.contains(".png") {
-        //                            self.arrOfImagesNames.append("\(model?.data?.project_details?.project_files?[i].title ?? "")")
-        //                        } else {
-        //                            self.arrOfImagesNames.append("\(model?.data?.project_details?.project_files?[i].title ?? "").png")
-        //                        }
-        //                        self.arrOfImages.append(userImgVw.image!)
-        //                    } else {
-        //                        let imageStr = model?.data?.bids_documents?[i].file
-        //                        let strOfDoc = imageStr?.replacingOccurrences(of: "https://transadvisor-dev.s3.amazonaws.com/bidUploads/", with: "")
-        //                        let dict = ["image": "\(strOfDoc ?? "")", "name":model?.data?.bids_documents?[i].title]
-        //                        self.arrOfFiles.append(dict as [String : Any])
-        //                        let titleDoc = model?.data?.bids_documents?[i].title ?? ""
-        //                        if titleDoc.contains(".pdf") || titleDoc.contains(".doc") {
-        //                            self.arrOfImagesNames.append("\(model?.data?.bids_documents?[i].title ?? "")")
-        //                        } else {
-        //                            self.arrOfImagesNames.append("\(model?.data?.bids_documents?[i].title ?? "").doc")
-        //                        }
-        //                        self.arrOfImages.append(UIImage(named: "doc")!)
-        //                    }
-        //                }
-        //
-        //                self.arrOfFilesFetchedFromServer = self.arrOfFiles
-        //                self.bidFilesArray = model?.data?.bids_documents
-        //
-        //            }
     }
     
     func setImageSignature(imageSignatureBase64: String) {
@@ -774,7 +724,7 @@ class PlaceBidVC: BaseViewController {
         let dict = ["image":dataDict["name"] as! String, "name": randomName ]
         self.arrOfFiles.append(dict)
         self.arrOfFilesManually.append(dict)
-        //self.collVwFiles.reloadData()
+        self.collectionProjectFiles.reloadData()
     }
     
     @IBAction func openTerm(_ sender: Any) {
@@ -812,7 +762,6 @@ class PlaceBidVC: BaseViewController {
         }else{
             print("limit is 150")
         }
-        // handleCameraOptions()
     }
     
     func addParamsID(params: [String: Any]) -> [String:Any] {
@@ -1088,12 +1037,12 @@ extension PlaceBidVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProjectFileCollecrtionView", for: indexPath) as? ProjectFileCollecrtionView
-//        SDWebImage.clearCaches()
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProjectFileCollecrtionView", for: indexPath) as? ProjectFileCollecrtionView
+        //        SDWebImage.clearCaches()
         SDImageCache.shared.clearMemory()
         SDImageCache.shared.clearDisk()
         if indexPath.row < (self.arrProjectFiles.count) {
-
+            
             if (((self.arrProjectFiles[indexPath.row].title ?? "").contains(".png")) || ((self.arrProjectFiles[indexPath.row].title ?? "").contains(".jpg")) || ((self.arrProjectFiles[indexPath.row].title ?? "").contains(".jpeg")) || ((self.arrProjectFiles[indexPath.row].title ?? "").contains(".pdf")) || ((self.arrProjectFiles[indexPath.row].title ?? "").contains(".doc"))){
                 cell!.projectTitleLabel.text = "\(self.arrProjectFiles[indexPath.row].title ?? "")"
             } else {
@@ -1107,15 +1056,15 @@ extension PlaceBidVC: UICollectionViewDelegate, UICollectionViewDataSource {
                 }
             } else {
                 cell!.projectImageView.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "doc"), completed:nil)
-//                if var imgStr = self.arrProjectFiles[indexPath.row].file {
-//                    imgStr = imgStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-//                    cell!.projectImageView.sd_setImage(with: URL(string: imgStr), placeholderImage: UIImage(named: "doc"), completed:nil)
-//                }
-//                cell!.projectImageView.image = UIImage(named: "doc")
+                //                if var imgStr = self.arrProjectFiles[indexPath.row].file {
+                //                    imgStr = imgStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                //                    cell!.projectImageView.sd_setImage(with: URL(string: imgStr), placeholderImage: UIImage(named: "doc"), completed:nil)
+                //                }
+                //                cell!.projectImageView.image = UIImage(named: "doc")
             }
-
+            
         } else {
-
+            
             if (((self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").contains(".png")) || ((self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").contains(".jpg")) || ((self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").contains(".jpeg")) || ((self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").contains(".pdf")) || ((self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").contains(".doc"))){
                 cell!.projectTitleLabel.text = "\(self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "")"
             } else {
@@ -1151,11 +1100,11 @@ extension PlaceBidVC: UICollectionViewDelegate, UICollectionViewDataSource {
                         UIApplication.shared.open(url)
                     }
                 }
-//                let destinationViewController = Storyboard.invitation.instantiateViewController(withIdentifier: "ShowImageVC") as? ShowImageVC
-//                destinationViewController!.isImage = true
-//                destinationViewController?.imsgeStrURL = ""
-//                destinationViewController?.img = UIImage(named: "doc") ?? UIImage()
-//                self.navigationController?.pushViewController(destinationViewController!, animated: true)
+                //                let destinationViewController = Storyboard.invitation.instantiateViewController(withIdentifier: "ShowImageVC") as? ShowImageVC
+                //                destinationViewController!.isImage = true
+                //                destinationViewController?.imsgeStrURL = ""
+                //                destinationViewController?.img = UIImage(named: "doc") ?? UIImage()
+                //                self.navigationController?.pushViewController(destinationViewController!, animated: true)
             }
             
         } else {
@@ -1173,11 +1122,11 @@ extension PlaceBidVC: UICollectionViewDelegate, UICollectionViewDataSource {
                         UIApplication.shared.open(url)
                     }
                 }
-//                let destinationViewController = Storyboard.invitation.instantiateViewController(withIdentifier: "ShowImageVC") as? ShowImageVC
-//                destinationViewController!.isImage = true
-//                destinationViewController?.imsgeStrURL = ""
-//                destinationViewController?.img = UIImage(named: "doc") ?? UIImage()
-//                self.navigationController?.pushViewController(destinationViewController!, animated: true)
+                //                let destinationViewController = Storyboard.invitation.instantiateViewController(withIdentifier: "ShowImageVC") as? ShowImageVC
+                //                destinationViewController!.isImage = true
+                //                destinationViewController?.imsgeStrURL = ""
+                //                destinationViewController?.img = UIImage(named: "doc") ?? UIImage()
+                //                self.navigationController?.pushViewController(destinationViewController!, animated: true)
             }
         }
     }
@@ -1202,7 +1151,7 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
         
         let actionDocuments: UIAlertAction = UIAlertAction(title: UIFunction.getLocalizationString(text: "Choose Docs"), style: .default) { action -> Void in
             
-            //self.chooseFromDocs()
+            self.chooseFromDocs()
         }
         
         let cancelAction: UIAlertAction = UIAlertAction(title: UIFunction.getLocalizationString(text: "Cancel"), style: .cancel) { action -> Void in
@@ -1300,16 +1249,16 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
         self.present(imagePicker, animated: true, completion: nil)
     }
     
-    //    func chooseFromDocs() {
-    //        let importMenu = UIDocumentPickerViewController(documentTypes: [String(kUTTypeText),String(kUTTypeContent),String(kUTTypeItem),String(kUTTypeData),String(kUTTypeSpreadsheet),String(kUTTypeImage), String(kUTTypeRTF), String(kUTTypePDF)], in: .import)
-    //
-    //        if #available(iOS 11.0, *) {
-    //            importMenu.allowsMultipleSelection = true
-    //        }
-    //        importMenu.delegate = self
-    //        importMenu.modalPresentationStyle = .formSheet
-    //        present(importMenu, animated: true)
-    //    }
+    func chooseFromDocs() {
+        let importMenu = UIDocumentPickerViewController(documentTypes: [String(kUTTypeText),String(kUTTypeContent),String(kUTTypeItem),String(kUTTypeData),String(kUTTypeSpreadsheet),String(kUTTypeImage), String(kUTTypeRTF), String(kUTTypePDF)], in: .import)
+        
+        if #available(iOS 11.0, *) {
+            importMenu.allowsMultipleSelection = true
+        }
+        importMenu.delegate = self
+        importMenu.modalPresentationStyle = .formSheet
+        present(importMenu, animated: true)
+    }
     
     func choosePhotoFromGalleryAction()
     {
@@ -1463,6 +1412,23 @@ fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ inp
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
     return input.rawValue
+}
+
+extension PlaceBidVC: UIDocumentPickerDelegate {
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        guard let myURL = urls.first else {
+            return
+        }
+        print("import result : \(myURL)")
+        self.docURL = myURL
+        self.arrOfImagesNames.append("\(randomString()).doc")
+        self.arrOfImages.append(UIImage(named: "doc")!)
+        self.docSendAPI(docLocalUrl: myURL, fileName: "\(randomString()).pdf")
+    }
+    
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
 }
 
 extension PlaceBidVC: WKNavigationDelegate, WKUIDelegate {
