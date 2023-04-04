@@ -166,6 +166,9 @@ class PlaceBidVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(arrProjectFiles)
+        print(arrProjectUploadFiles)
+        
         txtFldBidAmount.backgroundColor = .red
         collectionProjectFiles.delegate = self
         collectionProjectFiles.dataSource = self
@@ -379,30 +382,6 @@ class PlaceBidVC: BaseViewController {
         }
     }
     
-    func processFiles(files: [Any]?, type: String) {
-        guard let files = files as? [ProjectFile] else { return }
-        var userImgVw = UIImageView()
-        for file in files {
-            let fileStr = file.file ?? ""
-            let fileName = file.title ?? ""
-            let imageURL = URL(string: fileStr)
-            let isImage = (fileStr.contains(".png") || fileStr.contains(".jpg") || fileStr.contains(".jpeg"))
-            
-            let replacedStr = fileStr.replacingOccurrences(of: "https://transadvisor-dev.s3.amazonaws.com/bidUploads/", with: "")
-            let dict = ["image": replacedStr, "name": fileName]
-            self.arrOfFiles.append(dict)
-            
-            if isImage {
-                userImgVw.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "doc"), completed: nil)
-                self.arrOfImages.append(userImgVw.image!)
-                self.arrOfImagesNames.append(fileName.hasImageExtension() ? fileName : "\(fileName).png")
-            } else {
-                self.arrOfImages.append(UIImage(named: "doc")!)
-                self.arrOfImagesNames.append(fileName.hasDocExtension() ? fileName : "\(fileName).doc")
-            }
-        }
-    }
-    
     
     func fetchBidDetails() {
         let params = ["id": self.bidId]
@@ -413,11 +392,6 @@ class PlaceBidVC: BaseViewController {
                 self.fullViewImge.removeAll()
                 self.fullViewImge = projectFiles.compactMap { $0.file ?? "" }
                 self.imageNameArray = projectFiles.compactMap { $0.title ?? "" }
-                
-                
-                self.processFiles(files: projectFiles, type: "image")
-                self.processFiles(files: model?.data?.bids_documents, type: "doc")
-                
                 self.arrOfFilesFetchedFromServer = self.arrOfFiles
                 self.bidFilesArray = model?.data?.bids_documents
             }
@@ -695,11 +669,10 @@ class PlaceBidVC: BaseViewController {
     func imageSendAPI(imageData: Data, fileName:String) {
         placeBidViewModel.addInvitationImageApi(keyToUploadData: "file", fileNames: "\(fileName)", dataToUpload: imageData, param: [:]) { response in
             print(response!)
-            if let a = response?["data"] as? [String: Any] {
-                let url = a["url"] as? String
-                self.fullViewImge.append(url ?? "")
-            }
-            self.imageNameArray.append(fileName)
+//            if let data = response?["data"] as? [String: Any] {
+                //data["extension"]
+//            }
+            //self.imageNameArray.append(fileName)
             self.setModelData(response: response!)
         }
     }
@@ -722,8 +695,15 @@ class PlaceBidVC: BaseViewController {
         let dataDict = response["data"] as! NSDictionary
         let randomName = "\(randomString())"
         let dict = ["image":dataDict["name"] as! String, "name": randomName ]
-        self.arrOfFiles.append(dict)
-        self.arrOfFilesManually.append(dict)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateString = dateFormatter.string(from: Date())
+            
+        let newProjectFile = BidsDocumentsDetails(createdAt: dateString, file: dataDict["url"] as? String, title: dataDict["name"] as? String, type: dataDict["extension"] as? String, updatedAt: dateString)
+        
+        self.arrProjectFiles.append(newProjectFile)
+        
         self.collectionProjectFiles.reloadData()
     }
     
@@ -1038,7 +1018,6 @@ extension PlaceBidVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProjectFileCollecrtionView", for: indexPath) as? ProjectFileCollecrtionView
-        //        SDWebImage.clearCaches()
         SDImageCache.shared.clearMemory()
         SDImageCache.shared.clearDisk()
         if indexPath.row < (self.arrProjectFiles.count) {
@@ -1056,15 +1035,8 @@ extension PlaceBidVC: UICollectionViewDelegate, UICollectionViewDataSource {
                 }
             } else {
                 cell!.projectImageView.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "doc"), completed:nil)
-                //                if var imgStr = self.arrProjectFiles[indexPath.row].file {
-                //                    imgStr = imgStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-                //                    cell!.projectImageView.sd_setImage(with: URL(string: imgStr), placeholderImage: UIImage(named: "doc"), completed:nil)
-                //                }
-                //                cell!.projectImageView.image = UIImage(named: "doc")
             }
-            
         } else {
-            
             if (((self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").contains(".png")) || ((self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").contains(".jpg")) || ((self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").contains(".jpeg")) || ((self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").contains(".pdf")) || ((self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").contains(".doc"))){
                 cell!.projectTitleLabel.text = "\(self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "")"
             } else {
