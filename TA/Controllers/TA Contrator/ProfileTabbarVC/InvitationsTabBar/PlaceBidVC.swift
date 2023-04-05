@@ -85,7 +85,7 @@ class PlaceBidVC: BaseViewController {
     
     @IBOutlet weak var txtInitialHomeOwner1: FloatingLabelInput!
     
-    @IBOutlet weak var txtInitialHomeWoner2: FloatingLabelInput!
+    @IBOutlet weak var txtInitialHomeOwner2: FloatingLabelInput!
     
     //MARK : Checkbox
     @IBOutlet weak var ckbPaymentTermsFinance: UIButton!
@@ -250,6 +250,8 @@ class PlaceBidVC: BaseViewController {
             self.txtHomeOwnerBB.resetFloatingLable()
             self.txtAegcRepresentative.resetFloatingLable()
             self.txtCodeUpgradesPrice.resetFloatingLable()
+            self.txtInitialHomeOwner1.resetFloatingLable()
+            self.txtInitialHomeOwner2.resetFloatingLable()
         }
     }
     
@@ -334,7 +336,7 @@ class PlaceBidVC: BaseViewController {
             "homeOwnerSignDate1": model.dateHomeOwner1,
             "homeOwnerSignDate2": model.dateHomeOwner2,
             "aegcRepresentativeDate": model.dateAEGC,
-            "project_files" : self.paramsProjectFiles,
+            //"project_files" : self.paramsProjectFiles,
             "homeOwnerInitial1": model.homeOwnerInitial1,
             "homeOwnerInitial2": model.homeOwnerInitial2] as [String : Any]
         print(params)
@@ -481,6 +483,8 @@ class PlaceBidVC: BaseViewController {
             self.ckbPaymentTermsFinance.isSelected = model?.data?.paymentTerms2 == 1
             self.ckbAntenna.isSelected = model?.data?.antenna == 1
             self.txtDetachedGarage.text = "\(model?.data?.detachedGarageSQ ?? "")"
+            self.txtInitialHomeOwner1.text = "\(model?.data?.homeOwnerInitial1 ?? "")"
+            self.txtInitialHomeOwner2.text = "\(model?.data?.homeOwnerInitial2 ?? "")"
             
             //checkbox
             self.getCodeComboBoxTurtleVents(for: model?.data?.turtleVents ?? "")
@@ -496,9 +500,9 @@ class PlaceBidVC: BaseViewController {
             self.arrProjectUploadFiles = model?.data?.project_details?.project_files ?? [ProjectFiles]()
             self.countFiles = self.arrProjectFiles.count + self.arrProjectUploadFiles.count
             if self.countFiles == 0 {
-                self.lblAttachedFiles.text = "Attached Files"
+                self.lblAttachedFiles.text = "Project Files"
             } else {
-                self.lblAttachedFiles.text = "Attached Files (\(self.countFiles))"
+                self.lblAttachedFiles.text = "Project Files (\(self.countFiles))"
             }
             
             self.collectionProjectFiles.reloadData()
@@ -823,7 +827,7 @@ class PlaceBidVC: BaseViewController {
         
         let permit : Bool = ckbPermit.isSelected
         
-        let placeBidModel  = PlaceBidModel(date: stringDate, homeOwnerFirst: txtHomeOwner.text ?? "", homeOwnerSecond: txtHomeOwnerB.text ?? "", streetAddress: txtStreetAddress.text ?? "", mailingAddress: txtMailingAddress.text ?? "", cellPhone: txtCellPhone.text ?? "", email: txtEmail.text ?? "", hoa: txtHOA.text ?? "", permit: permit , insurance: txtInsurance.text ?? "", claimNumber: txtClaimNumber.text ?? "", insFullyApproved: ckbInsFullyApproved.isSelected, insPartialApproved: ckbInsPartialApproved.isSelected, retail: ckbRetail.isSelected, retailWDepreciation: ckbRetailDepreciation.isSelected, mainDwellingRoof: txtMainDwellingRoof.text ?? "", shedSQ: txtShed.text ?? "", decking: txtDecking.text ?? "", flatRoofSQ: txtFlatRoof.text ?? "", total: txtTotal.text ?? "", totalSQ: txtCodeUpgradesPrice.text ?? "", deducible: txtDeducible.text ?? "", fe: txtFe.text  ?? "", retailB: txtRetail.text ?? "", be: txtBe.text  ?? "", brand: txtBrand.text ?? "", style: txtStyle.text ?? "", color: txtColor.text ?? "", white: String(ckbWhiteDripEdge.isSelected), brown: String(ckbBrown.isSelected), aegc: String(ckbAegc.isSelected), iko: String(ckbIko.isSelected), oc: String(ckbOc.isSelected), ocB: String(ckbOCb.isSelected), gaf: String(ckbGaf.isSelected), airVent: String(ckbAirVent.isSelected), cutInstallRidgeVent: ckbCutInstallRidgVent.isSelected, black: String(ckbBlack.isSelected), brownB: String(ckbBrownB.isSelected), whiteB: String(ckbWhite.isSelected), copper: String(ckbCopper.isSelected), blackB: String(ckbBlackB.isSelected), brownC: String(ckbBrownC.isSelected), grey: String(ckbGrey.isSelected), whiteC: String(ckbWhiteB.isSelected), removeReplace: String(ckbRemoveReplace.isSelected), deatchReset: String(ckbDetachReset.isSelected), removeCoverHoles: String(ckbRemoveCoverHoles.isSelected), permaBoot: txtPermaBoot.text ?? "", permaBootB: txtPermaBootB.text ?? "", pipeJack: txtPipeJack.text ?? "", pipeJackB: txtPipeJackB.text ?? "", removeReplaceB: String(ckbRemoveReplaceB.isSelected), deatchResetB: String(ckbDetachResetB.isSelected), colorB: txtColorB.text ?? "", satelliteDish: ckbSatelliteDish.isSelected, antenna: ckbAntenna.isSelected, detachOnly: String(ckbDetach.isSelected), detachDispose: String(ckbDetachDispose.isSelected), materialLocation: txtMaterialLocation.text ?? "", dumpsterLocation: txtDumpsterLocation.text ?? "", specialInstructions: txtSpecialInstructions.text ?? "", notes: txtNotes.text ?? "", roofing: txtRoofing.text ?? "", roofingPrice: txtRoofingPrice.text  ?? "", debrisRemoval: txtDebrisRemoval.text ?? "", debrisRemovalPrice : txtDebrisRemovalPrice.text ?? "", overheadProfit: txtOverheadProfit.text ?? "", codeUpgrades: txtCodeUpgrades.text ?? "", paymentTermsDeductible: ckbPaymentTermsDeductible.isSelected, paymantTermsFinance: ckbPaymentTermsFinance.isSelected, homeOwner: txtHomeOwner.text ?? "", homeOwnerDate: stringDateHomeOwnerA, homeOwnerDateBA: txtHomeOwnerBB.text ?? "", aegcRepresentative: txtAegcRepresentative.text ?? "", aegcRepresentativeBA: "", dateHomeOwner1: stringDateHomeOwnerA, dateHomeOwner2: stringDateHomeOwnerB, dateAEGC: stringDateAEGC, detachedGarageSQ: txtDetachedGarage.text ?? "", homeOwnerInitial1: txtInitialHomeOwner1.text ?? "", homeOwnerInitial2: txtInitialHomeWoner2.text ?? "")
+        let placeBidModel  = PlaceBidModel(date: stringDate, homeOwnerFirst: txtHomeOwner.text ?? "", homeOwnerSecond: txtHomeOwnerB.text ?? "", streetAddress: txtStreetAddress.text ?? "", mailingAddress: txtMailingAddress.text ?? "", cellPhone: txtCellPhone.text ?? "", email: txtEmail.text ?? "", hoa: txtHOA.text ?? "", permit: permit , insurance: txtInsurance.text ?? "", claimNumber: txtClaimNumber.text ?? "", insFullyApproved: ckbInsFullyApproved.isSelected, insPartialApproved: ckbInsPartialApproved.isSelected, retail: ckbRetail.isSelected, retailWDepreciation: ckbRetailDepreciation.isSelected, mainDwellingRoof: txtMainDwellingRoof.text ?? "", shedSQ: txtShed.text ?? "", decking: txtDecking.text ?? "", flatRoofSQ: txtFlatRoof.text ?? "", total: txtTotal.text ?? "", totalSQ: txtCodeUpgradesPrice.text ?? "", deducible: txtDeducible.text ?? "", fe: txtFe.text  ?? "", retailB: txtRetail.text ?? "", be: txtBe.text  ?? "", brand: txtBrand.text ?? "", style: txtStyle.text ?? "", color: txtColor.text ?? "", white: String(ckbWhiteDripEdge.isSelected), brown: String(ckbBrown.isSelected), aegc: String(ckbAegc.isSelected), iko: String(ckbIko.isSelected), oc: String(ckbOc.isSelected), ocB: String(ckbOCb.isSelected), gaf: String(ckbGaf.isSelected), airVent: String(ckbAirVent.isSelected), cutInstallRidgeVent: ckbCutInstallRidgVent.isSelected, black: String(ckbBlack.isSelected), brownB: String(ckbBrownB.isSelected), whiteB: String(ckbWhite.isSelected), copper: String(ckbCopper.isSelected), blackB: String(ckbBlackB.isSelected), brownC: String(ckbBrownC.isSelected), grey: String(ckbGrey.isSelected), whiteC: String(ckbWhiteB.isSelected), removeReplace: String(ckbRemoveReplace.isSelected), deatchReset: String(ckbDetachReset.isSelected), removeCoverHoles: String(ckbRemoveCoverHoles.isSelected), permaBoot: txtPermaBoot.text ?? "", permaBootB: txtPermaBootB.text ?? "", pipeJack: txtPipeJack.text ?? "", pipeJackB: txtPipeJackB.text ?? "", removeReplaceB: String(ckbRemoveReplaceB.isSelected), deatchResetB: String(ckbDetachResetB.isSelected), colorB: txtColorB.text ?? "", satelliteDish: ckbSatelliteDish.isSelected, antenna: ckbAntenna.isSelected, detachOnly: String(ckbDetach.isSelected), detachDispose: String(ckbDetachDispose.isSelected), materialLocation: txtMaterialLocation.text ?? "", dumpsterLocation: txtDumpsterLocation.text ?? "", specialInstructions: txtSpecialInstructions.text ?? "", notes: txtNotes.text ?? "", roofing: txtRoofing.text ?? "", roofingPrice: txtRoofingPrice.text  ?? "", debrisRemoval: txtDebrisRemoval.text ?? "", debrisRemovalPrice : txtDebrisRemovalPrice.text ?? "", overheadProfit: txtOverheadProfit.text ?? "", codeUpgrades: txtCodeUpgrades.text ?? "", paymentTermsDeductible: ckbPaymentTermsDeductible.isSelected, paymantTermsFinance: ckbPaymentTermsFinance.isSelected, homeOwner: txtHomeOwner.text ?? "", homeOwnerDate: stringDateHomeOwnerA, homeOwnerDateBA: txtHomeOwnerBB.text ?? "", aegcRepresentative: txtAegcRepresentative.text ?? "", aegcRepresentativeBA: "", dateHomeOwner1: stringDateHomeOwnerA, dateHomeOwner2: stringDateHomeOwnerB, dateAEGC: stringDateAEGC, detachedGarageSQ: txtDetachedGarage.text ?? "", homeOwnerInitial1: txtInitialHomeOwner1.text ?? "", homeOwnerInitial2: txtInitialHomeOwner2.text ?? "")
         placeBidViewModel.model = placeBidModel
         placeBidViewModel.validatePlaceBidnModel {[weak self] (success, error) in
             guard let strongSelf = self else { return }
