@@ -87,6 +87,8 @@ class PlaceBidModel {
     var dateHomeOwner2: String = ""
     var dateAEGC: String = ""
     var detachedGarageSQ: String = ""
+    var homeOwnerInitial1: String = ""
+    var homeOwnerInitial2: String = ""
     
     init() {
     }
@@ -170,7 +172,9 @@ class PlaceBidModel {
          dateHomeOwner1: String,
          dateHomeOwner2: String,
          dateAEGC: String,
-         detachedGarageSQ: String) {
+         detachedGarageSQ: String,
+         homeOwnerInitial1: String,
+         homeOwnerInitial2: String) {
         self.date = date
         self.homeOwnerFirst = homeOwnerFirst
         self.homeOwnerSecond = homeOwnerSecond
@@ -251,5 +255,7 @@ class PlaceBidModel {
         self.dateHomeOwner2 = dateHomeOwner2
         self.dateAEGC = dateAEGC
         self.detachedGarageSQ = detachedGarageSQ
+        self.homeOwnerInitial1 = homeOwnerInitial1
+        self.homeOwnerInitial2 = homeOwnerInitial2
     }
 }

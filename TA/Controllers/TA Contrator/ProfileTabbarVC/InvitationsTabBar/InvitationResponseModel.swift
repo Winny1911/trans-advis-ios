@@ -316,12 +316,13 @@ struct ProjectFiles : Codable {
     var type : String?
     var updatedAt : String?
     var userId : String?
-    var user_detail : UserDetailManage?
+    var user_detail : UserDetailManage!
 }
 struct UserDetailManage : Codable {
-    var firstName : String?
-    var lastName : String?
+    var firstName : String!
+    var lastName : String!
 }
+
 
 struct BidsDocumentsDetails : Codable {
     var createdAt : String?
