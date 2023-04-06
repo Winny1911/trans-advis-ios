@@ -173,6 +173,7 @@ class InvitationDetailsVC: BaseViewController {
         vc!.fetchMailingAddress = self.addressLabel.text ?? ""
         vc!.fetchEmail = self.invitationDetail.project_data?.user_data?.email ?? ""
         vc!.invitationDetail = self.invitationDetail
+        vc!.fromInvitation = true
 //        if self.invitationDetail.project_data?.project_files?.count ?? 0 > 0 {
 //            vc!.arrProjectUploadFiles = self.invitationDetail.project_data?.project_files as [ProjectFiles]
 //        } else {

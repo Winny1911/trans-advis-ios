@@ -175,7 +175,8 @@ class PlaceBidModel {
          dateAEGC: String,
          detachedGarageSQ: String,
          homeOwnerInitial1: String,
-         homeOwnerInitial2: String) {
+         homeOwnerInitial2: String,
+         homeOwnerSign1: String) {
         self.date = date
         self.homeOwnerFirst = homeOwnerFirst
         self.homeOwnerSecond = homeOwnerSecond
@@ -258,5 +259,6 @@ class PlaceBidModel {
         self.detachedGarageSQ = detachedGarageSQ
         self.homeOwnerInitial1 = homeOwnerInitial1
         self.homeOwnerInitial2 = homeOwnerInitial2
+        self.homeOwnerSign1 = homeOwnerSign1
     }
 }

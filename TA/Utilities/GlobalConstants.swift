@@ -87,6 +87,7 @@ extension ValidationError {
     static let emptyDumpsterLocation                 = "Please enter dumpster location"
     static let emptyHomeOwnerInitial1                = "Please enter home owner 1 initial"
     static let emptyHomeOwnerInitial2                = "Please enter home owner 2 initial"
+    static let homeOwnerSign1                        = "Please enter your singnature"
     static let emptyPverheadProfit2                  = "Please enter overhead profit 2"
     static let emptyHoa                              = "Please enter HOA information"
     static let emptyColor1                           = "Please enter color 1"
