@@ -89,6 +89,7 @@ class PlaceBidModel {
     var detachedGarageSQ: String = ""
     var homeOwnerInitial1: String = ""
     var homeOwnerInitial2: String = ""
+    var homeOwnerSign1: String = ""
     
     init() {
     }

@@ -22,6 +22,10 @@ class PlaceBidViewModel: NSObject {
             error = ValidationError.emptyHomeOwnerInitial2
             completion(nil, error)
             return
+        //} else if model.homeOwnerSign1.isEmpty {
+//            error = ValidationError.homeOwnerSign1
+//            completion(nil, error)
+//            return
         } else {
             completion(model, nil)
         }

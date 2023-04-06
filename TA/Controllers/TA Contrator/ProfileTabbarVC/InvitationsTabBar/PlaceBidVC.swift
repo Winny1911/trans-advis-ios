@@ -173,6 +173,7 @@ class PlaceBidVC: BaseViewController {
         
         print(arrProjectFiles)
         print(arrProjectUploadFiles)
+        print(invitationDetail)
         
         txtFldBidAmount.backgroundColor = .red
         collectionProjectFiles.delegate = self
@@ -336,7 +337,7 @@ class PlaceBidVC: BaseViewController {
             "homeOwnerSignDate1": model.dateHomeOwner1,
             "homeOwnerSignDate2": model.dateHomeOwner2,
             "aegcRepresentativeDate": model.dateAEGC,
-            //"project_files" : self.paramsProjectFiles,
+            "ProjectFiles" : [self.paramsProjectFiles],
             "homeOwnerInitial1": model.homeOwnerInitial1,
             "homeOwnerInitial2": model.homeOwnerInitial2] as [String : Any]
         print(params)
@@ -344,17 +345,18 @@ class PlaceBidVC: BaseViewController {
     }
     
     func buildParamProjectFiles(){
-        for projectFiles in arrProjectFiles {
-            paramsProjectFiles = [
-                "createdAt": projectFiles.createdAt!,
-                "file": projectFiles.file!,
-                "id": projectFiles.id!,
-                "title": projectFiles.title!,
-                "type": projectFiles.type!,
-                "updatedAt": projectFiles.updatedAt!,
-                "userId": "\(manageBids!.user!.id!)",
-                "user_detail": ["firstName": self.txtHomeOwner.text ?? "",
-                                "lastName": self.txtHomeOwnerB.text ?? ""]] as [String : Any]
+        for projectFiles in arrProjectUploadFiles {
+            self.paramsProjectFiles = [
+                //"createdAt": projectFiles.createdAt!,
+                "image": projectFiles.title!,
+                //"id": projectFiles.id!,
+                "name": projectFiles.title!
+                //"type": projectFiles.type!,
+                //"updatedAt": projectFiles.updatedAt!,
+                //"userId": "\(manageBids!.user!.id!)",
+                //"user_detail": ["firstName": self.txtHomeOwner.text ?? "",
+                                //"lastName": self.txtHomeOwnerB.text ?? ""]
+            ] as [String : Any]
         }
     }
     
@@ -1094,6 +1096,26 @@ extension PlaceBidVC: UICollectionViewDelegate, UICollectionViewDataSource {
             cell!.projectImageView.image = nil
             if self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].type == "png" || self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].type == "jpg" || self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].type == "jpeg" {
                 if var imgStr = self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].file {
+                    imgStr = imgStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                    cell!.projectImageView.sd_setImage(with: URL(string: imgStr), placeholderImage: UIImage(named: "doc"), completed:nil)
+                }
+            } else {
+                cell!.projectImageView.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "doc"), completed:nil)
+            }
+        }
+        if (invitationDetail.project_data?.project_files?.count ?? 0) > 0 {
+            if (((self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "").contains(".png")) ||
+                ((self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "").contains(".jpg")) ||
+                ((self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "").contains(".jpeg")) ||
+                ((self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "").contains(".pdf")) ||
+                ((self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "").contains(".doc"))){
+                cell!.projectTitleLabel.text = "\(self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "")"
+            } else {
+                cell!.projectTitleLabel.text = "\(self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "").\(self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].type ?? "")"
+            }
+            cell!.projectImageView.image = nil
+            if self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].type == "png" || self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].type == "jpg" || self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].type == "jpeg" {
+                if var imgStr = self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].file {
                     imgStr = imgStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
                     cell!.projectImageView.sd_setImage(with: URL(string: imgStr), placeholderImage: UIImage(named: "doc"), completed:nil)
                 }
