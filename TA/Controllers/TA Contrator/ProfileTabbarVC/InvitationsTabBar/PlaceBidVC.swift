@@ -348,15 +348,8 @@ class PlaceBidVC: BaseViewController {
     func buildParamProjectFiles(){
         for projectFiles in arrProjectUploadFiles {
             self.paramsProjectFiles = [
-                //"createdAt": projectFiles.createdAt!,
                 "image": projectFiles.title!,
-                //"id": projectFiles.id!,
                 "name": projectFiles.title!
-                //"type": projectFiles.type!,
-                //"updatedAt": projectFiles.updatedAt!,
-                //"userId": "\(manageBids!.user!.id!)",
-                //"user_detail": ["firstName": self.txtHomeOwner.text ?? "",
-                                //"lastName": self.txtHomeOwnerB.text ?? ""]
             ] as [String : Any]
         }
     }
@@ -734,13 +727,6 @@ class PlaceBidVC: BaseViewController {
         let updatedAt: String = dateString
         let defaultIsDeleted: Int = 0
         var userDetailManage = UserDetailManage()
-//        let bidsDocumentsDetails = BidsDocumentsDetails(createdAt: createdAt,
-//                                                        file: file,
-//                                                        id: nil,
-//                                                        isDeleted: defaultIsDeleted,
-//                                                        title: title,
-//                                                        type: type,
-//                                                        updatedAt: updatedAt)
         
         if let firstName = self.txtHomeOwner.text,
             let lastName = self.txtHomeOwnerB.text {
@@ -756,7 +742,6 @@ class PlaceBidVC: BaseViewController {
                                                    updatedAt: updatedAt,
                                                    userId: "\(self.manageBids?.user?.id ?? 0)",
                                                    user_detail: userDetailManage as UserDetailManage)
-            //self.arrProjectFiles.append(bidsDocumentsDetails)
             self.arrProjectUploadFiles.append(bidsDocumentsUpload)
             
             self.collectionProjectFiles.reloadData()
@@ -871,7 +856,6 @@ class PlaceBidVC: BaseViewController {
 
 extension PlaceBidVC: SignDrawVCDelegate {
     func signDrawVCDidDismiss(_ controller: SignDrawVC, base64: String?) {
-        //print(base64 ?? "Sem imagem")
         if let base64String = base64, let imageData = Data(base64Encoded: base64 ?? ""), let image = UIImage(data: imageData) {
             self.imgDrawSignature.image = image
             self.base64StringSignature = base64String
@@ -893,7 +877,6 @@ extension PlaceBidVC: UITextViewDelegate {
 //MARK: SHOW DATE PICKER
 extension PlaceBidVC {
     private func showStartDatePicker(){
-        //Formate Date
         startDatePicker.datePickerMode = .date
         if #available(iOS 13.4, *) {
             startDatePicker.preferredDatePickerStyle = .wheels
@@ -901,7 +884,6 @@ extension PlaceBidVC {
         startDatePicker.minimumDate = Calendar.current.date(byAdding: .day, value: 0, to: Date())
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
-        //done button & cancel button
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneStartDatePicker))
         let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker))
@@ -926,7 +908,6 @@ extension PlaceBidVC {
         endDatePicker.minimumDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
-        //done button & cancel button
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneEndDatePicker))
         let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker))
@@ -1162,11 +1143,6 @@ extension PlaceBidVC: UICollectionViewDelegate, UICollectionViewDataSource {
                         UIApplication.shared.open(url)
                     }
                 }
-                //                let destinationViewController = Storyboard.invitation.instantiateViewController(withIdentifier: "ShowImageVC") as? ShowImageVC
-                //                destinationViewController!.isImage = true
-                //                destinationViewController?.imsgeStrURL = ""
-                //                destinationViewController?.img = UIImage(named: "doc") ?? UIImage()
-                //                self.navigationController?.pushViewController(destinationViewController!, animated: true)
             }
         }
     }
@@ -1212,8 +1188,6 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
         }
         else
         {
-            //   actionSheetController.addAction(removePhoto)
-            //    actionSheetController.addAction(viewPhoto)
             actionSheetController.addAction(actionCamera)
             actionSheetController.addAction(actionGallery)
             actionSheetController.addAction(actionDocuments)
@@ -1225,9 +1199,7 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
         self.present(actionSheetController, animated: true, completion: nil)
         
     }
-    
-    // MARK:-
-    // MARK:- -------- Permissions ---------
+
     func choosePhotoFromCameraAction()
     {
         if UIImagePickerController.isSourceTypeAvailable(.camera)
@@ -1335,8 +1307,6 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
         }
     }
     
-    // MARK:-
-    // MARK:- Open Gallery
     func openGallery()
     {
         let imagePicker =  UIImagePickerController()
@@ -1346,8 +1316,6 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
         self.present(imagePicker, animated: true, completion: nil)
     }
     
-    // MARK:-
-    // MARK:- Show Alert With No Permissions Message
     func showAlertOfPermissionsNotAvailable()
     {
         let message = UIFunction.getLocalizationString(text: "Camera permission not available")
@@ -1403,8 +1371,6 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
         picker.dismiss(animated: true, completion: nil)
     }
     
-    // MARK:-
-    // MARK:- Show Image in User Image View
     func showImageInUserPhotoImageView(fileName:String)
     {
         self.view.endEditing(true)
@@ -1412,9 +1378,6 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
         {
             return
         }
-        
-        //        self.buttonAddImage .setTitle(nil, for: .normal)
-        
         if (userImage as String).count == 0
         {
         }
@@ -1486,7 +1449,7 @@ extension PlaceBidVC: WKNavigationDelegate, WKUIDelegate {
                 print ("localStorage.getitem('token') failed due to \(error)")
                 assertionFailure()
             }
-            print("token = \(token)")
+            print("token = \(String(describing: token))")
         }
     }
 }
