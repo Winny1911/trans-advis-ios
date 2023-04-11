@@ -1693,7 +1693,7 @@
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                 <state key="normal" image="ic_add_images"/>
                                                                 <connections>
-                                                                    <action selector="actionAddFiles:" destination="mJa-Ar-awO" eventType="touchUpInside" id="PIb-yN-hyf"/>
+                                                                    <action selector="actionAddFiles:" destination="mJa-Ar-awO" eventType="touchUpInside" id="tt0-7K-h8A"/>
                                                                 </connections>
                                                             </button>
                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="AjX-9T-RUH">

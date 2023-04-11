@@ -7,13 +7,7 @@
 
 import Foundation
 class PlaceBidModel {
-    
-    //    var bidAmount: String = ""
-    //    var amountReceivable: String = ""
-    //    var startDate: String = ""
-    //    var endDate: String = ""
-    //    var description: String = ""
-    //    var arrOfFilesCount :Int = 0
+    var date: String = ""
     var homeOwnerFirst: String = ""
     var homeOwnerSecond: String = ""
     var streetAddress: String = ""
@@ -21,18 +15,19 @@ class PlaceBidModel {
     var cellPhone: String = ""
     var email: String = ""
     var hoa: String = ""
-    var permit: String = ""
+    var permit: Bool = false
     var insurance: String = ""
-    var claimNeumber: String = ""
-    var insFullyApproved: String = ""
-    var insPartialApproved: String = ""
-    var retail: String = ""
-    var retailWDepreciation: String = ""
+    var claimNumber: String = ""
+    var insFullyApproved: Bool = false
+    var insPartialApproved: Bool = false
+    var retail: Bool = false
+    var retailWDepreciation: Bool = false
     var mainDwellingRoof: String = ""
     var shedSQ: String = ""
     var decking: String = ""
     var flatRoofSQ: String = ""
     var total: String = ""
+    var totalSQ: String = ""
     var deducible: String = ""
     var fe: String = ""
     var retailB: String = ""
@@ -48,7 +43,7 @@ class PlaceBidModel {
     var ocB: String = ""
     var gaf: String = ""
     var airVent: String = ""
-    var cutInstallRidgeVent: String = ""
+    var cutInstallRidgeVent: Bool = false
     var black: String = ""
     var brownB: String = ""
     var whiteB: String = ""
@@ -67,8 +62,8 @@ class PlaceBidModel {
     var removeReplaceB: String = ""
     var deatchResetB: String = ""
     var colorB: String = ""
-    var satelliteDish: String = ""
-    var antenna: String = ""
+    var satelliteDish: Bool = false
+    var antenna: Bool = false
     var detachOnly: String = ""
     var detachDispose: String = ""
     var materialLocation: String = ""
@@ -78,39 +73,48 @@ class PlaceBidModel {
     var roofing: String = ""
     var roofingPrice: String = ""
     var debrisRemoval: String = ""
+    var debrisRemovalPrice: String = ""
     var overheadProfit: String = ""
     var codeUpgrades: String = ""
-    var paymentTermsDeductible: String = ""
-    var paymentTermsFinance: String = ""
+    var paymentTermsDeductible: Bool = false
+    var paymentTermsFinance: Bool = false
     var homeOwner: String = ""
     var homeOwnerDate: String = ""
-    var homeOwnerBA: String = ""
     var homeOwnerDateBA: String = ""
     var aegcRepresentative: String = ""
     var aegcRepresentativeBA: String = ""
+    var dateHomeOwner1: String = ""
+    var dateHomeOwner2: String = ""
+    var dateAEGC: String = ""
+    var detachedGarageSQ: String = ""
+    var homeOwnerInitial1: String = ""
+    var homeOwnerInitial2: String = ""
+    var homeOwnerSign1: String = ""
     
     init() {
     }
     
-    init(homeOwnerFirst: String,
+    init(date: String,
+         homeOwnerFirst: String,
          homeOwnerSecond: String,
          streetAddress: String,
          mailingAddress: String,
          cellPhone: String,
          email: String,
          hoa: String,
-         permit: String,
+         permit: Bool,
          insurance: String,
-         claimNeumber: String,
-         insFullyApproved: String,
-         insPartialApproved: String,
-         retail: String,
-         retailWDepreciation: String,
+         claimNumber: String,
+         insFullyApproved: Bool,
+         insPartialApproved: Bool,
+         retail: Bool,
+         retailWDepreciation: Bool,
          mainDwellingRoof: String,
          shedSQ: String,
          decking: String,
          flatRoofSQ: String,
          total: String,
+         totalSQ: String,
          deducible: String,
          fe: String,
          retailB: String,
@@ -126,7 +130,7 @@ class PlaceBidModel {
          ocB: String,
          gaf: String,
          airVent: String,
-         cutInstallRidgeVent: String,
+         cutInstallRidgeVent: Bool,
          black: String,
          brownB: String,
          whiteB: String,
@@ -145,8 +149,8 @@ class PlaceBidModel {
          removeReplaceB: String,
          deatchResetB: String,
          colorB: String,
-         satelliteDish: String,
-         antenna: String,
+         satelliteDish: Bool,
+         antenna: Bool,
          detachOnly: String ,
          detachDispose: String,
          materialLocation: String,
@@ -156,16 +160,24 @@ class PlaceBidModel {
          roofing: String,
          roofingPrice: String,
          debrisRemoval: String,
+         debrisRemovalPrice: String,
          overheadProfit: String,
          codeUpgrades: String ,
-         paymentTermsDeductible: String,
-         paymantTermsFinance: String,
+         paymentTermsDeductible: Bool,
+         paymantTermsFinance: Bool,
          homeOwner: String,
          homeOwnerDate: String,
-         homeOwnerBA: String ,
          homeOwnerDateBA: String,
          aegcRepresentative: String,
-         aegcRepresentativeBA: String) {
+         aegcRepresentativeBA: String,
+         dateHomeOwner1: String,
+         dateHomeOwner2: String,
+         dateAEGC: String,
+         detachedGarageSQ: String,
+         homeOwnerInitial1: String,
+         homeOwnerInitial2: String,
+         homeOwnerSign1: String) {
+        self.date = date
         self.homeOwnerFirst = homeOwnerFirst
         self.homeOwnerSecond = homeOwnerSecond
         self.streetAddress = streetAddress
@@ -175,7 +187,7 @@ class PlaceBidModel {
         self.hoa = hoa
         self.permit = permit
         self.insurance = insurance
-        self.claimNeumber = claimNeumber
+        self.claimNumber = claimNumber
         self.insFullyApproved = insFullyApproved
         self.insPartialApproved = insPartialApproved
         self.retail = retail
@@ -185,6 +197,7 @@ class PlaceBidModel {
         self.decking = decking
         self.flatRoofSQ = flatRoofSQ
         self.total = total
+        self.totalSQ = totalSQ
         self.deducible = deducible
         self.fe = fe
         self.retailB = retailB
@@ -230,15 +243,22 @@ class PlaceBidModel {
         self.roofing = roofing
         self.roofingPrice = roofingPrice
         self.debrisRemoval = debrisRemoval
+        self.debrisRemovalPrice = debrisRemovalPrice
         self.overheadProfit = overheadProfit
         self.codeUpgrades = codeUpgrades
         self.paymentTermsDeductible = paymentTermsDeductible
         self.paymentTermsFinance = paymantTermsFinance
         self.homeOwner = homeOwner
         self.homeOwnerDate = homeOwnerDate
-        self.homeOwnerBA = homeOwnerBA
         self.homeOwnerDateBA = homeOwnerDateBA
         self.aegcRepresentative = aegcRepresentative
         self.aegcRepresentativeBA = aegcRepresentativeBA
+        self.dateHomeOwner1 = dateHomeOwner1
+        self.dateHomeOwner2 = dateHomeOwner2
+        self.dateAEGC = dateAEGC
+        self.detachedGarageSQ = detachedGarageSQ
+        self.homeOwnerInitial1 = homeOwnerInitial1
+        self.homeOwnerInitial2 = homeOwnerInitial2
+        self.homeOwnerSign1 = homeOwnerSign1
     }
 }

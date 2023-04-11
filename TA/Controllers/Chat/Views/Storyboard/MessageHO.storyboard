@@ -610,13 +610,8 @@
             <point key="canvasLocation" x="2949" y="84"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="NyY-Vu-44N">
-            <size key="intrinsicContentSize" width="-1" height="30"/>
-        </designable>
-    </designables>
     <resources>
-        <image name="attachment_new" width="36" height="40.5"/>
+        <image name="attachment_new" width="24" height="27"/>
         <image name="back_white" width="15.5" height="14.5"/>
         <image name="ic_HO_notification" width="30" height="30"/>
         <image name="ic_back" width="24" height="24"/>

@@ -38,44 +38,47 @@ class FloatingLabelInput: UITextField {
 
     // Add a floating label to the view on becoming first responder
     @objc func addFloatingLabel() {
-        self.floatingLabel = UILabel(frame: CGRect.zero)
-        self.floatingLabel.textColor = UIColor.init(named: "#B2B2B2")
-        self.floatingLabel.font = self.font
-        self.floatingLabel.text = " " + (self._placeholder ?? "") + "  "
-        self.floatingLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.floatingLabel.textAlignment = .center
-        self.addSubview(self.floatingLabel)
-        //            self.layer.borderColor = self.activeBorderColor.cgColor
-        
-        self.floatingLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 14).isActive = true
-        
-        ticketTop = self.floatingLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0)
-        ticketTop?.isActive = true
-        self.placeholder = ""
-        
-        self.bringSubviewToFront(subviews.last!)
-        self.setNeedsDisplay()
+        DispatchQueue.main.async {
+            self.floatingLabel = UILabel(frame: CGRect.zero)
+            self.floatingLabel.textColor = UIColor.init(named: "#B2B2B2")
+            self.floatingLabel.font = self.font
+            self.floatingLabel.text = " " + (self._placeholder ?? "") + "  "
+            self.floatingLabel.translatesAutoresizingMaskIntoConstraints = false
+            self.floatingLabel.textAlignment = .center
+            self.addSubview(self.floatingLabel)
+            //            self.layer.borderColor = self.activeBorderColor.cgColor
+            
+            self.floatingLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 14).isActive = true
+            
+            self.ticketTop = self.floatingLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0)
+            self.ticketTop?.isActive = true
+            self.placeholder = ""
+            
+            self.bringSubviewToFront(self.subviews.last!)
+            self.setNeedsDisplay()
+        }
     }
     
     @objc func resetFloatingLable() {
-        
-        ticketTop?.isActive = false
-        
-        if self.text?.isEmpty ?? true {
-            ticketTop = self.floatingLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0) // Place our label -- pts above the text field
-            self.floatingLabel.layer.backgroundColor = UIColor.clear.cgColor
-            self.floatingLabel.textColor = UIColor.init(named: "#B2B2B2")
-
-        } else {
-            ticketTop = self.floatingLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -(self.frame.height / 2)) // Place our label -- pts above the text field
-            self.floatingLabel.layer.backgroundColor = UIColor.white.cgColor
-            self.floatingLabel.textColor = UIColor.init(named: "#767676")
-        }
-        
-        ticketTop?.isActive = true
-        
-        UIView.animate(withDuration: 0.5) {
-            self.layoutIfNeeded()
+        DispatchQueue.main.async {
+            self.ticketTop?.isActive = false
+            
+            if self.text?.isEmpty ?? true {
+                self.ticketTop = self.floatingLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0) // Place our label -- pts above the text field
+                self.floatingLabel.layer.backgroundColor = UIColor.clear.cgColor
+                self.floatingLabel.textColor = UIColor.init(named: "#B2B2B2")
+                
+            } else {
+                self.ticketTop = self.floatingLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -(self.frame.height / 2)) // Place our label -- pts above the text field
+                self.floatingLabel.layer.backgroundColor = UIColor.white.cgColor
+                self.floatingLabel.textColor = UIColor.init(named: "#767676")
+            }
+            
+            self.ticketTop?.isActive = true
+            
+            UIView.animate(withDuration: 0.5) {
+                self.layoutIfNeeded()
+            }
         }
     }
 }

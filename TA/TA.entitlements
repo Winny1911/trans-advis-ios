@@ -6,7 +6,7 @@
 	<string>development</string>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>applinks:http://191.252.93.219:3002</string>
+		<string>applinks:http://191.252.93.219:3000</string>
 	</array>
 	<key>com.apple.developer.icloud-container-identifiers</key>
 	<array>

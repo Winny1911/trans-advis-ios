@@ -171,6 +171,10 @@ class AddNewTaskVC: BaseViewController {
         initializeTask()
     }
     
+    @IBAction func addFiles(_ sender: Any) {
+        
+    }
+    
     @IBAction func actionFindLocation(_ sender: Any) {
         let destinationViewController = (Storyboard.createAccountTAC.instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController)
                 destinationViewController?.btnTapAction3 = {
@@ -510,7 +514,7 @@ class AddNewTaskVC: BaseViewController {
                     print("limit is 150")
                     showMessage(with: ValidationError.validImageCount, theme: .error)
                 }
-        //handleCameraOptions()
+        handleCameraOptions()
     }
     
     //MARK: ACTION ADD TASK

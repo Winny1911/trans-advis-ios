@@ -166,11 +166,19 @@ class InvitationDetailsVC: BaseViewController {
         vc!.projectId = self.invitationDetail.project_data?.id ?? 0
         vc!.projectTitle = self.invitationDetail.project_data?.title ?? ""
         vc!.projectDesc = self.invitationDetail.project_data?.description ?? ""
-        if self.invitationDetail.project_data?.project_files?.count ?? 0 > 0 {
-            vc!.imageUrl = self.invitationDetail.project_data?.project_files?[0].file ?? ""
-        } else {
-            vc!.imageUrl = ""
-        }
+        vc!.fetchHomeOwner = self.lblHomeOwnerName.text ?? ""
+        vc!.fetchHomeOwnerB = self.lblHomeOwnerName.text ?? ""
+        vc!.fetchStreetAddress = self.addressLabel.text ?? ""
+        vc!.fetchCellPhone = self.invitationDetail.project_data?.user_data?.phoneNumber ?? ""
+        vc!.fetchMailingAddress = self.addressLabel.text ?? ""
+        vc!.fetchEmail = self.invitationDetail.project_data?.user_data?.email ?? ""
+        vc!.invitationDetail = self.invitationDetail
+        vc!.fromInvitation = true
+//        if self.invitationDetail.project_data?.project_files?.count ?? 0 > 0 {
+//            vc!.arrProjectUploadFiles = self.invitationDetail.project_data?.project_files as [ProjectFiles]
+//        } else {
+//            vc!.imageUrl = ""
+//        }
         vc!.completionHandlerGoToInvitationDetailScreenFromPlaceBid = { [weak self] in
             self?.navigationController?.popViewController(animated: true)
             self!.completionHandlerGoToInvitationScreenFromPlaceBid?()

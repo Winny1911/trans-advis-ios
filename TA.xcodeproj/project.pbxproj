@@ -126,6 +126,9 @@
 		3CCFA49E27672E52001ED725 /* TaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CCFA49C27672E52001ED725 /* TaskTableViewCell.xib */; };
 		3CECEF25276C69F100804B30 /* ProjectHOVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CECEF24276C69F100804B30 /* ProjectHOVM.swift */; };
 		3CECEF27276C91BC00804B30 /* ProjectListingHOModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CECEF26276C91BB00804B30 /* ProjectListingHOModel.swift */; };
+		4002825F29D308230027446B /* PlaceBidTermVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4002825E29D308230027446B /* PlaceBidTermVC.swift */; };
+		4002826129D3D77D0027446B /* SignDrawVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4002826029D3D77D0027446B /* SignDrawVC.swift */; };
+		4002826329D3D8FE0027446B /* ViewDrawBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4002826229D3D8FE0027446B /* ViewDrawBase.swift */; };
 		6225657A29825C8100BA3BB0 /* RecordAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6225657929825C8000BA3BB0 /* RecordAudio.swift */; };
 		6278A0B6296A3E370052EFDF /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6278A0B5296A3E370052EFDF /* TextField.swift */; };
 		62A60F77298AA1310008017F /* ViewRecordButtons.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62A60F76298AA1310008017F /* ViewRecordButtons.xib */; };
@@ -604,6 +607,9 @@
 		3CCFA49C27672E52001ED725 /* TaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTableViewCell.xib; sourceTree = "<group>"; };
 		3CECEF24276C69F100804B30 /* ProjectHOVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectHOVM.swift; sourceTree = "<group>"; };
 		3CECEF26276C91BB00804B30 /* ProjectListingHOModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListingHOModel.swift; sourceTree = "<group>"; };
+		4002825E29D308230027446B /* PlaceBidTermVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceBidTermVC.swift; sourceTree = "<group>"; };
+		4002826029D3D77D0027446B /* SignDrawVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignDrawVC.swift; sourceTree = "<group>"; };
+		4002826229D3D8FE0027446B /* ViewDrawBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDrawBase.swift; sourceTree = "<group>"; };
 		56E733CA42381FFD60AAB7CA /* Pods-TA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TA.debug.xcconfig"; path = "Target Support Files/Pods-TA/Pods-TA.debug.xcconfig"; sourceTree = "<group>"; };
 		6225657929825C8000BA3BB0 /* RecordAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordAudio.swift; sourceTree = "<group>"; };
 		6278A0B5296A3E370052EFDF /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
@@ -1232,6 +1238,9 @@
 				D440F4CE278712E800B0071B /* EVerificationVC.swift */,
 				D440F4D0278839DA00B0071B /* EVerificationViewModel.swift */,
 				D440F4D227883B7F00B0071B /* EVerificationModel.swift */,
+				4002825E29D308230027446B /* PlaceBidTermVC.swift */,
+				4002826029D3D77D0027446B /* SignDrawVC.swift */,
+				4002826229D3D8FE0027446B /* ViewDrawBase.swift */,
 			);
 			path = InvitationsTabBar;
 			sourceTree = "<group>";
@@ -2816,6 +2825,7 @@
 				3C6623132771B98A00F29E1A /* ExpandTable.swift in Sources */,
 				94475A3527B24A77005EBB36 /* PastProjectTaskCOResponseModel.swift in Sources */,
 				99DDBA192761A89100ACB72F /* ForgetPasswordVC.swift in Sources */,
+				4002826129D3D77D0027446B /* SignDrawVC.swift in Sources */,
 				D435E292278D9D6F004DA35D /* AddNewTaskModel.swift in Sources */,
 				945912CA2796F270005E1EB0 /* PortfolioImageUploadModel.swift in Sources */,
 				C984C28D27FC840000416200 /* EmptyTableViewCell.swift in Sources */,
@@ -2869,6 +2879,7 @@
 				D4DF78DD278F04F7003DCA0B /* ProjectCompletedViewModel.swift in Sources */,
 				3C6939E6277099AA0071559E /* DeleteProjectModel.swift in Sources */,
 				C9885EF627F97D460030BD01 /* ChatHistoryModel.swift in Sources */,
+				4002825F29D308230027446B /* PlaceBidTermVC.swift in Sources */,
 				65A5544827A7F97B008D1BB8 /* (null) in Sources */,
 				D7E853F32811696E005D476B /* VendorDetailVC.swift in Sources */,
 				3CCFA4882767167D001ED725 /* MainProjectTaskVC.swift in Sources */,
@@ -2964,6 +2975,7 @@
 				D44C8E4B278AC5C600A1B296 /* BidDetailResponseModel.swift in Sources */,
 				3C6AD5E02782D04700D90B2C /* EditProfileModel.swift in Sources */,
 				D7DCE4A4276218D000708C0C /* NewHOVC.swift in Sources */,
+				4002826329D3D8FE0027446B /* ViewDrawBase.swift in Sources */,
 				D495ECCA27D082EA000C2CC4 /* NotificationResponseModel.swift in Sources */,
 				D462EE6027C3B9DE008CAADE /* OrderListItemDetailTableViewCell.swift in Sources */,
 				9946A14F27AA4A3700AA784B /* SubTaskOrderListVC.swift in Sources */,
@@ -3142,7 +3154,7 @@
 				CODE_SIGN_ENTITLEMENTS = TA/TA.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 34;
 				DEVELOPMENT_TEAM = 9Q982ULHZR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TA/Info.plist;
@@ -3166,7 +3178,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.9.9;
+				MARKETING_VERSION = 1.9.21;
 				PRODUCT_BUNDLE_IDENTIFIER = com.applify.TA.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3185,7 +3197,7 @@
 				CODE_SIGN_ENTITLEMENTS = TA/TA.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 34;
 				DEVELOPMENT_TEAM = 9Q982ULHZR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TA/Info.plist;
@@ -3209,7 +3221,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.9.9;
+				MARKETING_VERSION = 1.9.21;
 				PRODUCT_BUNDLE_IDENTIFIER = com.applify.TA.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
