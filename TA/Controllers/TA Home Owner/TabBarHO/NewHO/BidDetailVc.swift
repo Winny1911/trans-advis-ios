@@ -105,8 +105,13 @@ class BidDetailVc: BaseViewController {
     
     func getBidsDetailApiHit(){
         let param = ["id": id]
+        let proposedStartDate = self.bidDetailModel.bidDetailData?.proposedStartDate ?? Date().stringValue
+        let proposedEndDate = self.bidDetailModel.bidDetailData?.proposedEndDate ?? Date().stringValue
+        
+        guard proposedStartDate != nil || proposedStartDate != nil else { return }
+        
         self.bidDetailModel.BidsDetailApiCall(param){_ in
-            self.startEndDate.text = "\(DateHelper.convertDateString(dateString: self.bidDetailModel.bidDetailData?.proposedStartDate, fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: "MMM dd"))th - \(DateHelper.convertDateString(dateString: self.bidDetailModel.bidDetailData?.proposedEndDate, fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: " MMM dd"))th"
+            self.startEndDate.text = "\(DateHelper.convertDateString(dateString: proposedStartDate, fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: "MMM dd"))th - \(DateHelper.convertDateString(dateString: proposedEndDate, fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: " MMM dd"))th"
             
             self.contractorId = self.bidDetailModel.bidDetailData?.user?.id ?? 0
             self.firstName.text = "\(self.bidDetailModel.bidDetailData?.user?.firstName ?? "") \(self.bidDetailModel.bidDetailData?.user?.lastName ?? "")"
@@ -120,8 +125,8 @@ class BidDetailVc: BaseViewController {
             let formattedString = formatter.string(for: amount)
             self.bidAmt.text =  "$ \(formattedString ?? "")"
             
-            self.startOnLbl.text = DateHelper.convertDateString(dateString: self.bidDetailModel.bidDetailData?.proposedStartDate, fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: " dd MMM YYY  ")
-            self.endsOnLbl.text = DateHelper.convertDateString(dateString: self.bidDetailModel.bidDetailData?.proposedEndDate, fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: " dd MMM YYY ")
+            self.startOnLbl.text = DateHelper.convertDateString(dateString: proposedStartDate, fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: " dd MMM YYY  ")
+            self.endsOnLbl.text = DateHelper.convertDateString(dateString: proposedEndDate, fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: " dd MMM YYY ")
             self.notableTerms.text = self.bidDetailModel.bidDetailData?.datumDescription
           
             if let imgStr = self.bidDetailModel.bidDetailData?.user?.profilePic{

@@ -197,6 +197,16 @@ class PlaceBidVC: BaseViewController {
             self.btnSubmit.setTitle("Update Bid", for: .normal)
             self.lblTopTitle.text = "Edit Bid"
             self.fetchBidDetails()
+        } else {
+            if self.fromInvitation {
+                self.countFiles = self.invitationDetail.project_data?.project_files?.count ?? 0
+                
+                if self.countFiles == 0 {
+                    self.lblAttachedFiles.text = "Project Files"
+                } else {
+                    self.lblAttachedFiles.text = "Project Files (\(self.countFiles))"
+                }
+            }
         }
         buildFieldsForm()
     }
@@ -346,11 +356,20 @@ class PlaceBidVC: BaseViewController {
     }
     
     func buildParamProjectFiles(){
-        for projectFiles in arrProjectUploadFiles {
-            self.paramsProjectFiles = [
-                "image": projectFiles.title!,
-                "name": projectFiles.title!
-            ] as [String : Any]
+        if fromInvitation {
+            for projectFiles in self.invitationDetail.project_data!.project_files! {
+                self.paramsProjectFiles = [
+                    "image": projectFiles.title!,
+                    "name": projectFiles.title!
+                ] as [String : Any]
+            }
+        } else {
+            for projectFiles in arrProjectUploadFiles {
+                self.paramsProjectFiles = [
+                    "image": projectFiles.title!,
+                    "name": projectFiles.title!
+                ] as [String : Any]
+            }
         }
     }
     
@@ -495,6 +514,7 @@ class PlaceBidVC: BaseViewController {
             self.arrProjectFiles = model?.data?.bids_documents ?? [BidsDocumentsDetails]()
             self.arrProjectUploadFiles = model?.data?.project_details?.project_files ?? [ProjectFiles]()
             self.countFiles = self.arrProjectFiles.count + self.arrProjectUploadFiles.count
+            
             if self.countFiles == 0 {
                 self.lblAttachedFiles.text = "Project Files"
             } else {
@@ -727,11 +747,18 @@ class PlaceBidVC: BaseViewController {
         let updatedAt: String = dateString
         let defaultIsDeleted: Int = 0
         var userDetailManage = UserDetailManage()
+        var userDetail = UserDetail()
+        
+        
+        
         
         if let firstName = self.txtHomeOwner.text,
             let lastName = self.txtHomeOwnerB.text {
             userDetailManage = UserDetailManage(firstName: firstName,
                                                 lastName: lastName)
+            if fromInvitation {
+                userDetail = UserDetail(firstName: firstName, lastName: lastName)
+            }
             print(userDetailManage)
             let bidsDocumentsUpload = ProjectFiles(createdAt: createdAt,
                                                    file: file,
@@ -743,7 +770,18 @@ class PlaceBidVC: BaseViewController {
                                                    userId: "\(self.manageBids?.user?.id ?? 0)",
                                                    user_detail: userDetailManage as UserDetailManage)
             self.arrProjectUploadFiles.append(bidsDocumentsUpload)
-            
+            if fromInvitation {
+                let projectFilesDetail = ProjectFilesDetail(createdAt: createdAt,
+                                                            file: file,
+                                                            id: 0,
+                                                            title: title,
+                                                            type: type,
+                                                            updatedAt: updatedAt,
+                                                            userId: "\(self.manageBids?.user?.id ?? 0)",
+                                                            user_detail: userDetail)
+                
+                self.invitationDetail.project_data?.project_files?.append(projectFilesDetail)
+            }
             self.collectionProjectFiles.reloadData()
         }
         
@@ -1113,6 +1151,7 @@ extension PlaceBidVC: UICollectionViewDelegate, UICollectionViewDataSource {
                 if var imgStr = self.invitationDetail.project_data?.project_files![indexPath.row].file {
                     imgStr = imgStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
                     cell!.projectImageView.sd_setImage(with: URL(string: imgStr), placeholderImage: UIImage(named: "doc"), completed:nil)
+                    cell!.projectTitleLabel.text = "\((self.invitationDetail.project_data!.project_files![indexPath.row].title)!)"
                 }
             }
         }
@@ -1120,39 +1159,49 @@ extension PlaceBidVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.row < (self.arrProjectFiles.count) {
-            
-            if self.arrProjectFiles[indexPath.row].type == "png" || self.arrProjectFiles[indexPath.row].type == "jpg" || self.arrProjectFiles[indexPath.row].type == "jpeg" {
-                if let imgStr = self.arrProjectFiles[indexPath.row].file {
-                    let destinationViewController = Storyboard.invitation.instantiateViewController(withIdentifier: "ShowImageVC") as? ShowImageVC
-                    destinationViewController!.isImage = false
-                    destinationViewController?.imsgeStrURL = imgStr
-                    destinationViewController?.img = UIImage()
-                    self.navigationController?.pushViewController(destinationViewController!, animated: true)
+        if !fromInvitation {
+            if indexPath.row < (self.arrProjectFiles.count) {
+                
+                if self.arrProjectFiles[indexPath.row].type == "png" || self.arrProjectFiles[indexPath.row].type == "jpg" || self.arrProjectFiles[indexPath.row].type == "jpeg" {
+                    if let imgStr = self.arrProjectFiles[indexPath.row].file {
+                        let destinationViewController = Storyboard.invitation.instantiateViewController(withIdentifier: "ShowImageVC") as? ShowImageVC
+                        destinationViewController!.isImage = false
+                        destinationViewController?.imsgeStrURL = imgStr
+                        destinationViewController?.img = UIImage()
+                        self.navigationController?.pushViewController(destinationViewController!, animated: true)
+                    }
+                } else {
+                    if let imgStr = self.arrProjectFiles[indexPath.row].file {
+                        if let url = URL(string: imgStr) {
+                            UIApplication.shared.open(url)
+                        }
+                    }
                 }
+                
             } else {
-                if let imgStr = self.arrProjectFiles[indexPath.row].file {
-                    if let url = URL(string: imgStr) {
-                        UIApplication.shared.open(url)
+                if self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].type == "png" || self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].type == "jpg" || self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].type == "jpeg" {
+                    if let imgStr = self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].file {
+                        let destinationViewController = Storyboard.invitation.instantiateViewController(withIdentifier: "ShowImageVC") as? ShowImageVC
+                        destinationViewController!.isImage = false
+                        destinationViewController?.imsgeStrURL = imgStr
+                        destinationViewController?.img = UIImage()
+                        self.navigationController?.pushViewController(destinationViewController!, animated: true)
+                    }
+                } else {
+                    if let imgStr = self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].file {
+                        if let url = URL(string: imgStr) {
+                            UIApplication.shared.open(url)
+                        }
                     }
                 }
             }
-            
         } else {
-            if self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].type == "png" || self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].type == "jpg" || self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].type == "jpeg" {
-                if let imgStr = self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].file {
-                    let destinationViewController = Storyboard.invitation.instantiateViewController(withIdentifier: "ShowImageVC") as? ShowImageVC
-                    destinationViewController!.isImage = false
-                    destinationViewController?.imsgeStrURL = imgStr
-                    destinationViewController?.img = UIImage()
-                    self.navigationController?.pushViewController(destinationViewController!, animated: true)
-                }
-            } else {
-                if let imgStr = self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].file {
-                    if let url = URL(string: imgStr) {
-                        UIApplication.shared.open(url)
-                    }
-                }
+            if let imgStr = self.invitationDetail.project_data?.project_files![indexPath.row].file {
+                let destinationViewController = Storyboard.invitation.instantiateViewController(withIdentifier: "ShowImageVC") as? ShowImageVC
+                destinationViewController!.isImage = false
+                destinationViewController?.imsgeStrURL = imgStr
+                destinationViewController?.img = UIImage()
+                self.navigationController?.pushViewController(destinationViewController!, animated: true)
             }
         }
     }
