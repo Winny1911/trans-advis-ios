@@ -320,6 +320,7 @@ struct ProjectFiles : Codable {
     var userId : String?
     var user_detail : UserDetailManage!
 }
+
 struct UserDetailManage : Codable {
     var firstName : String!
     var lastName : String!

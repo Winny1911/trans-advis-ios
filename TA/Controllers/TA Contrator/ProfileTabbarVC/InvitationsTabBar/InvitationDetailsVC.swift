@@ -43,7 +43,7 @@ class InvitationDetailsVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print(self.invitationDetail.project_data?.project_files?.count)
         userImage.setRoundCorners(radius: userImage.frame.height / 2)
         btnSendMessage.layer.borderColor = (UIColor( red: 78/255, green: 199/255, blue:41/255, alpha: 1.0 )).cgColor
         btnSendMessage.layer.borderWidth = 1.5
@@ -173,6 +173,7 @@ class InvitationDetailsVC: BaseViewController {
         vc!.fetchMailingAddress = self.addressLabel.text ?? ""
         vc!.fetchEmail = self.invitationDetail.project_data?.user_data?.email ?? ""
         vc!.invitationDetail = self.invitationDetail
+        //vc?.arrProjectFiles = [self.invitationDetail.project_data?.project_files]
         vc!.fromInvitation = true
 //        if self.invitationDetail.project_data?.project_files?.count ?? 0 > 0 {
 //            vc!.arrProjectUploadFiles = self.invitationDetail.project_data?.project_files as [ProjectFiles]

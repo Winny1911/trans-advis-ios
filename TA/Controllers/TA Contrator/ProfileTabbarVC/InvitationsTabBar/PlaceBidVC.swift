@@ -1047,63 +1047,73 @@ extension PlaceBidVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard fromInvitation else { return ((self.arrProjectFiles.count) + (self.arrProjectUploadFiles.count)) }
-        return 0
+        let projectFilesCount = invitationDetail.project_data?.project_files?.count ?? 0
+        return projectFilesCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProjectFileCollecrtionView", for: indexPath) as? ProjectFileCollecrtionView
         SDImageCache.shared.clearMemory()
         SDImageCache.shared.clearDisk()
-        if indexPath.row < (self.arrProjectFiles.count) {
-            
-            if (((self.arrProjectFiles[indexPath.row].title ?? "").contains(".png")) || ((self.arrProjectFiles[indexPath.row].title ?? "").contains(".jpg")) || ((self.arrProjectFiles[indexPath.row].title ?? "").contains(".jpeg")) || ((self.arrProjectFiles[indexPath.row].title ?? "").contains(".pdf")) || ((self.arrProjectFiles[indexPath.row].title ?? "").contains(".doc"))){
-                cell!.projectTitleLabel.text = "\(self.arrProjectFiles[indexPath.row].title ?? "")"
-            } else {
-                cell!.projectTitleLabel.text = "\(self.arrProjectFiles[indexPath.row].title ?? "").\(self.arrProjectFiles[indexPath.row].type ?? "")"
-            }
-            cell!.projectImageView.image = nil
-            if self.arrProjectFiles[indexPath.row].type == "png" || self.arrProjectFiles[indexPath.row].type == "jpg" || self.arrProjectFiles[indexPath.row].type == "jpeg" {
-                if var imgStr = self.arrProjectFiles[indexPath.row].file {
-                    imgStr = imgStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-                    cell!.projectImageView.sd_setImage(with: URL(string: imgStr), placeholderImage: UIImage(named: "doc"), completed:nil)
+        if !fromInvitation {
+            if indexPath.row < (self.arrProjectFiles.count) {
+                
+                if (((self.arrProjectFiles[indexPath.row].title ?? "").contains(".png")) || ((self.arrProjectFiles[indexPath.row].title ?? "").contains(".jpg")) || ((self.arrProjectFiles[indexPath.row].title ?? "").contains(".jpeg")) || ((self.arrProjectFiles[indexPath.row].title ?? "").contains(".pdf")) || ((self.arrProjectFiles[indexPath.row].title ?? "").contains(".doc"))){
+                    cell!.projectTitleLabel.text = "\(self.arrProjectFiles[indexPath.row].title ?? "")"
+                } else {
+                    cell!.projectTitleLabel.text = "\(self.arrProjectFiles[indexPath.row].title ?? "").\(self.arrProjectFiles[indexPath.row].type ?? "")"
+                }
+                cell!.projectImageView.image = nil
+                if self.arrProjectFiles[indexPath.row].type == "png" || self.arrProjectFiles[indexPath.row].type == "jpg" || self.arrProjectFiles[indexPath.row].type == "jpeg" {
+                    if var imgStr = self.arrProjectFiles[indexPath.row].file {
+                        imgStr = imgStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                        cell!.projectImageView.sd_setImage(with: URL(string: imgStr), placeholderImage: UIImage(named: "doc"), completed:nil)
+                    }
+                } else {
+                    cell!.projectImageView.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "doc"), completed:nil)
                 }
             } else {
-                cell!.projectImageView.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "doc"), completed:nil)
+                if (((self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").contains(".png")) || ((self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").contains(".jpg")) || ((self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").contains(".jpeg")) || ((self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").contains(".pdf")) || ((self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").contains(".doc")) ){
+                    cell!.projectTitleLabel.text = "\(self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "")"
+                } else {
+                    cell!.projectTitleLabel.text = "\(self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").\(self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].type ?? "")"
+                }
+                cell!.projectImageView.image = nil
+                if self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].type == "png" || self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].type == "jpg" || self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].type == "jpeg" {
+                    if var imgStr = self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].file {
+                        imgStr = imgStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                        cell!.projectImageView.sd_setImage(with: URL(string: imgStr), placeholderImage: UIImage(named: "doc"), completed:nil)
+                    }
+                } else {
+                    cell!.projectImageView.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "doc"), completed:nil)
+                }
+            }
+            if (invitationDetail.project_data?.project_files?.count ?? 0) > 0 {
+                if (((self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "").contains(".png")) ||
+                    ((self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "").contains(".jpg")) ||
+                    ((self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "").contains(".jpeg")) ||
+                    ((self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "").contains(".pdf")) ||
+                    ((self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "").contains(".doc"))){
+                    cell!.projectTitleLabel.text = "\(self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "")"
+                } else {
+                    cell!.projectTitleLabel.text = "\(self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "").\(self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].type ?? "")"
+                }
+                cell!.projectImageView.image = nil
+                if self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].type == "png" || self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].type == "jpg" || self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].type == "jpeg" {
+                    if var imgStr = self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].file {
+                        imgStr = imgStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                        cell!.projectImageView.sd_setImage(with: URL(string: imgStr), placeholderImage: UIImage(named: "doc"), completed:nil)
+                    }
+                } else {
+                    cell!.projectImageView.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "doc"), completed:nil)
+                }
             }
         } else {
-            if (((self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").contains(".png")) || ((self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").contains(".jpg")) || ((self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").contains(".jpeg")) || ((self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").contains(".pdf")) || ((self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").contains(".doc"))){
-                cell!.projectTitleLabel.text = "\(self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "")"
-            } else {
-                cell!.projectTitleLabel.text = "\(self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").\(self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].type ?? "")"
-            }
-            cell!.projectImageView.image = nil
-            if self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].type == "png" || self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].type == "jpg" || self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].type == "jpeg" {
-                if var imgStr = self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].file {
+            if (invitationDetail.project_data?.project_files?.count ?? 0) > 0 && fromInvitation {
+                if var imgStr = self.invitationDetail.project_data?.project_files![indexPath.row].file {
                     imgStr = imgStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
                     cell!.projectImageView.sd_setImage(with: URL(string: imgStr), placeholderImage: UIImage(named: "doc"), completed:nil)
                 }
-            } else {
-                cell!.projectImageView.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "doc"), completed:nil)
-            }
-        }
-        if (invitationDetail.project_data?.project_files?.count ?? 0) > 0 {
-            if (((self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "").contains(".png")) ||
-                ((self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "").contains(".jpg")) ||
-                ((self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "").contains(".jpeg")) ||
-                ((self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "").contains(".pdf")) ||
-                ((self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "").contains(".doc"))){
-                cell!.projectTitleLabel.text = "\(self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "")"
-            } else {
-                cell!.projectTitleLabel.text = "\(self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "").\(self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].type ?? "")"
-            }
-            cell!.projectImageView.image = nil
-            if self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].type == "png" || self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].type == "jpg" || self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].type == "jpeg" {
-                if var imgStr = self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].file {
-                    imgStr = imgStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-                    cell!.projectImageView.sd_setImage(with: URL(string: imgStr), placeholderImage: UIImage(named: "doc"), completed:nil)
-                }
-            } else {
-                cell!.projectImageView.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "doc"), completed:nil)
             }
         }
         return cell!
