@@ -174,17 +174,29 @@ class BidDetailVc: BaseViewController {
         destinationViewController!.budget = bidDetailModel.bidDetailData?.bidAmount ?? "0"
         
         destinationViewController!.completionHandlerGoToAgreementScreen = { [weak self] in
-            let vc = Storyboard.newHO.instantiateViewController(withIdentifier: "AgreementVC") as? AgreementVC
-            if self!.isFrom == "InvitedTaskCO" {
-                vc!.isFrom = "InvitedTaskCO"
-            }
-            vc!.completionHandlerGoToBidDetailScreen = { [weak self] in
-                self!.completionHandlerGoToViewBidsScreen?()
-                self!.navigationController?.popViewController(animated: true)
-            }
+//            let vc = Storyboard.newHO.instantiateViewController(withIdentifier: "AgreementVC") as? AgreementVC
+//            if self!.isFrom == "InvitedTaskCO" {
+//                vc!.isFrom = "InvitedTaskCO"
+//            }
+//            vc!.completionHandlerGoToBidDetailScreen = { [weak self] in
+//                self!.completionHandlerGoToViewBidsScreen?()
+//                self!.navigationController?.popViewController(animated: true)
+//            }
+            
+//            vc!.userId = self?.bidDetailModel.bidDetailData?.user?.id ?? 0
+//            self?.navigationController?.pushViewController(vc!, animated: true)
+            let vc = Storyboard.invitation.instantiateViewController(withIdentifier: "PlaceBidVC") as? PlaceBidVC
             vc!.projectId = self?.bidDetailModel.bidDetailData?.projectID ?? 0
             vc!.bidId = self?.bidDetailModel.bidDetailData?.id ?? 0
-            vc!.userId = self?.bidDetailModel.bidDetailData?.user?.id ?? 0
+            //vc!.fetchHomeOwner = self.lblHomeOwner.text ?? ""
+            //vc!.fetchHomeOwnerB = self.lblHomeOwner.text ?? ""
+            //vc!.fetchStreetAddress = self.manageBids?.user?.addressLine1 ?? ""
+            //vc!.fetchCellPhone = self.manageBids?.user?.phoneNumber ?? ""
+            //vc!.fetchMailingAddress = self.manageBids?.user?.addressLine2 ?? ""
+            //vc!.fetchEmail = self.manageBids?.user?.email ?? ""
+            //vc!.manageBidDetailViewModel = self.manageBidDetailViewModel
+            //vc!.arrProjectFiles = self.arrProjectFiles
+            //vc!.arrProjectUploadFiles = self.arrProjectUploadFiles
             self?.navigationController?.pushViewController(vc!, animated: true)
         }
         self.present(destinationViewController!, animated: true, completion: nil)

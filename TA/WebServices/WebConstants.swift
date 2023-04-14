@@ -32,11 +32,13 @@ struct APIUrl {
     // live: https://ta123.symbiotics.com.br/
     static let host                   = Bundle.main.object(forInfoDictionaryKey: "BaseURL") as! String
     static let baseUrlWithOutHttp       = Bundle.main.object(forInfoDictionaryKey: "BASE_URL_WITHOUT_HTTP") as! String
-        
+    static let baseUrlPDF               = "https://pdf.ta123.com/"
+    
     static var baseUrl: String {
         return host + "/api/"
 //        return host + "https://p2-testapi.ta123test.com"
     }
+    
     struct UserApis {
         static let register                           = baseUrl              + "user/register"
         static let login                              = baseUrl              + "user/login"
@@ -112,6 +114,7 @@ struct APIUrl {
         static let contractorRecallBid                = baseUrl              + "contractor/recallBid"
         static let contractorBidLog                   = baseUrl              + "contractor/bidLog"
         static let agreementGenerate                  = baseUrl              + "agreement/generate"
+        static let downloadPDFBid                     = baseUrlPDF           + "bid/pdf"
 
         static let contractorManageBids               = baseUrl              + "contractor/bids"
         static let contractorinvitationFilters        = baseUrl              + "contractor/invitationFilters"

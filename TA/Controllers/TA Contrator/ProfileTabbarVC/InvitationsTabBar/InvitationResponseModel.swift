@@ -362,6 +362,13 @@ struct GetAgreementGenerateResponseModel : Codable {
     var statusCode : Int?
     var data : GetAgreementGenerateResponseDetail?
 }
+
+struct GetDownloadPDF : Codable {
+    var message : String?
+    var statusCode : Int?
+    var url : String?
+}
+
 struct GetAgreementGenerateResponseDetail : Codable {
     var app: GetAgreementGenerateAppDetail?
     var web: GetAgreementGenerateAppDetail?

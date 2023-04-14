@@ -16,7 +16,7 @@ class ApiManager<T: Codable>: BaseApiManager {
                            requiresPinning: Bool = true,
                            completion: @escaping ([String: Any]?,T?) -> Void) {
         print("Params ----->",params)
-        print("Full Url ----->",url)
+        print("Full Url ----->",url.replace(string: "//api", replacement: "/api"))
         print("Header ----->",headers)
         let dataRequest = self.getDataRequest(url,
                                               params: params,
@@ -50,7 +50,7 @@ class ApiManager<T: Codable>: BaseApiManager {
                         let statusCode = value["statusCode"] as? Int
                         if statusCode == 401{
                             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "LogoutCall"), object: nil)
-//                            completion(value,user)
+                            completion(value,user)
 
                         }else{
                             completion(value,user)
