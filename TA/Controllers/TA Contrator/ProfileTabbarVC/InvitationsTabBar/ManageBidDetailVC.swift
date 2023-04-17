@@ -310,19 +310,19 @@ class ManageBidDetailVC: BaseViewController {
                 self.navigationController?.pushViewController(vc!, animated: true)
             }
         } else if self.bidStatus == 2 || self.bidStatus == 3 || self.bidStatus == 4 {
-//            let vc = Storyboard.invitation.instantiateViewController(withIdentifier: "PlaceBidVC") as? PlaceBidVC
-//            vc!.bidId = self.manageBidId
-//            vc!.projectId = self.projectId
-//            vc!.fetchHomeOwner = self.lblHomeOwner.text ?? ""
-//            vc!.fetchHomeOwnerB = self.lblHomeOwner.text ?? ""
-//            vc!.fetchStreetAddress = self.manageBids?.user?.addressLine1 ?? ""
-//            vc!.fetchCellPhone = self.manageBids?.user?.phoneNumber ?? ""
-//            vc!.fetchMailingAddress = self.manageBids?.user?.addressLine2 ?? ""
-//            vc!.fetchEmail = self.manageBids?.user?.email ?? ""
-//            vc!.manageBidDetailViewModel = self.manageBidDetailViewModel
-//            vc!.arrProjectFiles = self.arrProjectFiles
-//            vc!.arrProjectUploadFiles = self.arrProjectUploadFiles
-//            self.navigationController?.pushViewController(vc!, animated: true)
+            let vc = Storyboard.invitation.instantiateViewController(withIdentifier: "PlaceBidVC") as? PlaceBidVC
+            vc!.bidId = self.manageBidId
+            vc!.projectId = self.projectId
+            vc!.fetchHomeOwner = self.lblHomeOwner.text ?? ""
+            vc!.fetchHomeOwnerB = self.lblHomeOwner.text ?? ""
+            vc!.fetchStreetAddress = self.manageBids?.user?.addressLine1 ?? ""
+            vc!.fetchCellPhone = self.manageBids?.user?.phoneNumber ?? ""
+            vc!.fetchMailingAddress = self.manageBids?.user?.addressLine2 ?? ""
+            vc!.fetchEmail = self.manageBids?.user?.email ?? ""
+            vc!.manageBidDetailViewModel = self.manageBidDetailViewModel
+            vc!.arrProjectFiles = self.arrProjectFiles
+            vc!.arrProjectUploadFiles = self.arrProjectUploadFiles
+            self.navigationController?.pushViewController(vc!, animated: true)
         } else {
             self.getAgreement()
         }
@@ -502,6 +502,7 @@ class ManageBidDetailVC: BaseViewController {
                 "paymentTerms1": "\(model.paymentTerms1! == 1 ? "true" : "false")",
                 "paymentTerms2": "\(model.paymentTerms2! == 1 ? "true" : "false")",
                 "homeOwnerSign1": model.homeOwnerSign1!,
+                "homeOwnerSign2": model.homeOwnerSign2!,
                 "homeOwnerSignDate1": model.homeOwnerSignDate1!,
                 "homeOwnerSignDate2": model.homeOwnerSignDate2!,
                 "aegcRepresentativeDate": model.aegcRepresentativeDate!,
@@ -520,7 +521,7 @@ class ManageBidDetailVC: BaseViewController {
     }
     
     func doDownloadPDF(params: [String:Any]) {
-        manageBidDetailViewModel.downloadPDF(params)
+        manageBidDetailViewModel.downloadPDF(params, context: self)
     }
     
     @IBAction func actionDownloadPDF(_ sender: Any) {
