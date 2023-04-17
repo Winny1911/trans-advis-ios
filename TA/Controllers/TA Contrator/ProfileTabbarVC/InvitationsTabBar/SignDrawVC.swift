@@ -47,12 +47,10 @@ class SignDrawVC: UIViewController {
 
 extension UIView {
     func asImage() -> UIImage? {
-        // Define a nova resolução desejada
-        let newBounds = CGRect(origin: .zero, size: CGSize(width: 399, height: 83))
+        let newBounds = CGRect(origin: .zero, size: CGSize(width: 199, height: 43))
         
         let renderer = UIGraphicsImageRenderer(bounds: newBounds)
         let image = renderer.image { rendererContext in
-            // Define o background como transparente
             rendererContext.cgContext.setFillColor(UIColor.clear.cgColor)
             rendererContext.cgContext.fill(bounds)
             
@@ -62,11 +60,11 @@ extension UIView {
         guard let data = image.pngData() else { return nil }
         
         let options: NSDictionary = [
-            kCGImageDestinationLossyCompressionQuality: 1
+            kCGImageDestinationLossyCompressionQuality: 10
         ]
         
         let compressedData = NSMutableData()
-        guard let imageDestination = CGImageDestinationCreateWithData(compressedData, kUTTypePNG, 1, nil) else {
+        guard let imageDestination = CGImageDestinationCreateWithData(compressedData, kUTTypePNG, 10, nil) else {
             return nil
         }
         

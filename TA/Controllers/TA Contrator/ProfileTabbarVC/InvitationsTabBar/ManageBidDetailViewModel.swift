@@ -92,11 +92,9 @@ class ManageBidDetailViewModel: NSObject {
         }
     }
     
-    func downloadPDF(_ params :[String:Any], context: BaseViewController){
+    func downloadPDF(_ params :[String:Any]){
         
-        guard let id = params["id"] else {
-            return
-        }
+        guard let id = params["id"] else {return}
         
         guard let baseURL = URL(string: APIUrl.UserApis.downloadPDFBid) else {
             print("URL invalid")
@@ -112,33 +110,21 @@ class ManageBidDetailViewModel: NSObject {
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
-                print(error?.localizedDescription ?? "Erro desconhecido")
+                print(error?.localizedDescription ?? "Error")
                 return
             }
             if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
-                print("Código de resposta HTTP inválido: \(httpResponse.statusCode)")
+                print("Response code HTTP invalid: \(httpResponse.statusCode)")
                 return
             }
             let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-            let fileURL = documentsDirectory.appendingPathComponent("arquivo\(id).pdf")
+            let fileURL = documentsDirectory.appendingPathComponent("fileBid\(id).pdf")
             try? data.write(to: fileURL)
-            print("Arquivo salvo em \(fileURL.absoluteString)")
-            
-//            let previewController = context
-//            previewController.dataSource = context
-//            previewController.currentPreviewItemIndex = 0
-//            self.present(previewController, animated: true, completion: nil)
-            
-            var documentInteractionController: UIDocumentInteractionController!
-            documentInteractionController = UIDocumentInteractionController(url: fileURL)
-            documentInteractionController.delegate = context.self as? any UIDocumentInteractionControllerDelegate
-
-            documentInteractionController.presentPreview(animated: true)
+            print("Save file \(fileURL.absoluteString)")
+            DispatchQueue.global(qos: .background).async {
+                NotificationCenter.default.post(name: Notification.Name("FILESAVED"), object: fileURL)
+            }
         }
-        
-
         task.resume()
-        
     }
-    
 }

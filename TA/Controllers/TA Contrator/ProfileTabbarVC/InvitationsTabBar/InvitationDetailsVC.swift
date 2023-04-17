@@ -295,11 +295,11 @@ class InvitationDetailsVC: BaseViewController {
     }
     
     func doDownloadPDF(params: [String:Any]) {
-        manageBidDetailViewModel.downloadPDF(params, context: self)
+        manageBidDetailViewModel.downloadPDF(params)
     }
     
     @IBAction func actionDownloadPDF(_ sender: Any) {
-        getBidDetailsById()
+        //getBidDetailsById()
     }
     
     

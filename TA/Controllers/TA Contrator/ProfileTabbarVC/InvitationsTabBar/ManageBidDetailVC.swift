@@ -65,13 +65,14 @@ class ManageBidDetailVC: BaseViewController {
     var docController: UIDocumentInteractionController!
     var document_path: String! = ""
     var document_name: String! = ""
+    var documentInteractionController: UIDocumentInteractionController!
     
     
     var inviteTask = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.setNotificationCenter()
         self.blurVww.isHidden = true
         self.lblStaticEndsOnTwo.isHidden = true
         self.lblDateEndsOnTwo.isHidden = true
@@ -98,6 +99,18 @@ class ManageBidDetailVC: BaseViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         fetchManageBidDetal()
+    }
+    
+    func setNotificationCenter() {
+        NotificationCenter.default.addObserver(forName: Notification.Name("FILESAVED"), object: nil, queue: .main) { notification in
+            if let fileURL = notification.object as? URL {
+                print("Arquivo salvo em \(fileURL.absoluteString)")
+                Progress.instance.hide()
+                self.documentInteractionController = UIDocumentInteractionController(url: fileURL)
+                self.documentInteractionController.delegate = self
+                self.documentInteractionController.presentPreview(animated: true)
+            }
+        }
     }
 
     @IBAction func sentMessageButtonAction(_ sender: UIButton) {
@@ -521,7 +534,10 @@ class ManageBidDetailVC: BaseViewController {
     }
     
     func doDownloadPDF(params: [String:Any]) {
-        manageBidDetailViewModel.downloadPDF(params, context: self)
+        DispatchQueue.main.async {
+            Progress.instance.show()
+        }
+        manageBidDetailViewModel.downloadPDF(params)
     }
     
     @IBAction func actionDownloadPDF(_ sender: Any) {
