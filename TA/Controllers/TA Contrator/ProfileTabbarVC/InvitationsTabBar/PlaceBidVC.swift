@@ -531,6 +531,8 @@ class PlaceBidVC: BaseViewController {
         if imageSignatureBase64 != ""{
             if let imageData = Data(base64Encoded: imageSignatureBase64), let image = UIImage(data: imageData) {
                 self.imgDrawSignature.image = image
+                self.imgDrawSignature.contentMode = .scaleAspectFill
+                
                 self.base64StringSignature = imageSignatureBase64
             }
         }
@@ -992,6 +994,8 @@ extension PlaceBidVC: SignDrawVCDelegate {
     func signDrawVCDidDismiss(_ controller: SignDrawVC, base64: String?) {
         if let base64String = base64, let imageData = Data(base64Encoded: base64 ?? ""), let image = UIImage(data: imageData) {
             self.imgDrawSignature.image = image
+            self.imgDrawSignature.contentMode = .scaleAspectFill
+            
             self.base64StringSignature = base64String
         }
     }

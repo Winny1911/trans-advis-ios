@@ -223,7 +223,7 @@ class ManageBidDetailVC: BaseViewController {
                     self.btnRecallBid.backgroundColor = UIColor.appBtnColorWhite
                     self.btnRecallBid.isUserInteractionEnabled = false
                     self.btnRecallBid.setTitleColor(UIColor.appColorGreen, for: .normal)
-                    self.btmVwheight.constant = 80.0
+//                    self.btmVwheight.constant = 80.0
                     self.btnRecallBid.setTitle("Bid Lost", for: .normal)
                 } else if model?.data?.bidStatus == 4 {
                     self.bottomVw.addCustomShadow()
@@ -326,12 +326,12 @@ class ManageBidDetailVC: BaseViewController {
             let vc = Storyboard.invitation.instantiateViewController(withIdentifier: "PlaceBidVC") as? PlaceBidVC
             vc!.bidId = self.manageBidId
             vc!.projectId = self.projectId
-            vc!.fetchHomeOwner = self.lblHomeOwner.text ?? ""
-            vc!.fetchHomeOwnerB = self.lblHomeOwner.text ?? ""
-            vc!.fetchStreetAddress = self.manageBids?.user?.addressLine1 ?? ""
-            vc!.fetchCellPhone = self.manageBids?.user?.phoneNumber ?? ""
-            vc!.fetchMailingAddress = self.manageBids?.user?.addressLine2 ?? ""
-            vc!.fetchEmail = self.manageBids?.user?.email ?? ""
+            vc!.fetchHomeOwner = manageBids?.homeOwner1 ?? ""
+            vc!.fetchHomeOwnerB = manageBids?.homeOwner2 ?? ""
+            vc!.fetchStreetAddress = self.manageBids?.streetAddress ?? ""
+            vc!.fetchCellPhone = self.manageBids?.cellPhone ?? ""
+            vc!.fetchMailingAddress = self.manageBids?.mailingAddress ?? ""
+            vc!.fetchEmail = self.manageBids?.email ?? ""
             vc!.manageBidDetailViewModel = self.manageBidDetailViewModel
             vc!.arrProjectFiles = self.arrProjectFiles
             vc!.arrProjectUploadFiles = self.arrProjectUploadFiles
