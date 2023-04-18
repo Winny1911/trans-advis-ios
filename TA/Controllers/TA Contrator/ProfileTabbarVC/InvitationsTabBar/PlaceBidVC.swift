@@ -126,6 +126,7 @@ class PlaceBidVC: BaseViewController {
     @IBOutlet weak var ckbCutInstallRidgVent: UIButton!
     @IBOutlet weak var collectionProjectFiles: UICollectionView!
     @IBOutlet weak var lblAttachedFiles: UILabel!
+    @IBOutlet weak var btnDownlodBid: UIButton!
     
     var fromInvitation : Bool = false
     var wkWeb : WKWebView!
@@ -197,6 +198,16 @@ class PlaceBidVC: BaseViewController {
             self.btnSubmit.setTitle("Update Bid", for: .normal)
             self.lblTopTitle.text = "Edit Bid"
             self.fetchBidDetails()
+        } else {
+            if self.fromInvitation {
+                self.countFiles = self.invitationDetail.project_data?.project_files?.count ?? 0
+                
+                if self.countFiles == 0 {
+                    self.lblAttachedFiles.text = "Project Files"
+                } else {
+                    self.lblAttachedFiles.text = "Project Files (\(self.countFiles))"
+                }
+            }
         }
         buildFieldsForm()
     }
@@ -346,18 +357,20 @@ class PlaceBidVC: BaseViewController {
     }
     
     func buildParamProjectFiles(){
-        for projectFiles in arrProjectUploadFiles {
-            self.paramsProjectFiles = [
-                //"createdAt": projectFiles.createdAt!,
-                "image": projectFiles.title!,
-                //"id": projectFiles.id!,
-                "name": projectFiles.title!
-                //"type": projectFiles.type!,
-                //"updatedAt": projectFiles.updatedAt!,
-                //"userId": "\(manageBids!.user!.id!)",
-                //"user_detail": ["firstName": self.txtHomeOwner.text ?? "",
-                                //"lastName": self.txtHomeOwnerB.text ?? ""]
-            ] as [String : Any]
+        if fromInvitation {
+            for projectFiles in self.invitationDetail.project_data!.project_files! {
+                self.paramsProjectFiles = [
+                    "image": projectFiles.title!,
+                    "name": projectFiles.title!
+                ] as [String : Any]
+            }
+        } else {
+            for projectFiles in arrProjectUploadFiles {
+                self.paramsProjectFiles = [
+                    "image": projectFiles.title!,
+                    "name": projectFiles.title!
+                ] as [String : Any]
+            }
         }
     }
     
@@ -502,6 +515,7 @@ class PlaceBidVC: BaseViewController {
             self.arrProjectFiles = model?.data?.bids_documents ?? [BidsDocumentsDetails]()
             self.arrProjectUploadFiles = model?.data?.project_details?.project_files ?? [ProjectFiles]()
             self.countFiles = self.arrProjectFiles.count + self.arrProjectUploadFiles.count
+            
             if self.countFiles == 0 {
                 self.lblAttachedFiles.text = "Project Files"
             } else {
@@ -517,6 +531,8 @@ class PlaceBidVC: BaseViewController {
         if imageSignatureBase64 != ""{
             if let imageData = Data(base64Encoded: imageSignatureBase64), let image = UIImage(data: imageData) {
                 self.imgDrawSignature.image = image
+                self.imgDrawSignature.contentMode = .scaleAspectFill
+                
                 self.base64StringSignature = imageSignatureBase64
             }
         }
@@ -679,6 +695,101 @@ class PlaceBidVC: BaseViewController {
         }
     }
     
+    func getBidDetailsById() {
+        let params = ["id": self.bidId]
+        self.manageBidDetailViewModel.getManageBidsDetailApiV2(params) { modelPDF in
+            guard let model = modelPDF?.data else { return }
+            let paramsPDF : [String: Any] = [
+                "date": model.date!,
+                "homeOwner1":  model.homeOwner1!,
+                "homeOwner2": model.homeOwner2!,
+                "streetAddress": model.streetAddress!,
+                "mailingAddress": model.mailingAddress!,
+                "cellPhone": model.cellPhone!,
+                "email": model.email!,
+                "hoa": model.hoa!,
+                "permit": "\(model.permit! == 1 ? "true" : "false")",
+                "insurance": model.insurance!,
+                "claimNumber": model.claimNumber!,
+                "insFullyApproved": "\(model.insFullyApproved! == 1 ? "true" : "false")",
+                "insPartialApproved": "\(model.insPartialApproved!)",
+                "retail1": "\(model.retail1! == 1 ? "true" : "false")",
+                "retailDepreciation": "\(model.retailDepreciation! == 1 ? "true" : "false")",
+                "mainDwellingRoofSQ": model.mainDwellingRoofSQ!,
+                "detachedGarageSQ": model.detachedGarageSQ!,
+                "shedSQ": model.shedSQ!,
+                "decking": model.decking!,
+                "flatRoofSQ": model.flatRoofSQ!,
+                "totalSQ": model.totalSQ!,
+                "total": model.total!,
+                "deducible": model.deducible!,
+                "fe": model.fe!,
+                "retail2": model.retail2!,
+                "be": model.be!,
+                "brand": model.brand!,
+                "style": model.style!,
+                "color1": model.color1!,
+                "dripEdgeF55": model.dripEdgeF55!,
+                "counterFlashing": model.counterFlashing!,
+                "syntheticUnderlayment": model.syntheticUnderlayment!,
+                "ridgeVent": model.ridgeVent!,
+                "cutInstallRidgeVent": "\(model.cutInstallRidgeVent! == 1 ? "true" : "false")",
+                "chimneyFlashing": model.chimneyFlashing!,
+                "sprayPaint": model.sprayPaint!,
+                "turtleVents": model.turtleVents!,
+                "permaBoot123": model.permaBoot123!,
+                "permaBoot34": model.permaBoot34!,
+                "pipeJack123": model.pipeJack123!,
+                "pipeJack34": model.pipeJack34!,
+                "atticFan": model.atticFan!,
+                "color2": model.color2!,
+                "satelliteDish": "\(model.satelliteDish! == 1 ? "true" : "false")",
+                "antenna": "\(model.antenna! == 1 ? "true" : "false")",
+                "lightningRod": model.lightningRod!,
+                "materialLocation": model.materialLocation!,
+                "dumpsterLocation": model.dumpsterLocation!,
+                "specialInstructions": model.specialInstructions!,
+                "notes": model.notes!,
+                "roofing1": model.roofing1!,
+                "roofing2": model.roofing2!,
+                "debrisRemoval1": model.debrisRemoval1!,
+                "debrisRemoval2": model.debrisRemoval2!,
+                "overheadProfit1": model.overheadProfit1!,
+                "overheadProfit2": "",
+                "codeUpgrades": model.codeUpgrades!,
+                "paymentTerms1": "\(model.paymentTerms1! == 1 ? "true" : "false")",
+                "paymentTerms2": "\(model.paymentTerms2! == 1 ? "true" : "false")",
+                "homeOwnerSign1": model.homeOwnerSign1!,
+                "homeOwnerSign2": model.homeOwnerSign2!,
+                "homeOwnerSignDate1": model.homeOwnerSignDate1!,
+                "homeOwnerSignDate2": model.homeOwnerSignDate2!,
+                "aegcRepresentativeDate": model.aegcRepresentativeDate!,
+                "homeOwnerInitial1": model.homeOwnerInitial1!,
+                "homeOwnerInitial2": model.homeOwnerInitial2!,
+                "id": "\(self.bidId)",
+                "projectId": "\(self.projectId)",
+                "bidStatus": "\(model.bidStatus! == 1 ? "true" : "false")",
+                "createdAt":model.createdAt!,
+                "updatedAt":model.updatedAt!,
+                "isBlocked":"\(model.isBlocked! == 1 ? "true" : "false")",
+                "isDeleted":"\(model.isDeleted! == 1 ? "true" : "false")",
+                "project_agreement":""] as [String : Any]
+            self.doDownloadPDF(params: paramsPDF)
+        }
+    }
+    
+    func doDownloadPDF(params: [String:Any]) {
+        DispatchQueue.main.async {
+            Progress.instance.show()
+        }
+        manageBidDetailViewModel.downloadPDF(params)
+    }
+    
+    @IBAction func doDownloadBidPDF(_ sender: Any) {
+        getBidDetailsById()
+        
+    }
+    
     @IBAction func btnAsignHomeOwner(_ sender: Any) {
         let destinationViewController = Storyboard.invitation.instantiateViewController(withIdentifier: "AsignDrawVC") as? SignDrawVC
         destinationViewController!.delegate = self
@@ -734,18 +845,18 @@ class PlaceBidVC: BaseViewController {
         let updatedAt: String = dateString
         let defaultIsDeleted: Int = 0
         var userDetailManage = UserDetailManage()
-//        let bidsDocumentsDetails = BidsDocumentsDetails(createdAt: createdAt,
-//                                                        file: file,
-//                                                        id: nil,
-//                                                        isDeleted: defaultIsDeleted,
-//                                                        title: title,
-//                                                        type: type,
-//                                                        updatedAt: updatedAt)
+        var userDetail = UserDetail()
+        
+        
+        
         
         if let firstName = self.txtHomeOwner.text,
             let lastName = self.txtHomeOwnerB.text {
             userDetailManage = UserDetailManage(firstName: firstName,
                                                 lastName: lastName)
+            if fromInvitation {
+                userDetail = UserDetail(firstName: firstName, lastName: lastName)
+            }
             print(userDetailManage)
             let bidsDocumentsUpload = ProjectFiles(createdAt: createdAt,
                                                    file: file,
@@ -756,9 +867,19 @@ class PlaceBidVC: BaseViewController {
                                                    updatedAt: updatedAt,
                                                    userId: "\(self.manageBids?.user?.id ?? 0)",
                                                    user_detail: userDetailManage as UserDetailManage)
-            //self.arrProjectFiles.append(bidsDocumentsDetails)
             self.arrProjectUploadFiles.append(bidsDocumentsUpload)
-            
+            if fromInvitation {
+                let projectFilesDetail = ProjectFilesDetail(createdAt: createdAt,
+                                                            file: file,
+                                                            id: 0,
+                                                            title: title,
+                                                            type: type,
+                                                            updatedAt: updatedAt,
+                                                            userId: "\(self.manageBids?.user?.id ?? 0)",
+                                                            user_detail: userDetail)
+                
+                self.invitationDetail.project_data?.project_files?.append(projectFilesDetail)
+            }
             self.collectionProjectFiles.reloadData()
         }
         
@@ -871,9 +992,10 @@ class PlaceBidVC: BaseViewController {
 
 extension PlaceBidVC: SignDrawVCDelegate {
     func signDrawVCDidDismiss(_ controller: SignDrawVC, base64: String?) {
-        //print(base64 ?? "Sem imagem")
         if let base64String = base64, let imageData = Data(base64Encoded: base64 ?? ""), let image = UIImage(data: imageData) {
             self.imgDrawSignature.image = image
+            self.imgDrawSignature.contentMode = .scaleAspectFill
+            
             self.base64StringSignature = base64String
         }
     }
@@ -893,7 +1015,6 @@ extension PlaceBidVC: UITextViewDelegate {
 //MARK: SHOW DATE PICKER
 extension PlaceBidVC {
     private func showStartDatePicker(){
-        //Formate Date
         startDatePicker.datePickerMode = .date
         if #available(iOS 13.4, *) {
             startDatePicker.preferredDatePickerStyle = .wheels
@@ -901,7 +1022,6 @@ extension PlaceBidVC {
         startDatePicker.minimumDate = Calendar.current.date(byAdding: .day, value: 0, to: Date())
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
-        //done button & cancel button
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneStartDatePicker))
         let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker))
@@ -926,7 +1046,6 @@ extension PlaceBidVC {
         endDatePicker.minimumDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
-        //done button & cancel button
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneEndDatePicker))
         let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker))
@@ -1066,107 +1185,123 @@ extension PlaceBidVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard fromInvitation else { return ((self.arrProjectFiles.count) + (self.arrProjectUploadFiles.count)) }
-        return 0
+        let projectFilesCount = invitationDetail.project_data?.project_files?.count ?? 0
+        return projectFilesCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProjectFileCollecrtionView", for: indexPath) as? ProjectFileCollecrtionView
         SDImageCache.shared.clearMemory()
         SDImageCache.shared.clearDisk()
-        if indexPath.row < (self.arrProjectFiles.count) {
-            
-            if (((self.arrProjectFiles[indexPath.row].title ?? "").contains(".png")) || ((self.arrProjectFiles[indexPath.row].title ?? "").contains(".jpg")) || ((self.arrProjectFiles[indexPath.row].title ?? "").contains(".jpeg")) || ((self.arrProjectFiles[indexPath.row].title ?? "").contains(".pdf")) || ((self.arrProjectFiles[indexPath.row].title ?? "").contains(".doc"))){
-                cell!.projectTitleLabel.text = "\(self.arrProjectFiles[indexPath.row].title ?? "")"
-            } else {
-                cell!.projectTitleLabel.text = "\(self.arrProjectFiles[indexPath.row].title ?? "").\(self.arrProjectFiles[indexPath.row].type ?? "")"
-            }
-            cell!.projectImageView.image = nil
-            if self.arrProjectFiles[indexPath.row].type == "png" || self.arrProjectFiles[indexPath.row].type == "jpg" || self.arrProjectFiles[indexPath.row].type == "jpeg" {
-                if var imgStr = self.arrProjectFiles[indexPath.row].file {
-                    imgStr = imgStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-                    cell!.projectImageView.sd_setImage(with: URL(string: imgStr), placeholderImage: UIImage(named: "doc"), completed:nil)
+        if !fromInvitation {
+            if indexPath.row < (self.arrProjectFiles.count) {
+                
+                if (((self.arrProjectFiles[indexPath.row].title ?? "").contains(".png")) || ((self.arrProjectFiles[indexPath.row].title ?? "").contains(".jpg")) || ((self.arrProjectFiles[indexPath.row].title ?? "").contains(".jpeg")) || ((self.arrProjectFiles[indexPath.row].title ?? "").contains(".pdf")) || ((self.arrProjectFiles[indexPath.row].title ?? "").contains(".doc"))){
+                    cell!.projectTitleLabel.text = "\(self.arrProjectFiles[indexPath.row].title ?? "")"
+                } else {
+                    cell!.projectTitleLabel.text = "\(self.arrProjectFiles[indexPath.row].title ?? "").\(self.arrProjectFiles[indexPath.row].type ?? "")"
+                }
+                cell!.projectImageView.image = nil
+                if self.arrProjectFiles[indexPath.row].type == "png" || self.arrProjectFiles[indexPath.row].type == "jpg" || self.arrProjectFiles[indexPath.row].type == "jpeg" {
+                    if var imgStr = self.arrProjectFiles[indexPath.row].file {
+                        imgStr = imgStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                        cell!.projectImageView.sd_setImage(with: URL(string: imgStr), placeholderImage: UIImage(named: "doc"), completed:nil)
+                    }
+                } else {
+                    cell!.projectImageView.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "doc"), completed:nil)
                 }
             } else {
-                cell!.projectImageView.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "doc"), completed:nil)
+                if (((self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").contains(".png")) || ((self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").contains(".jpg")) || ((self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").contains(".jpeg")) || ((self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").contains(".pdf")) || ((self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").contains(".doc")) ){
+                    cell!.projectTitleLabel.text = "\(self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "")"
+                } else {
+                    cell!.projectTitleLabel.text = "\(self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").\(self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].type ?? "")"
+                }
+                cell!.projectImageView.image = nil
+                if self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].type == "png" || self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].type == "jpg" || self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].type == "jpeg" {
+                    if var imgStr = self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].file {
+                        imgStr = imgStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                        cell!.projectImageView.sd_setImage(with: URL(string: imgStr), placeholderImage: UIImage(named: "doc"), completed:nil)
+                    }
+                } else {
+                    cell!.projectImageView.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "doc"), completed:nil)
+                }
+            }
+            if (invitationDetail.project_data?.project_files?.count ?? 0) > 0 {
+                if (((self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "").contains(".png")) ||
+                    ((self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "").contains(".jpg")) ||
+                    ((self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "").contains(".jpeg")) ||
+                    ((self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "").contains(".pdf")) ||
+                    ((self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "").contains(".doc"))){
+                    cell!.projectTitleLabel.text = "\(self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "")"
+                } else {
+                    cell!.projectTitleLabel.text = "\(self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "").\(self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].type ?? "")"
+                }
+                cell!.projectImageView.image = nil
+                if self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].type == "png" || self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].type == "jpg" || self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].type == "jpeg" {
+                    if var imgStr = self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].file {
+                        imgStr = imgStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                        cell!.projectImageView.sd_setImage(with: URL(string: imgStr), placeholderImage: UIImage(named: "doc"), completed:nil)
+                    }
+                } else {
+                    cell!.projectImageView.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "doc"), completed:nil)
+                }
             }
         } else {
-            if (((self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").contains(".png")) || ((self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").contains(".jpg")) || ((self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").contains(".jpeg")) || ((self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").contains(".pdf")) || ((self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").contains(".doc"))){
-                cell!.projectTitleLabel.text = "\(self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "")"
-            } else {
-                cell!.projectTitleLabel.text = "\(self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").\(self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].type ?? "")"
-            }
-            cell!.projectImageView.image = nil
-            if self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].type == "png" || self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].type == "jpg" || self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].type == "jpeg" {
-                if var imgStr = self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].file {
+            if (invitationDetail.project_data?.project_files?.count ?? 0) > 0 && fromInvitation {
+                if var imgStr = self.invitationDetail.project_data?.project_files![indexPath.row].file {
                     imgStr = imgStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
                     cell!.projectImageView.sd_setImage(with: URL(string: imgStr), placeholderImage: UIImage(named: "doc"), completed:nil)
+                    cell!.projectTitleLabel.text = "\((self.invitationDetail.project_data!.project_files![indexPath.row].title)!)"
                 }
-            } else {
-                cell!.projectImageView.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "doc"), completed:nil)
-            }
-        }
-        if (invitationDetail.project_data?.project_files?.count ?? 0) > 0 {
-            if (((self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "").contains(".png")) ||
-                ((self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "").contains(".jpg")) ||
-                ((self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "").contains(".jpeg")) ||
-                ((self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "").contains(".pdf")) ||
-                ((self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "").contains(".doc"))){
-                cell!.projectTitleLabel.text = "\(self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "")"
-            } else {
-                cell!.projectTitleLabel.text = "\(self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].title ?? "").\(self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].type ?? "")"
-            }
-            cell!.projectImageView.image = nil
-            if self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].type == "png" || self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].type == "jpg" || self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].type == "jpeg" {
-                if var imgStr = self.arrProjectUploadFiles[indexPath.row - (self.invitationDetail.project_data?.project_files?.count ?? 0)].file {
-                    imgStr = imgStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-                    cell!.projectImageView.sd_setImage(with: URL(string: imgStr), placeholderImage: UIImage(named: "doc"), completed:nil)
-                }
-            } else {
-                cell!.projectImageView.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "doc"), completed:nil)
             }
         }
         return cell!
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.row < (self.arrProjectFiles.count) {
-            
-            if self.arrProjectFiles[indexPath.row].type == "png" || self.arrProjectFiles[indexPath.row].type == "jpg" || self.arrProjectFiles[indexPath.row].type == "jpeg" {
-                if let imgStr = self.arrProjectFiles[indexPath.row].file {
-                    let destinationViewController = Storyboard.invitation.instantiateViewController(withIdentifier: "ShowImageVC") as? ShowImageVC
-                    destinationViewController!.isImage = false
-                    destinationViewController?.imsgeStrURL = imgStr
-                    destinationViewController?.img = UIImage()
-                    self.navigationController?.pushViewController(destinationViewController!, animated: true)
+        if !fromInvitation {
+            if indexPath.row < (self.arrProjectFiles.count) {
+                
+                if self.arrProjectFiles[indexPath.row].type == "png" || self.arrProjectFiles[indexPath.row].type == "jpg" || self.arrProjectFiles[indexPath.row].type == "jpeg" {
+                    if let imgStr = self.arrProjectFiles[indexPath.row].file {
+                        let destinationViewController = Storyboard.invitation.instantiateViewController(withIdentifier: "ShowImageVC") as? ShowImageVC
+                        destinationViewController!.isImage = false
+                        destinationViewController?.imsgeStrURL = imgStr
+                        destinationViewController?.img = UIImage()
+                        self.navigationController?.pushViewController(destinationViewController!, animated: true)
+                    }
+                } else {
+                    if let imgStr = self.arrProjectFiles[indexPath.row].file {
+                        if let url = URL(string: imgStr) {
+                            UIApplication.shared.open(url)
+                        }
+                    }
                 }
+                
             } else {
-                if let imgStr = self.arrProjectFiles[indexPath.row].file {
-                    if let url = URL(string: imgStr) {
-                        UIApplication.shared.open(url)
+                if self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].type == "png" || self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].type == "jpg" || self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].type == "jpeg" {
+                    if let imgStr = self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].file {
+                        let destinationViewController = Storyboard.invitation.instantiateViewController(withIdentifier: "ShowImageVC") as? ShowImageVC
+                        destinationViewController!.isImage = false
+                        destinationViewController?.imsgeStrURL = imgStr
+                        destinationViewController?.img = UIImage()
+                        self.navigationController?.pushViewController(destinationViewController!, animated: true)
+                    }
+                } else {
+                    if let imgStr = self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].file {
+                        if let url = URL(string: imgStr) {
+                            UIApplication.shared.open(url)
+                        }
                     }
                 }
             }
-            
         } else {
-            if self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].type == "png" || self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].type == "jpg" || self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].type == "jpeg" {
-                if let imgStr = self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].file {
-                    let destinationViewController = Storyboard.invitation.instantiateViewController(withIdentifier: "ShowImageVC") as? ShowImageVC
-                    destinationViewController!.isImage = false
-                    destinationViewController?.imsgeStrURL = imgStr
-                    destinationViewController?.img = UIImage()
-                    self.navigationController?.pushViewController(destinationViewController!, animated: true)
-                }
-            } else {
-                if let imgStr = self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].file {
-                    if let url = URL(string: imgStr) {
-                        UIApplication.shared.open(url)
-                    }
-                }
-                //                let destinationViewController = Storyboard.invitation.instantiateViewController(withIdentifier: "ShowImageVC") as? ShowImageVC
-                //                destinationViewController!.isImage = true
-                //                destinationViewController?.imsgeStrURL = ""
-                //                destinationViewController?.img = UIImage(named: "doc") ?? UIImage()
-                //                self.navigationController?.pushViewController(destinationViewController!, animated: true)
+            if let imgStr = self.invitationDetail.project_data?.project_files![indexPath.row].file {
+                let destinationViewController = Storyboard.invitation.instantiateViewController(withIdentifier: "ShowImageVC") as? ShowImageVC
+                destinationViewController!.isImage = false
+                destinationViewController?.imsgeStrURL = imgStr
+                destinationViewController?.img = UIImage()
+                self.navigationController?.pushViewController(destinationViewController!, animated: true)
             }
         }
     }
@@ -1212,8 +1347,6 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
         }
         else
         {
-            //   actionSheetController.addAction(removePhoto)
-            //    actionSheetController.addAction(viewPhoto)
             actionSheetController.addAction(actionCamera)
             actionSheetController.addAction(actionGallery)
             actionSheetController.addAction(actionDocuments)
@@ -1225,9 +1358,7 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
         self.present(actionSheetController, animated: true, completion: nil)
         
     }
-    
-    // MARK:-
-    // MARK:- -------- Permissions ---------
+
     func choosePhotoFromCameraAction()
     {
         if UIImagePickerController.isSourceTypeAvailable(.camera)
@@ -1335,8 +1466,6 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
         }
     }
     
-    // MARK:-
-    // MARK:- Open Gallery
     func openGallery()
     {
         let imagePicker =  UIImagePickerController()
@@ -1346,8 +1475,6 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
         self.present(imagePicker, animated: true, completion: nil)
     }
     
-    // MARK:-
-    // MARK:- Show Alert With No Permissions Message
     func showAlertOfPermissionsNotAvailable()
     {
         let message = UIFunction.getLocalizationString(text: "Camera permission not available")
@@ -1403,8 +1530,6 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
         picker.dismiss(animated: true, completion: nil)
     }
     
-    // MARK:-
-    // MARK:- Show Image in User Image View
     func showImageInUserPhotoImageView(fileName:String)
     {
         self.view.endEditing(true)
@@ -1412,9 +1537,6 @@ extension PlaceBidVC: UIImagePickerControllerDelegate, UINavigationControllerDel
         {
             return
         }
-        
-        //        self.buttonAddImage .setTitle(nil, for: .normal)
-        
         if (userImage as String).count == 0
         {
         }
@@ -1486,7 +1608,7 @@ extension PlaceBidVC: WKNavigationDelegate, WKUIDelegate {
                 print ("localStorage.getitem('token') failed due to \(error)")
                 assertionFailure()
             }
-            print("token = \(token)")
+            print("token = \(String(describing: token))")
         }
     }
 }

@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import Alamofire
 class ManageBidDetailVC: BaseViewController {
 
     @IBOutlet weak var projectDeliverable: UILabel!
@@ -48,22 +49,30 @@ class ManageBidDetailVC: BaseViewController {
     @IBOutlet weak var topLeftTitle: UILabel!
     @IBOutlet weak var topLeftVw: UIView!
     @IBOutlet weak var lblTopTitle: UILabel!
+    @IBOutlet weak var btnDownloadPDF: UIButton!
     
     var manageBidId = 0
     let manageBidDetailViewModel: ManageBidDetailViewModel = ManageBidDetailViewModel()
     var arrProjectFiles = [BidsDocumentsDetails]()
     var arrProjectUploadFiles = [ProjectFiles]()
-    var manageBids: ManageBidsResponseDetails?
+    //var manageBids: ManageBidsResponseDetails?
+    var manageBids: ManageBidsResponseDetailsV2?
+    let placeBidViewModel: PlaceBidViewModel = PlaceBidViewModel()
     var bidStatus = 0
     var projectId = 0
     var projectTitle = ""
     var diverableData = [String]()
+    var docController: UIDocumentInteractionController!
+    var document_path: String! = ""
+    var document_name: String! = ""
+    var documentInteractionController: UIDocumentInteractionController!
+    
     
     var inviteTask = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.setNotificationCenter()
         self.blurVww.isHidden = true
         self.lblStaticEndsOnTwo.isHidden = true
         self.lblDateEndsOnTwo.isHidden = true
@@ -91,6 +100,18 @@ class ManageBidDetailVC: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         fetchManageBidDetal()
     }
+    
+    func setNotificationCenter() {
+        NotificationCenter.default.addObserver(forName: Notification.Name("FILESAVED"), object: nil, queue: .main) { notification in
+            if let fileURL = notification.object as? URL {
+                print("Arquivo salvo em \(fileURL.absoluteString)")
+                Progress.instance.hide()
+                self.documentInteractionController = UIDocumentInteractionController(url: fileURL)
+                self.documentInteractionController.delegate = self
+                self.documentInteractionController.presentPreview(animated: true)
+            }
+        }
+    }
 
     @IBAction func sentMessageButtonAction(_ sender: UIButton) {
         if let chatController = Storyboard.messageHO.instantiateViewController(withIdentifier: "ChatWindowViewController") as? ChatWindowViewController {
@@ -110,7 +131,7 @@ class ManageBidDetailVC: BaseViewController {
     func fetchManageBidDetal() {
         let params = ["id": manageBidId]
         
-        manageBidDetailViewModel.getManageBidsDetailApi(params) { model in
+        manageBidDetailViewModel.getManageBidsDetailApiV2(params) { model in
             self.manageBids = model?.data
             self.lblTopTitle.text = "Bid Details" //model?.data?.project_details?.title ?? ""
             self.bidStatus = model?.data?.bidStatus ?? 0
@@ -183,16 +204,16 @@ class ManageBidDetailVC: BaseViewController {
             }
             self.btnRecallBid.backgroundColor = UIColor.appColorGreen
             self.btnRecallBid.setTitleColor(UIColor.appBtnColorWhite, for: .normal)
-            self.btmVwheight.constant = 96.0
+            //self.btmVwheight.constant = 96.0
             self.vwStatus.backgroundColor = UIColor.appBtnColorOrange
             if model?.data?.bidStatus == 1 {
-                self.bottomVw.addCustomShadow()
+                //self.bottomVw.addCustomShadow()
                 self.lblStatus.text = "Active"
                 self.btnViewBidLog.setTitle("View Bid Log", for: .normal)
                 self.btnRecallBid.setTitle("Recall Bid", for: .normal)
             } else if model?.data?.bidStatus == 2 || model?.data?.bidStatus == 3 || model?.data?.bidStatus == 4  {
                 if model?.data?.bidStatus == 2 {
-                    self.bottomVw.addCustomShadow()
+                    //self.bottomVw.addCustomShadow()
                     self.lblStatus.text = "Recalled"
                     self.btnViewBidLog.setTitle("Edit Bid", for: .normal)
                     self.btnRecallBid.setTitle("View Bid Log", for: .normal)
@@ -202,7 +223,7 @@ class ManageBidDetailVC: BaseViewController {
                     self.btnRecallBid.backgroundColor = UIColor.appBtnColorWhite
                     self.btnRecallBid.isUserInteractionEnabled = false
                     self.btnRecallBid.setTitleColor(UIColor.appColorGreen, for: .normal)
-                    self.btmVwheight.constant = 80.0
+//                    self.btmVwheight.constant = 80.0
                     self.btnRecallBid.setTitle("Bid Lost", for: .normal)
                 } else if model?.data?.bidStatus == 4 {
                     self.bottomVw.addCustomShadow()
@@ -270,7 +291,7 @@ class ManageBidDetailVC: BaseViewController {
                     self.btmVwheight.constant = 80.0
                     self.btnRecallBid.setTitle("Waiting for Admin Approval", for: .normal)
                 } else {
-                    self.bottomVw.addCustomShadow()
+                    //self.bottomVw.addCustomShadow()
                 }
             }
             self.arrProjectFiles = model?.data?.bids_documents ?? [BidsDocumentsDetails]()
@@ -305,12 +326,12 @@ class ManageBidDetailVC: BaseViewController {
             let vc = Storyboard.invitation.instantiateViewController(withIdentifier: "PlaceBidVC") as? PlaceBidVC
             vc!.bidId = self.manageBidId
             vc!.projectId = self.projectId
-            vc!.fetchHomeOwner = self.lblHomeOwner.text ?? ""
-            vc!.fetchHomeOwnerB = self.lblHomeOwner.text ?? ""
-            vc!.fetchStreetAddress = self.manageBids?.user?.addressLine1 ?? ""
-            vc!.fetchCellPhone = self.manageBids?.user?.phoneNumber ?? ""
-            vc!.fetchMailingAddress = self.manageBids?.user?.addressLine2 ?? ""
-            vc!.fetchEmail = self.manageBids?.user?.email ?? ""
+            vc!.fetchHomeOwner = manageBids?.homeOwner1 ?? ""
+            vc!.fetchHomeOwnerB = manageBids?.homeOwner2 ?? ""
+            vc!.fetchStreetAddress = self.manageBids?.streetAddress ?? ""
+            vc!.fetchCellPhone = self.manageBids?.cellPhone ?? ""
+            vc!.fetchMailingAddress = self.manageBids?.mailingAddress ?? ""
+            vc!.fetchEmail = self.manageBids?.email ?? ""
             vc!.manageBidDetailViewModel = self.manageBidDetailViewModel
             vc!.arrProjectFiles = self.arrProjectFiles
             vc!.arrProjectUploadFiles = self.arrProjectUploadFiles
@@ -428,7 +449,115 @@ class ManageBidDetailVC: BaseViewController {
     @IBAction func actionBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    func getBidDetailsById() {
+        let params = ["id": self.manageBidId]
+        self.manageBidDetailViewModel.getManageBidsDetailApiV2(params) { modelPDF in
+            guard let model = modelPDF?.data else { return }
+            let paramsPDF : [String: Any] = [
+                "date": model.date!,
+                "homeOwner1":  model.homeOwner1!,
+                "homeOwner2": model.homeOwner2!,
+                "streetAddress": model.streetAddress!,
+                "mailingAddress": model.mailingAddress!,
+                "cellPhone": model.cellPhone!,
+                "email": model.email!,
+                "hoa": model.hoa!,
+                "permit": "\(model.permit! == 1 ? "true" : "false")",
+                "insurance": model.insurance!,
+                "claimNumber": model.claimNumber!,
+                "insFullyApproved": "\(model.insFullyApproved! == 1 ? "true" : "false")",
+                "insPartialApproved": "\(model.insPartialApproved!)",
+                "retail1": "\(model.retail1! == 1 ? "true" : "false")",
+                "retailDepreciation": "\(model.retailDepreciation! == 1 ? "true" : "false")",
+                "mainDwellingRoofSQ": model.mainDwellingRoofSQ!,
+                "detachedGarageSQ": model.detachedGarageSQ!,
+                "shedSQ": model.shedSQ!,
+                "decking": model.decking!,
+                "flatRoofSQ": model.flatRoofSQ!,
+                "totalSQ": model.totalSQ!,
+                "total": model.total!,
+                "deducible": model.deducible!,
+                "fe": model.fe!,
+                "retail2": model.retail2!,
+                "be": model.be!,
+                "brand": model.brand!,
+                "style": model.style!,
+                "color1": model.color1!,
+                "dripEdgeF55": model.dripEdgeF55!,
+                "counterFlashing": model.counterFlashing!,
+                "syntheticUnderlayment": model.syntheticUnderlayment!,
+                "ridgeVent": model.ridgeVent!,
+                "cutInstallRidgeVent": "\(model.cutInstallRidgeVent! == 1 ? "true" : "false")",
+                "chimneyFlashing": model.chimneyFlashing!,
+                "sprayPaint": model.sprayPaint!,
+                "turtleVents": model.turtleVents!,
+                "permaBoot123": model.permaBoot123!,
+                "permaBoot34": model.permaBoot34!,
+                "pipeJack123": model.pipeJack123!,
+                "pipeJack34": model.pipeJack34!,
+                "atticFan": model.atticFan!,
+                "color2": model.color2!,
+                "satelliteDish": "\(model.satelliteDish! == 1 ? "true" : "false")",
+                "antenna": "\(model.antenna! == 1 ? "true" : "false")",
+                "lightningRod": model.lightningRod!,
+                "materialLocation": model.materialLocation!,
+                "dumpsterLocation": model.dumpsterLocation!,
+                "specialInstructions": model.specialInstructions!,
+                "notes": model.notes!,
+                "roofing1": model.roofing1!,
+                "roofing2": model.roofing2!,
+                "debrisRemoval1": model.debrisRemoval1!,
+                "debrisRemoval2": model.debrisRemoval2!,
+                "overheadProfit1": model.overheadProfit1!,
+                "overheadProfit2": "",
+                "codeUpgrades": model.codeUpgrades!,
+                "paymentTerms1": "\(model.paymentTerms1! == 1 ? "true" : "false")",
+                "paymentTerms2": "\(model.paymentTerms2! == 1 ? "true" : "false")",
+                "homeOwnerSign1": model.homeOwnerSign1!,
+                "homeOwnerSign2": model.homeOwnerSign2!,
+                "homeOwnerSignDate1": model.homeOwnerSignDate1!,
+                "homeOwnerSignDate2": model.homeOwnerSignDate2!,
+                "aegcRepresentativeDate": model.aegcRepresentativeDate!,
+                "homeOwnerInitial1": model.homeOwnerInitial1!,
+                "homeOwnerInitial2": model.homeOwnerInitial2!,
+                "id": "\(self.manageBidId)",
+                "projectId": "\(self.projectId)",
+                "bidStatus": "\(model.bidStatus! == 1 ? "true" : "false")",
+                "createdAt":model.createdAt!,
+                "updatedAt":model.updatedAt!,
+                "isBlocked":"\(model.isBlocked! == 1 ? "true" : "false")",
+                "isDeleted":"\(model.isDeleted! == 1 ? "true" : "false")",
+                "project_agreement":""] as [String : Any]
+            self.doDownloadPDF(params: paramsPDF)
+        }
+    }
+    
+    func doDownloadPDF(params: [String:Any]) {
+        DispatchQueue.main.async {
+            Progress.instance.show()
+        }
+        manageBidDetailViewModel.downloadPDF(params)
+    }
+    
+    @IBAction func actionDownloadPDF(_ sender: Any) {
+        getBidDetailsById()
+    }
+    
+    func openDocument(document_path:String, document_name:String) {
+        if NetworkReachabilityManager()?.isReachable == false {
+            showMessage(with: GenericErrorMessages.noInternet)
+            return
+        }
+        if let controller = Storyboard.messageHO.instantiateViewController(withIdentifier: "DocumentViewController") as? DocumentViewController {
+            controller.document_path = document_path
+            controller.document_name = document_name
+            self.present(controller, animated: true, completion: nil)
+        }
+    }
 }
+
+
 
 extension ManageBidDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func getWidth(title:String) -> CGFloat{
@@ -551,5 +680,11 @@ extension ManageBidDetailVC: UICollectionViewDelegateFlowLayout{
         } else {
             return CGSize(width: getWidth(title:"\(self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].title ?? "").\(self.arrProjectUploadFiles[indexPath.row - self.arrProjectFiles.count].type ?? "")"), height:70)
         }
+    }
+}
+
+extension ManageBidDetailVC: UIDocumentInteractionControllerDelegate {
+    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
+        return self
     }
 }

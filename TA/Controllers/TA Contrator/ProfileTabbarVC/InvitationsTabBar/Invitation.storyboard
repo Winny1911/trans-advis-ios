@@ -444,7 +444,7 @@
                                 <rect key="frame" x="0.0" y="90" width="414" height="1076"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKW-EC-DP2">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="975"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="976"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ROY-FU-iwH" userLabel="contentView">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="863.33333333333337"/>
@@ -826,22 +826,23 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="ROY-FU-iwH" firstAttribute="width" secondItem="lKW-EC-DP2" secondAttribute="width" id="5Mi-c1-BYT"/>
-                                            <constraint firstAttribute="bottom" secondItem="ROY-FU-iwH" secondAttribute="bottom" id="8uK-PR-Jhw"/>
                                             <constraint firstAttribute="trailing" secondItem="ROY-FU-iwH" secondAttribute="trailing" id="S9R-H3-j9i"/>
+                                            <constraint firstAttribute="bottom" secondItem="ROY-FU-iwH" secondAttribute="bottom" constant="112.67" id="UaI-Kp-x9u"/>
                                             <constraint firstItem="ROY-FU-iwH" firstAttribute="top" secondItem="lKW-EC-DP2" secondAttribute="top" id="bRi-4Z-FFs"/>
                                             <constraint firstItem="ROY-FU-iwH" firstAttribute="leading" secondItem="lKW-EC-DP2" secondAttribute="leading" id="wtu-o6-55v"/>
                                         </constraints>
                                     </scrollView>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ehf-Yr-HJJ">
-                                        <rect key="frame" x="0.0" y="980" width="414" height="96"/>
+                                        <rect key="frame" x="0.0" y="984" width="414" height="92"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Yn6-Xm-Vdh">
-                                                <rect key="frame" x="24" y="20" width="366" height="56"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="Yn6-Xm-Vdh">
+                                                <rect key="frame" x="26" y="16" width="363" height="56"/>
                                                 <subviews>
                                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHQ-CP-PuD">
-                                                        <rect key="frame" x="0.0" y="0.0" width="175.66666666666666" height="56"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="170" height="56"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="56" id="1mw-x4-4nq"/>
+                                                            <constraint firstAttribute="width" constant="170" id="xiK-tb-iao"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
                                                         <color key="tintColor" name="#4EC72A"/>
@@ -857,11 +858,8 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vc1-rt-d9q">
-                                                        <rect key="frame" x="190.66666666666663" y="0.0" width="175.33333333333337" height="56"/>
+                                                        <rect key="frame" x="193" y="0.0" width="170" height="56"/>
                                                         <color key="backgroundColor" name="#4EC72A"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="56" id="aVG-du-SWL"/>
-                                                        </constraints>
                                                         <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
                                                         <color key="tintColor" name="#FFFFFF"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -876,27 +874,30 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" id="GTc-EN-zuN"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="96" id="9qu-E3-vrg"/>
-                                            <constraint firstItem="Yn6-Xm-Vdh" firstAttribute="centerY" secondItem="Ehf-Yr-HJJ" secondAttribute="centerY" id="T0R-Ct-aC6"/>
-                                            <constraint firstItem="Yn6-Xm-Vdh" firstAttribute="leading" secondItem="Ehf-Yr-HJJ" secondAttribute="leading" constant="24" id="gRf-vb-IEl"/>
-                                            <constraint firstAttribute="trailing" secondItem="Yn6-Xm-Vdh" secondAttribute="trailing" constant="24" id="trb-Tf-HqL"/>
+                                            <constraint firstAttribute="height" constant="92" id="Wcb-4H-gdb"/>
+                                            <constraint firstItem="Yn6-Xm-Vdh" firstAttribute="leading" secondItem="Ehf-Yr-HJJ" secondAttribute="leading" constant="26" id="ZfD-Gr-FGa"/>
+                                            <constraint firstItem="Yn6-Xm-Vdh" firstAttribute="top" secondItem="Ehf-Yr-HJJ" secondAttribute="top" constant="16" id="u02-ZE-vDI"/>
+                                            <constraint firstAttribute="trailing" secondItem="Yn6-Xm-Vdh" secondAttribute="trailing" constant="25" id="yaG-6D-xW0"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Ehf-Yr-HJJ" secondAttribute="bottom" id="V6S-ap-rNt"/>
-                                    <constraint firstItem="Ehf-Yr-HJJ" firstAttribute="leading" secondItem="1Lb-Xa-IWv" secondAttribute="leading" id="cT9-9n-4do"/>
+                                    <constraint firstItem="Ehf-Yr-HJJ" firstAttribute="top" secondItem="lKW-EC-DP2" secondAttribute="bottom" constant="8" symbolic="YES" id="5ee-hn-t4Y"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ehf-Yr-HJJ" secondAttribute="trailing" id="Zef-M9-wOu"/>
                                     <constraint firstItem="lKW-EC-DP2" firstAttribute="leading" secondItem="1Lb-Xa-IWv" secondAttribute="leading" id="cVE-GS-EOq"/>
                                     <constraint firstItem="lKW-EC-DP2" firstAttribute="top" secondItem="1Lb-Xa-IWv" secondAttribute="top" id="clJ-yl-n80"/>
+                                    <constraint firstItem="Ehf-Yr-HJJ" firstAttribute="leading" secondItem="1Lb-Xa-IWv" secondAttribute="leading" id="gkH-xz-MwW"/>
                                     <constraint firstAttribute="trailing" secondItem="lKW-EC-DP2" secondAttribute="trailing" id="o0q-Hh-aq7"/>
                                     <constraint firstItem="lKW-EC-DP2" firstAttribute="width" secondItem="1Lb-Xa-IWv" secondAttribute="width" id="set-AU-XF4"/>
-                                    <constraint firstAttribute="trailing" secondItem="Ehf-Yr-HJJ" secondAttribute="trailing" id="tcR-Bw-tzh"/>
-                                    <constraint firstItem="Ehf-Yr-HJJ" firstAttribute="top" secondItem="lKW-EC-DP2" secondAttribute="bottom" constant="5" id="wq0-hD-nAz"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ehf-Yr-HJJ" secondAttribute="bottom" id="xqp-n4-3dj"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -942,7 +943,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O2Q-Gh-oev" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2295.6521739130435" y="72.554347826086968"/>
+            <point key="canvasLocation" x="2295.3488372093025" y="72.103004291845494"/>
         </scene>
         <!--Sign DrawVC-->
         <scene sceneID="zmU-6E-bnM">
@@ -964,6 +965,10 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MVT-66-iQN">
                                 <rect key="frame" x="366" y="306" width="35" height="35"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="UhQ-U4-Z5Z"/>
+                                    <constraint firstAttribute="width" constant="35" id="xjO-nw-X7s"/>
+                                </constraints>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="close"/>
@@ -978,6 +983,9 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a8I-Go-8Im" customClass="ViewDrawBase" customModule="TA" customModuleProvider="target">
                                         <rect key="frame" x="4" y="7" width="399" height="83"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="83" id="ucC-lt-IwY"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1039,6 +1047,9 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="KOQ-rf-572"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Wm9-b4-8pe"/>
@@ -1126,7 +1137,7 @@
                                 <rect key="frame" x="0.0" y="5678" width="414" height="96"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ra3-A0-c1V">
-                                        <rect key="frame" x="24" y="20" width="175" height="56"/>
+                                        <rect key="frame" x="24" y="20" width="365" height="56"/>
                                         <subviews>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QzU-vx-f7n">
                                                 <rect key="frame" x="0.0" y="0.0" width="175" height="56"/>
@@ -1148,10 +1159,31 @@
                                                     <action selector="actionSubmit:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="3HF-CD-v6Q"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MzT-hg-TGe">
+                                                <rect key="frame" x="190" y="0.0" width="175" height="56"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" id="aoK-4B-8TF"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                                <color key="tintColor" name="#FA9365"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Download"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" name="#FA9365"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="doDownloadBidPDF:" destination="B8b-Fa-w6K" eventType="touchUpInside" id="Smr-A6-px3"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="175" id="yGg-ZH-3FF"/>
-                                        </constraints>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Yd-db-9Fg">
                                         <rect key="frame" x="0.0" y="-255" width="414" height="605.33333333333337"/>
@@ -1357,6 +1389,7 @@
                                     <constraint firstAttribute="bottom" secondItem="ra3-A0-c1V" secondAttribute="bottom" constant="20" symbolic="YES" id="9BN-11-Oki"/>
                                     <constraint firstAttribute="height" constant="96" id="NW6-zj-WW4"/>
                                     <constraint firstItem="ra3-A0-c1V" firstAttribute="leading" secondItem="2Mo-YF-Z5Q" secondAttribute="leading" constant="24" id="hjj-9y-ry5"/>
+                                    <constraint firstAttribute="trailing" secondItem="ra3-A0-c1V" secondAttribute="trailing" constant="25" id="o31-7h-Ph4"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
@@ -3754,13 +3787,19 @@ Name Printed</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oxw-vW-RZr">
                                                 <rect key="frame" x="0.0" y="4720" width="414" height="180"/>
                                                 <subviews>
-                                                    <textField opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="AEGC Representative" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TR7-71-e3w" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
-                                                        <rect key="frame" x="17" y="120" width="179.66666666666666" height="34"/>
+                                                    <textField opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="248" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="AEGC Representative" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TR7-71-e3w" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
+                                                        <rect key="frame" x="17" y="120" width="180" height="34"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="180" id="wf8-RQ-5Vc"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" textContentType="name"/>
                                                     </textField>
-                                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Home Owner" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c8S-db-jR2" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
-                                                        <rect key="frame" x="17" y="74" width="179.66666666666666" height="34"/>
+                                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="248" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Home Owner" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c8S-db-jR2" customClass="FloatingLabelInput" customModule="TA" customModuleProvider="target">
+                                                        <rect key="frame" x="17" y="74" width="180" height="34"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="180" id="I5C-ie-GHm"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" textContentType="name"/>
                                                     </textField>
@@ -3774,19 +3813,47 @@ Name Printed</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="pKW-Yj-Oib">
-                                                        <rect key="frame" x="203.66666666666663" y="33" width="193.33333333333337" height="28"/>
+                                                        <rect key="frame" x="204" y="33" width="193" height="28"/>
                                                         <constraints>
+                                                            <constraint firstAttribute="width" constant="193.33000000000001" id="4pn-ID-J23"/>
                                                             <constraint firstAttribute="height" constant="28" id="TRZ-Tl-Gne"/>
                                                         </constraints>
+                                                        <locale key="locale" localeIdentifier="en_US"/>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="4pn-ID-J23"/>
+                                                            </mask>
+                                                        </variation>
                                                     </datePicker>
                                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="HoW-kA-2Y9">
-                                                        <rect key="frame" x="203.66666666666663" y="77" width="193.33333333333337" height="28"/>
+                                                        <rect key="frame" x="204" y="77" width="193" height="28"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="193.33000000000001" id="yMe-ol-NBg"/>
+                                                        </constraints>
+                                                        <locale key="locale" localeIdentifier="en_US"/>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="yMe-ol-NBg"/>
+                                                            </mask>
+                                                        </variation>
                                                     </datePicker>
                                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="yIl-X4-ECg">
-                                                        <rect key="frame" x="203.66666666666663" y="123" width="193.33333333333337" height="28"/>
+                                                        <rect key="frame" x="204" y="123" width="193" height="28"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="193.33000000000001" id="zp3-Fe-2UF"/>
+                                                        </constraints>
+                                                        <locale key="locale" localeIdentifier="en_US"/>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="zp3-Fe-2UF"/>
+                                                            </mask>
+                                                        </variation>
                                                     </datePicker>
-                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e29-pR-baK">
-                                                        <rect key="frame" x="140" y="29" width="58" height="35"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e29-pR-baK">
+                                                        <rect key="frame" x="140" y="30" width="58" height="34"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="58" id="GhV-Ha-YGM"/>
+                                                        </constraints>
                                                         <color key="tintColor" name="#4EC72A"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="filled" title="Sign">
@@ -3800,6 +3867,10 @@ Name Printed</string>
                                                     </button>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Yf-PT-PAd">
                                                         <rect key="frame" x="17" y="28.66666666666697" width="122" height="35"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="122" id="V9x-H1-VJC"/>
+                                                            <constraint firstAttribute="height" constant="35" id="yO5-OV-k0l"/>
+                                                        </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="border">
                                                                 <real key="value" value="1"/>
@@ -4233,6 +4304,7 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                         <outlet property="blackView" destination="Z2W-eT-Vya" id="vfn-aU-Rvs"/>
                         <outlet property="bottomVw" destination="2Mo-YF-Z5Q" id="A6x-ur-8oN"/>
                         <outlet property="btnAddFiles" destination="b2R-4p-g2v" id="wo8-wg-eLB"/>
+                        <outlet property="btnDownlodBid" destination="MzT-hg-TGe" id="XbT-DL-oM7"/>
                         <outlet property="btnSubmit" destination="QzU-vx-f7n" id="4nq-WW-E13"/>
                         <outlet property="btnSucces" destination="Gqu-qy-1ld" id="Xyw-fW-F79"/>
                         <outlet property="ckbAegc" destination="hfY-je-ftc" id="U1A-Wq-p3V"/>
@@ -4383,7 +4455,7 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                                 <rect key="frame" x="0.0" y="90" width="414" height="1076"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0SU-mi-DiS">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="975"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="910"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LmS-Ho-TYk" userLabel="contentView">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="766.33333333333337"/>
@@ -4824,10 +4896,34 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                                         </constraints>
                                     </scrollView>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XXD-v4-TJ0">
-                                        <rect key="frame" x="0.0" y="980" width="414" height="96"/>
+                                        <rect key="frame" x="0.0" y="918" width="414" height="158"/>
                                         <subviews>
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ad-JP-KxG">
+                                                <rect key="frame" x="24" y="17" width="366" height="56"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" id="mMT-BP-QEz"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                                <color key="tintColor" name="#FA9365"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Download"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" name="#FA9365"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="actionDownloadPDF:" destination="D8g-96-AEC" eventType="touchUpInside" id="tE9-wc-5s0"/>
+                                                </connections>
+                                            </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="rRY-Ue-rXt">
-                                                <rect key="frame" x="24" y="20" width="366" height="56"/>
+                                                <rect key="frame" x="24" y="82" width="366" height="56"/>
                                                 <subviews>
                                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VbI-Vz-wxL">
                                                         <rect key="frame" x="0.0" y="0.0" width="175.66666666666666" height="56"/>
@@ -4891,10 +4987,13 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="96" id="Gpe-kJ-Az9"/>
+                                            <constraint firstItem="rRY-Ue-rXt" firstAttribute="top" secondItem="7ad-JP-KxG" secondAttribute="bottom" constant="9" id="H0A-c8-aBs"/>
+                                            <constraint firstAttribute="trailing" secondItem="7ad-JP-KxG" secondAttribute="trailing" constant="24" id="LCm-XC-QyT"/>
+                                            <constraint firstItem="7ad-JP-KxG" firstAttribute="top" secondItem="XXD-v4-TJ0" secondAttribute="top" constant="17" id="bQv-ds-Dts"/>
                                             <constraint firstAttribute="trailing" secondItem="rRY-Ue-rXt" secondAttribute="trailing" constant="24" id="hvK-cU-JXt"/>
                                             <constraint firstItem="rRY-Ue-rXt" firstAttribute="leading" secondItem="XXD-v4-TJ0" secondAttribute="leading" constant="24" id="lTv-NE-9BJ"/>
-                                            <constraint firstItem="rRY-Ue-rXt" firstAttribute="centerY" secondItem="XXD-v4-TJ0" secondAttribute="centerY" id="zAY-ZC-t09"/>
+                                            <constraint firstItem="7ad-JP-KxG" firstAttribute="leading" secondItem="XXD-v4-TJ0" secondAttribute="leading" constant="24" id="rJX-fr-eRe"/>
+                                            <constraint firstItem="rRY-Ue-rXt" firstAttribute="centerY" secondItem="XXD-v4-TJ0" secondAttribute="centerY" constant="31" id="zAY-ZC-t09"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -4906,8 +5005,8 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                                     <constraint firstItem="0SU-mi-DiS" firstAttribute="top" secondItem="sct-e3-5tt" secondAttribute="top" id="Ntm-MX-pNh"/>
                                     <constraint firstAttribute="trailing" secondItem="XXD-v4-TJ0" secondAttribute="trailing" id="YYj-jL-ITV"/>
                                     <constraint firstAttribute="bottom" secondItem="XXD-v4-TJ0" secondAttribute="bottom" id="d0i-CP-8xH"/>
+                                    <constraint firstItem="XXD-v4-TJ0" firstAttribute="top" secondItem="0SU-mi-DiS" secondAttribute="bottom" constant="8" symbolic="YES" id="mTf-VY-LgJ"/>
                                     <constraint firstItem="0SU-mi-DiS" firstAttribute="leading" secondItem="sct-e3-5tt" secondAttribute="leading" id="p6z-dE-Ifu"/>
-                                    <constraint firstItem="XXD-v4-TJ0" firstAttribute="top" secondItem="0SU-mi-DiS" secondAttribute="bottom" constant="5" id="umo-7d-TVg"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -4927,8 +5026,7 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                     <connections>
                         <outlet property="addressLabel" destination="d3W-Id-3L7" id="QMT-lU-qiL"/>
                         <outlet property="blurVww" destination="aa6-ui-kLw" id="bPM-0B-m6j"/>
-                        <outlet property="bottomVw" destination="XXD-v4-TJ0" id="cpU-3A-E2m"/>
-                        <outlet property="btmVwheight" destination="Gpe-kJ-Az9" id="FIc-r4-SbU"/>
+                        <outlet property="btnDownloadPDF" destination="7ad-JP-KxG" id="hnJ-Id-TIa"/>
                         <outlet property="btnRecallBid" destination="Vm1-02-Yi3" id="hm9-0H-jlc"/>
                         <outlet property="btnSendMsg" destination="fZz-X9-Igp" id="jUr-QY-e6n"/>
                         <outlet property="btnViewBidLog" destination="VbI-Vz-wxL" id="gES-Dp-Jpg"/>
@@ -4967,7 +5065,7 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5cZ-cA-3a4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3556.521739130435" y="72.554347826086968"/>
+            <point key="canvasLocation" x="3555.3488372093025" y="72.103004291845494"/>
         </scene>
         <!--Place Bid TermVC-->
         <scene sceneID="oF3-ul-Nxf">

@@ -47,34 +47,33 @@ class SignDrawVC: UIViewController {
 
 extension UIView {
     func asImage() -> UIImage? {
-        // Define a nova resolução desejada
-        let newBounds = CGRect(origin: .zero, size: CGSize(width: 399, height: 83))
-        
-        let renderer = UIGraphicsImageRenderer(bounds: newBounds)
-        let image = renderer.image { rendererContext in
-            // Define o background como transparente
-            rendererContext.cgContext.setFillColor(UIColor.clear.cgColor)
-            rendererContext.cgContext.fill(bounds)
+            let newBounds = CGRect(origin: .zero, size: CGSize(width: 399, height: 83))
             
-            layer.render(in: rendererContext.cgContext)
+            let renderer = UIGraphicsImageRenderer(bounds: newBounds)
+            let image = renderer.image { rendererContext in
+                rendererContext.cgContext.setFillColor(UIColor.clear.cgColor)
+                rendererContext.cgContext.fill(bounds)
+                
+                layer.render(in: rendererContext.cgContext)
+            }
+            
+            guard let data = image.pngData() else { return nil }
+            
+            let options: NSDictionary = [
+                kCGImageDestinationLossyCompressionQuality: 1
+            ]
+            
+            let compressedData = NSMutableData()
+            guard let imageDestination = CGImageDestinationCreateWithData(compressedData, kUTTypePNG, 1, nil) else {
+                return nil
+            }
+            
+            CGImageDestinationAddImageFromSource(imageDestination, CGImageSourceCreateWithData(data as CFData, nil)!, 0, options)
+            CGImageDestinationFinalize(imageDestination)
+            
+            return UIImage(data: compressedData as Data)
         }
-        
-        guard let data = image.pngData() else { return nil }
-        
-        let options: NSDictionary = [
-            kCGImageDestinationLossyCompressionQuality: 1
-        ]
-        
-        let compressedData = NSMutableData()
-        guard let imageDestination = CGImageDestinationCreateWithData(compressedData, kUTTypePNG, 1, nil) else {
-            return nil
-        }
-        
-        CGImageDestinationAddImageFromSource(imageDestination, CGImageSourceCreateWithData(data as CFData, nil)!, 0, options)
-        CGImageDestinationFinalize(imageDestination)
-        
-        return UIImage(data: compressedData as Data)
-    }
+
 
 }
 

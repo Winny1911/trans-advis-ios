@@ -105,8 +105,13 @@ class BidDetailVc: BaseViewController {
     
     func getBidsDetailApiHit(){
         let param = ["id": id]
+        let proposedStartDate = self.bidDetailModel.bidDetailData?.proposedStartDate ?? Date().stringValue
+        let proposedEndDate = self.bidDetailModel.bidDetailData?.proposedEndDate ?? Date().stringValue
+        
+        guard proposedStartDate != nil || proposedStartDate != nil else { return }
+        
         self.bidDetailModel.BidsDetailApiCall(param){_ in
-            self.startEndDate.text = "\(DateHelper.convertDateString(dateString: self.bidDetailModel.bidDetailData?.proposedStartDate, fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: "MMM dd"))th - \(DateHelper.convertDateString(dateString: self.bidDetailModel.bidDetailData?.proposedEndDate, fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: " MMM dd"))th"
+            self.startEndDate.text = "\(DateHelper.convertDateString(dateString: proposedStartDate, fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: "MMM dd"))th - \(DateHelper.convertDateString(dateString: proposedEndDate, fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: " MMM dd"))th"
             
             self.contractorId = self.bidDetailModel.bidDetailData?.user?.id ?? 0
             self.firstName.text = "\(self.bidDetailModel.bidDetailData?.user?.firstName ?? "") \(self.bidDetailModel.bidDetailData?.user?.lastName ?? "")"
@@ -120,8 +125,8 @@ class BidDetailVc: BaseViewController {
             let formattedString = formatter.string(for: amount)
             self.bidAmt.text =  "$ \(formattedString ?? "")"
             
-            self.startOnLbl.text = DateHelper.convertDateString(dateString: self.bidDetailModel.bidDetailData?.proposedStartDate, fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: " dd MMM YYY  ")
-            self.endsOnLbl.text = DateHelper.convertDateString(dateString: self.bidDetailModel.bidDetailData?.proposedEndDate, fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: " dd MMM YYY ")
+            self.startOnLbl.text = DateHelper.convertDateString(dateString: proposedStartDate, fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: " dd MMM YYY  ")
+            self.endsOnLbl.text = DateHelper.convertDateString(dateString: proposedEndDate, fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: " dd MMM YYY ")
             self.notableTerms.text = self.bidDetailModel.bidDetailData?.datumDescription
           
             if let imgStr = self.bidDetailModel.bidDetailData?.user?.profilePic{
@@ -161,28 +166,28 @@ class BidDetailVc: BaseViewController {
     
     @IBAction func acceptBidButtonTap(_ sender: Any) {
         let destinationViewController = Storyboard.newHO.instantiateViewController(withIdentifier: "AcceptBidVc") as? AcceptBidVc
-        if self.isFrom == "InvitedTaskCO" {
-            destinationViewController!.isFrom = "InvitedTaskCO"
-        }
-        destinationViewController!.projectId = bidDetailModel.bidDetailData?.projectID ?? 0
-        destinationViewController!.bidId = bidDetailModel.bidDetailData?.id ?? 0
-        destinationViewController!.budget = bidDetailModel.bidDetailData?.bidAmount ?? "0"
-        
-        destinationViewController!.completionHandlerGoToAgreementScreen = { [weak self] in
-            let vc = Storyboard.newHO.instantiateViewController(withIdentifier: "AgreementVC") as? AgreementVC
-            if self!.isFrom == "InvitedTaskCO" {
-                vc!.isFrom = "InvitedTaskCO"
-            }
-            vc!.completionHandlerGoToBidDetailScreen = { [weak self] in
-                self!.completionHandlerGoToViewBidsScreen?()
-                self!.navigationController?.popViewController(animated: true)
-            }
-            vc!.projectId = self?.bidDetailModel.bidDetailData?.projectID ?? 0
-            vc!.bidId = self?.bidDetailModel.bidDetailData?.id ?? 0
-            vc!.userId = self?.bidDetailModel.bidDetailData?.user?.id ?? 0
-            self?.navigationController?.pushViewController(vc!, animated: true)
-        }
-        self.present(destinationViewController!, animated: true, completion: nil)
+                if self.isFrom == "InvitedTaskCO" {
+                    destinationViewController!.isFrom = "InvitedTaskCO"
+                }
+                destinationViewController!.projectId = bidDetailModel.bidDetailData?.projectID ?? 0
+                destinationViewController!.bidId = bidDetailModel.bidDetailData?.id ?? 0
+                destinationViewController!.budget = bidDetailModel.bidDetailData?.bidAmount ?? "0"
+                
+                destinationViewController!.completionHandlerGoToAgreementScreen = { [weak self] in
+                    let vc = Storyboard.newHO.instantiateViewController(withIdentifier: "AgreementVC") as? AgreementVC
+                    if self!.isFrom == "InvitedTaskCO" {
+                        vc!.isFrom = "InvitedTaskCO"
+                    }
+                    vc!.completionHandlerGoToBidDetailScreen = { [weak self] in
+                        self!.completionHandlerGoToViewBidsScreen?()
+                        self!.navigationController?.popViewController(animated: true)
+                    }
+                    vc!.projectId = self?.bidDetailModel.bidDetailData?.projectID ?? 0
+                    vc!.bidId = self?.bidDetailModel.bidDetailData?.id ?? 0
+                    vc!.userId = self?.bidDetailModel.bidDetailData?.user?.id ?? 0
+                    self?.navigationController?.pushViewController(vc!, animated: true)
+                }
+                self.present(destinationViewController!, animated: true, completion: nil)
     }
     
     @IBAction func actionBack(_ sender: Any) {
