@@ -126,6 +126,7 @@ class PlaceBidVC: BaseViewController {
     @IBOutlet weak var ckbCutInstallRidgVent: UIButton!
     @IBOutlet weak var collectionProjectFiles: UICollectionView!
     @IBOutlet weak var lblAttachedFiles: UILabel!
+    @IBOutlet weak var btnDownlodBid: UIButton!
     
     var fromInvitation : Bool = false
     var wkWeb : WKWebView!
@@ -690,6 +691,101 @@ class PlaceBidVC: BaseViewController {
             viewInfo.isHidden = true
             lblInfo.isHidden = true
         }
+    }
+    
+    func getBidDetailsById() {
+        let params = ["id": self.bidId]
+        self.manageBidDetailViewModel.getManageBidsDetailApiV2(params) { modelPDF in
+            guard let model = modelPDF?.data else { return }
+            let paramsPDF : [String: Any] = [
+                "date": model.date!,
+                "homeOwner1":  model.homeOwner1!,
+                "homeOwner2": model.homeOwner2!,
+                "streetAddress": model.streetAddress!,
+                "mailingAddress": model.mailingAddress!,
+                "cellPhone": model.cellPhone!,
+                "email": model.email!,
+                "hoa": model.hoa!,
+                "permit": "\(model.permit! == 1 ? "true" : "false")",
+                "insurance": model.insurance!,
+                "claimNumber": model.claimNumber!,
+                "insFullyApproved": "\(model.insFullyApproved! == 1 ? "true" : "false")",
+                "insPartialApproved": "\(model.insPartialApproved!)",
+                "retail1": "\(model.retail1! == 1 ? "true" : "false")",
+                "retailDepreciation": "\(model.retailDepreciation! == 1 ? "true" : "false")",
+                "mainDwellingRoofSQ": model.mainDwellingRoofSQ!,
+                "detachedGarageSQ": model.detachedGarageSQ!,
+                "shedSQ": model.shedSQ!,
+                "decking": model.decking!,
+                "flatRoofSQ": model.flatRoofSQ!,
+                "totalSQ": model.totalSQ!,
+                "total": model.total!,
+                "deducible": model.deducible!,
+                "fe": model.fe!,
+                "retail2": model.retail2!,
+                "be": model.be!,
+                "brand": model.brand!,
+                "style": model.style!,
+                "color1": model.color1!,
+                "dripEdgeF55": model.dripEdgeF55!,
+                "counterFlashing": model.counterFlashing!,
+                "syntheticUnderlayment": model.syntheticUnderlayment!,
+                "ridgeVent": model.ridgeVent!,
+                "cutInstallRidgeVent": "\(model.cutInstallRidgeVent! == 1 ? "true" : "false")",
+                "chimneyFlashing": model.chimneyFlashing!,
+                "sprayPaint": model.sprayPaint!,
+                "turtleVents": model.turtleVents!,
+                "permaBoot123": model.permaBoot123!,
+                "permaBoot34": model.permaBoot34!,
+                "pipeJack123": model.pipeJack123!,
+                "pipeJack34": model.pipeJack34!,
+                "atticFan": model.atticFan!,
+                "color2": model.color2!,
+                "satelliteDish": "\(model.satelliteDish! == 1 ? "true" : "false")",
+                "antenna": "\(model.antenna! == 1 ? "true" : "false")",
+                "lightningRod": model.lightningRod!,
+                "materialLocation": model.materialLocation!,
+                "dumpsterLocation": model.dumpsterLocation!,
+                "specialInstructions": model.specialInstructions!,
+                "notes": model.notes!,
+                "roofing1": model.roofing1!,
+                "roofing2": model.roofing2!,
+                "debrisRemoval1": model.debrisRemoval1!,
+                "debrisRemoval2": model.debrisRemoval2!,
+                "overheadProfit1": model.overheadProfit1!,
+                "overheadProfit2": "",
+                "codeUpgrades": model.codeUpgrades!,
+                "paymentTerms1": "\(model.paymentTerms1! == 1 ? "true" : "false")",
+                "paymentTerms2": "\(model.paymentTerms2! == 1 ? "true" : "false")",
+                "homeOwnerSign1": model.homeOwnerSign1!,
+                "homeOwnerSign2": model.homeOwnerSign2!,
+                "homeOwnerSignDate1": model.homeOwnerSignDate1!,
+                "homeOwnerSignDate2": model.homeOwnerSignDate2!,
+                "aegcRepresentativeDate": model.aegcRepresentativeDate!,
+                "homeOwnerInitial1": model.homeOwnerInitial1!,
+                "homeOwnerInitial2": model.homeOwnerInitial2!,
+                "id": "\(self.bidId)",
+                "projectId": "\(self.projectId)",
+                "bidStatus": "\(model.bidStatus! == 1 ? "true" : "false")",
+                "createdAt":model.createdAt!,
+                "updatedAt":model.updatedAt!,
+                "isBlocked":"\(model.isBlocked! == 1 ? "true" : "false")",
+                "isDeleted":"\(model.isDeleted! == 1 ? "true" : "false")",
+                "project_agreement":""] as [String : Any]
+            self.doDownloadPDF(params: paramsPDF)
+        }
+    }
+    
+    func doDownloadPDF(params: [String:Any]) {
+        DispatchQueue.main.async {
+            Progress.instance.show()
+        }
+        manageBidDetailViewModel.downloadPDF(params)
+    }
+    
+    @IBAction func doDownloadBidPDF(_ sender: Any) {
+        getBidDetailsById()
+        
     }
     
     @IBAction func btnAsignHomeOwner(_ sender: Any) {
