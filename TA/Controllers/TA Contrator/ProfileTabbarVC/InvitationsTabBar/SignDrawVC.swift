@@ -9,7 +9,7 @@ import UIKit
 import MobileCoreServices
 
 protocol SignDrawVCDelegate: AnyObject {
-    func signDrawVCDidDismiss(_ controller: SignDrawVC, base64: String?)
+    func signDrawVCDidDismiss(_ controller: SignDrawVC, base64: String?, isSign2: Bool!)
 }
 
 class SignDrawVC: UIViewController {
@@ -17,6 +17,7 @@ class SignDrawVC: UIViewController {
     weak var delegate: SignDrawVCDelegate?
     var imageView = UIImageView()
     var base64String = String()
+    var sign2 : Bool = false
     
     @IBOutlet weak var viewDraw: ViewDrawBase!
     
@@ -32,7 +33,7 @@ class SignDrawVC: UIViewController {
                 print(self.base64String)
             }
         }
-        self.delegate?.signDrawVCDidDismiss(self, base64: self.base64String)
+        self.delegate?.signDrawVCDidDismiss(self, base64: self.base64String, isSign2: sign2)
         self.navigationController?.popViewController(animated: true)
     }
     

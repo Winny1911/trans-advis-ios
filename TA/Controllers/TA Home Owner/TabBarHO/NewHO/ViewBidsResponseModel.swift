@@ -9,6 +9,19 @@ struct ViewBidsResponseModel: Codable {
     let data: [AllProjectViewBidData]?
 }
 
+// MARK: - ViewBidsResponseModel
+struct ViewBidsResponseModelHO: Codable {
+    let statusCode: Int?
+    let message: String?
+    let data: BidUpdateResponseHO?
+}
+
+struct BidUpdateResponseHO: Codable {
+    let statusCode: Int?
+    let customMessage : String?
+    let type : String?
+}
+
 // MARK: - Datum
 struct AllProjectViewBidData: Codable {
     let id, bidStatus: Int?

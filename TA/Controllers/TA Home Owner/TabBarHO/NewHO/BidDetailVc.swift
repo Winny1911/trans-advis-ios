@@ -174,17 +174,20 @@ class BidDetailVc: BaseViewController {
                 destinationViewController!.budget = bidDetailModel.bidDetailData?.bidAmount ?? "0"
                 
                 destinationViewController!.completionHandlerGoToAgreementScreen = { [weak self] in
-                    let vc = Storyboard.newHO.instantiateViewController(withIdentifier: "AgreementVC") as? AgreementVC
-                    if self!.isFrom == "InvitedTaskCO" {
-                        vc!.isFrom = "InvitedTaskCO"
-                    }
-                    vc!.completionHandlerGoToBidDetailScreen = { [weak self] in
-                        self!.completionHandlerGoToViewBidsScreen?()
-                        self!.navigationController?.popViewController(animated: true)
-                    }
-                    vc!.projectId = self?.bidDetailModel.bidDetailData?.projectID ?? 0
-                    vc!.bidId = self?.bidDetailModel.bidDetailData?.id ?? 0
-                    vc!.userId = self?.bidDetailModel.bidDetailData?.user?.id ?? 0
+                    let vc = Storyboard.invitation.instantiateViewController(withIdentifier: "PlaceBidVC") as? PlaceBidVC
+                    vc?.bidId = self?.bidDetailModel.bidDetailData?.id ?? 0
+//                    let vc = Storyboard.newHO.instantiateViewController(withIdentifier: "AgreementVC") as? AgreementVC
+//                    if self!.isFrom == "InvitedTaskCO" {
+//                        vc!.isFrom = "InvitedTaskCO"
+//                    }
+//                    vc!.completionHandlerGoToBidDetailScreen = { [weak self] in
+//                        self!.completionHandlerGoToViewBidsScreen?()
+//                        self!.navigationController?.popViewController(animated: true)
+//                    }
+//                    vc!.projectId = self?.bidDetailModel.bidDetailData?.projectID ?? 0
+//                    vc!.bidId = self?.bidDetailModel.bidDetailData?.id ?? 0
+//                    vc!.userId = self?.bidDetailModel.bidDetailData?.user?.id ?? 0
+                    vc?.fromBidDetailHO = true
                     self?.navigationController?.pushViewController(vc!, animated: true)
                 }
                 self.present(destinationViewController!, animated: true, completion: nil)

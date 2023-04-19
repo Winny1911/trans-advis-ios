@@ -26,6 +26,21 @@ class PlaceBidViewModel: NSObject {
             completion(model, nil)
         }
     }
+    
+    func validatePlaceBidnModelHO(completion: (_ success:PlaceBidModel?, _ error: String?) -> Void) {
+        error = nil
+        if model.homeOwnerInitial2.isEmpty {
+            error = ValidationError.emptyHomeOwnerInitial2
+            completion(nil, error)
+            return
+        } else if model.homeOwnerSign2.isEmpty {
+            error = ValidationError.homeOwnerSign2
+            completion(nil, error)
+            return
+        } else {
+            completion(model, nil)
+        }
+    }
  
     func setChimneyFlashing(checkedBlack: Bool, checkedBrown: Bool, checkedWhite: Bool, checkedCopper: Bool) -> String {
         if checkedBlack {
