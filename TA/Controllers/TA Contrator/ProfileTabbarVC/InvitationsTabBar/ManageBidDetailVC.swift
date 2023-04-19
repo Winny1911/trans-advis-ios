@@ -36,7 +36,7 @@ class ManageBidDetailVC: BaseViewController {
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var btnRecallBid: UIButton!
     @IBOutlet weak var btnViewBidLog: UIButton!
-    @IBOutlet weak var bottomVw: UIView!
+    //@IBOutlet weak var bottomVw: UIView!
     @IBOutlet weak var collectionVw: UICollectionView!
     @IBOutlet weak var lblNotableItems: UILabel!
     @IBOutlet weak var lblEndDate: UILabel!
@@ -226,7 +226,7 @@ class ManageBidDetailVC: BaseViewController {
 //                    self.btmVwheight.constant = 80.0
                     self.btnRecallBid.setTitle("Bid Lost", for: .normal)
                 } else if model?.data?.bidStatus == 4 {
-                    self.bottomVw.addCustomShadow()
+                    //self.bottomVw.addCustomShadow()
                     self.lblStatus.text = "Rejected"
                     self.btnViewBidLog.setTitle("Edit Bid", for: .normal)
                     self.btnRecallBid.setTitle("View Bid Log", for: .normal)

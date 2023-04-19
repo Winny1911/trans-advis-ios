@@ -867,10 +867,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kQ0-6G-DtT">
-                                <rect key="frame" x="0.0" y="90" width="414" height="550"/>
+                                <rect key="frame" x="0.0" y="90" width="414" height="491"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3c-Kt-3Yg">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="550"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="491"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a6A-Ez-T7I" userLabel="contentView">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="491.33333333333331"/>
@@ -1143,14 +1143,14 @@
                                             <constraint firstItem="a6A-Ez-T7I" firstAttribute="width" secondItem="r3c-Kt-3Yg" secondAttribute="width" id="8A0-vM-dvP"/>
                                             <constraint firstItem="a6A-Ez-T7I" firstAttribute="leading" secondItem="r3c-Kt-3Yg" secondAttribute="leading" id="e37-g5-xFp"/>
                                             <constraint firstItem="a6A-Ez-T7I" firstAttribute="top" secondItem="r3c-Kt-3Yg" secondAttribute="top" id="fzA-h7-GVo"/>
-                                            <constraint firstAttribute="bottom" secondItem="a6A-Ez-T7I" secondAttribute="bottom" id="qrG-XD-YNI"/>
+                                            <constraint firstAttribute="bottom" secondItem="a6A-Ez-T7I" secondAttribute="bottom" id="yVj-Cq-7qP"/>
                                         </constraints>
                                     </scrollView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="r3c-Kt-3Yg" secondAttribute="bottom" id="18N-R3-BJZ"/>
                                     <constraint firstAttribute="trailing" secondItem="r3c-Kt-3Yg" secondAttribute="trailing" id="2NU-A8-8PT"/>
-                                    <constraint firstAttribute="bottom" secondItem="r3c-Kt-3Yg" secondAttribute="bottom" id="JZ6-EG-TOI"/>
                                     <constraint firstItem="r3c-Kt-3Yg" firstAttribute="top" secondItem="kQ0-6G-DtT" secondAttribute="top" id="Qoa-NJ-Frq"/>
                                     <constraint firstItem="r3c-Kt-3Yg" firstAttribute="leading" secondItem="kQ0-6G-DtT" secondAttribute="leading" id="eI2-xS-4ir"/>
                                 </constraints>
@@ -1192,6 +1192,30 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ay-JK-GIG">
+                                <rect key="frame" x="28" y="596" width="366" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="5DX-Sp-Eh3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                <color key="tintColor" name="#FA9365"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Download"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" name="#FA9365"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="doDownloadBidPDF:" destination="xNV-Rs-moC" eventType="touchUpInside" id="meJ-Sd-wyk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lAG-oC-Acr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1199,12 +1223,15 @@
                             <constraint firstItem="kQ0-6G-DtT" firstAttribute="top" secondItem="MvR-ri-Auu" secondAttribute="bottom" constant="2" id="26d-70-92K"/>
                             <constraint firstItem="kQ0-6G-DtT" firstAttribute="trailing" secondItem="lAG-oC-Acr" secondAttribute="trailing" id="2L2-vN-xky"/>
                             <constraint firstItem="lAG-oC-Acr" firstAttribute="bottom" secondItem="jdv-ij-rMg" secondAttribute="bottom" constant="20" id="7MK-NL-EH2"/>
+                            <constraint firstItem="jdv-ij-rMg" firstAttribute="top" secondItem="6Ay-JK-GIG" secondAttribute="bottom" constant="8" id="ECj-Ih-7lU"/>
                             <constraint firstItem="MvR-ri-Auu" firstAttribute="top" secondItem="wFc-ZB-6rX" secondAttribute="top" id="L1h-BP-eov"/>
-                            <constraint firstItem="jdv-ij-rMg" firstAttribute="top" secondItem="kQ0-6G-DtT" secondAttribute="bottom" constant="20" id="MTh-0z-Tyj"/>
                             <constraint firstItem="lAG-oC-Acr" firstAttribute="trailing" secondItem="MvR-ri-Auu" secondAttribute="trailing" id="iqQ-yO-AKC"/>
+                            <constraint firstItem="6Ay-JK-GIG" firstAttribute="top" secondItem="kQ0-6G-DtT" secondAttribute="bottom" constant="15" id="nde-jN-VYw"/>
+                            <constraint firstItem="6Ay-JK-GIG" firstAttribute="leading" secondItem="lAG-oC-Acr" secondAttribute="leading" constant="28" id="ntY-OJ-LbT"/>
                             <constraint firstItem="jdv-ij-rMg" firstAttribute="leading" secondItem="lAG-oC-Acr" secondAttribute="leading" constant="24" id="oAa-uR-xhS"/>
                             <constraint firstItem="MvR-ri-Auu" firstAttribute="leading" secondItem="lAG-oC-Acr" secondAttribute="leading" id="rXS-eX-CSv"/>
                             <constraint firstItem="lAG-oC-Acr" firstAttribute="trailing" secondItem="jdv-ij-rMg" secondAttribute="trailing" constant="24" id="tIo-s2-yEf"/>
+                            <constraint firstItem="6Ay-JK-GIG" firstAttribute="centerX" secondItem="wFc-ZB-6rX" secondAttribute="centerX" constant="4" id="uNz-3h-ecX"/>
                             <constraint firstItem="kQ0-6G-DtT" firstAttribute="leading" secondItem="lAG-oC-Acr" secondAttribute="leading" id="weh-U8-7Ub"/>
                         </constraints>
                     </view>

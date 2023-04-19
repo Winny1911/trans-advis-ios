@@ -135,9 +135,11 @@ class ManageBidDetailViewModel: NSObject {
             let fileURL = documentsDirectory.appendingPathComponent("fileBid\(id).pdf")
             try? data.write(to: fileURL)
             print("Save file \(fileURL.absoluteString)")
-            DispatchQueue.global(qos: .background).async {
-                NotificationCenter.default.post(name: Notification.Name("FILESAVED"), object: fileURL)
-            }
+
+                DispatchQueue.global(qos: .background).async {
+                    NotificationCenter.default.post(name: Notification.Name("FILESAVED"), object: fileURL)
+                }
+            
         }
         task.resume()
     }

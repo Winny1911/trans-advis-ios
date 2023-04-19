@@ -36,6 +36,7 @@ class PlaceBidVC: BaseViewController {
     @IBOutlet weak var blackView: UIView!
     @IBOutlet weak var btnSignatureCO: UIButton!
     
+    @IBOutlet weak var btnRejectBid: UIButton!
     
     @IBOutlet weak var imgDrawSignature: UIImageView!
     
@@ -154,7 +155,7 @@ class PlaceBidVC: BaseViewController {
     var fetchMailingAddress = String()
     var fetchEmail = String()
     var fromBidDetailHO : Bool = false
-    
+    var documentInteractionController: UIDocumentInteractionController!
     var completionHandlerGoToBidDetailScreen: (() -> Void)?
     
     private let startDatePicker = UIDatePicker()
@@ -184,7 +185,8 @@ class PlaceBidVC: BaseViewController {
         print(arrProjectFiles)
         print(arrProjectUploadFiles)
         print(invitationDetail)
-        
+        setNotificationCenter()
+        self.btnRejectBid.isHidden = true
         txtFldBidAmount.backgroundColor = .red
         collectionProjectFiles.delegate = self
         collectionProjectFiles.dataSource = self
@@ -222,6 +224,18 @@ class PlaceBidVC: BaseViewController {
             }
         }
         buildFieldsForm()
+    }
+    
+    func setNotificationCenter() {
+        NotificationCenter.default.addObserver(forName: Notification.Name("FILESAVED"), object: nil, queue: .main) { notification in
+            if let fileURL = notification.object as? URL {
+                print("Arquivo salvo em \(fileURL.absoluteString)")
+                Progress.instance.hide()
+                self.documentInteractionController = UIDocumentInteractionController(url: fileURL)
+                self.documentInteractionController.delegate = self
+                self.documentInteractionController.presentPreview(animated: true)
+            }
+        }
     }
     
     private func fetchFirstItems() {
@@ -439,6 +453,7 @@ class PlaceBidVC: BaseViewController {
     
     func fetchBidDetailsHO() {
         let params = ["id": self.bidId]
+        self.btnRejectBid.isHidden = false
         manageBidDetailViewModel.getManageBidsDetailApiV2HO(params) { model in
             if let projectFiles = model?.data?.project_details?.project_files, !projectFiles.isEmpty {
                 self.fullViewImge.removeAll()
@@ -464,7 +479,7 @@ class PlaceBidVC: BaseViewController {
             
             self.collectionProjectFiles.reloadData()
             self.manageBids = model?.data
-            self.lblTopTitle.text = "Bid Details"
+            self.lblTopTitle.text = "Agreement"
             self.projectId = model?.data?.project_details?.id ?? 0
             self.projectTitle = model?.data?.project_details?.title ?? ""
             self.lblTitle.text = model?.data?.project_details?.title ?? ""
@@ -553,7 +568,7 @@ class PlaceBidVC: BaseViewController {
     
     func lockFieldsHO() {
         DispatchQueue.main.async {
-            self.btnSubmit.setTitle("Next", for: .normal)
+            self.btnSubmit.setTitle("Accept Bid", for: .normal)
             self.txtHOA.isEnabled = false
             self.txtInsurance.isEnabled = false
             self.txtClaimNumber.isEnabled = false
@@ -1001,6 +1016,89 @@ class PlaceBidVC: BaseViewController {
         }
     }
     
+    func getBidDetailsByIdHO() {
+        let params = ["id": self.bidId]
+        self.manageBidDetailViewModel.getManageBidsDetailApiV2HO(params) { modelPDF in
+            guard let model = modelPDF?.data else { return }
+            let paramsPDF : [String: Any] = [
+                "date": model.date!,
+                "homeOwner1":  model.homeOwner1!,
+                "homeOwner2": model.homeOwner2!,
+                "streetAddress": model.streetAddress!,
+                "mailingAddress": model.mailingAddress!,
+                "cellPhone": model.cellPhone!,
+                "email": model.email!,
+                "hoa": model.hoa!,
+                "permit": "\(model.permit! == 1 ? "true" : "false")",
+                "insurance": model.insurance!,
+                "claimNumber": model.claimNumber!,
+                "insFullyApproved": "\(model.insFullyApproved! == 1 ? "true" : "false")",
+                "insPartialApproved": "\(model.insPartialApproved!)",
+                "retail1": "\(model.retail1! == 1 ? "true" : "false")",
+                "retailDepreciation": "\(model.retailDepreciation! == 1 ? "true" : "false")",
+                "mainDwellingRoofSQ": model.mainDwellingRoofSQ!,
+                "detachedGarageSQ": model.detachedGarageSQ!,
+                "shedSQ": model.shedSQ!,
+                "decking": model.decking!,
+                "flatRoofSQ": model.flatRoofSQ!,
+                "totalSQ": model.totalSQ!,
+                "total": model.total!,
+                "deducible": model.deducible!,
+                "fe": model.fe!,
+                "retail2": model.retail2!,
+                "be": model.be!,
+                "brand": model.brand!,
+                "style": model.style!,
+                "color1": model.color1!,
+                "dripEdgeF55": model.dripEdgeF55!,
+                "counterFlashing": model.counterFlashing!,
+                "syntheticUnderlayment": model.syntheticUnderlayment!,
+                "ridgeVent": model.ridgeVent!,
+                "cutInstallRidgeVent": "\(model.cutInstallRidgeVent! == 1 ? "true" : "false")",
+                "chimneyFlashing": model.chimneyFlashing!,
+                "sprayPaint": model.sprayPaint!,
+                "turtleVents": model.turtleVents!,
+                "permaBoot123": model.permaBoot123!,
+                "permaBoot34": model.permaBoot34!,
+                "pipeJack123": model.pipeJack123!,
+                "pipeJack34": model.pipeJack34!,
+                "atticFan": model.atticFan!,
+                "color2": model.color2!,
+                "satelliteDish": "\(model.satelliteDish! == 1 ? "true" : "false")",
+                "antenna": "\(model.antenna! == 1 ? "true" : "false")",
+                "lightningRod": model.lightningRod!,
+                "materialLocation": model.materialLocation!,
+                "dumpsterLocation": model.dumpsterLocation!,
+                "specialInstructions": model.specialInstructions!,
+                "notes": model.notes!,
+                "roofing1": model.roofing1!,
+                "roofing2": model.roofing2!,
+                "debrisRemoval1": model.debrisRemoval1!,
+                "debrisRemoval2": model.debrisRemoval2!,
+                "overheadProfit1": model.overheadProfit1!,
+                "overheadProfit2": "",
+                "codeUpgrades": model.codeUpgrades!,
+                "paymentTerms1": "\(model.paymentTerms1! == 1 ? "true" : "false")",
+                "paymentTerms2": "\(model.paymentTerms2! == 1 ? "true" : "false")",
+                "homeOwnerSign1": model.homeOwnerSign1!,
+                "homeOwnerSign2": model.homeOwnerSign2!,
+                "homeOwnerSignDate1": model.homeOwnerSignDate1!,
+                "homeOwnerSignDate2": model.homeOwnerSignDate2!,
+                "aegcRepresentativeDate": model.aegcRepresentativeDate!,
+                "homeOwnerInitial1": model.homeOwnerInitial1!,
+                "homeOwnerInitial2": model.homeOwnerInitial2!,
+                "id": "\(self.bidId)",
+                "projectId": "\(self.projectId)",
+                "bidStatus": "\(model.bidStatus! == 1 ? "true" : "false")",
+                "createdAt":model.createdAt!,
+                "updatedAt":model.updatedAt!,
+                "isBlocked":"\(model.isBlocked! == 1 ? "true" : "false")",
+                "isDeleted":"\(model.isDeleted! == 1 ? "true" : "false")",
+                "project_agreement":""] as [String : Any]
+            self.doDownloadPDF(params: paramsPDF)
+        }
+    }
+    
     func doDownloadPDF(params: [String:Any]) {
         DispatchQueue.main.async {
             Progress.instance.show()
@@ -1009,8 +1107,11 @@ class PlaceBidVC: BaseViewController {
     }
     
     @IBAction func doDownloadBidPDF(_ sender: Any) {
-        getBidDetailsById()
-        
+        if fromBidDetailHO {
+            getBidDetailsByIdHO()
+        } else {
+            getBidDetailsById()
+        }
     }
     
     @IBAction func btnAsignHomeOwner(_ sender: Any) {
@@ -1159,6 +1260,15 @@ class PlaceBidVC: BaseViewController {
         return param
     }
     
+    @IBAction func rejectBidButtonTap(_ sender: Any) {
+        let destinationViewController = Storyboard.newHO.instantiateViewController(withIdentifier: "RejectBidVC") as? RejectBidVC
+        destinationViewController!.projectId = self.projectId
+        destinationViewController!.bidId = self.bidId
+        destinationViewController!.completionHandlerGoToViewBids = { [weak self] in
+            self?.navigationController?.popToRootViewController(animated: true)
+        }
+        self.present(destinationViewController!, animated: true, completion: nil)
+    }
     
     //MARK: ACTION SUBMIT
     @IBAction func actionSubmit(_ sender: Any) {
@@ -1957,5 +2067,11 @@ extension PlaceBidVC: WKNavigationDelegate, WKUIDelegate {
             }
             print("token = \(String(describing: token))")
         }
+    }
+}
+
+extension PlaceBidVC: UIDocumentInteractionControllerDelegate {
+    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
+        return self
     }
 }
