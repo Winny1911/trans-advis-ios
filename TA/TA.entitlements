@@ -6,7 +6,7 @@
 	<string>development</string>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>applinks:https://ta123.symbiotics.com.br</string>
+		<string>applinks:https://ta123.symbiotics.com.br/</string>
 	</array>
 	<key>com.apple.developer.icloud-container-identifiers</key>
 	<array>
@@ -22,10 +22,6 @@
 	</array>
 	<key>com.apple.developer.ubiquity-kvstore-identifier</key>
 	<string>$(TeamIdentifierPrefix)$(CFBundleIdentifier)</string>
-	<key>com.apple.developer.applesignin</key>
-	<array>
-		<string></string>
-	</array>
 	<key>keychain-access-groups</key>
 	<array/>
 </dict>

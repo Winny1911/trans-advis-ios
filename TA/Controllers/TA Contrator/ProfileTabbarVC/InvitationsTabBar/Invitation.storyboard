@@ -1136,14 +1136,11 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Mo-YF-Z5Q">
                                 <rect key="frame" x="0.0" y="5678" width="414" height="96"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ra3-A0-c1V">
-                                        <rect key="frame" x="-166" y="20" width="555" height="56"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ra3-A0-c1V">
+                                        <rect key="frame" x="24" y="24" width="366" height="48"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jCe-26-fhn">
-                                                <rect key="frame" x="0.0" y="0.0" width="175" height="56"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="56" id="09b-JK-jh4"/>
-                                                </constraints>
+                                                <rect key="frame" x="0.0" y="0.0" width="115.33333333333333" height="48"/>
                                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
                                                 <color key="tintColor" name="#FA9365"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -1161,12 +1158,8 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QzU-vx-f7n">
-                                                <rect key="frame" x="190" y="0.0" width="175" height="56"/>
+                                                <rect key="frame" x="125.33333333333334" y="0.0" width="115.33333333333334" height="48"/>
                                                 <color key="backgroundColor" name="#4EC72A"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="175" id="V7E-FS-Hut"/>
-                                                    <constraint firstAttribute="height" constant="56" id="jxX-cv-rF2"/>
-                                                </constraints>
                                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
                                                 <color key="tintColor" name="#FFFFFF"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -1181,10 +1174,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MzT-hg-TGe">
-                                                <rect key="frame" x="380" y="0.0" width="175" height="56"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="56" id="aoK-4B-8TF"/>
-                                                </constraints>
+                                                <rect key="frame" x="250.66666666666671" y="0.0" width="115.33333333333334" height="48"/>
                                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
                                                 <color key="tintColor" name="#FA9365"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -1406,10 +1396,11 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="ra3-A0-c1V" firstAttribute="top" secondItem="2Mo-YF-Z5Q" secondAttribute="top" constant="20" symbolic="YES" id="2nh-4X-eqx"/>
-                                    <constraint firstAttribute="bottom" secondItem="ra3-A0-c1V" secondAttribute="bottom" constant="20" symbolic="YES" id="9BN-11-Oki"/>
                                     <constraint firstAttribute="height" constant="96" id="NW6-zj-WW4"/>
-                                    <constraint firstAttribute="trailing" secondItem="ra3-A0-c1V" secondAttribute="trailing" constant="25" id="o31-7h-Ph4"/>
+                                    <constraint firstItem="ra3-A0-c1V" firstAttribute="leading" secondItem="2Mo-YF-Z5Q" secondAttribute="leading" constant="24" id="RFr-OM-81M"/>
+                                    <constraint firstItem="ra3-A0-c1V" firstAttribute="centerX" secondItem="2Mo-YF-Z5Q" secondAttribute="centerX" id="bVY-oz-L5v"/>
+                                    <constraint firstAttribute="bottom" secondItem="ra3-A0-c1V" secondAttribute="bottom" constant="24" id="fje-pH-gxO"/>
+                                    <constraint firstItem="ra3-A0-c1V" firstAttribute="centerY" secondItem="2Mo-YF-Z5Q" secondAttribute="centerY" id="si4-Wm-xYk"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
@@ -4336,17 +4327,22 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                         <constraints>
                             <constraint firstItem="0lR-DA-4G3" firstAttribute="bottom" secondItem="2Mo-YF-Z5Q" secondAttribute="bottom" id="0Rw-rW-QzY"/>
                             <constraint firstItem="phG-6o-Pbz" firstAttribute="trailing" secondItem="0lR-DA-4G3" secondAttribute="trailing" id="19r-t4-uAw"/>
+                            <constraint firstAttribute="bottom" secondItem="2Mo-YF-Z5Q" secondAttribute="bottom" constant="34" id="2Zp-yk-fIh"/>
                             <constraint firstItem="Z2W-eT-Vya" firstAttribute="top" secondItem="INt-om-3Xq" secondAttribute="top" id="3V3-W2-VJu"/>
+                            <constraint firstItem="2Mo-YF-Z5Q" firstAttribute="leading" secondItem="0lR-DA-4G3" secondAttribute="leading" id="4MD-Bn-LvS"/>
                             <constraint firstItem="2Mo-YF-Z5Q" firstAttribute="top" secondItem="Dol-HU-dTz" secondAttribute="bottom" constant="8" id="BaT-Vi-cev"/>
+                            <constraint firstItem="2Mo-YF-Z5Q" firstAttribute="leading" secondItem="0lR-DA-4G3" secondAttribute="leading" id="Gnh-Zl-Add"/>
                             <constraint firstItem="0lR-DA-4G3" firstAttribute="bottom" secondItem="Dol-HU-dTz" secondAttribute="bottom" constant="104" id="JiR-Oh-2e7"/>
                             <constraint firstItem="phG-6o-Pbz" firstAttribute="top" secondItem="0lR-DA-4G3" secondAttribute="top" id="P9m-Mr-zoD"/>
                             <constraint firstAttribute="bottom" secondItem="Z2W-eT-Vya" secondAttribute="bottom" id="QsK-HW-4Ex"/>
                             <constraint firstItem="MyL-3p-gG4" firstAttribute="centerX" secondItem="INt-om-3Xq" secondAttribute="centerX" id="SuH-23-nRY"/>
+                            <constraint firstItem="2Mo-YF-Z5Q" firstAttribute="trailing" secondItem="0lR-DA-4G3" secondAttribute="trailing" id="XyO-jN-GDt"/>
                             <constraint firstItem="Dol-HU-dTz" firstAttribute="top" secondItem="phG-6o-Pbz" secondAttribute="bottom" constant="8" symbolic="YES" id="Y7z-Gx-WVD"/>
                             <constraint firstItem="Z2W-eT-Vya" firstAttribute="trailing" secondItem="0lR-DA-4G3" secondAttribute="trailing" id="ZKp-q6-Fzt"/>
                             <constraint firstItem="MyL-3p-gG4" firstAttribute="centerY" secondItem="INt-om-3Xq" secondAttribute="centerY" id="eNd-wU-RzL"/>
                             <constraint firstItem="Z2W-eT-Vya" firstAttribute="centerY" secondItem="INt-om-3Xq" secondAttribute="centerY" id="gok-BI-aHz"/>
                             <constraint firstItem="2Mo-YF-Z5Q" firstAttribute="bottom" secondItem="0lR-DA-4G3" secondAttribute="bottom" id="jEA-fS-LZ0"/>
+                            <constraint firstAttribute="trailing" secondItem="2Mo-YF-Z5Q" secondAttribute="trailing" id="jV2-wq-qWi"/>
                             <constraint firstItem="phG-6o-Pbz" firstAttribute="leading" secondItem="0lR-DA-4G3" secondAttribute="leading" id="lBC-9H-pNd"/>
                             <constraint firstItem="Z2W-eT-Vya" firstAttribute="centerX" secondItem="INt-om-3Xq" secondAttribute="centerX" id="lhU-dw-UHg"/>
                             <constraint firstItem="Z2W-eT-Vya" firstAttribute="leading" secondItem="0lR-DA-4G3" secondAttribute="leading" id="peg-Xc-Osb"/>
@@ -4354,6 +4350,11 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                             <constraint firstItem="Dol-HU-dTz" firstAttribute="leading" secondItem="phG-6o-Pbz" secondAttribute="leading" id="qcU-aq-fQh"/>
                             <constraint firstItem="2Mo-YF-Z5Q" firstAttribute="leading" secondItem="0lR-DA-4G3" secondAttribute="leading" id="r9V-1K-9aa"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Z2W-eT-Vya"/>
+                            </mask>
+                        </variation>
                     </view>
                     <size key="freeformSize" width="414" height="5808"/>
                     <connections>

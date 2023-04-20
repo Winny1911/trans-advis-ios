@@ -218,6 +218,8 @@ class PlaceBidVC: BaseViewController {
         } else {
             self.btnSubmit.setTitle("Submit Bid", for: .normal)
             self.btnDownlodBid.isHidden = true
+            self.btnSignatureCO.isHidden = false
+            self.btnSignatureHO.isHidden = true
             if self.fromInvitation {
                 self.countFiles = self.invitationDetail.project_data?.project_files?.count ?? 0
                 
