@@ -358,7 +358,6 @@
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZx-Zx-cYh">
                                         <rect key="frame" x="35" y="54.666666666666664" width="344" height="22.666666666666664"/>
-                                        <color key="backgroundColor" name="#4EC72A"/>
                                         <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="16"/>
                                         <color key="textColor" name="#484848"/>
                                         <nil key="highlightedColor"/>

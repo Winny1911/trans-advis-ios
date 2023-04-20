@@ -132,6 +132,8 @@ class PlaceBidVC: BaseViewController {
     @IBOutlet weak var lblAttachedFiles: UILabel!
     @IBOutlet weak var btnDownlodBid: UIButton!
     
+    @IBOutlet weak var btnSignatureHO: UIButton!
+    
     var fromInvitation : Bool = false
     var wkWeb : WKWebView!
     var projectTitle = String()
@@ -209,10 +211,13 @@ class PlaceBidVC: BaseViewController {
             self.lblTopTitle.text = "Edit Bid"
             if fromBidDetailHO {
                 self.fetchBidDetailsHO()
+                
             }else {
                 self.fetchBidDetails()
             }
         } else {
+            self.btnSubmit.setTitle("Submit Bid", for: .normal)
+            self.btnDownlodBid.isHidden = true
             if self.fromInvitation {
                 self.countFiles = self.invitationDetail.project_data?.project_files?.count ?? 0
                 
@@ -245,6 +250,7 @@ class PlaceBidVC: BaseViewController {
         self.txtCellPhone.text = self.fetchCellPhone.formatPhone(with: "(XXX) XXX-XXXX")
         self.txtMailingAddress.text = self.fetchMailingAddress
         self.txtEmail.text = self.fetchEmail
+        self.resetFloatingLabelFirstItems()
 
     }
     
@@ -375,7 +381,7 @@ class PlaceBidVC: BaseViewController {
             "paymentTerms1": model.paymentTermsFinance,
             "paymentTerms2": model.paymentTermsDeductible,
             "homeOwnerSign1": self.base64StringSignature,
-            "homeOwnerSign2": self.base64StringSignature2,
+            "homeOwnerSign2": self.base64StringSignature2.isValidBase64(),
             "homeOwnerSignDate1": model.dateHomeOwner1,
             "homeOwnerSignDate2": model.dateHomeOwner2,
             "aegcRepresentativeDate": model.dateAEGC,
@@ -642,6 +648,7 @@ class PlaceBidVC: BaseViewController {
             self.ckbPaymentTermsDeductible.isEnabled = false
             self.ckbCutInstallRidgVent.isEnabled = false
             self.btnSignatureCO.isHidden = true
+            self.btnSignatureHO.isHidden = false
             self.datePickerView.isEnabled = false
             self.datePickerAEGCDate.isEnabled = false
             self.datePickerHomeOwnerBADate.isEnabled = false
@@ -652,6 +659,8 @@ class PlaceBidVC: BaseViewController {
     }
     
     func fetchBidDetails() {
+        self.btnSignatureCO.isHidden = false
+        self.btnSignatureHO.isHidden = true
         self.btnSubmit.setTitle("Submit Bid", for: .normal)
         let params = ["id": self.bidId]
         manageBidDetailViewModel.getManageBidsDetailApiV2(params) { model in
@@ -997,8 +1006,8 @@ class PlaceBidVC: BaseViewController {
                 "codeUpgrades": model.codeUpgrades!,
                 "paymentTerms1": "\(model.paymentTerms1! == 1 ? "true" : "false")",
                 "paymentTerms2": "\(model.paymentTerms2! == 1 ? "true" : "false")",
-                "homeOwnerSign1": model.homeOwnerSign1!,
-                "homeOwnerSign2": model.homeOwnerSign2!,
+                "homeOwnerSign1": model.homeOwnerSign1!.isValidBase64(),
+                "homeOwnerSign2": model.homeOwnerSign2!.isValidBase64(),
                 "homeOwnerSignDate1": model.homeOwnerSignDate1!,
                 "homeOwnerSignDate2": model.homeOwnerSignDate2!,
                 "aegcRepresentativeDate": model.aegcRepresentativeDate!,
@@ -1080,8 +1089,8 @@ class PlaceBidVC: BaseViewController {
                 "codeUpgrades": model.codeUpgrades!,
                 "paymentTerms1": "\(model.paymentTerms1! == 1 ? "true" : "false")",
                 "paymentTerms2": "\(model.paymentTerms2! == 1 ? "true" : "false")",
-                "homeOwnerSign1": model.homeOwnerSign1!,
-                "homeOwnerSign2": model.homeOwnerSign2!,
+                "homeOwnerSign1": model.homeOwnerSign1!.isValidBase64(),
+                "homeOwnerSign2": model.homeOwnerSign2!.isValidBase64(),
                 "homeOwnerSignDate1": model.homeOwnerSignDate1!,
                 "homeOwnerSignDate2": model.homeOwnerSignDate2!,
                 "aegcRepresentativeDate": model.aegcRepresentativeDate!,

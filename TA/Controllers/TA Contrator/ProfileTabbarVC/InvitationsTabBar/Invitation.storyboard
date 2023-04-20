@@ -3866,6 +3866,7 @@ Name Printed</string>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e29-pR-baK">
                                                         <rect key="frame" x="140" y="20.000000000000004" width="58" height="33.333333333333343"/>
                                                         <constraints>
+                                                            <constraint firstAttribute="height" constant="33.329999999999998" id="6Uz-b9-v2b"/>
                                                             <constraint firstAttribute="width" constant="58" id="GhV-Ha-YGM"/>
                                                         </constraints>
                                                         <color key="tintColor" name="#4EC72A"/>
@@ -3880,22 +3881,21 @@ Name Printed</string>
                                                         </connections>
                                                     </button>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Yf-PT-PAd">
-                                                        <rect key="frame" x="17" y="19.33333333333303" width="122" height="35"/>
+                                                        <rect key="frame" x="17" y="19.000000000000004" width="122" height="35.333333333333343"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="122" id="V9x-H1-VJC"/>
-                                                            <constraint firstAttribute="height" constant="35" id="yO5-OV-k0l"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="border">
                                                                 <real key="value" value="1"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" name="#767676"/>
+                                                                <color key="value" name="#B2B2B2"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home Owner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rh4-8t-5hH">
-                                                        <rect key="frame" x="17" y="-2" width="122" height="16.333333333333332"/>
+                                                        <rect key="frame" x="17" y="-2" width="122" height="16"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="122" id="wAr-tM-G0K"/>
                                                         </constraints>
@@ -3904,7 +3904,7 @@ Name Printed</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" tag="11115" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SUH-mT-rkS">
-                                                        <rect key="frame" x="140" y="87.66666666666697" width="58" height="36.666666666666657"/>
+                                                        <rect key="frame" x="140" y="89" width="58" height="34.333333333333343"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="58" id="Th3-2p-cjW"/>
                                                         </constraints>
@@ -3930,7 +3930,7 @@ Name Printed</string>
                                                                 <real key="value" value="1"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" name="#767676"/>
+                                                                <color key="value" name="#B2B2B2"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
@@ -3948,7 +3948,6 @@ Name Printed</string>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstItem="Rh4-8t-5hH" firstAttribute="trailing" secondItem="2Yf-PT-PAd" secondAttribute="trailing" id="522-t7-PHf"/>
-                                                    <constraint firstItem="SUH-mT-rkS" firstAttribute="top" secondItem="e29-pR-baK" secondAttribute="bottom" constant="34.333333333333627" id="6v4-Mn-aVl"/>
                                                     <constraint firstAttribute="trailing" secondItem="pKW-Yj-Oib" secondAttribute="trailing" constant="17" id="9nw-HU-ShP"/>
                                                     <constraint firstItem="HoW-kA-2Y9" firstAttribute="leading" secondItem="yIl-X4-ECg" secondAttribute="leading" id="AM8-1l-Puo"/>
                                                     <constraint firstAttribute="bottom" secondItem="5yp-py-Asd" secondAttribute="bottom" constant="6" id="BYQ-n2-KeN"/>
@@ -4364,6 +4363,7 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
                         <outlet property="btnDownlodBid" destination="MzT-hg-TGe" id="XbT-DL-oM7"/>
                         <outlet property="btnRejectBid" destination="jCe-26-fhn" id="scv-vM-V3k"/>
                         <outlet property="btnSignatureCO" destination="e29-pR-baK" id="r6k-AH-qFB"/>
+                        <outlet property="btnSignatureHO" destination="SUH-mT-rkS" id="pZC-v2-ZMS"/>
                         <outlet property="btnSubmit" destination="QzU-vx-f7n" id="4nq-WW-E13"/>
                         <outlet property="btnSucces" destination="Gqu-qy-1ld" id="Xyw-fW-F79"/>
                         <outlet property="ckbAegc" destination="hfY-je-ftc" id="U1A-Wq-p3V"/>
@@ -5766,9 +5766,6 @@ AEGC – 1216 Chambers St Hamilton NJ 08610</string>
         </namedColor>
         <namedColor name="#4F515D">
             <color red="0.31000000238418579" green="0.31799998879432678" blue="0.36500000953674316" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="#767676">
-            <color red="0.46274509803921571" green="0.46274509803921571" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="#B2B2B2">
             <color red="0.69803921568627447" green="0.69803921568627447" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

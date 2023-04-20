@@ -514,8 +514,8 @@ class ManageBidDetailVC: BaseViewController {
                 "codeUpgrades": model.codeUpgrades!,
                 "paymentTerms1": "\(model.paymentTerms1! == 1 ? "true" : "false")",
                 "paymentTerms2": "\(model.paymentTerms2! == 1 ? "true" : "false")",
-                "homeOwnerSign1": model.homeOwnerSign1!,
-                "homeOwnerSign2": model.homeOwnerSign2!,
+                "homeOwnerSign1": model.homeOwnerSign1!.isValidBase64(),
+                "homeOwnerSign2": model.homeOwnerSign2!.isValidBase64(),
                 "homeOwnerSignDate1": model.homeOwnerSignDate1!,
                 "homeOwnerSignDate2": model.homeOwnerSignDate2!,
                 "aegcRepresentativeDate": model.aegcRepresentativeDate!,
@@ -529,6 +529,8 @@ class ManageBidDetailVC: BaseViewController {
                 "isBlocked":"\(model.isBlocked! == 1 ? "true" : "false")",
                 "isDeleted":"\(model.isDeleted! == 1 ? "true" : "false")",
                 "project_agreement":""] as [String : Any]
+            
+            print(paramsPDF)
             self.doDownloadPDF(params: paramsPDF)
         }
     }

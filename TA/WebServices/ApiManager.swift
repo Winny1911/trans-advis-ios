@@ -16,7 +16,7 @@ class ApiManager<T: Codable>: BaseApiManager {
                            requiresPinning: Bool = true,
                            completion: @escaping ([String: Any]?,T?) -> Void) {
         print("Params ----->",params)
-        print("Full Url ----->",url.replace(string: "//api", replacement: "/api"))
+        print("Full Url ----->",url)
         print("Header ----->",headers)
         let dataRequest = self.getDataRequest(url,
                                               params: params,
