@@ -9,7 +9,7 @@ import UIKit
 import SDWebImage
 
 class BidDetailVc: BaseViewController {
-
+    
     @IBOutlet weak var attachedFilesLabel: UILabel!
     @IBOutlet weak var sendMessage: UIButton!
     @IBOutlet weak var viewProfile: UIButton!
@@ -84,12 +84,12 @@ class BidDetailVc: BaseViewController {
             
             self.contractorId = self.bidDetailModel.bidDetailData?.user?.id ?? 0
             self.firstName.text = "\(self.bidDetailModel.bidDetailData?.user?.firstName ?? "") \(self.bidDetailModel.bidDetailData?.user?.lastName ?? "")"
-//            self.bidAmt.text =  "$\(self.bidDetailModel.bidDetailData?.bidAmount ?? "0")"
+            //            self.bidAmt.text =  "$\(self.bidDetailModel.bidDetailData?.bidAmount ?? "0")"
             
             var realAmount = "\(self.bidDetailModel.bidDetailData?.bidAmount ?? "0")"
             let formatter = NumberFormatter()
             formatter.numberStyle = NumberFormatter.Style.decimal
-
+            
             let amount = Double(realAmount)
             let formattedString = formatter.string(for: amount)
             self.bidAmt.text =  "$ \(formattedString ?? "")"
@@ -97,7 +97,7 @@ class BidDetailVc: BaseViewController {
             self.startOnLbl.text = DateHelper.convertDateString(dateString: self.bidDetailModel.bidDetailData?.proposedStartDate, fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: " dd MMM YYY  ")
             self.endsOnLbl.text = DateHelper.convertDateString(dateString: self.bidDetailModel.bidDetailData?.proposedEndDate, fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: " dd MMM YYY ")
             self.notableTerms.text = self.bidDetailModel.bidDetailData?.datumDescription
-          
+            
             if let imgStr = self.bidDetailModel.bidDetailData?.user?.profilePic{
                 self.profileImg.sd_setImage(with: URL(string: imgStr), placeholderImage: UIImage(named: "ic_HO_profile"), completed: nil)
             }
@@ -117,12 +117,12 @@ class BidDetailVc: BaseViewController {
             
             self.contractorId = self.bidDetailModel.bidDetailData?.user?.id ?? 0
             self.firstName.text = "\(self.bidDetailModel.bidDetailData?.user?.firstName ?? "") \(self.bidDetailModel.bidDetailData?.user?.lastName ?? "")"
-//            self.bidAmt.text =  "$\(self.bidDetailModel.bidDetailData?.bidAmount ?? "0")"
+            //            self.bidAmt.text =  "$\(self.bidDetailModel.bidDetailData?.bidAmount ?? "0")"
             
             var realAmount = "\(self.bidDetailModel.bidDetailData?.bidAmount ?? "0")"
             let formatter = NumberFormatter()
             formatter.numberStyle = NumberFormatter.Style.decimal
-
+            
             let amount = Double(realAmount)
             let formattedString = formatter.string(for: amount)
             self.bidAmt.text =  "$ \(formattedString ?? "")"
@@ -130,7 +130,7 @@ class BidDetailVc: BaseViewController {
             self.startOnLbl.text = DateHelper.convertDateString(dateString: proposedStartDate, fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: " dd MMM YYY  ")
             self.endsOnLbl.text = DateHelper.convertDateString(dateString: proposedEndDate, fromFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", toFormat: " dd MMM YYY ")
             self.notableTerms.text = self.bidDetailModel.bidDetailData?.datumDescription
-          
+            
             if let imgStr = self.bidDetailModel.bidDetailData?.user?.profilePic{
                 self.profileImg.sd_setImage(with: URL(string: imgStr), placeholderImage: UIImage(named: "ic_HO_profile"), completed: nil)
             }
@@ -168,20 +168,20 @@ class BidDetailVc: BaseViewController {
     
     @IBAction func acceptBidButtonTap(_ sender: Any) {
         let destinationViewController = Storyboard.newHO.instantiateViewController(withIdentifier: "AcceptBidVc") as? AcceptBidVc
-                if self.isFrom == "InvitedTaskCO" {
-                    destinationViewController!.isFrom = "InvitedTaskCO"
-                }
-                destinationViewController!.projectId = bidDetailModel.bidDetailData?.projectID ?? 0
-                destinationViewController!.bidId = bidDetailModel.bidDetailData?.id ?? 0
-                destinationViewController!.budget = bidDetailModel.bidDetailData?.bidAmount ?? "0"
-                
-                destinationViewController!.completionHandlerGoToAgreementScreen = { [weak self] in
-                    let vc = Storyboard.invitation.instantiateViewController(withIdentifier: "PlaceBidVC") as? PlaceBidVC
-                    vc?.bidId = self?.bidDetailModel.bidDetailData?.id ?? 0
-                    vc?.fromBidDetailHO = true
-                    self?.navigationController?.pushViewController(vc!, animated: true)
-                }
-                self.present(destinationViewController!, animated: true, completion: nil)
+        if self.isFrom == "InvitedTaskCO" {
+            destinationViewController!.isFrom = "InvitedTaskCO"
+        }
+        destinationViewController!.projectId = bidDetailModel.bidDetailData?.projectID ?? 0
+        destinationViewController!.bidId = bidDetailModel.bidDetailData?.id ?? 0
+        destinationViewController!.budget = bidDetailModel.bidDetailData?.bidAmount ?? "0"
+        
+        destinationViewController!.completionHandlerGoToAgreementScreen = { [weak self] in
+            let vc = Storyboard.invitation.instantiateViewController(withIdentifier: "PlaceBidVC") as? PlaceBidVC
+            vc?.bidId = self?.bidDetailModel.bidDetailData?.id ?? 0
+            vc?.fromBidDetailHO = true
+            self?.navigationController?.pushViewController(vc!, animated: true)
+        }
+        self.present(destinationViewController!, animated: true, completion: nil)
     }
     
     @IBAction func actionBack(_ sender: Any) {
@@ -330,7 +330,7 @@ extension BidDetailVc: UICollectionViewDataSource{
                         imgStr = imgStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
                         cell.projectImageView.sd_setImage(with: URL(string: imgStr), placeholderImage: UIImage(named: "doc"), completed:nil)
                     }
-//                    cell.projectImageView.image = UIImage(named: "doc")
+                    //                    cell.projectImageView.image = UIImage(named: "doc")
                 }
             }
             return cell
@@ -340,30 +340,30 @@ extension BidDetailVc: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if self.bidDetailModel.bidDetailData?.bidsDocuments?.count ?? 0 > 0 {
-                if self.bidDetailModel.bidDetailData?.bidsDocuments?[indexPath.row].type == "png" || self.bidDetailModel.bidDetailData?.bidsDocuments?[indexPath.row].type == "jpg" || self.bidDetailModel.bidDetailData?.bidsDocuments?[indexPath.row].type == "jpeg" {
-                    if let imgStr = self.bidDetailModel.bidDetailData?.bidsDocuments?[indexPath.row].file {
-                        
-                        let destinationViewController = Storyboard.invitation.instantiateViewController(withIdentifier: "ShowImageVC") as? ShowImageVC
-                        destinationViewController!.isImage = false
-                        destinationViewController?.imsgeStrURL = imgStr
-                        destinationViewController?.img = UIImage()
-                        self.navigationController?.pushViewController(destinationViewController!, animated: true)
-                        
-                    }
-                } else {
-                    if let imgStr = self.bidDetailModel.bidDetailData?.bidsDocuments?[indexPath.row].file {
-                        if let url = URL(string: imgStr) {
-                            UIApplication.shared.open(url)
-                        }
-                    }
-//                    let destinationViewController = Storyboard.invitation.instantiateViewController(withIdentifier: "ShowImageVC") as? ShowImageVC
-//                    destinationViewController!.isImage = true
-//                    destinationViewController?.imsgeStrURL = ""
-//                    destinationViewController?.img = UIImage(named: "doc") ?? UIImage()
-//                    self.navigationController?.pushViewController(destinationViewController!, animated: true)
+            if self.bidDetailModel.bidDetailData?.bidsDocuments?[indexPath.row].type == "png" || self.bidDetailModel.bidDetailData?.bidsDocuments?[indexPath.row].type == "jpg" || self.bidDetailModel.bidDetailData?.bidsDocuments?[indexPath.row].type == "jpeg" {
+                if let imgStr = self.bidDetailModel.bidDetailData?.bidsDocuments?[indexPath.row].file {
+                    
+                    let destinationViewController = Storyboard.invitation.instantiateViewController(withIdentifier: "ShowImageVC") as? ShowImageVC
+                    destinationViewController!.isImage = false
+                    destinationViewController?.imsgeStrURL = imgStr
+                    destinationViewController?.img = UIImage()
+                    self.navigationController?.pushViewController(destinationViewController!, animated: true)
+                    
                 }
+            } else {
+                if let imgStr = self.bidDetailModel.bidDetailData?.bidsDocuments?[indexPath.row].file {
+                    if let url = URL(string: imgStr) {
+                        UIApplication.shared.open(url)
+                    }
+                }
+                //                    let destinationViewController = Storyboard.invitation.instantiateViewController(withIdentifier: "ShowImageVC") as? ShowImageVC
+                //                    destinationViewController!.isImage = true
+                //                    destinationViewController?.imsgeStrURL = ""
+                //                    destinationViewController?.img = UIImage(named: "doc") ?? UIImage()
+                //                    self.navigationController?.pushViewController(destinationViewController!, animated: true)
             }
         }
+    }
 }
 
 extension BidDetailVc: UIDocumentInteractionControllerDelegate {

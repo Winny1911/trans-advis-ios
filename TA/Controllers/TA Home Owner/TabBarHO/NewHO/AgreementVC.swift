@@ -94,18 +94,26 @@ class AgreementVC: BaseViewController {
     }
 
     @IBAction func actionNext(_ sender: Any) {
-        let vc = Storyboard.newHO.instantiateViewController(withIdentifier: "EVerificationHOVC") as? EVerificationHOVC
+        let destinationViewController = Storyboard.newHO.instantiateViewController(withIdentifier: "AcceptBidPaymentVc") as? AcceptBidPaymentVc
         if self.isFrom == "InvitedTaskCO" {
-            vc!.isFrom = "InvitedTaskCO"
+            destinationViewController!.isFrom = "InvitedTaskCO"
         }
-        vc!.completionHandlerGoToAgreementScreen = { [weak self] in
-            self!.navigationController?.popViewController(animated: true)
-            self!.completionHandlerGoToBidDetailScreen?()
+        destinationViewController!.completionHandlerGoToAgreementScreen = { [weak self] in
+            self?.present(destinationViewController!, animated: true, completion: nil)
+            let vc = Storyboard.newHO.instantiateViewController(withIdentifier: "EVerificationHOVC") as? EVerificationHOVC
+            if self?.isFrom == "InvitedTaskCO" {
+                vc!.isFrom = "InvitedTaskCO"
+            }
+            vc!.completionHandlerGoToAgreementScreen = { [weak self] in
+                self!.navigationController?.popViewController(animated: true)
+                self!.completionHandlerGoToBidDetailScreen?()
+            }
+            vc!.projectId = self?.projectId ?? 0
+            vc!.bidId = self?.bidId ?? 0
+            vc!.userId = self?.userId ?? 0
+            self?.navigationController?.pushViewController(vc!, animated: true)
         }
-        vc!.projectId = self.projectId
-        vc!.bidId = self.bidId
-        vc!.userId = self.userId
-        self.navigationController?.pushViewController(vc!, animated: true)
+        
     }
     
     

@@ -288,7 +288,7 @@ class ManageBidDetailVC: BaseViewController {
                     self.btnRecallBid.backgroundColor = UIColor.appBtnColorWhite
                     self.btnRecallBid.isUserInteractionEnabled = false
                     self.btnRecallBid.setTitleColor(UIColor.appColorGreen, for: .normal)
-                    self.btmVwheight.constant = 80.0
+                    //self.btmVwheight.constant = 80.0
                     self.btnRecallBid.setTitle("Waiting for Admin Approval", for: .normal)
                 } else {
                     //self.bottomVw.addCustomShadow()

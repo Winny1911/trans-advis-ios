@@ -179,6 +179,7 @@ class PlaceBidVC: BaseViewController {
     var amount = ""
     var base64StringSignature = String()
     var base64StringSignature2 = String()
+    var addFilesToggle : Bool = false
     
     var completionHandlerGoToInvitationDetailScreenFromPlaceBid: (() -> Void)?
     
@@ -306,7 +307,7 @@ class PlaceBidVC: BaseViewController {
     }
     
     func buildParams(model: PlaceBidModel) -> [String : Any]{
-        self.buildParamProjectFiles()
+        
         let params = [
             "date": model.date,
             "homeOwner1":  model.homeOwnerFirst,
@@ -387,11 +388,20 @@ class PlaceBidVC: BaseViewController {
             "homeOwnerSignDate1": model.dateHomeOwner1,
             "homeOwnerSignDate2": model.dateHomeOwner2,
             "aegcRepresentativeDate": model.dateAEGC,
-            "ProjectFiles" : [self.paramsProjectFiles],
             "homeOwnerInitial1": model.homeOwnerInitial1,
             "homeOwnerInitial2": model.homeOwnerInitial2] as [String : Any]
+        
         print(params)
         return addParamsID(params: params)
+    }
+    
+    func checkProjectFiles() -> [Any]? {
+        guard addFilesToggle else {
+            return nil
+        }
+        self.buildParamProjectFiles()
+        return [self.paramsProjectFiles]
+        
     }
     
     func buildParamProjectFiles(){
@@ -1219,6 +1229,8 @@ class PlaceBidVC: BaseViewController {
                 
                 self.invitationDetail.project_data?.project_files?.append(projectFilesDetail)
             }
+            
+            self.addFilesToggle = true
             self.collectionProjectFiles.reloadData()
         }
         
@@ -1263,8 +1275,11 @@ class PlaceBidVC: BaseViewController {
     
     func addParamsID(params: [String: Any]) -> [String:Any] {
         var param = params
+        if let projectFiles = self.checkProjectFiles() {
+            param["ProjectFiles"] = projectFiles
+        }
         if self.bidId == 0 {
-            param["projectId"] = "\(self.projectId)"
+            param["projectId"] = String(self.projectId)
         } else {
             param["id"] = self.bidId
         }
@@ -1384,24 +1399,30 @@ class PlaceBidVC: BaseViewController {
                                            homeOwnerSign2: self.base64StringSignature2)
         self.placeBidViewModel.model = placeBidModel
         if fromBidDetailHO {
-            self.placeBidViewModel.validatePlaceBidnModelHO {[weak self] (success, error) in
-                guard let strongSelf = self else { return }
-                if error == nil {
-                    strongSelf.viewBidsVM.viewBidsApiCallHO( strongSelf.buildParamsHO() ) { model in
-                        let vc = Storyboard.newHO.instantiateViewController(withIdentifier: "EVerificationHOVC") as? EVerificationHOVC
-                        vc!.completionHandlerGoToAgreementScreen = { [weak strongSelf] in
-                            strongSelf!.navigationController?.popViewController(animated: true)
-                            strongSelf!.completionHandlerGoToBidDetailScreen?()
+            let destinationViewController = Storyboard.newHO.instantiateViewController(withIdentifier: "AcceptBidPaymentVc") as? AcceptBidPaymentVc
+            destinationViewController!.projectId = self.projectId
+            destinationViewController!.bidId = self.bidId
+            destinationViewController!.budget = txtFldBidAmount.text ?? "0"
+            destinationViewController!.completionHandlerGoToAgreementScreen = { [weak self] in
+                self?.placeBidViewModel.validatePlaceBidnModelHO {[weak self] (success, error) in
+                    guard let strongSelf = self else { return }
+                    if error == nil {
+                        strongSelf.viewBidsVM.viewBidsApiCallHO( strongSelf.buildParamsHO() ) { model in
+                            let vc = Storyboard.newHO.instantiateViewController(withIdentifier: "ProofOfPaymentVC") as? ProofOfPaymentVC
+                            vc!.completionHandlerGoToVerificationScreen = { [weak self] in
+                                self!.navigationController?.popViewController(animated: true)
+                            }
+                            vc!.projectId = self?.projectId ?? 0
+                            vc!.bidId = self?.bidId ?? 0
+                            vc!.userId = self?.manageBids?.user?.id ?? 0
+                            self?.navigationController?.pushViewController(vc!, animated: true)
                         }
-                        vc!.projectId = strongSelf.projectId
-                        vc!.bidId = strongSelf.bidId
-                        vc!.userId = strongSelf.manageBids?.user?.id ?? 0
-                        strongSelf.navigationController?.pushViewController(vc!, animated: true)
+                    } else {
+                        showMessage(with: error!)
                     }
-                } else {
-                    showMessage(with: error!)
                 }
             }
+            self.present(destinationViewController!, animated: true, completion: nil)
         } else {
             self.placeBidViewModel.validatePlaceBidnModel {[weak self] (success, error) in
                 guard let strongSelf = self else { return }

@@ -129,6 +129,8 @@
 		4002825F29D308230027446B /* PlaceBidTermVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4002825E29D308230027446B /* PlaceBidTermVC.swift */; };
 		4002826129D3D77D0027446B /* SignDrawVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4002826029D3D77D0027446B /* SignDrawVC.swift */; };
 		4002826329D3D8FE0027446B /* ViewDrawBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4002826229D3D8FE0027446B /* ViewDrawBase.swift */; };
+		40CD2BC929F8A9DC000113D9 /* AcceptBidPaymentVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CD2BC829F8A9DB000113D9 /* AcceptBidPaymentVc.swift */; };
+		40CD2BCB29F8D28E000113D9 /* AwaitingApprovalHOVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CD2BCA29F8D28E000113D9 /* AwaitingApprovalHOVC.swift */; };
 		6225657A29825C8100BA3BB0 /* RecordAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6225657929825C8000BA3BB0 /* RecordAudio.swift */; };
 		6278A0B6296A3E370052EFDF /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6278A0B5296A3E370052EFDF /* TextField.swift */; };
 		62A60F77298AA1310008017F /* ViewRecordButtons.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62A60F76298AA1310008017F /* ViewRecordButtons.xib */; };
@@ -610,6 +612,8 @@
 		4002825E29D308230027446B /* PlaceBidTermVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceBidTermVC.swift; sourceTree = "<group>"; };
 		4002826029D3D77D0027446B /* SignDrawVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignDrawVC.swift; sourceTree = "<group>"; };
 		4002826229D3D8FE0027446B /* ViewDrawBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDrawBase.swift; sourceTree = "<group>"; };
+		40CD2BC829F8A9DB000113D9 /* AcceptBidPaymentVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptBidPaymentVc.swift; sourceTree = "<group>"; };
+		40CD2BCA29F8D28E000113D9 /* AwaitingApprovalHOVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwaitingApprovalHOVC.swift; sourceTree = "<group>"; };
 		56E733CA42381FFD60AAB7CA /* Pods-TA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TA.debug.xcconfig"; path = "Target Support Files/Pods-TA/Pods-TA.debug.xcconfig"; sourceTree = "<group>"; };
 		6225657929825C8000BA3BB0 /* RecordAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordAudio.swift; sourceTree = "<group>"; };
 		6278A0B5296A3E370052EFDF /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
@@ -2385,6 +2389,8 @@
 				D443646A2796B7960036A58B /* EVerificationHOViewModel.swift */,
 				D443646C2796B8A80036A58B /* EVerificationHOModel.swift */,
 				F685BA2728EA9BA60073BF7A /* SaveAreementModel.swift */,
+				40CD2BC829F8A9DB000113D9 /* AcceptBidPaymentVc.swift */,
+				40CD2BCA29F8D28E000113D9 /* AwaitingApprovalHOVC.swift */,
 			);
 			path = NewHO;
 			sourceTree = "<group>";
@@ -2711,6 +2717,7 @@
 				9455944F279E5F360022D8A0 /* MaterialFilterCOVC.swift in Sources */,
 				D416F4472775BE8F0025F678 /* TabCreateProjectVC.swift in Sources */,
 				15E4492627B518BE0002EA2E /* OrderListViewModel.swift in Sources */,
+				40CD2BC929F8A9DC000113D9 /* AcceptBidPaymentVc.swift in Sources */,
 				99DDBA0C2761A86100ACB72F /* SignUpVM.swift in Sources */,
 				D4CCE30327BA8304004D9A44 /* InviteOtherAssignedContractorsDetailVC.swift in Sources */,
 				94FB1C4427CCEC4300AB38B9 /* PastProjectResponseModel.swift in Sources */,
@@ -2982,6 +2989,7 @@
 				3C85A62A277EBF2A0005BB9C /* SettingTableViewCell.swift in Sources */,
 				3C85A633277F0E950005BB9C /* EditProfleHO.swift in Sources */,
 				D7B256B22767456600453B1C /* detailsTableViewCellHO.swift in Sources */,
+				40CD2BCB29F8D28E000113D9 /* AwaitingApprovalHOVC.swift in Sources */,
 				D4E9B5BF2782D68300A10104 /* AddFilesTblVwCell.swift in Sources */,
 				3C6623192771FE0F00F29E1A /* ApplifyFilterVM.swift in Sources */,
 				C928CAE82800408A006BBBF2 /* ChatMessages+CoreDataProperties.swift in Sources */,
@@ -3154,7 +3162,7 @@
 				CODE_SIGN_ENTITLEMENTS = TA/TA.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 40;
+				CURRENT_PROJECT_VERSION = 42;
 				DEVELOPMENT_TEAM = 9Q982ULHZR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TA/Info.plist;
@@ -3178,7 +3186,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.9.27;
+				MARKETING_VERSION = 1.9.29;
 				PRODUCT_BUNDLE_IDENTIFIER = com.applify.TA.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3197,7 +3205,7 @@
 				CODE_SIGN_ENTITLEMENTS = TA/TA.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 40;
+				CURRENT_PROJECT_VERSION = 42;
 				DEVELOPMENT_TEAM = 9Q982ULHZR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TA/Info.plist;
@@ -3221,7 +3229,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.9.27;
+				MARKETING_VERSION = 1.9.29;
 				PRODUCT_BUNDLE_IDENTIFIER = com.applify.TA.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

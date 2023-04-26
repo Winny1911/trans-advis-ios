@@ -12,7 +12,7 @@ import MobileCoreServices
 import UniformTypeIdentifiers
 
 class ProofOfPaymentVC: BaseViewController {
-
+    
     @IBOutlet weak var paymentTableView: UITableView!
     @IBOutlet weak var btnback: UIButton!
     @IBOutlet weak var lblName: UILabel!
@@ -20,7 +20,7 @@ class ProofOfPaymentVC: BaseViewController {
     @IBOutlet weak var uploadLicenceView: UIView!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var userImageView: UIImageView!
-
+    
     var completionHandlerGoToVerificationScreen: (() -> Void)?
     var projectId = Int()
     var bidId = Int()
@@ -36,7 +36,7 @@ class ProofOfPaymentVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         paymentTableView.delegate = self
         paymentTableView.dataSource = self
         paymentTableView.register(UINib.init(nibName: "AttachmentListTableViewCell", bundle: nil), forCellReuseIdentifier: "AttachmentListTableViewCell")
@@ -85,16 +85,16 @@ class ProofOfPaymentVC: BaseViewController {
                             self?.submitAgreement(strFile: paymentImageArray, title: paymentImageNameRaay)
                         }
                         
-//                        self?.imageSendAPI()
-//                        self?.navigationController?.popToRootViewController(animated: true)
+                        //                        self?.imageSendAPI()
+                        //                        self?.navigationController?.popToRootViewController(animated: true)
                     } else {
                         if paymentImageArray.count == 0 || paymentImageArray == nil {
                             showMessage(with: "Please select Payment Proof", theme: .error)
                         } else {
                             self?.submitAgreement(strFile: paymentImageArray, title: paymentImageNameRaay)
                         }
-//                        self?.navigationController?.popToRootViewController(animated: true)
-//                        self?.docSendAPI()
+                        //                        self?.navigationController?.popToRootViewController(animated: true)
+                        //                        self?.docSendAPI()
                     }
                 }
             }
@@ -113,8 +113,8 @@ class ProofOfPaymentVC: BaseViewController {
             if let a = response?["data"] as? [String: Any] {
                 let url = a["url"] as? String
                 let name = a["name"] as? String
-//                self.paymentImageArray.append(url ?? "")
-//                self.paymentImageNameRaay.append(name ?? "")
+                //                self.paymentImageArray.append(url ?? "")
+                //                self.paymentImageNameRaay.append(name ?? "")
                 self.paymentTableView.reloadData()
             }
             self.setModelData(response: response!)
@@ -128,8 +128,8 @@ class ProofOfPaymentVC: BaseViewController {
                 if let a = response?["data"] as? [String: Any] {
                     let url = a["url"] as? String
                     let name = a["name"] as? String
-//                    self.paymentImageNameRaay.append(name ?? "")
-//                    self.paymentImageArray.append(url ?? "")
+                    //                    self.paymentImageNameRaay.append(name ?? "")
+                    //                    self.paymentImageArray.append(url ?? "")
                     self.paymentTableView.reloadData()
                 }
                 self.setModelData(response: response!)
@@ -143,7 +143,7 @@ class ProofOfPaymentVC: BaseViewController {
         self.paymentImageArray.append(dataDict["url"] as! String)
         self.paymentImageNameRaay.append(randomName)
         self.paymentTableView.reloadData()
-//        self.submitAgreement(strFile: dataDict["url"] as! String, title: randomName)
+        //        self.submitAgreement(strFile: dataDict["url"] as! String, title: randomName)
     }
     
     func submitAgreement(strFile: [String], title: [String]) {
@@ -151,22 +151,14 @@ class ProofOfPaymentVC: BaseViewController {
             var agreementarr = [[String:Any]]()
             for i in 0..<strFile.count {
                 let dict = ["userId":"\(obj.id ?? 0)",
-                              "projectId":"\(self.projectId)",
-                              "type":"Payment",
-                              "title":title[i],
-                              "file":strFile[i],
-                              "userType":"HO"
+                            "projectId":"\(self.projectId)",
+                            "type":"Payment",
+                            "title":title[i],
+                            "file":strFile[i],
+                            "userType":"HO"
                 ] as [String : Any]
                 agreementarr.append(dict)
             }
-//            let dict = ["userId":"\(obj.id ?? 0)",
-//                          "projectId":"\(self.projectId)",
-//                          "type":"Payment",
-//                          "title":title,
-//                          "file":strFile,
-//                          "userType":"HO"
-//            ] as [String : Any]
-//            agreementarr.append(dict)
             eVerificationViewModel.submitAgreementApi(["agreementarr":agreementarr.toJSONString()]) { response in
                 self.acceptBidApiHit()
             }
@@ -177,11 +169,15 @@ class ProofOfPaymentVC: BaseViewController {
     func acceptBidApiHit(){
         let params = ["projectId":"\(self.projectId)","bidId": "\(self.bidId)","status": "1" ]
         self.viewModel.rejectOrAcceptBidApiCall(params){ model in
-            showMessage(with: SucessMessage.bidAcceptSuccessfully, theme: .success)
-//            self.navigationController?.popViewController(animated: true)
-           // NotificationCenter.default.post(name: Notification.Name("GoToOngoingProjectListScreen"), object: nil)
-            self.navigationController?.popToRootViewController(animated: true)
-//            self.completionHandlerGoToVerificationScreen?()
+            let vc = Storyboard.newHO.instantiateViewController(withIdentifier: "AwaitingApprovalHOVC") as! AwaitingApprovalHOVC
+            vc.modalPresentationStyle = .overCurrentContext
+            if vc != nil {
+                self.present(vc, animated: true)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
+            }
+            
         }
     }
     
@@ -194,8 +190,8 @@ extension ProofOfPaymentVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AttachmentListTableViewCell", for: indexPath) as! AttachmentListTableViewCell
-            cell.attachmentImageView.sd_setImage(with: URL(string: paymentImageArray[indexPath.row]), placeholderImage: UIImage(named: "doc"), completed: nil)
-            cell.attachmentLabel.text = paymentImageNameRaay[indexPath.row]
+        cell.attachmentImageView.sd_setImage(with: URL(string: paymentImageArray[indexPath.row]), placeholderImage: UIImage(named: "doc"), completed: nil)
+        cell.attachmentLabel.text = paymentImageNameRaay[indexPath.row]
         
         cell.deleteAttachment = {
             self.paymentImageNameRaay.remove(at: indexPath.row)
@@ -287,8 +283,8 @@ extension ProofOfPaymentVC: UIImagePickerControllerDelegate, UINavigationControl
         }
         else
         {
-         //   actionSheetController.addAction(removePhoto)
-        //    actionSheetController.addAction(viewPhoto)
+            //   actionSheetController.addAction(removePhoto)
+            //    actionSheetController.addAction(viewPhoto)
             actionSheetController.addAction(actionCamera)
             actionSheetController.addAction(actionGallery)
             actionSheetController.addAction(actionDocuments)
@@ -312,10 +308,10 @@ extension ProofOfPaymentVC: UIImagePickerControllerDelegate, UINavigationControl
         else
         {
             let alertController: UIAlertController = UIAlertController(title: "Error", message: "Device has no camera.", preferredStyle: .alert)
-
+            
             let okAction = UIAlertAction(title: "OK", style: .default) { (_) -> Void in
             }
-
+            
             alertController.addAction(okAction)
             self.present(alertController, animated: true, completion: nil)
         }
@@ -342,7 +338,7 @@ extension ProofOfPaymentVC: UIImagePickerControllerDelegate, UINavigationControl
                 else
                 {
                     DispatchQueue.main.async {
-                    self.showAlertOfPermissionsNotAvailable()
+                        self.showAlertOfPermissionsNotAvailable()
                     }
                 }
             })
@@ -350,7 +346,7 @@ extension ProofOfPaymentVC: UIImagePickerControllerDelegate, UINavigationControl
         else if status == .restricted || status == .denied
         {
             DispatchQueue.main.async {
-            self.showAlertOfPermissionsNotAvailable()
+                self.showAlertOfPermissionsNotAvailable()
             }
         }
     }
@@ -367,12 +363,12 @@ extension ProofOfPaymentVC: UIImagePickerControllerDelegate, UINavigationControl
     func chooseFromDocs() {
         let importMenu = UIDocumentPickerViewController(documentTypes: [String(kUTTypeText),String(kUTTypeContent),String(kUTTypeItem),String(kUTTypeData),String(kUTTypeSpreadsheet),String(kUTTypeImage), String(kUTTypeRTF), String(kUTTypePDF)], in: .import)
         
-            if #available(iOS 11.0, *) {
-                importMenu.allowsMultipleSelection = true
-            }
-            importMenu.delegate = self
-            importMenu.modalPresentationStyle = .formSheet
-            present(importMenu, animated: true)
+        if #available(iOS 11.0, *) {
+            importMenu.allowsMultipleSelection = true
+        }
+        importMenu.delegate = self
+        importMenu.modalPresentationStyle = .formSheet
+        present(importMenu, animated: true)
     }
     
     func choosePhotoFromGalleryAction()
@@ -390,7 +386,7 @@ extension ProofOfPaymentVC: UIImagePickerControllerDelegate, UINavigationControl
                 else
                 {
                     DispatchQueue.main.async {
-                    self.showAlertOfPermissionsNotAvailable()
+                        self.showAlertOfPermissionsNotAvailable()
                     }
                 }
             })
@@ -405,7 +401,7 @@ extension ProofOfPaymentVC: UIImagePickerControllerDelegate, UINavigationControl
         else if (status == .restricted || status == .denied)
         {
             DispatchQueue.main.async {
-            self.showAlertOfPermissionsNotAvailable()
+                self.showAlertOfPermissionsNotAvailable()
             }
         }
     }
@@ -457,7 +453,7 @@ extension ProofOfPaymentVC: UIImagePickerControllerDelegate, UINavigationControl
         {
             let documentDirectory = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor:nil, create:false)
             let fileURL = documentDirectory.appendingPathComponent(imageName)
-//            portfilioImage.contentMode = .scaleAspectFill
+            //            portfilioImage.contentMode = .scaleAspectFill
             if let imageData = (info[convertFromUIImagePickerControllerInfoKey((UIDevice.current.userInterfaceIdiom == .phone) ? UIImagePickerController.InfoKey.editedImage : UIImagePickerController.InfoKey.originalImage)] as! UIImage).jpegData(compressionQuality: 1.0)
             {
                 
@@ -487,19 +483,19 @@ extension ProofOfPaymentVC: UIImagePickerControllerDelegate, UINavigationControl
         self.view.endEditing(true)
         guard let userImage = userImage else
         {
-//            let add_photo = UIFunction.getLocalizationString(text: "add_photo_title")
-//            self.buttonAddImage .setTitle(add_photo, for: .normal)
+            //            let add_photo = UIFunction.getLocalizationString(text: "add_photo_title")
+            //            self.buttonAddImage .setTitle(add_photo, for: .normal)
             self.userImageView.image = nil
             self.isLicenseImageSelected = false
             return
         }
-
-//        self.buttonAddImage .setTitle(nil, for: .normal)
-
+        
+        //        self.buttonAddImage .setTitle(nil, for: .normal)
+        
         if (userImage as String).count == 0
         {
-           // let add_photo = UIFunction.getLocalizationString(text: "add_photo_title")
-//            self.buttonAddImage .setTitle(add_photo, for: .normal)
+            // let add_photo = UIFunction.getLocalizationString(text: "add_photo_title")
+            //            self.buttonAddImage .setTitle(add_photo, for: .normal)
             self.userImageView.image = nil
             self.isLicenseImageSelected = false
         }
@@ -562,10 +558,10 @@ extension ProofOfPaymentVC: UIDocumentPickerDelegate {
         self.userImageView.image = UIImage(named: "pdf")
         self.isLicenseImageSelected = true
         self.docSendAPI()
-       // viewModel.attachDocuments(at: urls)
+        // viewModel.attachDocuments(at: urls)
     }
-
-     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+    
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         controller.dismiss(animated: true, completion: nil)
     }
 }

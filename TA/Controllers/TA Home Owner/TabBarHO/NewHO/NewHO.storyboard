@@ -1408,7 +1408,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vjl-UH-U7o">
                                 <rect key="frame" x="0.0" y="486" width="414" height="250"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you sure you want to accept bid amount $1800?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cje-mb-fqh">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you sure you want to accept bid amount ?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cje-mb-fqh">
                                         <rect key="frame" x="35" y="53" width="344" height="50.666666666666657"/>
                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
                                         <nil key="textColor"/>
@@ -1456,15 +1456,27 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accept Bid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAX-pW-gdv">
+                                        <rect key="frame" x="88" y="20" width="238" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="Gcd-SY-XgG"/>
+                                            <constraint firstAttribute="width" constant="238" id="mB4-Vf-mrp"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="cje-mb-fqh" firstAttribute="top" secondItem="Vjl-UH-U7o" secondAttribute="top" constant="53" id="Jie-PE-dOq"/>
+                                    <constraint firstItem="cje-mb-fqh" firstAttribute="top" secondItem="HAX-pW-gdv" secondAttribute="bottom" constant="8" symbolic="YES" id="NcI-an-46D"/>
                                     <constraint firstAttribute="bottom" secondItem="wuo-lY-oIG" secondAttribute="bottom" constant="21" id="OEa-u7-dHQ"/>
                                     <constraint firstItem="wuo-lY-oIG" firstAttribute="leading" secondItem="Vjl-UH-U7o" secondAttribute="leading" constant="24" id="VxR-W9-12Y"/>
                                     <constraint firstItem="cje-mb-fqh" firstAttribute="leading" secondItem="Vjl-UH-U7o" secondAttribute="leading" constant="35" id="b1T-h9-T8E"/>
                                     <constraint firstAttribute="height" constant="250" id="qNA-Yg-IrC"/>
+                                    <constraint firstItem="HAX-pW-gdv" firstAttribute="centerX" secondItem="Vjl-UH-U7o" secondAttribute="centerX" id="u3i-op-9jw"/>
                                     <constraint firstAttribute="trailing" secondItem="wuo-lY-oIG" secondAttribute="trailing" constant="24" id="vle-lg-K7R"/>
+                                    <constraint firstItem="HAX-pW-gdv" firstAttribute="top" secondItem="Vjl-UH-U7o" secondAttribute="top" constant="20" symbolic="YES" id="xVG-ss-nPF"/>
                                     <constraint firstAttribute="trailing" secondItem="cje-mb-fqh" secondAttribute="trailing" constant="35" id="xoc-mp-qv4"/>
                                 </constraints>
                             </view>
@@ -1918,7 +1930,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qfK-Wk-x9F" userLabel="stepView">
+                            <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qfK-Wk-x9F" userLabel="stepView">
                                 <rect key="frame" x="24" y="45" width="67" height="25"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 2/2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nzJ-QN-3Pu">
@@ -1955,24 +1967,25 @@
                                 <color key="textColor" red="0.31174111370000002" green="0.31747674939999998" blue="0.36456388239999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To accept the bid you have to upload signed contract OR go through eSign process." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="va6-Km-7Wq">
-                                <rect key="frame" x="24" y="149.66666666666666" width="366" height="45"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="va6-Km-7Wq">
+                                <rect key="frame" x="24" y="149.66666666666666" width="366" height="89.666666666666657"/>
+                                <string key="text">Please upload the images of the front and the back of the check(s). Photos of the check need to be taken with the check against a black background.</string>
                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                 <color key="textColor" name="labelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pkd-ap-VAl" customClass="CustomeDasboardView" customModule="TA" customModuleProvider="target">
-                                <rect key="frame" x="24" y="238.66666666666663" width="366" height="140"/>
+                                <rect key="frame" x="24" y="283.33333333333331" width="366" height="140"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_upload_image-1" translatesAutoresizingMaskIntoConstraints="NO" id="IoB-nR-whq">
-                                        <rect key="frame" x="161" y="24.000000000000028" width="44" height="44"/>
+                                        <rect key="frame" x="161" y="24" width="44" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="44" id="Qzx-G9-Deg"/>
                                             <constraint firstAttribute="height" constant="44" id="qj0-9c-dSr"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload Payment Proof" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4q-lp-khh">
-                                        <rect key="frame" x="93.000000000000014" y="79.000000000000028" width="180.33333333333337" height="22.666666666666671"/>
+                                        <rect key="frame" x="93.000000000000014" y="79" width="180.33333333333337" height="22.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
                                         <color key="textColor" red="0.98061341049999995" green="0.5763967633" blue="0.39566504959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -2027,7 +2040,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fzp-HF-hVc">
-                                <rect key="frame" x="24" y="238.66666666666663" width="366" height="60"/>
+                                <rect key="frame" x="24" y="283.33333333333331" width="366" height="60"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3YJ-IZ-d8p">
                                         <rect key="frame" x="5" y="5" width="50" height="50"/>
@@ -2037,7 +2050,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload Licence" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNp-cD-Bjx">
-                                        <rect key="frame" x="65" y="20.333333333333343" width="236" height="19.666666666666671"/>
+                                        <rect key="frame" x="65" y="20.333333333333371" width="236" height="19.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
                                         <color key="textColor" red="0.31174111370000002" green="0.31747674939999998" blue="0.36456388239999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -2100,7 +2113,7 @@
                                         <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Done"/>
+                                        <state key="normal" title="Submit Payment"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="10"/>
@@ -2113,7 +2126,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lPY-xM-2me">
-                                <rect key="frame" x="24" y="390.66666666666669" width="366" height="128.00000000000006"/>
+                                <rect key="frame" x="24" y="435.33333333333331" width="366" height="127.99999999999994"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="QpM-Va-CaC"/>
@@ -2161,6 +2174,225 @@
             </objects>
             <point key="canvasLocation" x="6791" y="15"/>
         </scene>
+        <!--Accept Bid Payment Vc-->
+        <scene sceneID="7aU-5n-BKz">
+            <objects>
+                <viewController storyboardIdentifier="AcceptBidPaymentVc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Svj-7R-EXd" customClass="AcceptBidPaymentVc" customModule="TA" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zMs-Q8-Jyw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7O-CJ-ogS">
+                                <rect key="frame" x="0.0" y="486" width="414" height="250"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To accept the bid you have to upload the front and back of the check" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TJB-ZJ-bei">
+                                        <rect key="frame" x="35" y="53" width="344" height="50.666666666666657"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="2on-0i-5yj">
+                                        <rect key="frame" x="24" y="173" width="366" height="56"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sin-No-Ry8">
+                                                <rect key="frame" x="0.0" y="0.0" width="175.66666666666666" height="56"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" id="bpk-zy-CeR"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="15"/>
+                                                <color key="tintColor" name="#FA9365"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Submit Payment Later"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" name="#FA9365"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="actionNotYet:" destination="Svj-7R-EXd" eventType="touchUpInside" id="y0d-nt-Yfa"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WQn-ej-UQR">
+                                                <rect key="frame" x="190.66666666666663" y="0.0" width="175.33333333333337" height="56"/>
+                                                <color key="backgroundColor" name="#4EC72A"/>
+                                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="15"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Submit Payment Now"/>
+                                                <connections>
+                                                    <action selector="yesConfirmButtonAction:" destination="Svj-7R-EXd" eventType="touchUpInside" id="tS0-QX-LNn"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="border">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePI-2b-fSs">
+                                        <rect key="frame" x="88" y="20" width="238" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="6mO-xC-y0s"/>
+                                            <constraint firstAttribute="width" constant="238" id="ezu-pc-MlA"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="2on-0i-5yj" secondAttribute="trailing" constant="24" id="3Gt-a6-X3Q"/>
+                                    <constraint firstItem="TJB-ZJ-bei" firstAttribute="leading" secondItem="h7O-CJ-ogS" secondAttribute="leading" constant="35" id="AHd-D3-0pL"/>
+                                    <constraint firstItem="ePI-2b-fSs" firstAttribute="centerX" secondItem="h7O-CJ-ogS" secondAttribute="centerX" id="Xhr-12-NmN"/>
+                                    <constraint firstItem="TJB-ZJ-bei" firstAttribute="top" secondItem="ePI-2b-fSs" secondAttribute="bottom" constant="8" symbolic="YES" id="ZOf-YV-mVa"/>
+                                    <constraint firstAttribute="bottom" secondItem="2on-0i-5yj" secondAttribute="bottom" constant="21" id="d4i-kn-FAs"/>
+                                    <constraint firstAttribute="trailing" secondItem="TJB-ZJ-bei" secondAttribute="trailing" constant="35" id="izU-F9-EKc"/>
+                                    <constraint firstAttribute="height" constant="250" id="lxT-HA-zby"/>
+                                    <constraint firstItem="2on-0i-5yj" firstAttribute="leading" secondItem="h7O-CJ-ogS" secondAttribute="leading" constant="24" id="tai-JA-cZs"/>
+                                    <constraint firstItem="ePI-2b-fSs" firstAttribute="top" secondItem="h7O-CJ-ogS" secondAttribute="top" constant="20" symbolic="YES" id="xRv-jP-oE4"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="cx1-R3-Ran"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.20143189719999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cx1-R3-Ran" firstAttribute="bottom" secondItem="h7O-CJ-ogS" secondAttribute="bottom" id="UhB-Md-gaO"/>
+                            <constraint firstItem="cx1-R3-Ran" firstAttribute="trailing" secondItem="h7O-CJ-ogS" secondAttribute="trailing" id="YqY-6T-Krf"/>
+                            <constraint firstItem="h7O-CJ-ogS" firstAttribute="leading" secondItem="cx1-R3-Ran" secondAttribute="leading" id="h8t-VE-Iip"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bgView" destination="h7O-CJ-ogS" id="zwg-DK-uzk"/>
+                        <outlet property="lblTopHeading" destination="TJB-ZJ-bei" id="gud-V0-Pd7"/>
+                        <outlet property="notYetButton" destination="Sin-No-Ry8" id="pmh-B7-ISH"/>
+                        <outlet property="yesConfirmButton" destination="WQn-ej-UQR" id="v3j-x4-aFs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r24-q9-da4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4909" y="669"/>
+        </scene>
+        <!--Awaiting ApprovalHOVC-->
+        <scene sceneID="lfI-At-J93">
+            <objects>
+                <viewController storyboardIdentifier="AwaitingApprovalHOVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="PhB-ez-Gi9" customClass="AwaitingApprovalHOVC" customModule="TA" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="B9E-AM-bNc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7n1-R8-ieV">
+                                <rect key="frame" x="8" y="133" width="398" height="398"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_close2" translatesAutoresizingMaskIntoConstraints="NO" id="pRO-eN-v32">
+                                        <rect key="frame" x="358" y="16" width="24" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AHv-XX-Mar">
+                                        <rect key="frame" x="358" y="16" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="5Zf-Ro-fck"/>
+                                            <constraint firstAttribute="width" constant="24" id="sQo-vf-eqk"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title=" "/>
+                                        <connections>
+                                            <action selector="crossButtonAction:" destination="PhB-ez-Gi9" eventType="touchUpInside" id="XUd-VZ-6wa"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For any inquires please contact us at" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9C9-4d-qSW">
+                                        <rect key="frame" x="20" y="248" width="358" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="FEj-jZ-MAw"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                                        <color key="textColor" red="0.28160464759999998" green="0.28160464759999998" blue="0.28160464759999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uin-bd-2Cy">
+                                        <rect key="frame" x="123.66666666666666" y="318" width="150.99999999999997" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="wkp-lE-NYK"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="help@ta123.com">
+                                            <color key="baseForegroundColor" name="#FA9365"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="openEmailTA:" destination="PhB-ez-Gi9" eventType="touchUpInside" id="imn-Tu-p5j"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your team at Transaction Advidor reviewing your project. You will be notified upon approval." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lb1-JS-q0P">
+                                        <rect key="frame" x="20" y="93" width="358" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="Fxg-xZ-tVN"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                                        <color key="textColor" red="0.28160464759999998" green="0.28160464759999998" blue="0.28160464759999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting For Approval" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCt-Mb-R1Z">
+                                        <rect key="frame" x="99" y="57" width="200" height="26"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="Zvo-2I-2NY"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="18"/>
+                                        <color key="textColor" red="0.28160464759999998" green="0.28160464759999998" blue="0.28160464759999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="9C9-4d-qSW" firstAttribute="leading" secondItem="7n1-R8-ieV" secondAttribute="leading" constant="20" id="0Hv-hu-BXy"/>
+                                    <constraint firstItem="TCt-Mb-R1Z" firstAttribute="top" secondItem="7n1-R8-ieV" secondAttribute="top" constant="57" id="2a2-up-JRU"/>
+                                    <constraint firstAttribute="width" constant="398" id="BG8-Wg-FR1"/>
+                                    <constraint firstItem="TCt-Mb-R1Z" firstAttribute="centerX" secondItem="7n1-R8-ieV" secondAttribute="centerX" id="J9v-Wk-gf3"/>
+                                    <constraint firstItem="Uin-bd-2Cy" firstAttribute="top" secondItem="9C9-4d-qSW" secondAttribute="bottom" id="TFv-q9-gmy"/>
+                                    <constraint firstItem="9C9-4d-qSW" firstAttribute="top" secondItem="Lb1-JS-q0P" secondAttribute="bottom" constant="35" id="ZxC-Hz-jgw"/>
+                                    <constraint firstItem="Uin-bd-2Cy" firstAttribute="centerX" secondItem="7n1-R8-ieV" secondAttribute="centerX" id="a6N-ba-7Xc"/>
+                                    <constraint firstAttribute="height" constant="398" id="aDL-i4-TGp"/>
+                                    <constraint firstAttribute="trailing" secondItem="AHv-XX-Mar" secondAttribute="trailing" constant="16" id="dFI-vb-cHy"/>
+                                    <constraint firstAttribute="trailing" secondItem="9C9-4d-qSW" secondAttribute="trailing" constant="20" id="fRQ-wI-MMs"/>
+                                    <constraint firstItem="Lb1-JS-q0P" firstAttribute="top" secondItem="TCt-Mb-R1Z" secondAttribute="bottom" constant="10" id="pBo-a4-8QO"/>
+                                    <constraint firstAttribute="trailing" secondItem="Lb1-JS-q0P" secondAttribute="trailing" constant="20" id="pg3-Gj-mDD"/>
+                                    <constraint firstItem="AHv-XX-Mar" firstAttribute="top" secondItem="7n1-R8-ieV" secondAttribute="top" constant="16" id="udm-yA-aKu"/>
+                                    <constraint firstItem="Lb1-JS-q0P" firstAttribute="leading" secondItem="7n1-R8-ieV" secondAttribute="leading" constant="20" id="xoG-7B-vvV"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="14"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="14"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="tVq-kR-7P6"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.30414151830000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7n1-R8-ieV" firstAttribute="centerX" secondItem="B9E-AM-bNc" secondAttribute="centerX" id="Njq-WP-cWz"/>
+                            <constraint firstItem="7n1-R8-ieV" firstAttribute="centerY" secondItem="B9E-AM-bNc" secondAttribute="centerY" constant="-36" id="qdG-vg-cGa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bodyMessageApproval" destination="Lb1-JS-q0P" id="uTo-Ii-eMM"/>
+                        <outlet property="bodyMessageApprovalSeccond" destination="9C9-4d-qSW" id="Fvn-fW-6P9"/>
+                        <outlet property="btnEmailTA" destination="Uin-bd-2Cy" id="Ld3-Ul-Hna"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HjI-2C-bka" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7508.6956521739139" y="14.673913043478262"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ic_HO_Image1" width="67" height="64"/>
@@ -2168,6 +2400,7 @@
         <image name="ic_add_images" width="18" height="18"/>
         <image name="ic_back" width="24" height="24"/>
         <image name="ic_checkbox_filled-1" width="24" height="24"/>
+        <image name="ic_close2" width="24" height="24"/>
         <image name="ic_delete" width="24" height="24"/>
         <image name="ic_delete-1" width="26" height="26"/>
         <image name="ic_edit" width="26" height="26"/>
