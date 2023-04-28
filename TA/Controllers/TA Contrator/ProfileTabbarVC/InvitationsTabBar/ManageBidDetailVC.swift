@@ -36,7 +36,7 @@ class ManageBidDetailVC: BaseViewController {
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var btnRecallBid: UIButton!
     @IBOutlet weak var btnViewBidLog: UIButton!
-    @IBOutlet weak var bottomVw: UIView!
+    //@IBOutlet weak var bottomVw: UIView!
     @IBOutlet weak var collectionVw: UICollectionView!
     @IBOutlet weak var lblNotableItems: UILabel!
     @IBOutlet weak var lblEndDate: UILabel!
@@ -226,7 +226,7 @@ class ManageBidDetailVC: BaseViewController {
 //                    self.btmVwheight.constant = 80.0
                     self.btnRecallBid.setTitle("Bid Lost", for: .normal)
                 } else if model?.data?.bidStatus == 4 {
-                    self.bottomVw.addCustomShadow()
+                    //self.bottomVw.addCustomShadow()
                     self.lblStatus.text = "Rejected"
                     self.btnViewBidLog.setTitle("Edit Bid", for: .normal)
                     self.btnRecallBid.setTitle("View Bid Log", for: .normal)
@@ -288,7 +288,7 @@ class ManageBidDetailVC: BaseViewController {
                     self.btnRecallBid.backgroundColor = UIColor.appBtnColorWhite
                     self.btnRecallBid.isUserInteractionEnabled = false
                     self.btnRecallBid.setTitleColor(UIColor.appColorGreen, for: .normal)
-                    self.btmVwheight.constant = 80.0
+                    //self.btmVwheight.constant = 80.0
                     self.btnRecallBid.setTitle("Waiting for Admin Approval", for: .normal)
                 } else {
                     //self.bottomVw.addCustomShadow()
@@ -514,8 +514,8 @@ class ManageBidDetailVC: BaseViewController {
                 "codeUpgrades": model.codeUpgrades!,
                 "paymentTerms1": "\(model.paymentTerms1! == 1 ? "true" : "false")",
                 "paymentTerms2": "\(model.paymentTerms2! == 1 ? "true" : "false")",
-                "homeOwnerSign1": model.homeOwnerSign1!,
-                "homeOwnerSign2": model.homeOwnerSign2!,
+                "homeOwnerSign1": model.homeOwnerSign1!.isValidBase64(),
+                "homeOwnerSign2": model.homeOwnerSign2!.isValidBase64(),
                 "homeOwnerSignDate1": model.homeOwnerSignDate1!,
                 "homeOwnerSignDate2": model.homeOwnerSignDate2!,
                 "aegcRepresentativeDate": model.aegcRepresentativeDate!,
@@ -529,6 +529,8 @@ class ManageBidDetailVC: BaseViewController {
                 "isBlocked":"\(model.isBlocked! == 1 ? "true" : "false")",
                 "isDeleted":"\(model.isDeleted! == 1 ? "true" : "false")",
                 "project_agreement":""] as [String : Any]
+            
+            print(paramsPDF)
             self.doDownloadPDF(params: paramsPDF)
         }
     }

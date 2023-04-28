@@ -5,7 +5,7 @@
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Need microphone access for uploading audio</string>
 	<key>BaseURL</key>
-	<string>https://ta123.symbiotics.com.br/</string>
+	<string>https://ta123.symbiotics.com.br</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>googlegmail</string>
