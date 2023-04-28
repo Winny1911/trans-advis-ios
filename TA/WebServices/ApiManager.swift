@@ -50,7 +50,7 @@ class ApiManager<T: Codable>: BaseApiManager {
                         let statusCode = value["statusCode"] as? Int
                         if statusCode == 401{
                             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "LogoutCall"), object: nil)
-//                            completion(value,user)
+                            completion(value,user)
 
                         }else{
                             completion(value,user)

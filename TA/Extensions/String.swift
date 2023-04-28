@@ -295,3 +295,25 @@ extension String {
         return result
     }
 }
+extension String {
+    func isValidBase64() -> String {
+        print(self)
+        if self.trim().count % 4 != 0 {
+            return ""
+        }
+        
+        if let _ = Data(base64Encoded: self) {
+            return self
+        } else {
+            return ""
+        }
+        
+//        if let data = self.data(using: .utf8) {
+//            let base64 = data.base64EncodedString()
+//            if let decodedData = Data(base64Encoded: base64), let decodedString = String(data: decodedData, encoding: .utf8) {
+//                return decodedString == self ? self : ""
+//            }
+//        }
+//        return ""
+    }
+}

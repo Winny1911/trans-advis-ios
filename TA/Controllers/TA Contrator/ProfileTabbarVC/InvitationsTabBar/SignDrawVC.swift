@@ -9,7 +9,7 @@ import UIKit
 import MobileCoreServices
 
 protocol SignDrawVCDelegate: AnyObject {
-    func signDrawVCDidDismiss(_ controller: SignDrawVC, base64: String?)
+    func signDrawVCDidDismiss(_ controller: SignDrawVC, base64: String?, isSign2: Bool!)
 }
 
 class SignDrawVC: UIViewController {
@@ -17,6 +17,7 @@ class SignDrawVC: UIViewController {
     weak var delegate: SignDrawVCDelegate?
     var imageView = UIImageView()
     var base64String = String()
+    var sign2 : Bool = false
     
     @IBOutlet weak var viewDraw: ViewDrawBase!
     
@@ -32,7 +33,7 @@ class SignDrawVC: UIViewController {
                 print(self.base64String)
             }
         }
-        self.delegate?.signDrawVCDidDismiss(self, base64: self.base64String)
+        self.delegate?.signDrawVCDidDismiss(self, base64: self.base64String, isSign2: sign2)
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -47,34 +48,33 @@ class SignDrawVC: UIViewController {
 
 extension UIView {
     func asImage() -> UIImage? {
-        // Define a nova resolução desejada
-        let newBounds = CGRect(origin: .zero, size: CGSize(width: 399, height: 83))
-        
-        let renderer = UIGraphicsImageRenderer(bounds: newBounds)
-        let image = renderer.image { rendererContext in
-            // Define o background como transparente
-            rendererContext.cgContext.setFillColor(UIColor.clear.cgColor)
-            rendererContext.cgContext.fill(bounds)
+            let newBounds = CGRect(origin: .zero, size: CGSize(width: 399, height: 83))
             
-            layer.render(in: rendererContext.cgContext)
+            let renderer = UIGraphicsImageRenderer(bounds: newBounds)
+            let image = renderer.image { rendererContext in
+                rendererContext.cgContext.setFillColor(UIColor.clear.cgColor)
+                rendererContext.cgContext.fill(bounds)
+                
+                layer.render(in: rendererContext.cgContext)
+            }
+            
+            guard let data = image.pngData() else { return nil }
+            
+            let options: NSDictionary = [
+                kCGImageDestinationLossyCompressionQuality: 1
+            ]
+            
+            let compressedData = NSMutableData()
+            guard let imageDestination = CGImageDestinationCreateWithData(compressedData, kUTTypePNG, 1, nil) else {
+                return nil
+            }
+            
+            CGImageDestinationAddImageFromSource(imageDestination, CGImageSourceCreateWithData(data as CFData, nil)!, 0, options)
+            CGImageDestinationFinalize(imageDestination)
+            
+            return UIImage(data: compressedData as Data)
         }
-        
-        guard let data = image.pngData() else { return nil }
-        
-        let options: NSDictionary = [
-            kCGImageDestinationLossyCompressionQuality: 1
-        ]
-        
-        let compressedData = NSMutableData()
-        guard let imageDestination = CGImageDestinationCreateWithData(compressedData, kUTTypePNG, 1, nil) else {
-            return nil
-        }
-        
-        CGImageDestinationAddImageFromSource(imageDestination, CGImageSourceCreateWithData(data as CFData, nil)!, 0, options)
-        CGImageDestinationFinalize(imageDestination)
-        
-        return UIImage(data: compressedData as Data)
-    }
+
 
 }
 
