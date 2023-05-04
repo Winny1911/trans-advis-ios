@@ -9,6 +9,7 @@ import UIKit
 import Alamofire
 import FirebaseDatabase
 import UniformTypeIdentifiers
+import AVFoundation
 
 // MARK: - Image
 extension ChatWindowViewController: AssetDelegate {
@@ -109,7 +110,7 @@ extension ChatWindowViewController: UIDocumentPickerDelegate {
         controller.dismiss(animated: true, completion: nil)
     }
     
-    func shareDocument(document_name: String, document_path:String) {
+    func shareDocument(document_name: String, document_path:String, isVoice:Bool = false) {
         if NetworkReachabilityManager()?.isReachable == false {
             showMessage(with: GenericErrorMessages.noInternet)
             return
@@ -124,22 +125,40 @@ extension ChatWindowViewController: UIDocumentPickerDelegate {
         let other_user_profile_pic = self.viewModel.user_image ?? ""
         let other_user_name = self.viewModel.user_name ?? ""
         
-        self.addAttchmentLocally(message_id: message_id, message: document_name, message_type: FirebaseMessageType.Document, message_time: message_time, firebase_message_time: firebase_message_time, chat_dialog_id: chat_dialogue_id, sender_id: sender_id, attachment_url: document_path, message_read_status: nil, receiver_id: receiver_id)
+        if isVoice {
+            self.addAttchmentLocally(message_id: message_id, message: document_name, message_type: FirebaseMessageType.Voice, message_time: message_time, firebase_message_time: firebase_message_time, chat_dialog_id: chat_dialogue_id, sender_id: sender_id, attachment_url: document_path, message_read_status: nil, receiver_id: receiver_id)
+            
+            fireBaseChatMessages().insertMessageToFirebaseChatTable(message_id: message_id,
+                                                                    message: document_name,
+                                                                    message_type: FirebaseMessageType.Voice,
+                                                                    message_time: message_time,
+                                                                    firebase_message_time: firebase_message_time,
+                                                                    chat_dialog_id: chat_dialogue_id,
+                                                                    sender_id: sender_id,
+                                                                    attachment_url: document_path,
+                                                                    receiver_id: receiver_id,
+                                                                    other_user_profile_pic: other_user_profile_pic,
+                                                                    other_user_name: other_user_name,
+                                                                    dialog_type: 1,
+                                                                    thumbnail: "")
+        } else {
+            self.addAttchmentLocally(message_id: message_id, message: document_name, message_type: FirebaseMessageType.Document, message_time: message_time, firebase_message_time: firebase_message_time, chat_dialog_id: chat_dialogue_id, sender_id: sender_id, attachment_url: document_path, message_read_status: nil, receiver_id: receiver_id)
+            
+            fireBaseChatMessages().insertMessageToFirebaseChatTable(message_id: message_id,
+                                                                    message: document_name,
+                                                                    message_type: FirebaseMessageType.Document,
+                                                                    message_time: message_time,
+                                                                    firebase_message_time: firebase_message_time,
+                                                                    chat_dialog_id: chat_dialogue_id,
+                                                                    sender_id: sender_id,
+                                                                    attachment_url: document_path,
+                                                                    receiver_id: receiver_id,
+                                                                    other_user_profile_pic: other_user_profile_pic,
+                                                                    other_user_name: other_user_name,
+                                                                    dialog_type: 1,
+                                                                    thumbnail: "")
+        }
         
-        fireBaseChatMessages().insertMessageToFirebaseChatTable(message_id: message_id,
-                                                                message: document_name,
-                                                                message_type: FirebaseMessageType.Document,
-                                                                message_time: message_time,
-                                                                firebase_message_time: firebase_message_time,
-                                                                chat_dialog_id: chat_dialogue_id,
-                                                                sender_id: sender_id,
-                                                                attachment_url: document_path,
-                                                                receiver_id: receiver_id,
-                                                                other_user_profile_pic: other_user_profile_pic,
-                                                                other_user_name: other_user_name,
-                                                                dialog_type: 1,
-                                                                thumbnail: "")
-
         DispatchQueue.main.async{
             self.scrollToTheBottom(animated: true)
         }
@@ -160,6 +179,18 @@ extension ChatWindowViewController {
                 let attachment_url = dictionary.attachment_url ?? ""
 //                self.openDocument(document_path: attachment_url, document_name: document_name)
                 if let url = URL(string: attachment_url) {
+                    UIApplication.shared.open(url)
+                }
+            }
+        } else if message_type == FirebaseMessageType.Voice {
+            if let urlString = dictionary.attachment_url {
+                print(urlString)
+//                if let url = URL(string: urlString) {
+//                    let playerItem = AVPlayerItem(url: url)
+//                    let player = AVPlayer(playerItem: playerItem)
+//                    player.play()
+//                }
+                if let url = URL(string: urlString) {
                     UIApplication.shared.open(url)
                 }
             }

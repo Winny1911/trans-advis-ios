@@ -135,6 +135,8 @@ class ChatWindowViewController: CameraBaseViewController {
         self.tableView?.register(UINib.init(nibName: "MyChatImageTableViewCell", bundle: nil), forCellReuseIdentifier: "MyChatImageTableViewCell")
         self.tableView?.register(UINib.init(nibName: "ReceivedDocumentTableViewCell", bundle: nil), forCellReuseIdentifier: "ReceivedDocumentTableViewCell")
         self.tableView?.register(UINib.init(nibName: "SentDocumentTableViewCell", bundle: nil), forCellReuseIdentifier: "SentDocumentTableViewCell")
+        self.tableView?.register(UINib.init(nibName: "ReceivedVoiceTableViewCell", bundle: nil), forCellReuseIdentifier: "ReceivedVoiceTableViewCell")
+        self.tableView?.register(UINib.init(nibName: "SentVoiceTableViewCell", bundle: nil), forCellReuseIdentifier: "SentVoiceTableViewCell")
     }
     
     func setHeaderData() {
@@ -275,8 +277,7 @@ class ChatWindowViewController: CameraBaseViewController {
             let firstUrl = getFileURL()
             let file_name = firstUrl.lastPathComponent
             let document_path = UIFunction.saveDocumentToTempDirectory(url: firstUrl, specificFileName: file_name) ?? ""
-            self.shareDocument(document_name: file_name, document_path:document_path)
-            isAudioMessage = false
+            self.shareDocument(document_name: file_name, document_path:document_path, isVoice: isAudioMessage)
             viewRecordAudio.isHidden = true
             textView.isEditable = true
             sendButtonView.isHidden = false
@@ -286,7 +287,7 @@ class ChatWindowViewController: CameraBaseViewController {
             count = 0
             timer.invalidate()
             lblTimeRecord.text = self.makeTimeString(hours: 0, minutes: 0, seconds: 0)
-            isAudioMessage = true
+            isAudioMessage = false
         }
     }
     
@@ -357,9 +358,7 @@ class ChatWindowViewController: CameraBaseViewController {
             let actionChooseDocument : UIAlertAction = UIAlertAction.init(title: "Choose Document", style: .default) { (action:UIAlertAction) in
                 self.chooseDocument()
             }
-//            let actionRecordAudio : UIAlertAction = UIAlertAction.init(title: "Record Audio", style: .default) { (action:UIAlertAction) in
-//                self.buildViewRecordAudio()
-//            }
+
             let actionCancel = UIAlertAction.init(title: "Cancel", style: .cancel, handler: { (action:UIAlertAction) in })
             
             let titleColor = UIColor(red: 43.0/255, green: 48.0/255, blue: 57.0/255, alpha: 1.0)
@@ -467,8 +466,14 @@ extension ChatWindowViewController : UITableViewDataSource, UITableViewDelegate 
                     self.openAttachment(dictionary: dictionary)
                 }
                 tableCell = cell
+            } else if (message_type == FirebaseMessageType.Voice) {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "SentVoiceTableViewCell", for: indexPath) as! SentVoiceTableViewCell
+                cell.setVoiceMessage(dictionary: dictionary)
+                cell.didSelectAttachment = {
+                    self.openAttachment(dictionary: dictionary)
+                }
+                tableCell = cell
             }
-            
         }
         else { // received message
             if (message_type == FirebaseMessageType.Text) {
@@ -485,6 +490,13 @@ extension ChatWindowViewController : UITableViewDataSource, UITableViewDelegate 
             } else if (message_type == FirebaseMessageType.Document) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ReceivedDocumentTableViewCell", for: indexPath) as! ReceivedDocumentTableViewCell
                 cell.setDocumentMessage(dictionary: dictionary)
+                cell.didSelectAttachment = {
+                    self.openAttachment(dictionary: dictionary)
+                }
+                tableCell = cell
+            } else if (message_type == FirebaseMessageType.Voice) {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ReceivedVoiceTableViewCell", for: indexPath) as! ReceivedVoiceTableViewCell
+                cell.setVoiceMessage(dictionary: dictionary)
                 cell.didSelectAttachment = {
                     self.openAttachment(dictionary: dictionary)
                 }

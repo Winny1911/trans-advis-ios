@@ -74,6 +74,21 @@ extension FirebaseChatMessages {
                     self.sendMessageToFirebaseNotificationTable(message_id: message_id, message: message, message_type: FirebaseMessageType.Document, message_time: message_time, firebase_message_time: firebase_message_time, chat_dialog_id: chat_dialog_id, sender_id: user_id, attachment_url: attachement_url, receiver_id: receiver_id)
                 }
             }
+        } else if message_type == FirebaseMessageType.Voice {
+            
+            self.uploadDocument(message_type: message_type, chat_dialogue_id: chat_dialog_id, message_id: message_id, attachment_path: attachment_url, file_name: message) { attachmentUrl in
+                if let attachement_url = attachmentUrl {
+                    let last_message = self.getTextForLastMessage(message: message, message_type: message_type)
+
+                    self.sendMessageToFirebaseChatTable(message_id: message_id, message: message, message_type: FirebaseMessageType.Voice, message_time: message_time, firebase_message_time: firebase_message_time, chat_dialog_id: chat_dialog_id, sender_id: user_id, attachment_url: attachement_url, receiver_id: receiver_id)
+
+                    self.updateLastMessageInInboxTable(other_user_id: receiver_id, last_message: last_message, last_message_time: message_time, sender_id: user_id, other_user_profile_pic: other_user_profile_pic, other_user_name: other_user_name, last_message_id: message_id, last_message_type: FirebaseMessageType.Voice, dialog_type: dialog_type)
+                    
+                    self.updateChatDialogueIdInUserTable(chat_dialogue_id: chat_dialog_id, other_user_id: receiver_id)
+                    
+                    self.sendMessageToFirebaseNotificationTable(message_id: message_id, message: message, message_type: FirebaseMessageType.Voice, message_time: message_time, firebase_message_time: firebase_message_time, chat_dialog_id: chat_dialog_id, sender_id: user_id, attachment_url: attachement_url, receiver_id: receiver_id)
+                }
+            }
         }
     }
     

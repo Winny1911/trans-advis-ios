@@ -1,38 +1,39 @@
 //
-//  ReceivedDocumentTableViewCell.swift
+//  ReceivedVoiceTableViewCell.swift
 //  Business App
-//
-//  Created by Ankit Goyal on 27/09/20.
-//  Copyright © 2020 Ankit Goyal. All rights reserved.
-//
 
 import UIKit
 
-class ReceivedDocumentTableViewCell: UITableViewCell {
+class ReceivedVoiceTableViewCell: UITableViewCell {
 
     @IBOutlet weak var baseView: UIView!
-    @IBOutlet weak var labelDocumentName: UILabel!
+    @IBOutlet weak var labelVoiceName: UILabel!
     @IBOutlet weak var labelTime: UILabel!
-    @IBOutlet weak var imgViewDocument: UIImageView!
+    @IBOutlet weak var imgViewVoice: UIImageView!
     var didSelectAttachment: (() -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        addTapGestureOnDocument()
+        addTapGestureOnVoice()
+        changeImgVoice()
     }
     
-    func addTapGestureOnDocument() {
+    func changeImgVoice() {
+        imgViewVoice.image = UIImage(named: "document")
+    }
+    
+    func addTapGestureOnVoice() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.openAttachment))
         self.baseView.isUserInteractionEnabled = true
         self.baseView.addGestureRecognizer(tapGesture)
     }
     
-    func setDocumentMessage(dictionary: ChatMessages) {
+    func setVoiceMessage(dictionary: ChatMessages) {
         let created_at = Int64(dictionary.message_time ?? "") ?? 0
         let message = dictionary.message ?? ""
         let time = UIFunction.getDateStringForDateSeperatorFromTimestamp(created_at)
         
-        labelDocumentName.text = message
+        labelVoiceName.text = message
         labelTime.text = time
     }
     

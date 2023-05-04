@@ -19,6 +19,7 @@ struct FirebaseMessageType {
     static let Text = 1
     static let Image = 2
     static let Document = 3
+    static let Voice = 4
 }
 
 
