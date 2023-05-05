@@ -3,24 +3,24 @@
 //  Business App
 
 import UIKit
+import WebKit
 
 class ReceivedVoiceTableViewCell: UITableViewCell {
 
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var labelVoiceName: UILabel!
     @IBOutlet weak var labelTime: UILabel!
-    @IBOutlet weak var imgViewVoice: UIImageView!
+    @IBOutlet weak var imgVoice: UIImageView!
+    @IBOutlet weak var wkWebviewReceived: WKWebView!
+    
     var didSelectAttachment: (() -> Void)?
+    var request: URLRequest!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         addTapGestureOnVoice()
-        changeImgVoice()
     }
-    
-    func changeImgVoice() {
-        imgViewVoice.image = UIImage(named: "document")
-    }
+
     
     func addTapGestureOnVoice() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.openAttachment))
@@ -35,9 +35,16 @@ class ReceivedVoiceTableViewCell: UITableViewCell {
         
         labelVoiceName.text = message
         labelTime.text = time
+        guard let url = URL(string: dictionary.attachment_url!) else { return }
+        request = URLRequest(url: url)
+        wkWebviewReceived.isHidden = true
+        imgVoice.isHidden = false
     }
     
     @objc func openAttachment(_ sender: UITapGestureRecognizer) {
-        self.didSelectAttachment?()
+        //self.didSelectAttachment?()
+        wkWebviewReceived.isHidden = false
+        imgVoice.isHidden = true
+        wkWebviewReceived.load(request)
     }
 }
