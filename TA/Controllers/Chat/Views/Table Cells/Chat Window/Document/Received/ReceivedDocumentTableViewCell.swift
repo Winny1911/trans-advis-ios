@@ -13,6 +13,7 @@ class ReceivedDocumentTableViewCell: UITableViewCell {
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var labelDocumentName: UILabel!
     @IBOutlet weak var labelTime: UILabel!
+    @IBOutlet weak var imgViewDocument: UIImageView!
     var didSelectAttachment: (() -> Void)?
 
     override func awakeFromNib() {

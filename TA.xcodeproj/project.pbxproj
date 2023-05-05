@@ -129,6 +129,11 @@
 		4002825F29D308230027446B /* PlaceBidTermVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4002825E29D308230027446B /* PlaceBidTermVC.swift */; };
 		4002826129D3D77D0027446B /* SignDrawVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4002826029D3D77D0027446B /* SignDrawVC.swift */; };
 		4002826329D3D8FE0027446B /* ViewDrawBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4002826229D3D8FE0027446B /* ViewDrawBase.swift */; };
+		40A5428A2A015CC40026AE70 /* VoicePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A542892A015CC40026AE70 /* VoicePlayer.swift */; };
+		40A5428B2A01E7460026AE70 /* ReceivedVoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40A542872A015A790026AE70 /* ReceivedVoiceTableViewCell.xib */; };
+		40A5428C2A01E74A0026AE70 /* SentVoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40A542842A015A790026AE70 /* SentVoiceTableViewCell.xib */; };
+		40A5428D2A01E74F0026AE70 /* ReceivedVoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A542862A015A790026AE70 /* ReceivedVoiceTableViewCell.swift */; };
+		40A5428E2A01E7520026AE70 /* SentVoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A542832A015A790026AE70 /* SentVoiceTableViewCell.swift */; };
 		40CD2BC929F8A9DC000113D9 /* AcceptBidPaymentVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CD2BC829F8A9DB000113D9 /* AcceptBidPaymentVc.swift */; };
 		40CD2BCB29F8D28E000113D9 /* AwaitingApprovalHOVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CD2BCA29F8D28E000113D9 /* AwaitingApprovalHOVC.swift */; };
 		6225657A29825C8100BA3BB0 /* RecordAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6225657929825C8000BA3BB0 /* RecordAudio.swift */; };
@@ -612,6 +617,11 @@
 		4002825E29D308230027446B /* PlaceBidTermVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceBidTermVC.swift; sourceTree = "<group>"; };
 		4002826029D3D77D0027446B /* SignDrawVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignDrawVC.swift; sourceTree = "<group>"; };
 		4002826229D3D8FE0027446B /* ViewDrawBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDrawBase.swift; sourceTree = "<group>"; };
+		40A542832A015A790026AE70 /* SentVoiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentVoiceTableViewCell.swift; sourceTree = "<group>"; };
+		40A542842A015A790026AE70 /* SentVoiceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SentVoiceTableViewCell.xib; sourceTree = "<group>"; };
+		40A542862A015A790026AE70 /* ReceivedVoiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedVoiceTableViewCell.swift; sourceTree = "<group>"; };
+		40A542872A015A790026AE70 /* ReceivedVoiceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReceivedVoiceTableViewCell.xib; sourceTree = "<group>"; };
+		40A542892A015CC40026AE70 /* VoicePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicePlayer.swift; sourceTree = "<group>"; };
 		40CD2BC829F8A9DB000113D9 /* AcceptBidPaymentVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptBidPaymentVc.swift; sourceTree = "<group>"; };
 		40CD2BCA29F8D28E000113D9 /* AwaitingApprovalHOVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwaitingApprovalHOVC.swift; sourceTree = "<group>"; };
 		56E733CA42381FFD60AAB7CA /* Pods-TA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TA.debug.xcconfig"; path = "Target Support Files/Pods-TA/Pods-TA.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1460,6 +1470,42 @@
 			path = Orderlist;
 			sourceTree = "<group>";
 		};
+		40A542812A015A480026AE70 /* Voice */ = {
+			isa = PBXGroup;
+			children = (
+				40A542882A015C910026AE70 /* Component */,
+				40A542852A015A790026AE70 /* Received */,
+				40A542822A015A790026AE70 /* Sent */,
+			);
+			path = Voice;
+			sourceTree = "<group>";
+		};
+		40A542822A015A790026AE70 /* Sent */ = {
+			isa = PBXGroup;
+			children = (
+				40A542842A015A790026AE70 /* SentVoiceTableViewCell.xib */,
+				40A542832A015A790026AE70 /* SentVoiceTableViewCell.swift */,
+			);
+			path = Sent;
+			sourceTree = "<group>";
+		};
+		40A542852A015A790026AE70 /* Received */ = {
+			isa = PBXGroup;
+			children = (
+				40A542872A015A790026AE70 /* ReceivedVoiceTableViewCell.xib */,
+				40A542862A015A790026AE70 /* ReceivedVoiceTableViewCell.swift */,
+			);
+			path = Received;
+			sourceTree = "<group>";
+		};
+		40A542882A015C910026AE70 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				40A542892A015CC40026AE70 /* VoicePlayer.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
 		944A142D278D4F0D00706801 /* Transaction HIstory */ = {
 			isa = PBXGroup;
 			children = (
@@ -1862,6 +1908,7 @@
 		C96FCA1A27E5AB9D00E8D006 /* Chat Window */ = {
 			isa = PBXGroup;
 			children = (
+				40A542812A015A480026AE70 /* Voice */,
 				C96FCA2927E5AB9D00E8D006 /* Text */,
 				C96FCA2227E5AB9D00E8D006 /* Image */,
 				C96FCA1B27E5AB9D00E8D006 /* Document */,
@@ -2529,6 +2576,7 @@
 				D4989DAF2771B4920011C55A /* InvitationsTableViewCell.xib in Resources */,
 				D4F1AB7F2759E196008A7182 /* Assets.xcassets in Resources */,
 				C96FCA3527E5AB9E00E8D006 /* ChatImageTableViewCell.xib in Resources */,
+				40A5428B2A01E7460026AE70 /* ReceivedVoiceTableViewCell.xib in Resources */,
 				3C85A62B277EBF2A0005BB9C /* SettingTableViewCell.xib in Resources */,
 				3C5EA9712768B2CC0007DBE5 /* PastSubTask.storyboard in Resources */,
 				152AB73727ABABCB00547BE5 /* VendorListTableViewCell.xib in Resources */,
@@ -2538,6 +2586,7 @@
 				9946A14E27AA4A3700AA784B /* SubTask.storyboard in Resources */,
 				D71EAD91277AE92200B378E6 /* OngoingDetailHO.storyboard in Resources */,
 				3CCFA49027672B83001ED725 /* MainProject.storyboard in Resources */,
+				40A5428C2A01E74A0026AE70 /* SentVoiceTableViewCell.xib in Resources */,
 				D74B67A327634E0400616D07 /* PastHO.storyboard in Resources */,
 				C96FCA3A27E5AB9E00E8D006 /* MyChatMessageTableViewCell.xib in Resources */,
 				D4BC6BA027BBA99600F13E23 /* OrderListItemTbllVwCell.xib in Resources */,
@@ -2843,6 +2892,7 @@
 				D4C10FBC27D74C84006DEE57 /* TermsAndConditionVC.swift in Sources */,
 				94B1F3F427BE605C00BDEFAB /* VendorProfileCOVM.swift in Sources */,
 				D77C2B772769EF2F00A49D08 /* ProjectImagesCollectionViewCell.swift in Sources */,
+				40A5428D2A01E74F0026AE70 /* ReceivedVoiceTableViewCell.swift in Sources */,
 				156C3C5327B13578002600B5 /* VendorListResponse.swift in Sources */,
 				99DDBA132761A86200ACB72F /* LoginVM.swift in Sources */,
 				D4C8A54527800B7400E6FA62 /* PlaceBidCollVwCell.swift in Sources */,
@@ -2953,6 +3003,7 @@
 				D462EE6627C4BAC0008CAADE /* DisputeReasonsTblVwCell.swift in Sources */,
 				D4AE6CFE27661D2B00DBA410 /* UIFunction.swift in Sources */,
 				C984C28427FC536600416200 /* ChatInbox+CoreDataProperties.swift in Sources */,
+				40A5428A2A015CC40026AE70 /* VoicePlayer.swift in Sources */,
 				156C3C5027B13474002600B5 /* OrderMaterialViewModel.swift in Sources */,
 				9453BD3827CDD8AC00B79068 /* PastProjectDetialHOModel.swift in Sources */,
 				D4B100B2278D934F00765C7A /* AddNewTaskVC.swift in Sources */,
@@ -2992,6 +3043,7 @@
 				40CD2BCB29F8D28E000113D9 /* AwaitingApprovalHOVC.swift in Sources */,
 				D4E9B5BF2782D68300A10104 /* AddFilesTblVwCell.swift in Sources */,
 				3C6623192771FE0F00F29E1A /* ApplifyFilterVM.swift in Sources */,
+				40A5428E2A01E7520026AE70 /* SentVoiceTableViewCell.swift in Sources */,
 				C928CAE82800408A006BBBF2 /* ChatMessages+CoreDataProperties.swift in Sources */,
 				15C4C6F727B22F1D007FC1E3 /* CategoryTableViewCell.swift in Sources */,
 				D7A3646F276C690C00C51D15 /* ContractorModel.swift in Sources */,
@@ -3162,7 +3214,7 @@
 				CODE_SIGN_ENTITLEMENTS = TA/TA.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 43;
 				DEVELOPMENT_TEAM = 9Q982ULHZR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TA/Info.plist;
@@ -3186,7 +3238,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.9.29;
+				MARKETING_VERSION = 1.9.30;
 				PRODUCT_BUNDLE_IDENTIFIER = com.applify.TA.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3205,7 +3257,7 @@
 				CODE_SIGN_ENTITLEMENTS = TA/TA.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 43;
 				DEVELOPMENT_TEAM = 9Q982ULHZR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TA/Info.plist;
@@ -3229,7 +3281,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.9.29;
+				MARKETING_VERSION = 1.9.30;
 				PRODUCT_BUNDLE_IDENTIFIER = com.applify.TA.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
